@@ -1,17 +1,13 @@
 #!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
 
 npx --no -- commitlint --edit $1
 
-# message error
 if [ $? -ne 0 ]; then
     echo ""
     echo "Commit rejected!"
     echo "Please follow the commit message format:"
     echo "   <type>/<scope>: <message>"
-    echo ""
-    echo "Examples:"
-    echo "   feat/user: add login button"
-    echo "   fix/cart: resolve quantity update issue"
     echo ""
     echo "Allowed types: feat | fix | refactor | chore | docs | style | test"
     exit 1
