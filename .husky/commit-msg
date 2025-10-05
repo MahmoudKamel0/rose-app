@@ -1,0 +1,16 @@
+#!/bin/sh
+
+npx --no -- commitlint --edit $1
+
+if [ $? -ne 0 ]; then
+    echo ""
+    echo "-----------------------------------------------------------------------"
+    echo "Commit rejected!"
+    echo "Please follow the commit message format:"
+    echo "   <type>/<scope>: <message>"
+    echo ""
+    echo "Allowed types: feat | fix | refactor | chore | docs | style | test"
+    echo "-----------------------------------------------------------------------"
+    echo ""
+    exit 1
+fi

@@ -1,0 +1,160 @@
+@custom-variant dark (&:is(.dark *));
+
+:root {
+    --background: oklch(1 0 0);
+    --foreground: oklch(0.145 0.02 12);
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.145 0.02 12);
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.145 0.02 12);
+    /* Updated primary to rose color */
+    --primary: oklch(0.557 0.214 12.422);
+    --primary-foreground: oklch(0.985 0.007 12.422);
+    /* Updated secondary to light rose */
+    --secondary: oklch(0.97 0.013 12.422);
+    --secondary-foreground: oklch(0.205 0.02 12);
+    --muted: oklch(0.97 0.013 12.422);
+    --muted-foreground: oklch(71.182% 0.01302 285.981);
+    --accent: oklch(0.97 0.013 12.422);
+    --accent-foreground: oklch(0.205 0.02 12);
+    --destructive: oklch(0.577 0.245 27.325);
+    --destructive-foreground: oklch(0.985 0.007 27.325);
+    /* Updated border and input to subtle rose tint */
+    --border: oklch(0.922 0.013 12.422);
+    --input: oklch(87.111% 0.00555 286.025);
+    --ring: oklch(0.557 0.214 12.422);
+    --chart-1: oklch(0.646 0.222 41.116);
+    --chart-2: oklch(0.6 0.118 184.704);
+    --chart-3: oklch(0.398 0.07 227.392);
+    --chart-4: oklch(0.828 0.189 84.429);
+    --chart-5: oklch(0.769 0.188 70.08);
+    --radius: 0.625rem;
+    --sidebar: oklch(0.985 0.007 12.422);
+    --sidebar-foreground: oklch(0.145 0.02 12);
+    /* Updated sidebar primary to rose */
+    --sidebar-primary: oklch(0.557 0.214 12.422);
+    --sidebar-primary-foreground: oklch(0.985 0.007 12.422);
+    --sidebar-accent: oklch(0.97 0.013 12.422);
+    --sidebar-accent-foreground: oklch(0.205 0.02 12);
+    --sidebar-border: oklch(0.922 0.013 12.422);
+    --sidebar-ring: oklch(0.557 0.214 12.422);
+}
+
+.dark {
+    --background: oklch(0.145 0.02 12);
+    --foreground: oklch(0.985 0.007 12.422);
+    --card: oklch(0.145 0.02 12);
+    --card-foreground: oklch(0.985 0.007 12.422);
+    --popover: oklch(0.145 0.02 12);
+    --popover-foreground: oklch(0.985 0.007 12.422);
+    /* Updated dark mode primary to lighter rose */
+    --primary: oklch(0.757 0.154 12.422);
+    --primary-foreground: oklch(0.205 0.02 12);
+    /* Updated dark mode secondary to muted rose */
+    --secondary: oklch(0.269 0.035 12.422);
+    --secondary-foreground: oklch(0.985 0.007 12.422);
+    --muted: oklch(0.269 0.035 12.422);
+    --muted-foreground: oklch(0.708 0.028 12.422);
+    --accent: oklch(0.269 0.035 12.422);
+    --accent-foreground: oklch(0.985 0.007 12.422);
+    --destructive: oklch(0.396 0.141 25.723);
+    --destructive-foreground: oklch(0.985 0.007 27.325);
+    /* Updated dark mode borders to rose tint */
+    --border: oklch(0.269 0.035 12.422);
+    --input: oklch(0.269 0.035 12.422);
+    --ring: oklch(0.757 0.154 12.422);
+    --chart-1: oklch(0.488 0.243 264.376);
+    --chart-2: oklch(0.696 0.17 162.48);
+    --chart-3: oklch(0.769 0.188 70.08);
+    --chart-4: oklch(0.627 0.265 303.9);
+    --chart-5: oklch(0.645 0.246 16.439);
+    /* Updated dark mode sidebar to rose theme */
+    --sidebar: oklch(0.205 0.02 12);
+    --sidebar-foreground: oklch(0.985 0.007 12.422);
+    --sidebar-primary: oklch(0.757 0.154 12.422);
+    --sidebar-primary-foreground: oklch(0.205 0.02 12);
+    --sidebar-accent: oklch(0.269 0.035 12.422);
+    --sidebar-accent-foreground: oklch(0.985 0.007 12.422);
+    --sidebar-border: oklch(0.269 0.035 12.422);
+    --sidebar-ring: oklch(0.757 0.154 12.422);
+}
+
+@theme inline {
+    /* color based list project */
+    --color-maroon-50 : #fbeaea;
+    --color-maroon-100: #f3c5c7;
+    --color-maroon-200: #ea9fa2;
+    --color-maroon-300: #e07a7d;
+    --color-maroon-400: #d75458;
+    --color-maroon-500: #cd2e33;
+    --color-maroon-600: #a6252a;
+    --color-maroon-700: #741c21;
+    --color-maroon-800: #501419;
+    --color-maroon-900: #2c0c10;
+    --color-maroon-950: #20090c;
+
+    --color-softpink-50 : #fff1f5;
+    --color-softpink-100: #ffe0e7;
+    --color-softpink-200: #ffc2d0;
+    --color-softpink-300: #ffa3b9;
+    --color-softpink-400: #ff85a2;
+    --color-softpink-500: #ff668b;
+    --color-softpink-600: #e65073;
+    --color-softpink-700: #cc3a5b;
+    --color-softpink-800: #b32443;
+    --color-softpink-900: #99102c;
+    --color-softpink-950: #590414;
+
+    --font-sans: var(--font-geist-sans);
+    --font-mono: var(--font-geist-mono);
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+    --color-chart-1: var(--chart-1);
+    --color-chart-2: var(--chart-2);
+    --color-chart-3: var(--chart-3);
+    --color-chart-4: var(--chart-4);
+    --color-chart-5: var(--chart-5);
+    --radius-sm: calc(var(--radius) - 4px);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-10: 10px;
+    --radius-alert: 10px;
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) + 4px);
+    --color-sidebar: var(--sidebar);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-ring: var(--sidebar-ring);
+
+    --width-input: 327px;
+}
+
+@layer base {
+    * {
+        @apply border-border outline-ring/50 text-zinc-800;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+    }
+}

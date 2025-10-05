@@ -1,0 +1,12 @@
+/* Default Elements Styles
+   This file contains base styling for all default HTML elements */
+
+a, span, button {
+    display: inline-block;
+    cursor: pointer;
+}
+
+svg {
+    margin: 0;
+    padding: 0;
+}
