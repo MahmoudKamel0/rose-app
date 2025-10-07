@@ -1,7 +1,7 @@
 /* Default Elements Styles
    This file contains base styling for all default HTML elements */
 
-a, span, button {
+a, span, button { /* for best control when used element */
     display: inline-block;
     cursor: pointer;
 }

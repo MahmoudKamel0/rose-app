@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { cn } from "@lib/utils/cn.utils";
 import { ThemeProvider } from "@components/providers/theme.provider";
-import { ModeToggle } from "@components/ui/mode-toggle";
+import { ModeToggle } from "@components/ui/mode-toggle.ui";
 import { sarabun, tajawal } from "@fonts/index";
 
 
 export const metadata: Metadata = {
     title: "Rose Store – Premium Flower Boutique | Luxury Roses & Elegant Bouquets",
-    description: 
+    description:
         "Rose Store is a premium online flower boutique offering luxury roses, handcrafted bouquets, and personalized floral arrangements. Perfect for weddings, gifts, and special occasions — delivered with elegance and care.",
     keywords: [
         "Rose Store",
@@ -39,7 +39,7 @@ export default function RootLayout({
     return (
         <html lang="en">
         <body
-            className={cn(sarabun.className, tajawal.variable, "antialiased")}
+            className={cn(sarabun.className, tajawal.variable, "antialiased !dark:text-zinc-400")}
         >
             <ThemeProvider
                 attribute="class"
