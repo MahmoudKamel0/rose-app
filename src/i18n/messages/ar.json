@@ -18,5 +18,11 @@
     "ogTitle": "روز ستور – بوتيك ورود فاخرة | ورود فاخرة وباقات أنيقة",
     "ogDescription": "استمتع بالفخامة في كل بتلة — روز ستور يقدم باقات مصممة يدويًا وتوصيل ورود فاخرة لكل مناسبة.",
     "siteName": "روز ستور",
-    "abourt": "معلومات عنا"
+    "abourt": "معلومات عنا",
+    "testimonials-title": "آراء العملاء",
+    "testimonials-name": "{lastName} {firstName}",
+    "testimonials-content": "أطلب من هذا المتجر منذ سنوات ولم يخيب ظني أبدًا. الجودة والخدمة استثنائية حقًا!",
+    "testimonials-date": "تمت المراجعة في {date}",
+    "testimonials-subtitle": "آراء العملاء",
+    "testimonials-heading": "كلمات من العملاء السعيدة"
 }

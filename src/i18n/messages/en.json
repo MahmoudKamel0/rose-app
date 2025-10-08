@@ -18,5 +18,11 @@
     "ogTitle": "Rose Store – Premium Flower Boutique | Luxury Roses & Elegant Bouquets",
     "ogDescription": "Experience luxury in every petal — Rose Store offers handcrafted bouquets and premium flower delivery for every occasion.",
     "siteName": "Rose Store",
-    "abourt": "About Us"
+    "abourt": "About Us",
+    "testimonials-title": "Testimonials",
+    "testimonials-name": "{firstName} {lastName}",
+    "testimonials-content": "I've been ordering from this flower shop for years and they never disappoint. The quality and service are exceptional!!",
+    "testimonials-date": "Reviewed on {date}",
+    "testimonials-subtitle": "Testimonials",
+    "testimonials-heading": "Real Words from Happy Customers"
 }
