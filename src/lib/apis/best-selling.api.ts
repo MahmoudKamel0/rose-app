@@ -16,7 +16,7 @@ export async function getBestSellingProducts() {
     return Array.isArray(data.products) ? data.products : [];
 
   } catch (error) {
-    console.error('Failed to fetch Products:', error);
+    console.error('Failed to fetch Best Selling Products:', error);
     throw error;
   }
 }

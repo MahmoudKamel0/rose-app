@@ -1,9 +1,10 @@
 
 import { cn } from "@lib/utils/cn.utils";
-import BestSellingSection from "./_components/best-selling";
+import BestSellingSection from "../_components/best-selling";
 import AboutSection from "@components/layout/about-section/about-section";
 import CompaniesSection from "@components/layout/campanies-section/campanies-section";
 import GallerySection from "@components/layout/gallary-section/gallery-section";
+import MostPopularSection from "@app/_components/most-popular";
 
 export default function HomePage() {
     return (
@@ -12,7 +13,8 @@ export default function HomePage() {
                 <AboutSection />
                 <GallerySection />
                 <CompaniesSection />
-                        <BestSellingSection></BestSellingSection>
+                <BestSellingSection />
+                <MostPopularSection />
             </div>
         </>
     );
