@@ -18,6 +18,7 @@ import { useAllNotifications } from "@lib/hooks/use-all-notifications.hook";
 import { Notification } from "@lib/types/all-notifications";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useMarkAllNotificationsAsRead } from "@lib/hooks/use-mark-all-notifications-as-read.hook";
+import { useQueryClient } from "@tanstack/react-query";
 import { useDeleteAllNotifications } from "@lib/hooks/use-delete-all-notifications.hook";
 import { useMarkNotificationsAsRead } from "@lib/hooks/use-mark-notification-as-read.hook";
 import { useDeleteSingleNotification } from "@lib/hooks/use-delete-single-notification";
@@ -27,14 +28,10 @@ import { useDeleteSingleNotification } from "@lib/hooks/use-delete-single-notifi
 export default function NotificationMenu() {
     // Fetching paginated notifications
 
+    // Header actions declared inline (not in state)
+
     // Get all notifications for this user
     const { data, fetchNextPage, hasNextPage } = useAllNotifications();
-
-    // Flatten pages into a single list
-    const allNotifications: Notification[] = data?.pages.flatMap((p) => p.data?.notifications ?? []) || [];
-    const unReadCount = data?.pages[0].data?.metadata.unreadCount || 0;
-
-    // Header actions declared inline (not in state)
 
     // Mark all as read mutation hook
     const { mutateAsync: mutateReadAll } = useMarkAllNotificationsAsRead();
@@ -48,32 +45,64 @@ export default function NotificationMenu() {
     // Delete single notification hook
     const { mutateAsync: mutateDeleteSingleNotification, isPending: isDeletingSingle } = useDeleteSingleNotification();
 
+    // React Query client for invalidation
+    const queryClient = useQueryClient();
+
     // Mark all as read handler
     const markAllAsRead = async () => {
-        await mutateReadAll();
+        const res = await mutateReadAll();
+        // simple revalidation: invalidate all queries whose key starts with `all-notifications`
+        await queryClient.invalidateQueries({
+            predicate: (query) =>
+                Array.isArray(query.queryKey) && typeof query.queryKey[0] === "string" && query.queryKey[0].startsWith("all-notifications"),
+        });
+        return res;
     };
 
     // Delete all notifications mutation
     const deleteAll = async () => {
-        await mutateDeleteAll();
+        const res = await mutateDeleteAll();
+        await queryClient.invalidateQueries({
+            predicate: (query) =>
+                Array.isArray(query.queryKey) && typeof query.queryKey[0] === "string" && query.queryKey[0].startsWith("all-notifications"),
+        });
+        return res;
     };
 
     // Mark notification as read
     const markAsRead = async (id: string, isRead: boolean) => {
         if (isRead) return;
-        await mutateMarkSingleAsRead({ notificationIds: [id] });
+        const res = await mutateMarkSingleAsRead({ notificationIds: [id] });
+        await queryClient.invalidateQueries({
+            predicate: (query) =>
+                Array.isArray(query.queryKey) && typeof query.queryKey[0] === "string" && query.queryKey[0].startsWith("all-notifications"),
+        });
+        return res;
     };
 
     // Delete single notification
-    const deletSingle = async (id: string) => {
-        await mutateDeleteSingleNotification(id);
+    const deleteSingle = async (id: string) => {
+        const res = await mutateDeleteSingleNotification(id);
+        await queryClient.invalidateQueries({
+            predicate: (query) =>
+                Array.isArray(query.queryKey) && typeof query.queryKey[0] === "string" && query.queryKey[0].startsWith("all-notifications"),
+        });
+        return res;
     };
+
+    // Variables
+
+    // Flatten pages into a single list
+    const allNotifications: Notification[] = data?.pages.flatMap((p) => p.data?.notifications ?? []) || [];
+
+    // get unread notifications count
+    const unReadCount = data?.pages[0].data?.metadata.unreadCount || 0;
 
     return (
         <Popover>
             {/* Notification icon trigger */}
             <PopoverTrigger asChild>
-                <Button variant="ghost" className={cn("relative flex items-center justify-center")}>
+                <Button variant="ghost" className={cn("relative flex items-center justify-center hover:bg-transparent")}>
                     {unReadCount > 0 && (
                         <div
                             className={cn(
@@ -89,7 +118,7 @@ export default function NotificationMenu() {
             </PopoverTrigger>
 
             {/* Notification content popover */}
-            <PopoverContent className={cn("mr-10 w-96 max-w-none p-0")}>
+            <PopoverContent className={cn("mr-10 w-96 max-w-none rounded-b-md border-0 bg-white p-0 dark:bg-zinc-800")}>
                 {/* Header */}
                 <div className={cn("flex w-full flex-col items-center justify-center")}>
                     <div
@@ -147,10 +176,10 @@ export default function NotificationMenu() {
                         dataLength={allNotifications.length} // important: length of current items
                         next={() => fetchNextPage()} // called when scrolling needs next page
                         hasMore={!!hasNextPage}
-                        height={600}
+                        height={500}
                         // small threshold so next loads slightly before reaching the bottom
                         scrollThreshold="100px"
-                        className={cn("")}
+                        className={cn("h-fit bg-transparent")}
                     >
                         <div
                             className={cn(
@@ -173,8 +202,13 @@ export default function NotificationMenu() {
                                         {/* Dropdown for each notification */}
                                         <DropdownMenu>
                                             <DropdownMenuTrigger asChild>
-                                                <Button type="button" variant={"ghost"} size={"icon"}>
-                                                    <EllipsisVertical className={cn("text-gray-500")} style={{ width: 20, height: 20 }} />
+                                                <Button
+                                                    type="button"
+                                                    variant={"ghost"}
+                                                    size={"icon"}
+                                                    className={cn("flex items-center justify-center hover:bg-transparent")}
+                                                >
+                                                    <EllipsisVertical className={cn("")} style={{ width: 20, height: 20 }} color="gray" />
                                                 </Button>
                                             </DropdownMenuTrigger>
 
@@ -192,8 +226,14 @@ export default function NotificationMenu() {
                                                         onClick={() => markAsRead(notification._id, notification.isRead)}
                                                         disabled={notification.isRead}
                                                     >
-                                                        <Check className={cn("mr-2")} style={{ width: 18, height: 18 }} color="gray" />
-                                                        <span> Mark as read </span>
+                                                        <Check
+                                                            className={cn("mr-2 text-sm font-semibold text-zinc-800 dark:text-zinc-50")}
+                                                            style={{ width: 18, height: 18 }}
+                                                            color="gray"
+                                                        />
+                                                        <span className={cn("text-sm font-semibold text-zinc-800 dark:text-zinc-50")}>
+                                                            Mark as read
+                                                        </span>
                                                     </Button>
                                                 </DropdownMenuItem>
 
@@ -204,13 +244,15 @@ export default function NotificationMenu() {
                                                     <Button
                                                         className={cn("!flex items-center justify-start gap-2")}
                                                         type="button"
-                                                        onClick={() => deletSingle(notification._id)}
+                                                        onClick={() => deleteSingle(notification._id)}
                                                         variant={"ghost"}
                                                         size={"xs"}
                                                         disabled={isDeletingSingle}
                                                     >
                                                         <Trash2 className={cn("mr-2")} style={{ width: 18, height: 18 }} color="red" />
-                                                        <span> Delete notification</span>
+                                                        <span className={cn("text-sm font-semibold text-zinc-800 dark:text-zinc-50")}>
+                                                            Delete notification
+                                                        </span>
                                                     </Button>
                                                 </DropdownMenuItem>
                                             </DropdownMenuContent>

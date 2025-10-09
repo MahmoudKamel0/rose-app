@@ -16,6 +16,11 @@ export function useAllNotifications(limit: number = 6) {
 
             return res.json();
         },
+        // without the user having to refresh.
+        // poll for new notifications every 60 seconds (60000 ms)
+        refetchInterval: 60000,
+        refetchIntervalInBackground: true,
+        refetchOnWindowFocus: true,
         getNextPageParam: (lastPage) => {
             const metadata = lastPage?.data.metadata;
             if (!metadata) return undefined;
