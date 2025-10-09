@@ -3,12 +3,14 @@ import "./globals.css";
 import { cn } from "@lib/utils/cn.utils";
 import { ThemeProvider } from "@components/providers/theme.provider";
 import { ModeToggle } from "@components/ui/mode-toggle";
-import { sarabun, tajawal } from "@fonts/index";
+import { sarabun, tajawal } from "@fonts";
+import Header from "@components/layout/header";
+import Footer from "@components/layout/footer";
 
 
 export const metadata: Metadata = {
     title: "Rose Store – Premium Flower Boutique | Luxury Roses & Elegant Bouquets",
-    description: 
+    description:
         "Rose Store is a premium online flower boutique offering luxury roses, handcrafted bouquets, and personalized floral arrangements. Perfect for weddings, gifts, and special occasions — delivered with elegance and care.",
     keywords: [
         "Rose Store",
@@ -39,8 +41,9 @@ export default function RootLayout({
     return (
         <html lang="en">
         <body
-            className={cn(sarabun.className, tajawal.variable, "antialiased")}
+            className={cn(sarabun.className, tajawal.variable, "antialiased !dark:text-zinc-400")}
         >
+            <Header />
             <ThemeProvider
                 attribute="class"
                 defaultTheme="system"
@@ -50,6 +53,7 @@ export default function RootLayout({
                 {children}
                 <ModeToggle />
             </ThemeProvider>
+            <Footer />
         </body>
         </html>
     );

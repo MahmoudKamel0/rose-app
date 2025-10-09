@@ -21,7 +21,7 @@
       "@app/*": ["./src/app/*"],
       "@components/*": ["./src/components/*"],
       "@configuration/*": ["./src/configuration/*"],
-      "@fonts/*": ["./src/fonts/*"],
+      "@fonts": ["./src/fonts/index.ts"],
       "@lib/*": ["./src/lib/*"],
       "@services/*": ["./src/services/*"],
       "@tests/*": ["./src/tests/*"],

@@ -1,13 +1,7 @@
 {
     "extends": ["next/core-web-vitals", "next/typescript"],
     "plugins": ["local-rules"],
-    "settings": {
-        "local-rules": {
-            "rules-path": "./eslint-local-rules.js"
-        }
-    },
     "rules": {
-        "local-rules/require-cn-classname": "error",
         "quotes": ["error", "double", { "avoidEscape": true, "allowTemplateLiterals": true }],
         "semi": "error",
         "no-var": "error",
