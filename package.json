@@ -12,6 +12,9 @@
     },
     "dependencies": {
         "@radix-ui/react-alert-dialog": "^1.1.15",
+        "@radix-ui/react-dropdown-menu": "^2.1.16",
+        "@radix-ui/react-popover": "^1.1.15",
+        "@radix-ui/react-scroll-area": "^1.2.10",
         "@radix-ui/react-slot": "^1.2.3",
         "@sentry/nextjs": "10",
         "@tanstack/react-query": "^5.90.2",
@@ -27,6 +30,7 @@
         "react": "^18",
         "react-dom": "^18",
         "react-hook-form": "^7.63.0",
+        "react-infinite-scroll-component": "^6.1.0",
         "tailwind-merge": "^3.3.1",
         "tailwindcss-animate": "^1.0.7",
         "zod": "^4.1.11"
