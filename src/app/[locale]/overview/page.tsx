@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import TestimonialsSection from "@components/features/testimonials/testimonials-section";
 import AboutSection from "@components/layout/about-section/about-section";
 import CompaniesSection from "@components/layout/campanies-section/campanies-section";
