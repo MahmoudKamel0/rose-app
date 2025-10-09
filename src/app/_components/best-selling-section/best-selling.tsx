@@ -2,10 +2,8 @@
 
 import * as React from "react";
 import { cn } from "@lib/utils/cn.utils";
-import { Button } from "@/components/ui/button";
 import { getBestSellingProducts } from "@lib/apis/best-selling.api";
 import Subtitle from "@components/shared/subtitle";
-import { ArrowRight } from "lucide-react";
 import ProductCard from "@components/shared/product-card";
 import {
   Carousel,
