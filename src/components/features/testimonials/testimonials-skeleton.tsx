@@ -2,7 +2,7 @@ import { cn } from "@lib/utils/cn.utils";
 
 export default function TestimonialsSkeleton() {
     return (
-        <div className={cn("flex flex-col gap-11")}>
+        <div className={cn("flex h-[35rem] flex-col items-center justify-center gap-11 bg-rose-50")}>
             {/* Testimonials cards skeleton */}
             <div className="flex justify-center gap-6">
                 {[...Array(3)].map((_, i) => (
