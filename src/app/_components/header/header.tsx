@@ -62,8 +62,8 @@ export default function Headers() {
 
                 <div className="absolute inset-0 flex w-full flex-col justify-end overflow-hidden rounded-md border-0 bg-black/25 px-6 pb-5 text-white">
                     <div className="w-full">
-                        <div className="mb-2 inline-flex items-center justify-center rounded-full bg-[#FBEAEA] px-2.5 py-1">
-                            <span className="font-md text-sm text-[#A6252A]">
+                        <div className="mb-1 inline-flex items-center justify-center rounded-full bg-[#FBEAEA] px-2 py-0.5">
+                            <span className="text-xs font-medium text-[#A6252A]">
                                 {/* SubTittle */}
                                 {cardContent[0].subTittle}
                             </span>
@@ -73,7 +73,7 @@ export default function Headers() {
                             {cardContent[0].tittle}
                         </p>
                         {/* Buttons For Right and Left */}
-                        <Button className="hover:bg-#FBEAEA bg-[##FBEAEA] text-[#A6252A]" asChild>
+                        <Button className="bg-[#FBEAEA] text-[#A6252A] hover:bg-[#FBEAEA]" asChild>
                             <Link href={"/products"}>
                                 {" "}
                                 Shop Now <ArrowRight />
@@ -84,6 +84,15 @@ export default function Headers() {
             </div>
             {/*  Customize Carousel and The Left Card */}
             <div className="relative flex h-[27.5rem] w-[59.7rem] justify-center overflow-x-hidden">
+                {/* Three Left Icons */}
+                <div className="absolute top-6 right-6 z-50 flex -translate-y-1/2 flex-row-reverse items-center gap-2 rounded-full p-1">
+                    <button onClick={() => api?.scrollTo(current + 1)} className="h-2 w-2 rounded-full bg-[#FBEAEA] opacity-100" />
+                    <button onClick={() => api?.scrollTo(current + 1)} className="h-2 w-2 rounded-full bg-[#FBEAEA] opacity-100" />
+                    <button onClick={() => api?.scrollTo(current + 1)} className="h-2 w-2 rounded-full bg-[#FBEAEA] opacity-100" />
+
+                    <button onClick={() => api?.scrollTo(current + 1)} className="h-2 w-9 rounded-[46.6px] bg-[#A6252A] opacity-100" />
+                </div>
+
                 <Carousel setApi={setApi} opts={{ loop: true, align: "center" }} className="w-full max-w-[956px] overflow-x-hidden">
                     <CarouselContent className="!overflow-visible overflow-x-hidden">
                         {/* Mapping Array */}

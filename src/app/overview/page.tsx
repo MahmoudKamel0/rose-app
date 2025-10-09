@@ -1,4 +1,4 @@
-import Features from "@app/_components/features/Features";
+import Features from "@app/_components/features/features";
 import Headers from "@app/_components/header/header";
 import Occasions from "@app/_components/occasions/occasions";
 

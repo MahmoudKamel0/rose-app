@@ -1,31 +1,32 @@
-import { Truck, RefreshCcw, ShieldCheck, Headphones } from "lucide-react";
+import { Truck, RefreshCcw, ShieldCheck, Headset } from "lucide-react";
 
 export default function Features() {
     // Variable
     const featuresItems = [
         {
-            icon: <Truck size={28} color="white" />,
+            icon: <Truck size={28} color="white" strokeWidth={1.5} />,
             title: "Free Delivery",
             subTitle: "For orders above 120 EGP",
         },
         {
-            icon: <RefreshCcw size={28} color="white" />,
+            icon: <RefreshCcw size={28} color="white" strokeWidth={1.5} />,
             title: "Get Refund",
             subTitle: "Refunds within 30 days",
         },
         {
-            icon: <ShieldCheck size={28} color="white" />,
+            icon: <ShieldCheck size={28} color="white" strokeWidth={1.5} />,
             title: "Safe Payment",
             subTitle: "100% Secure Payment",
         },
         {
-            icon: <Headphones size={28} color="white" />,
+            icon: <Headset size={28} color="white" strokeWidth={1.5} />,
             title: "24/7 Support",
             subTitle: "Contact us at any time",
         },
     ];
+
     return (
-        <section className="mx-auto mb-10 h-[9rem] w-[80rem]">
+        <section className="mx-auto mb-10 h-[9rem] w-full max-w-7xl px-4">
             <div className="flex items-center justify-center rounded-md bg-[#FBEAEA] py-10 dark:bg-zinc-700">
                 <div className="grid grid-cols-4 gap-x-10">
                     {/* Mapping Array To Distract Data */}
