@@ -1,4 +1,4 @@
-import { Alert, AlertTitle } from "@components/ui/alert.ui";
+import { Alert, AlertTitle } from "@components/ui/alert";
 import { cn } from "@lib/utils/cn.utils";
 import { Check, X } from "lucide-react";
 

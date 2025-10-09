@@ -2,7 +2,7 @@ import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@lib/utils/cn.utils";
-import { Spinner } from "@components/ui/spinner.ui";
+import { Spinner } from "@components/ui/spinner";
 
 const buttonVariants = cva(
     "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-10 text-sm font-medium dark:font-semi transition-colors disabled:!cursor-not-allowed focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:opacity-50 disabled:[&_svg]:cursor-not-allowed [&_svg]:size-4 [&_svg]:shrink-0",
@@ -57,13 +57,18 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({ className, va
 // Main reusable button for the project — consistent style,
 // supports loading state, and easily extendable.
 /**
- * Button is have 6 styles
- * - `default`
- * - `secondary`
- * - `outline`
- * - `outline2`
- * - `transparent`
- * - `red`
+ * Button Component
+ *
+ * @props
+ * - `isLoading` (boolean): Indicates whether the button is in a loading state.
+ *
+ * Available Variants:
+ * 1. `default`     → Standard primary button.
+ * 2. `secondary`   → Subtle alternative style.
+ * 3. `outline`     → Button with a bordered outline.
+ * 4. `outline2`    → Alternative outline style.
+ * 5. `transparent` → Transparent background button.
+ * 6. `red`         → Destructive or danger action button.
  */
 const MainButton: React.FC<ButtonProps & { isLoading?: boolean }> = ({ children, isLoading, ...props }) => (
     <Button className={cn("!flex justify-center")} {...props}>

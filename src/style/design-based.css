@@ -22,7 +22,7 @@
     
     /* Updated border and input to subtle rose tint */ 
     --border: oklch(0.922 0.013 12.422);
-    --input: oklch(87.111% 0.00555 286.025);
+    --input: oklch(87.111% 0.00555 286.025);                       /* ##D4D4D8 (zinc-300) */
     --ring: oklch(0.557 0.214 12.422);
     --chart-1: oklch(0.646 0.222 41.116);
     --chart-2: oklch(0.6 0.118 184.704);
@@ -40,14 +40,9 @@
     --sidebar-border: oklch(0.922 0.013 12.422);
     --sidebar-ring: oklch(0.557 0.214 12.422);
 }
-/* 
-[data-theme='dark'] {
-    --background: oklch(14.472% 0.0189 12.147);                    
-    --foreground: #D4D4D8;
-} */
 
 .dark {
-    --background: oklch(14.472% 0.0189 12.147);                      /* #27272A (zinc-800)*/
+    --background: oklch(27.394% 0.00551 285.955);                    /* #27272A (zinc-800)*/
     --foreground: oklch(71.182% 0.01302 285.981);                    /* #A1A1AA (primary-color-fonts zinc-400) */
     --card: oklch(14.472% 0.0189 12.147);                            /* #27272A (zinc-800)*/
     --card-foreground: oklch(0.985 0.007 12.422);
@@ -162,6 +157,10 @@
 
     /* height */
     --height-button: 46px;
+
+    /* fonts size */
+    --text-12:  12px;
+    --text-10:  10px;
 }
 
 @layer base {
