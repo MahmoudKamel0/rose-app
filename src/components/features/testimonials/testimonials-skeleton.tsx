@@ -3,12 +3,6 @@ import { cn } from "@lib/utils/cn.utils";
 export default function TestimonialsSkeleton() {
     return (
         <div className={cn("flex flex-col gap-11")}>
-            {/* Header Skeleton */}
-            <div className={cn("flex flex-col items-center gap-2 p-4 text-center")}>
-                <div className="h-4 w-32 animate-pulse rounded-md bg-gray-200" />
-                <div className="h-8 w-72 animate-pulse rounded-md bg-gray-200" />
-            </div>
-
             {/* Testimonials cards skeleton */}
             <div className="flex justify-center gap-6">
                 {[...Array(3)].map((_, i) => (
