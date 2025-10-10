@@ -56,6 +56,9 @@ const config: Config = {
             height: {
                 "600": "600px",
             },
+            borderWidth: {
+                "1": "1px",
+            },
         },
     },
     // eslint-disable-next-line @typescript-eslint/no-require-imports
