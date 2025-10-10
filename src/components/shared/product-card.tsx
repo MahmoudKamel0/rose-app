@@ -5,14 +5,15 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { cn } from "@lib/utils/cn.utils";
-import { ShoppingCart, Star } from "lucide-react"
+import { Eye, Heart, ShoppingCart, Star } from "lucide-react"
+
 
 export default function ProductCard({ product }) {
-  if (!product) return null
+  if (!product) return null;
 
   return (
     <Card className={cn("overflow-hidden transition-all duration-200 shadow-none border-none")}>
-      <div className={cn("relative")}>
+      <div className={cn("relative group")}>
         <Image
           src={product.imgCover || "/images/placeholder.jpg"}
           alt={product.title}
@@ -20,7 +21,30 @@ export default function ProductCard({ product }) {
           height={272}
           className={cn("object-cover w-full h-64 rounded-xl")}
         />
+ {/* Overlay */}
+  <div className="
+    absolute inset-0 
+    bg-[#E6507380] 
+    opacity-0 
+    group-hover:opacity-100 
+    transition-opacity 
+    duration-300 
+    flex 
+    items-center 
+    justify-center 
+    gap-3 
+    rounded-xl
+  ">
+   {/* Heart Icon */}
+    <button className="bg-white text-maroon-600 p-3 rounded-full hover:bg-maroon-600 hover:text-white transition">
+      <Heart className="w-5 h-5" strokeWidth={2} />
+    </button>
 
+    {/* Eye Icon */}
+    <button className="bg-white text-maroon-600 p-3 rounded-full hover:bg-maroon-600 hover:text-white transition">
+      <Eye className="w-5 h-5" strokeWidth={2} />
+    </button>
+ </div>
         {/* HOT Badge */}
         {product.sold > 300 && (
           <Badge className={cn("absolute top-2 right-2 bg-maroon-50 text-xs py-0.5 px-2 rounded-full text-maroon-600 uppercase")}>
@@ -43,9 +67,9 @@ export default function ProductCard({ product }) {
         )}
       </div>
 
-      <CardContent className={cn("p-4 space-y-3")}>
+      <CardContent className={cn("py-5 px-0 space-y-1.5")}>
         {/* Product Title */}
-        <h3 className={cn("font-semibold text-maroon-700 text-lg line-clamp-1 capitalize")}>
+        <h3 className={cn("font-semibold text-maroon-700 text-lg line-clamp-1 capitalize dark:text-[#FFC2D0]")}>
           {product.title}
         </h3>
 
@@ -66,7 +90,7 @@ export default function ProductCard({ product }) {
 <div className="flex items-center justify-between">
   {/* Prices */}
   <div className="flex items-center gap-2">
-    <p className="font-medium text-maroon-700 text-base">
+    <p className="font-medium text-maroon-700 text-base dark:text-[#FFC2D0]">
       {product.priceAfterDiscount} EGP
     </p>
     {product.priceAfterDiscount < product.price && (

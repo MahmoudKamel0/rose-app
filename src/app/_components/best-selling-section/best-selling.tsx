@@ -26,12 +26,12 @@ export default async function BestSellingSection() {
          {/* REUSABLE SUBTITLE */}
           <Subtitle text="Best Selling" />
            {/* HEADING */}
-          <h2 className={cn("text-3xl font-bold text-maroon-700")}>
+          <h2 className={cn("text-3xl font-bold text-maroon-700 dark:text-softpink-200")}>
             <span className={cn("text-softpink-500")}>Check Out</span> What <br />
             Everyone’s <span className={cn("text-softpink-500")}>Buying</span> Right Now
           </h2>
            {/* DESCRIPTION */}
-          <p className={cn("text-zinc-500 text-base")}>
+          <p className={cn("text-zinc-500 text-base dark:text-zinc-400")}>
             Not sure what to choose?<br />
             Start with our best sellers, these are the gifts our customers keep coming back for.
             Whether you're celebrating a birthday, anniversary or wedding, our top picks are guaranteed to leave a lasting impression. 

@@ -20,12 +20,12 @@ export default function BtnPrimary({ text }: BtnPrimaryProps) {
         // } as React.CSSProperties
         //     } 
       className={cn(
-        "inline-flex items-center justify-between gap-2 px-4 py-2.5 bg-maroon-600"
+        "inline-flex items-center justify-between gap-2 px-4 py-2.5 bg-maroon-600 dark:bg-softpink-200"
         // bgColor,
         // textColor
       )}
     >
-      <span className={cn("text-white text-base leading-none")}>{text}</span>
+      <span className={cn("text-white text-base leading-none dark:text-zinc-800")}>{text}</span>
       <ArrowRight className="w-4 h-4 inline-block align-middle" color="#ffffff" />
     </Button>
   );
