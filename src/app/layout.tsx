@@ -4,11 +4,11 @@ import { cn } from "@lib/utils/cn.utils";
 import { ThemeProvider } from "@components/providers/theme.provider";
 import { ModeToggle } from "@components/ui/mode-toggle";
 import { sarabun, tajawal } from "@fonts/index";
-
+import ReactQueryProvider from "@components/providers/react-query.provider";
 
 export const metadata: Metadata = {
     title: "Rose Store – Premium Flower Boutique | Luxury Roses & Elegant Bouquets",
-    description: 
+    description:
         "Rose Store is a premium online flower boutique offering luxury roses, handcrafted bouquets, and personalized floral arrangements. Perfect for weddings, gifts, and special occasions — delivered with elegance and care.",
     keywords: [
         "Rose Store",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
         description:
             "Experience luxury in every petal — Rose Store offers handcrafted bouquets and premium flower delivery for every occasion.",
         siteName: "Rose Store",
-    }
+    },
 };
 
 export default function RootLayout({
@@ -37,20 +37,15 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
-        <body
-            className={cn(sarabun.className, tajawal.variable, "antialiased")}
-        >
-            <ThemeProvider
-                attribute="class"
-                defaultTheme="system"
-                enableSystem
-                disableTransitionOnChange
-            >
-                {children}
-                <ModeToggle />
-            </ThemeProvider>
-        </body>
+        <html lang="en" className={cn(sarabun.className, tajawal.className)}>
+            <body className={cn("antialiased")}>
+                <ReactQueryProvider>
+                    <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+                        {children}
+                        <ModeToggle />
+                    </ThemeProvider>
+                </ReactQueryProvider>
+            </body>
         </html>
     );
 }
