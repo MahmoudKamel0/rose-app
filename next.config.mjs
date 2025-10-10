@@ -1,7 +1,16 @@
 import { withSentryConfig } from '@sentry/nextjs';
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+      images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "flower.elevateegy.com",
+      },
+    ],
+  },
     async redirects() {
+        
         return [
             {
                 source: '/',
@@ -9,6 +18,7 @@ const nextConfig = {
                 permanent: true,
             },
         ];
+        
     },
 };
 
@@ -44,3 +54,4 @@ export default withSentryConfig(nextConfig, {
     // https://vercel.com/docs/cron-jobs
     automaticVercelMonitors: true
 });
+
