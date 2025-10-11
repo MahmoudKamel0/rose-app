@@ -11,8 +11,6 @@ export default function TestimonialCard({ testimonial }: { testimonial: Testimon
     const t = useTranslations();
     const formatter = useFormatter();
 
-    console.log(testimonial);
-
     return (
         <div
             className={cn(
@@ -54,7 +52,7 @@ export default function TestimonialCard({ testimonial }: { testimonial: Testimon
             </div>
 
             {/* Content */}
-            <p className={cn("mb-9 px-3 text-[16px] font-medium text-zinc-800")}>{t("testimonials-content")}</p>
+            <p className={cn("mb-9 px-3 text-base font-medium text-zinc-800")}>{t("testimonials-content")}</p>
 
             {/* Date */}
             <span className={cn("text-xs text-gray-400")}>

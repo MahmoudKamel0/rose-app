@@ -3,8 +3,8 @@ import Subtitle from "@components/shared/subtitle";
 import { cn } from "@lib/utils/cn.utils";
 import { getTranslations } from "next-intl/server";
 import { Suspense } from "react";
-import TestimonialsSkeleton from "./testimonials-skeleton";
 import TestimonialsContent from "./testimonials-content";
+import TestimonialsSkeleton from "@components/skeletons/testimonials-skeleton";
 
 export default async function TestimonialsSection() {
     //  Translations
