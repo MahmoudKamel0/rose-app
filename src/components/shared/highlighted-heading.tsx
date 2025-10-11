@@ -19,7 +19,7 @@ export default function HighlightedHeading({ text, highlightWidth, borderWidth }
             } // TypeScript fix for CSS variables
             className={cn(
                 // Base styles (light mode)
-                "h2 relative inline-block pb-0.5 text-3xl font-bold text-[#741C21]",
+                "h2 relative inline-block ps-[0.7px] pb-0.5 text-3xl font-bold text-[#741C21]",
                 // Dark mode text color
                 "dark:text-[#FFC2D0]",
                 // Pink highlight (after pseudo-element) with dark mode color
