@@ -19,10 +19,7 @@ export default function MainImage() {
                 alt="Purple gift"
                 width={302}
                 height={344}
-                className={cn(
-                    "absolute top-6 left-7 z-10 h-[344px] w-[302px] object-cover",
-                    "rounded-tl-[50px] rounded-tr-[120px] rounded-br-[120px] rounded-bl-[120px]"
-                )}
+                className="absolute top-6 left-7 z-10 h-[344px] w-[302px] rounded-tl-[50px] rounded-tr-[120px] rounded-br-[120px] rounded-bl-[120px] object-cover"
             />
         </div>
     );

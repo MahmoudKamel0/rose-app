@@ -1,8 +1,6 @@
-import { cn } from "@lib/utils/cn.utils";
+
 import Image from "next/image";
 import React from "react";
-
-
 
 const companyLogos = [
     {
@@ -34,23 +32,17 @@ const companyLogos = [
 export default function CompaniesSection() {
     return (
         //  Main container: Background color changes in dark mode
-        <section className={cn("mt-32 flex min-h-52 flex-col justify-center gap-10 rounded-2xl bg-[#FBEAEA] dark:bg-zinc-700")}>
+        <section className="mt-32 flex min-h-52 flex-col justify-center gap-10 rounded-2xl bg-[#FBEAEA] dark:bg-zinc-700">
             {/*  Section heading */}
-            <h2 className={cn("text-center text-4xl font-bold text-[#741C21] dark:text-[#FFC2D0]")}>
-                Trusted by over <span className={cn("text-[#FF668B] dark:text-[#D75458]")}>4.5k+</span> companies
+            <h2 className="text-center text-4xl font-bold text-[#741C21] dark:text-[#FFC2D0]">
+                Trusted by over <span className="text-[#FF668B] dark:text-[#D75458]">4.5k+</span> companies
             </h2>
 
             {/*  Company logos list */}
             {/* Dynamically render sponsor logos from the companyLogos array */}
-            <div className={cn("company-logos flex flex-wrap items-center justify-center gap-[71px]")}>
+            <div className="company-logos flex flex-wrap items-center justify-center gap-[71px]">
                 {companyLogos.map((logo) => (
-                    <Image
-                        key={logo.src} // ✅ Better unique key than index
-                        src={logo.src}
-                        alt={logo.alt}
-                        width={146}
-                        height={51}
-                    />
+                    <Image key={logo.src} src={logo.src} alt={logo.alt} width={146} height={51} />
                 ))}
             </div>
         </section>
