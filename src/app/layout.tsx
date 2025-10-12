@@ -37,7 +37,7 @@ export default function RootLayout({
         <html lang="en">
             <body className={`${sarabun.className} ${tajawal.variable} antialiased`}>
                 <Providers>{children}</Providers>
-            </body>
+                     </body>
         </html>
     );
 }

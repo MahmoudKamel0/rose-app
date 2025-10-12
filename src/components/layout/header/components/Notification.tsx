@@ -108,7 +108,7 @@ export default function NotificationMenu() {
                         </div>
                     )}
 
-                    <Bell c style={{ width: "24px", height: "24px" }} />
+                    <Bell  style={{ width: "24px", height: "24px" }} />
                 </Button>
             </PopoverTrigger>
 
