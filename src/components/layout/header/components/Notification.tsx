@@ -6,7 +6,6 @@ import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover
 // import InfiniteScroll from "react-infinite-scroll-component";
 import { Button } from "@/components/ui/button";
 import { Bell, BrushCleaning, CheckCheck, EllipsisVertical, Trash2, Check, BellOff, Loader2 } from "lucide-react";
-import { cn } from "@lib/utils/cn.utils";
 import {
     DropdownMenu,
     DropdownMenuTrigger,
@@ -102,61 +101,52 @@ export default function NotificationMenu() {
         <Popover>
             {/* Notification icon trigger */}
             <PopoverTrigger asChild>
-                <Button variant="ghost" className={cn("relative flex items-center justify-center hover:bg-transparent")}>
+                <Button variant="ghost" className="relative flex items-center justify-center hover:bg-transparent">
                     {unReadCount > 0 && (
-                        <div
-                            className={cn(
-                                "absolute top-1 right-2 flex h-4 w-4 items-center justify-center rounded-full bg-red-600 text-white"
-                            )}
-                        >
+                        <div className="absolute top-1 right-2 flex h-4 w-4 items-center justify-center rounded-full bg-red-600 text-white">
                             {unReadCount}
                         </div>
                     )}
 
-                    <Bell className={cn()} style={{ width: "24px", height: "24px" }} />
+                    <Bell c style={{ width: "24px", height: "24px" }} />
                 </Button>
             </PopoverTrigger>
 
             {/* Notification content popover */}
-            <PopoverContent className={cn("mr-10 w-96 max-w-none rounded-b-md border-0 bg-white p-0 dark:bg-zinc-800")}>
+            <PopoverContent className="mr-10 w-96 max-w-none rounded-b-md border-0 bg-white p-0 dark:bg-zinc-800">
                 {/* Header */}
-                <div className={cn("flex w-full flex-col items-center justify-center")}>
-                    <div
-                        className={cn(
-                            "flex w-full items-center justify-between rounded-t-md border-b p-3",
-                            "bg-maroon-700 dark:bg-softpink-200"
-                        )}
-                    >
-                        <h4 className={cn("text-xl font-bold text-white dark:text-zinc-800")}>
+                <div className="flex w-full flex-col items-center justify-center">
+                    <div className="bg-maroon-700 dark:bg-softpink-200 flex w-full items-center justify-between rounded-t-md border-b p-3">
+                        <h4 className="text-xl font-bold text-white dark:text-zinc-800">
                             Notifications ({data?.pages?.[0]?.metadata?.totalItems ?? allNotifications.length})
                         </h4>
                     </div>
 
                     {/* Header actions */}
-                    <div className={cn("flex w-full justify-between bg-white p-2.5 text-zinc-800 dark:bg-zinc-700")}>
-                        <div className={cn("flex w-full items-center justify-between")}>
+                    <div className="flex w-full justify-between bg-white p-2.5 text-zinc-800 dark:bg-zinc-700">
+                        <div className="flex w-full items-center justify-between">
                             {/* Clean All Button */}
                             <Button
                                 variant={"ghost"}
                                 type="button"
-                                className={cn("relative !flex flex-nowrap items-center justify-center gap-2")}
+                                className="relative !flex flex-nowrap items-center justify-center gap-2"
                                 onClick={() => deleteAll()}
                                 disabled={allNotifications.length < 1 || isPendingData}
                             >
-                                <BrushCleaning className={cn("inline-block")} style={{ width: 18, height: 18 }} color="gray" />
-                                <span className={cn("text-sm font-semibold text-zinc-800 dark:text-white")}>Clear all notifications</span>
+                                <BrushCleaning className="inline-block" style={{ width: 18, height: 18 }} color="gray" />
+                                <span className="text-sm font-semibold text-zinc-800 dark:text-white">Clear all notifications</span>
                             </Button>
 
                             {/* Mark all as read button */}
                             <Button
                                 variant={"ghost"}
                                 type="button"
-                                className={cn("relative !flex flex-nowrap items-center justify-center gap-2")}
+                                className="relative !flex flex-nowrap items-center justify-center gap-2"
                                 onClick={() => markAllAsRead()}
                                 disabled={allNotifications.length < 1 || unReadCount < 1 || isPendingData}
                             >
-                                <CheckCheck className={cn("inline-block")} style={{ width: 18, height: 18 }} color="gray" />
-                                <span className={cn("text-sm font-semibold text-zinc-800 dark:text-white")}>Mark all as read</span>
+                                <CheckCheck className="inline-block" style={{ width: 18, height: 18 }} color="gray" />
+                                <span className="text-sm font-semibold text-zinc-800 dark:text-white">Mark all as read</span>
                             </Button>
                         </div>
                     </div>
@@ -166,30 +156,22 @@ export default function NotificationMenu() {
 
                 {/* No notifications */}
                 {allNotifications.length === 0 && !isPendingData ? (
-                    <div
-                        className={cn(
-                            "flex h-56 flex-col items-center justify-center gap-4 rounded-b-md bg-white text-center dark:bg-zinc-900"
-                        )}
-                    >
+                    <div className="flex h-56 flex-col items-center justify-center gap-4 rounded-b-md bg-white text-center dark:bg-zinc-900">
                         <BellOff style={{ width: 60, height: 60 }} color="gray" />
-                        <p className={cn("text-base font-medium text-zinc-500 dark:text-zinc-300")}>No notifications to display.</p>
+                        <p className="text-base font-medium text-zinc-500 dark:text-zinc-300">No notifications to display.</p>
                     </div>
                 ) : isPendingData ? (
                     // Loading state
-                    <div
-                        className={cn(
-                            "flex h-56 flex-col items-center justify-center gap-4 rounded-b-md bg-white text-center dark:bg-zinc-900"
-                        )}
-                    >
-                        <Loader2 className={cn("h-10 w-10 animate-spin text-zinc-500")} />
-                        <p className={cn("text-base font-medium text-zinc-500 dark:text-zinc-300")}>Loading notifications…</p>
+                    <div className="flex h-56 flex-col items-center justify-center gap-4 rounded-b-md bg-white text-center dark:bg-zinc-900">
+                        <Loader2 className="h-10 w-10 animate-spin text-zinc-500" />
+                        <p className="text-base font-medium text-zinc-500 dark:text-zinc-300">Loading notifications…</p>
                     </div>
                 ) : (
                     // Notification list
                     <InfiniteScroll
                         loader={
-                            <div className={cn("flex items-center justify-center py-3")}>
-                                <Loader2 className={cn("h-5 w-5 animate-spin text-zinc-700")} />
+                            <div className="flex items-center justify-center py-3">
+                                <Loader2 className="h-5 w-5 animate-spin text-zinc-700" />
                             </div>
                         }
                         dataLength={allNotifications.length} // important: length of current items
@@ -198,25 +180,19 @@ export default function NotificationMenu() {
                         height={500}
                         // small threshold so next loads slightly before reaching the bottom
                         scrollThreshold="100px"
-                        className={cn("h-fit bg-transparent")}
+                        className="h-fit bg-transparent"
                     >
-                        <div
-                            className={cn(
-                                "divide-1 h-full divide-y divide-zinc-300 border-t-1 border-t-zinc-300 pb-12 dark:divide-zinc-600 dark:border-t-zinc-600"
-                            )}
-                        >
+                        <div className="divide-1 h-full divide-y divide-zinc-300 border-t-1 border-t-zinc-300 pb-12 dark:divide-zinc-600 dark:border-t-zinc-600">
                             {allNotifications.map((notification) => (
                                 <div
                                     key={notification._id}
-                                    className={cn(
-                                        `hover:bg-accent h-24 w-full p-4 text-left transition-colors ${
-                                            notification.isRead ? "bg-zinc-200 dark:bg-zinc-800" : "bg-white dark:bg-zinc-900"
-                                        }`
-                                    )}
+                                    className={`hover:bg-accent h-24 w-full p-4 text-left transition-colors ${
+                                        notification.isRead ? "bg-zinc-200 dark:bg-zinc-800" : "bg-white dark:bg-zinc-900"
+                                    }`}
                                 >
                                     {/* Title + dropdown */}
-                                    <div className={cn("mb-1.5 flex items-center justify-between")}>
-                                        <p className={cn("text-base font-semibold text-zinc-800 dark:text-white")}>{notification.title}</p>
+                                    <div className={`mb-1.5 flex items-center justify-between`}>
+                                        <p className={`text-base font-semibold text-zinc-800 dark:text-white`}>{notification.title}</p>
 
                                         {/* Dropdown for each notification */}
                                         <DropdownMenu>
@@ -225,32 +201,32 @@ export default function NotificationMenu() {
                                                     type="button"
                                                     variant={"ghost"}
                                                     size={"icon"}
-                                                    className={cn("flex items-center justify-center hover:bg-transparent")}
+                                                    className={`flex items-center justify-center hover:bg-transparent`}
                                                 >
-                                                    <EllipsisVertical className={cn("")} style={{ width: 20, height: 20 }} color="gray" />
+                                                    <EllipsisVertical style={{ width: 20, height: 20 }} color="gray" />
                                                 </Button>
                                             </DropdownMenuTrigger>
 
                                             <DropdownMenuContent
                                                 align="end"
-                                                className={cn("h-24 w-48 overflow-hidden border-0 bg-white dark:bg-zinc-700")}
+                                                className={`h-24 w-48 overflow-hidden border-0 bg-white dark:bg-zinc-700`}
                                             >
                                                 {/* Mark as read */}
-                                                <DropdownMenuItem className={cn("text-sm font-medium text-zinc-800 dark:text-white")}>
+                                                <DropdownMenuItem className={`text-sm font-medium text-zinc-800 dark:text-white`}>
                                                     <Button
                                                         variant={"ghost"}
                                                         size={"xs"}
-                                                        className={cn("!flex items-center justify-start gap-2")}
+                                                        className={`!flex items-center justify-start gap-2`}
                                                         type="button"
                                                         onClick={() => markAsRead(notification._id, notification.isRead)}
                                                         disabled={notification.isRead}
                                                     >
                                                         <Check
-                                                            className={cn("mr-2 text-sm font-semibold text-zinc-800 dark:text-zinc-50")}
+                                                            className={`mr-2 text-sm font-semibold text-zinc-800 dark:text-zinc-50`}
                                                             style={{ width: 18, height: 18 }}
                                                             color="gray"
                                                         />
-                                                        <span className={cn("text-sm font-semibold text-zinc-800 dark:text-zinc-50")}>
+                                                        <span className={`text-sm font-semibold text-zinc-800 dark:text-zinc-50`}>
                                                             Mark as read
                                                         </span>
                                                     </Button>
@@ -259,17 +235,17 @@ export default function NotificationMenu() {
                                                 <DropdownMenuSeparator />
 
                                                 {/* Delete notification */}
-                                                <DropdownMenuItem className={cn("text-sm font-medium text-zinc-800 dark:text-white")}>
+                                                <DropdownMenuItem className={`text-sm font-medium text-zinc-800 dark:text-white`}>
                                                     <Button
-                                                        className={cn("!flex items-center justify-start gap-2")}
+                                                        className={`!flex items-center justify-start gap-2`}
                                                         type="button"
                                                         onClick={() => deleteSingle(notification._id)}
                                                         variant={"ghost"}
                                                         size={"xs"}
                                                         disabled={isDeletingSingle}
                                                     >
-                                                        <Trash2 className={cn("mr-2")} style={{ width: 18, height: 18 }} color="red" />
-                                                        <span className={cn("text-sm font-semibold text-zinc-800 dark:text-zinc-50")}>
+                                                        <Trash2 className={`mr-2`} style={{ width: 18, height: 18 }} color="red" />
+                                                        <span className={`text-sm font-semibold text-zinc-800 dark:text-zinc-50`}>
                                                             Delete notification
                                                         </span>
                                                     </Button>
@@ -279,11 +255,11 @@ export default function NotificationMenu() {
                                     </div>
 
                                     {/* Notification body */}
-                                    <p className={cn("line-clamp-2 text-sm leading-snug font-normal text-zinc-400")}>{notification.body}</p>
+                                    <p className={`line-clamp-2 text-sm leading-snug font-normal text-zinc-400`}>{notification.body}</p>
                                 </div>
                             ))}
                             {/* Footer hint: show scroll hint if more pages, otherwise end of list */}
-                            <div className={cn("py-1 text-center text-sm text-zinc-500 dark:text-white")}>
+                            <div className={`py-1 text-center text-sm text-zinc-500 dark:text-white`}>
                                 {hasNextPage ? "Scroll to view more" : "End of the list"}
                             </div>
                         </div>
