@@ -38,7 +38,7 @@ const UploadInput = React.forwardRef<HTMLInputElement, React.ComponentProps<"inp
             />
 
             {/* Visible upload button */}
-            <button type="button" className={cn("!flex items-center gap-1.5")} onClick={handleUploadClick}>
+            <button type="button" disabled={disabled} className={cn("!flex items-center gap-1.5", disabled && "!cursor-not-allowed")} onClick={handleUploadClick}>
                 <Upload
                     className={cn(
                         "stroke-maroon-600 h-4 w-4",

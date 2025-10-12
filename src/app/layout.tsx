@@ -41,7 +41,7 @@ export default function RootLayout({
     return (
         <html lang="en">
         <body
-            className={cn(sarabun.className, tajawal.variable, "antialiased !dark:text-zinc-400")}
+            className={cn(sarabun.className, tajawal.variable, "antialiased dark:text-zinc-400")}
         >
             <Header />
             <ThemeProvider
@@ -53,7 +53,7 @@ export default function RootLayout({
                 {children}
                 <ModeToggle />
             </ThemeProvider>
-            <Footer />
+            {/* <Footer /> */}
         </body>
         </html>
     );

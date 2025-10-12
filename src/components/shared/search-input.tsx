@@ -11,13 +11,13 @@ const SearchInput = React.forwardRef<HTMLInputElement, React.ComponentProps<"inp
                 className={cn(
                     INPUT_STYLE,
                     disabled &&
-                        "dark:bg-background border-transparent bg-zinc-100 hover:border-transparent dark:border-zinc-700 dark:hover:border-zinc-700 [&_svg]:stroke-zinc-600",
+                        "dark:bg-background border-transparent bg-zinc-100 hover:border-transparent dark:border-zinc-700 dark:hover:border-zinc-700 ",
                     className
                 )}
             >
                 <Search size="18" className={cn("stroke-zinc-400")} />
                 <Input
-                    className={cn("flex-auto border-0 !bg-transparent outline-0 focus-visible:ring-0")}
+                    className={cn("flex-auto border-0 !bg-transparent outline-0")}
                     placeholder={placeholder || "Search..."}
                     disabled={disabled}
                     {...props}

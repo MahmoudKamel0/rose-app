@@ -9,6 +9,6 @@ import { ReactNode } from "react";
  *
  * @param children as `ReactNode` The content to be rendered inside the container.
  */
-export function Container({ children, className }: { children?: ReactNode; className: string }) {
+export function Container({ children, className }: { children?: ReactNode; className?: string }) {
     return <div className={cn("container mx-auto", className)}>{children}</div>;
 }

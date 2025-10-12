@@ -9,6 +9,11 @@ a, button { /* Set default cursor style for clickable element */
     cursor: pointer;
 }
 
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear { /* remove default eye browser */
+    display: none;
+}
+
 svg {
     margin: 0;
     padding: 0;
