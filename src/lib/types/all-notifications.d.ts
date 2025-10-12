@@ -19,8 +19,6 @@ type Notification = {
     __v: number;
 };
 export type AllNotificationsResponse = {
-    data: {
-        notifications: Notification[];
-        metadata: Metadata;
-    };
+    notifications: Notification[];
+    metadata: Metadata;
 };

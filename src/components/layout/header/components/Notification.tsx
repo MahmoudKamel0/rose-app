@@ -93,10 +93,10 @@ export default function NotificationMenu() {
     // Variables
 
     // Flatten pages into a single list
-    const allNotifications: Notification[] = data?.pages.flatMap((p) => p.data?.notifications ?? []) || [];
+    const allNotifications: Notification[] = data?.pages.flatMap((p) => p?.notifications ?? []) || [];
 
     // get unread notifications count
-    const unReadCount = data?.pages[0].data?.metadata.unreadCount || 0;
+    const unReadCount = data?.pages[0]?.metadata.unreadCount || 0;
 
     return (
         <Popover>
@@ -128,7 +128,7 @@ export default function NotificationMenu() {
                         )}
                     >
                         <h4 className={cn("text-xl font-bold text-white dark:text-zinc-800")}>
-                            Notifications ({data?.pages?.[0]?.data?.metadata?.totalItems ?? allNotifications.length})
+                            Notifications ({data?.pages?.[0]?.metadata?.totalItems ?? allNotifications.length})
                         </h4>
                     </div>
 
@@ -171,7 +171,7 @@ export default function NotificationMenu() {
                             "flex h-56 flex-col items-center justify-center gap-4 rounded-b-md bg-white text-center dark:bg-zinc-900"
                         )}
                     >
-                        <BellOff className={cn("")} style={{ width: 60, height: 60 }} color="gray" />
+                        <BellOff style={{ width: 60, height: 60 }} color="gray" />
                         <p className={cn("text-base font-medium text-zinc-500 dark:text-zinc-300")}>No notifications to display.</p>
                     </div>
                 ) : isPendingData ? (
@@ -189,7 +189,7 @@ export default function NotificationMenu() {
                     <InfiniteScroll
                         loader={
                             <div className={cn("flex items-center justify-center py-3")}>
-                                <Loader2 className={cn("h-5 w-5 animate-spin text-zinc-500")} />
+                                <Loader2 className={cn("h-5 w-5 animate-spin text-zinc-700")} />
                             </div>
                         }
                         dataLength={allNotifications.length} // important: length of current items
@@ -202,7 +202,7 @@ export default function NotificationMenu() {
                     >
                         <div
                             className={cn(
-                                "divide-1 divide-y divide-zinc-300 border-t-1 border-t-zinc-300 pb-12 dark:divide-zinc-600 dark:border-t-zinc-600"
+                                "divide-1 h-full divide-y divide-zinc-300 border-t-1 border-t-zinc-300 pb-12 dark:divide-zinc-600 dark:border-t-zinc-600"
                             )}
                         >
                             {allNotifications.map((notification) => (
@@ -283,7 +283,7 @@ export default function NotificationMenu() {
                                 </div>
                             ))}
                             {/* Footer hint: show scroll hint if more pages, otherwise end of list */}
-                            <div className={cn("pt-4 text-center text-sm text-zinc-500 dark:text-zinc-300")}>
+                            <div className={cn("py-1 text-center text-sm text-zinc-500 dark:text-white")}>
                                 {hasNextPage ? "Scroll to view more" : "End of the list"}
                             </div>
                         </div>

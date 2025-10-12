@@ -1,6 +1,6 @@
 "use client";
 import { useMutation } from "@tanstack/react-query";
-import { MarkNotificationAsRead } from "@lib/actions/mark-notification-as-read.action";
+import { MarkNotificationAsRead } from "@lib/actions//notifications/notifications.action";
 import { MarkNotificationAsReadRequest } from "@lib/types/mark-single-notification-as-a-read";
 
 export function useMarkNotificationsAsRead() {

@@ -1,3 +1,3 @@
-export type DeletSingleNotification = {
+export type DeleteSingleNotificationResponse = {
     data: string | null;
 };

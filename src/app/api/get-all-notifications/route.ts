@@ -31,7 +31,7 @@ export async function GET(req: NextRequest) {
             throw new Error(data.error || "Theres Something Wrong Please Try Agin");
         }
 
-        return NextResponse.json({ data }, { status: 200 });
+        return NextResponse.json(data, { status: 200 });
     } catch (err) {
         return NextResponse.json({ error: `${err || "There's something wrong, please try again"}` }, { status: 500 });
     }

@@ -22,7 +22,7 @@ export function useAllNotifications(limit: number = 6) {
         refetchIntervalInBackground: true,
         refetchOnWindowFocus: true,
         getNextPageParam: (lastPage) => {
-            const metadata = lastPage?.data.metadata;
+            const metadata = lastPage?.metadata;
             if (!metadata) return undefined;
             if (metadata.currentPage < metadata.totalPages) return metadata.currentPage + 1;
             return undefined;
