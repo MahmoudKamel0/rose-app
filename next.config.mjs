@@ -1,18 +1,33 @@
-import { withSentryConfig } from '@sentry/nextjs';
+import { withSentryConfig } from "@sentry/nextjs";
+import createNextIntlPlugin from "next-intl/plugin";
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    images: {
+        remotePatterns: [
+            {
+                protocol: "https",
+                hostname: "flower.elevateegy.com",
+                port: "",
+                pathname: "/**",
+            },
+        ],
+    },
     async redirects() {
         return [
             {
-                source: '/',
-                destination: '/overview',
+                source: "/",
+                destination: "/overview",
                 permanent: true,
             },
         ];
     },
 };
 
-export default withSentryConfig(nextConfig, {
+// ===== Apply next-intl plugin =====
+const withNextIntl = createNextIntlPlugin();
+const nextConfigWithIntl = withNextIntl(nextConfig);
+
+export default withSentryConfig(nextConfigWithIntl, {
     // For all available options, see:
     // https://www.npmjs.com/package/@sentry/webpack-plugin#options
 
@@ -42,5 +57,5 @@ export default withSentryConfig(nextConfig, {
     // See the following for more information:
     // https://docs.sentry.io/product/crons/
     // https://vercel.com/docs/cron-jobs
-    automaticVercelMonitors: true
+    automaticVercelMonitors: true,
 });
