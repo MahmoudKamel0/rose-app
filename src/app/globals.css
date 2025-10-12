@@ -3,3 +3,16 @@
 @import "../style/design-based.css";
 @import "../style/default-elements.css";
 
+:root {
+    --background: 0 0% 100%;
+    --foreground: 220 10% 10%;
+    --primary: 210 100% 50%;
+    --primary-foreground: 0 0% 100%;
+}
+
+.dark {
+    --background: 220 10% 12%;
+    --foreground: 210 10% 92%;
+    --primary: 210 100% 60%;
+    --primary-foreground: 0 0% 0%;
+}

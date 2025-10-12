@@ -1,6 +1,6 @@
 import FeatureItem from "./feature-item";
 
-const features = [
+const FEATURES = [
     "Competitive Prices & Easy Shopping",
     "Premium Quality & Elegant Packaging",
     "Perfect for Every Occasion",
@@ -10,7 +10,7 @@ const features = [
 export default function AboutFeatures() {
     return (
         <div className="mt-9 grid grid-cols-1 gap-4 sm:grid-cols-2">
-            {features.map((feature) => (
+            {FEATURES.map((feature) => (
                 <FeatureItem key={feature} title={feature} />
             ))}
         </div>

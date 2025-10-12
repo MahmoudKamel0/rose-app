@@ -21,7 +21,10 @@
         "@types/eslint": "^9.6.1",
         "class-variance-authority": "^0.7.1",
         "clsx": "^2.1.1",
+<<<<<<< HEAD
         "embla-carousel-autoplay": "^8.6.0",
+=======
+>>>>>>> f548faeb73a5e172321986a7289b20a097d352d4
         "embla-carousel-react": "^8.6.0",
         "input-otp": "^1.4.2",
         "lucide-react": "^0.545.0",
