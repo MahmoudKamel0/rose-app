@@ -8,6 +8,8 @@ import TestimonialsSection from "@components/features/testimonials/testimonials-
 import Header from "@components/layout/header";
 
 import { useTranslations } from "next-intl";
+import BestSellingSection from "@app/_components/best-selling-section/best-selling";
+import MostPopularSection from "@app/_components/most-popular-section/most-popular";
 
 export default function Page() {
     const t = useTranslations();
@@ -20,9 +22,11 @@ export default function Page() {
                 <div className="mx-auto flex w-7xl flex-col">
                     <Occasions />
                     <Features />
+                    <BestSellingSection />
+                    <MostPopularSection />
                     <AboutSection />
                     <GallerySection />
-                </div>
+                </div>  
                 <TestimonialsSection />
                 <div className="mx-auto flex w-7xl flex-col">
                     <CompaniesSection />
