@@ -17,7 +17,7 @@ export default function Page() {
         <>
             <main className="">
                 {/* Header */}
-                <Header />
+               {/* <Header /> */}
                 {/* <Headers /> */}
                 <div className="mx-auto flex w-7xl flex-col">
                     <Occasions />
@@ -31,7 +31,9 @@ export default function Page() {
                 <div className="mx-auto flex w-7xl flex-col">
                     <CompaniesSection />
                 </div>
+                
             </main>
+            
             {/* <ToggleLocale /> */}
         </>
     );
