@@ -22,7 +22,7 @@ export default function Occasions() {
     ];
 
     return (
-        <section className="mb-10 flex gap-5">
+        <section className="mb-10 flex gap-5 justify-between">
             {/* Mapping Array */}
             {cardContent.map((item, index) => (
                 <Link key={index} href={`/occasions`} className="relative h-72 w-[25.5rem] cursor-pointer duration-300">

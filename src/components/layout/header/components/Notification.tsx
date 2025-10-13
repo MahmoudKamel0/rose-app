@@ -13,14 +13,14 @@ import {
     DropdownMenuItem,
     DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
-import { useAllNotifications } from "@lib/hooks/use-all-notifications.hook";
+import { useAllNotifications } from "@/hooks/notifications/use-all-notifications.hook";
 import { Notification } from "@lib/types/all-notifications";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { useMarkAllNotificationsAsRead } from "@lib/hooks/use-mark-all-notifications-as-read.hook";
+import { useMarkAllNotificationsAsRead } from "@/hooks/notifications/use-mark-all-notifications-as-read.hook";
 import { useQueryClient } from "@tanstack/react-query";
-import { useDeleteAllNotifications } from "@lib/hooks/use-delete-all-notifications.hook";
-import { useMarkNotificationsAsRead } from "@lib/hooks/use-mark-notification-as-read.hook";
-import { useDeleteSingleNotification } from "@lib/hooks/use-delete-single-notification";
+import { useDeleteAllNotifications } from "@/hooks/notifications/use-delete-all-notifications.hook";
+import { useMarkNotificationsAsRead } from "@/hooks/notifications/use-mark-notification-as-read.hook";
+import { useDeleteSingleNotification } from "@/hooks/notifications/use-delete-single-notification";
 
 // Header action type
 

@@ -26,7 +26,7 @@ export default function Features() {
     ];
 
     return (
-        <section className="mx-auto mb-10 h-[9rem] w-full max-w-7xl px-4">
+        <section className="mb-10 h-[9rem] w-full ">
             <div className="flex items-center justify-center rounded-md bg-[#FBEAEA] py-10 dark:bg-zinc-700">
                 <div className="grid grid-cols-4 gap-x-10">
                     {/* Mapping Array To Distract Data */}

@@ -5,7 +5,7 @@ import { ThemeProvider } from "@components/providers/theme.provider";
 import Providers from "@components/providers";
 import { ModeToggle } from "@components/ui/mode-toggle";
 import { cn } from "@lib/utils/cn.utils";
-import { sarabun, tajawal } from "@fonts/index";
+import { sarabun, tajawal } from "@fonts";
 import { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
@@ -50,13 +50,8 @@ export default async function LocaleLayout({ children, params }: Props) {
     return (
         <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
             <body className={cn(sarabun.className, tajawal.variable, "antialiased")}>
-                {/* Theme Provider */}
-                <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-                    {/* Providers */}
-                    <Providers>{children}</Providers>
-                    {/* Mode Toggle for switching themes */}
-                    <ModeToggle />
-                </ThemeProvider>
+                {/* Providers */}
+                <Providers>{children}</Providers>
             </body>
         </html>
     );
