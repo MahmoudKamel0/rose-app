@@ -1,7 +1,7 @@
 @import "tailwindcss";
-/* @import "tw-animate-css"; */
-@import "../style/design-based.css";
 @import "../style/default-elements.css";
+@import "../style/design-based.css";
+/* @import "tw-animate-css"; */
 
 :root {
     --background: 0 0% 100%;
