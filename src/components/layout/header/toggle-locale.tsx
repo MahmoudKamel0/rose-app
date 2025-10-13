@@ -24,7 +24,7 @@ export default function ToggleLocale() {
         <Button
             onClick={toggleLocale}
             variant="ghost"
-            className="px-2 py-1 align-middle font-[Zain] text-[16px] leading-[100%] font-normal tracking-normal text-zinc-700 hover:bg-transparent hover:text-zinc-900"
+            className="px-2 py-1 align-middle font-[Zain] text-base leading-[100%] font-normal tracking-normal text-zinc-700 hover:bg-transparent hover:text-zinc-900"
         >
             {locale === "en" ? "العربية" : "English"}
         </Button>

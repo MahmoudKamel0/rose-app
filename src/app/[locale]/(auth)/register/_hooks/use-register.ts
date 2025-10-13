@@ -4,13 +4,21 @@ import { useMutation } from "@tanstack/react-query";
 import { RegisterInput } from "@lib/schemes/auth.schema";
 import { registerAction } from "../_action/register.action";
 
-// Custom hook to handle user registration logic
 export const useRegister = () => {
     return useMutation({
-        // mutationFn is the function that will be executed when we call mutate()
         mutationFn: async (data: RegisterInput) => {
-            // Calls the server action to register a new user
-            return await registerAction(data);
+            try {
+                const res = await registerAction(data);
+
+                if (!res || res.error || res.error === "Failed") {
+                    throw new Error(res?.error || "Something went wrong");
+                }
+
+                return res;
+            } catch (err: any) {
+                console.error("Registration failed:", err);
+                throw err;
+            }
         },
     });
 };

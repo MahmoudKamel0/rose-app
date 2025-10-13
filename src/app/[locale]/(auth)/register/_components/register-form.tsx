@@ -13,6 +13,8 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { useRegister } from "../_hooks/use-register";
 import { PhoneInput } from "@components/ui/phone-input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { toast } from "sonner";
+import { ErrorMessage } from "@components/shared/error-message";
 
 export function RegisterForm() {
     const router = useRouter();
@@ -34,19 +36,22 @@ export function RegisterForm() {
     const registerMutation = useRegister();
 
     const onSubmit = (data: RegisterInput) => {
-        const payload = { ...data };
-        registerMutation.mutate(payload, {
+        console.log(data);
+
+        registerMutation.mutate(data, {
             onSuccess: () => {
-                router.push("/login");
+                toast.success("Account created successfully!");
+                // router.push("/login");
             },
             onError: (err) => {
                 console.error("Register error:", err);
+                toast.error(err instanceof Error ? err.message : "Something went wrong while creating the account.");
             },
         });
     };
 
     return (
-        <div className="flex flex-col justify-center gap-10 font-sans">
+        <div className="flex w-full flex-col justify-center gap-10">
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
                     {/* First + Last Name */}
@@ -171,12 +176,7 @@ export function RegisterForm() {
 
                     {/* Error Message */}
                     {registerMutation.isError && (
-                        <div className="relative h-fit w-full rounded-md border border-red-300 bg-red-50 p-3 text-red-600">
-                            <XCircle className="absolute top-1/2 left-1/2 h-5 w-5 -translate-x-1/2 -translate-y-1/2 bg-white text-red-600" />
-                            <p className="text-center text-sm">
-                                {registerMutation.error instanceof Error ? registerMutation.error.message : t("error")}
-                            </p>
-                        </div>
+                        <ErrorMessage message={registerMutation.error instanceof Error ? registerMutation.error.message : t("error")} />
                     )}
 
                     {/* Submit */}
@@ -185,7 +185,7 @@ export function RegisterForm() {
                     </Button>
 
                     {/* Link to Login */}
-                    <div className="mt-10 text-center text-sm">
+                    <div className="mt-5 border-t border-zinc-200 pt-5 text-center text-sm">
                         <span className="text-sm font-medium text-zinc-800">{t("already")} </span>
                         <Link href="/login" className="text-maroon-700 font-bold underline">
                             {t("login")}
