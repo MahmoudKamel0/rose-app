@@ -1,0 +1,28 @@
+{
+    "hello-world": "Hello World",
+    "title": "Rose Store – Premium Flower Boutique | Luxury Roses & Elegant Bouquets",
+    "description": "Rose Store is a premium online flower boutique offering luxury roses, handcrafted bouquets, and personalized floral arrangements. Perfect for weddings, gifts, and special occasions — delivered with elegance and care.",
+    "keywords": [
+        "Rose Store",
+        "Luxury flower shop",
+        "Premium roses",
+        "Elegant bouquets",
+        "Online flower delivery",
+        "Handcrafted floral arrangements",
+        "Wedding flowers",
+        "Gift bouquets",
+        "Romantic roses",
+        "Fresh flowers online",
+        "Same day flower delivery"
+    ],
+    "ogTitle": "Rose Store – Premium Flower Boutique | Luxury Roses & Elegant Bouquets",
+    "ogDescription": "Experience luxury in every petal — Rose Store offers handcrafted bouquets and premium flower delivery for every occasion.",
+    "siteName": "Rose Store",
+    "abourt": "About Us",
+    "testimonials-title": "Testimonials",
+    "testimonials-name": "{firstName} {lastName}",
+    "testimonials-content": "I've been ordering from this flower shop for years and they never disappoint. The quality and service are exceptional!!",
+    "testimonials-date": "Reviewed on {date}",
+    "testimonials-subtitle": "Testimonials",
+    "testimonials-heading": "Real Words from Happy Customers"
+}

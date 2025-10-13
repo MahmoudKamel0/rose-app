@@ -20,7 +20,7 @@ export default async function BestSellingSection() {
 
   return (
     <section>
-      <div className={cn("mx-auto flex flex- md:flex-row items-start gap-8 px-4")}>
+      <div className={cn("mx-auto flex flex- md:flex-row items-start gap-8 px-4 mb-34")}>
         {/* LEFT SIDE */}
         <div className={cn("md:w-1/4 space-y-4")}>
          {/* REUSABLE SUBTITLE */}

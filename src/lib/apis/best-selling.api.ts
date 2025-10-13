@@ -1,7 +1,7 @@
 
 export async function getBestSellingProducts() {
   try {
-    const payload = await fetch(`${process.env.API}/products?sort=-sold`, {
+    const payload = await fetch(`${process.env.BASE_URL}/products?sort=-sold`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

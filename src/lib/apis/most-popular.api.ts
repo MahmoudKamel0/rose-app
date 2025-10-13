@@ -2,7 +2,7 @@
 /* Get all occasions */ 
 export async function getOccasions() {
   try {
-    const payload = await fetch(`${process.env.API}/occasions`, {
+    const payload = await fetch(`${process.env.BASE_URL}/occasions`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -24,7 +24,7 @@ export async function getOccasions() {
 /* filter products by occasion id */ 
 export async function getProductsByOccasion(occasionId: string) {
   try {
-    const payload = await fetch(`${process.env.API}/products?occasion=${occasionId}`, {
+    const payload = await fetch(`${process.env.BASE_URL}/products?occasion=${occasionId}`, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
       cache: 'no-store',
