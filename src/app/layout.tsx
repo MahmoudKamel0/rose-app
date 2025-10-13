@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import "./globals.css";
 import { cn } from "@lib/utils/cn.utils";
 import { ThemeProvider } from "@components/providers/theme.provider";
@@ -6,7 +5,8 @@ import { ModeToggle } from "@components/ui/mode-toggle";
 import { sarabun, tajawal } from "@fonts";
 import Header from "@components/layout/header";
 import Footer from "@components/layout/footer";
-
+import { Metadata } from "next";
+import Providers from "@components/providers";
 
 export const metadata: Metadata = {
     title: "Rose Store – Premium Flower Boutique | Luxury Roses & Elegant Bouquets",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
         description:
             "Experience luxury in every petal — Rose Store offers handcrafted bouquets and premium flower delivery for every occasion.",
         siteName: "Rose Store",
-    }
+    },
 };
 
 export default function RootLayout({
@@ -50,7 +50,7 @@ export default function RootLayout({
                 enableSystem
                 disableTransitionOnChange
             >
-                {children}
+                <Providers>{children}</Providers>
                 <ModeToggle />
             </ThemeProvider>
             {/* <Footer /> */}
