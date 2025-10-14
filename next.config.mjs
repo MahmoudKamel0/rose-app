@@ -13,6 +13,7 @@ const nextConfig = {
         ],
     },
     async redirects() {
+        
         return [
             {
                 source: "/",
@@ -20,6 +21,7 @@ const nextConfig = {
                 permanent: true,
             },
         ];
+        
     },
 };
 
@@ -59,3 +61,4 @@ export default withSentryConfig(nextConfigWithIntl, {
     // https://vercel.com/docs/cron-jobs
     automaticVercelMonitors: true,
 });
+

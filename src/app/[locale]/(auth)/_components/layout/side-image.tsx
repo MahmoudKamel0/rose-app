@@ -7,7 +7,7 @@ export default function SideImage() {
             src="/images/auth-images/19fa7ca3acaafd1d3dac69a85dc6c3ff6b6d47cc.png"
             alt="Side Image"
             fill
-            className="object-cover"
+            className="!relative w-full object-cover"
             priority
         />
     );

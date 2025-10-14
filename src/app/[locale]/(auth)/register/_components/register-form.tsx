@@ -13,8 +13,8 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { useRegister } from "../_hooks/use-register";
 import { PhoneInput } from "@components/ui/phone-input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { toast } from "sonner";
 import { ErrorMessage } from "@components/shared/error-message";
+import { toast } from "sonner";
 
 export function RegisterForm() {
     const router = useRouter();
@@ -41,7 +41,7 @@ export function RegisterForm() {
         registerMutation.mutate(data, {
             onSuccess: () => {
                 toast.success("Account created successfully!");
-                // router.push("/login");
+                router.push("/login");
             },
             onError: (err) => {
                 console.error("Register error:", err);
@@ -63,7 +63,7 @@ export function RegisterForm() {
                                 <FormItem>
                                     <FormLabel>{t("firstName")}</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="Jonathan" {...field} />
+                                        <Input className="w-full" placeholder="Jonathan" {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -76,7 +76,7 @@ export function RegisterForm() {
                                 <FormItem>
                                     <FormLabel>{t("lastName")}</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="Adrian" {...field} />
+                                        <Input className="w-full" placeholder="Adrian" {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -92,7 +92,7 @@ export function RegisterForm() {
                             <FormItem>
                                 <FormLabel>{t("email")}</FormLabel>
                                 <FormControl>
-                                    <Input type="email" placeholder="user@example.com" {...field} />
+                                    <Input className="w-full" type="email" placeholder="user@example.com" {...field} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -108,12 +108,11 @@ export function RegisterForm() {
                                 <FormLabel>{t("phone")}</FormLabel>
                                 <FormControl>
                                     <PhoneInput
+                                        className="w-full"
                                         placeholder="1012345678"
                                         {...field}
                                         defaultCountry="EG"
-                                        international
                                         countryCallingCodeEditable={false}
-                                        className="w-full"
                                     />
                                 </FormControl>
                                 <FormMessage />
@@ -129,7 +128,7 @@ export function RegisterForm() {
                             <FormItem>
                                 <FormLabel>{t("gender")}</FormLabel>
                                 <Select onValueChange={field.onChange} value={field.value}>
-                                    <FormControl>
+                                    <FormControl className="w-full">
                                         <SelectTrigger>
                                             <SelectValue placeholder={t("selectGender")} />
                                         </SelectTrigger>
@@ -152,7 +151,7 @@ export function RegisterForm() {
                             <FormItem>
                                 <FormLabel>{t("password")}</FormLabel>
                                 <FormControl>
-                                    <Input type="password" placeholder="Password@12345" {...field} />
+                                    <Input className="w-full" type="password" placeholder="Password@12345" {...field} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -167,7 +166,7 @@ export function RegisterForm() {
                             <FormItem>
                                 <FormLabel>{t("rePassword")}</FormLabel>
                                 <FormControl>
-                                    <Input type="password" placeholder="********" {...field} />
+                                    <Input className="w-full" type="password" placeholder="********" {...field} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -180,7 +179,7 @@ export function RegisterForm() {
                     )}
 
                     {/* Submit */}
-                    <Button className="mt-5 h-12 w-full rounded-none" type="submit" disabled={registerMutation.isPending}>
+                    <Button className="bg-maroon-600 mt-5 h-12 w-full text-white" type="submit" disabled={registerMutation.isPending}>
                         {registerMutation.isPending ? t("loading") : t("createAccount")}
                     </Button>
 

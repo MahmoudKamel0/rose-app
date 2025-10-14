@@ -1,24 +1,40 @@
+import Features from "@components/features/features/Features";
+import Headers from "@components/features/header/header";
+import Occasions from "@components/features/occasions/occasions";
+import AboutSection from "@components/features/about-section/about-section";
+import CompaniesSection from "@components/features/companies-section/companies-section";
+import GallerySection from "@components/features/gallary-section/gallery-section";
 import TestimonialsSection from "@components/features/testimonials/testimonials-section";
-import AboutSection from "@components/layout/about-section/about-section";
-import CompaniesSection from "@components/layout/campanies-section/campanies-section";
-import GallerySection from "@components/layout/gallary-section/gallery-section";
-import ToggleLocale from "@components/layout/header/toggle-locale";
-import { cn } from "@lib/utils/cn.utils";
+import Header from "@components/layout/header";
+
 import { useTranslations } from "next-intl";
+import BestSellingSection from "@app/_components/best-selling-section/best-selling";
+import MostPopularSection from "@app/_components/most-popular-section/most-popular";
 
-export default function HomePage() {
+export default function Page() {
     const t = useTranslations();
-
     return (
         <>
-            <p>{t("hello-world")}</p>
-            <ToggleLocale />
-            <TestimonialsSection />
-            <div className={cn("mx-auto flex w-[1281px] flex-col gap-32 py-20")}>
-                <AboutSection />
-                <GallerySection />
-                <CompaniesSection />
-            </div>
+            <main className="">
+                {/* Header */}
+               {/* <Header /> */}
+                {/* <Headers /> */}
+                <div className="mx-auto flex w-7xl flex-col">
+                    <Occasions />
+                    <Features />
+                    <BestSellingSection />
+                    <MostPopularSection />
+                    <AboutSection />
+                    <GallerySection />
+                </div>  
+                <TestimonialsSection />
+                <div className="mx-auto flex w-7xl flex-col">
+                    <CompaniesSection />
+                </div>
+                
+            </main>
+            
+            {/* <ToggleLocale /> */}
         </>
     );
 }
