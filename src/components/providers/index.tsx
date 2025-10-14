@@ -9,7 +9,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
             <NextIntlClientProvider>
                 <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
                     {children}
-                    {/* <ModeToggle /> */}
+                    <ModeToggle />
                 </ThemeProvider>
             </NextIntlClientProvider>
         </ReactQueryProvider>

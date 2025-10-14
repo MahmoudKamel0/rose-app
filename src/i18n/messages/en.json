@@ -24,5 +24,17 @@
     "testimonials-content": "I've been ordering from this flower shop for years and they never disappoint. The quality and service are exceptional!!",
     "testimonials-date": "Reviewed on {date}",
     "testimonials-subtitle": "Testimonials",
-    "testimonials-heading": "Real Words from Happy Customers"
+    "testimonials-heading": "Real Words from Happy Customers",
+
+    "otp": {
+        "enter-title": "Enter the OTP Code",
+        "sent": "We have sent a 6-digit code to {email}",
+        "edit": "edit",
+        "send-new": "Send a new code",
+        "verify": "Verify OTP",
+        "verifying": "Verifying...",
+        "error": "Please enter all 6 digits",
+        "need-help": "Need help?",
+        "contact-us": "Contact us"
+    }
 }
