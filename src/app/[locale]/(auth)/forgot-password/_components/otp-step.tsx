@@ -12,6 +12,7 @@ import { useTranslations } from "next-intl";
 import { useVerifyOtp } from "../_hooks/use-verify-otp";
 
 import { toast } from "sonner";
+import ResendOtpButton from "./resend-otp-btn";
 
 type OtpStepProps = {
     email: string | null;
@@ -98,11 +99,7 @@ export default function OtpStep({ email, setStep }: OtpStepProps) {
                 />
 
                 {/* Resend OTP button */}
-                <div className="flex w-full justify-end">
-                    <Button type="button" variant="ghost">
-                        {t("send-new")}
-                    </Button>
-                </div>
+                <ResendOtpButton email={email} />
 
                 {/* Submit OTP */}
                 <Button type="submit" className="mt-4 mb-3 w-full bg-[#A6252A] font-medium text-white" disabled={isPending || isSubmitting}>
