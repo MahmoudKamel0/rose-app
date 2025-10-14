@@ -11,6 +11,8 @@ import { OtpFormData, OtpSchema } from "@lib/schemas/auth.schemas";
 import { useTranslations } from "next-intl";
 import { useVerifyOtp } from "../_hooks/use-verify-otp";
 
+import { toast } from "sonner";
+
 type OtpStepProps = {
     email: string | null;
     setStep: (step: Step) => void;
@@ -38,7 +40,14 @@ export default function OtpStep({ email, setStep }: OtpStepProps) {
 
     const onSubmit = async (data: OtpFormData) => {
         await verifyOtp(data.resetCode, {
-            onSuccess: () => setStep(FORGOT_PASSWORD_STEPS.PASSWORD),
+            onSuccess: () => {
+                toast.success("OTP verified successfully", {
+                    description: "You can now reset your password",
+                    duration: 4000,
+                });
+                // Move to the next step on successful OTP verification
+                setStep(FORGOT_PASSWORD_STEPS.PASSWORD);
+            },
             onError: (err: Error) => {
                 setOtpError(err.message || "Something went wrong");
             },
