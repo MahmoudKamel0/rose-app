@@ -105,14 +105,6 @@ export default function ResetPassword({ email }: { email: string }) {
                     </Button>
                 </form>
             </Form>
-            <div className="mt-2.5">
-                <p className="text-center text-sm font-medium text-zinc-800 dark:text-zinc-50">
-                    Need help? {/* here theres a ui problem in Link so i set it anyway */}
-                    <Link href="/contact" className="dark:text-softpink-300 text-maroon-700 font-medium hover:underline">
-                        Contact us
-                    </Link>
-                </p>
-            </div>
         </div>
     );
 }

@@ -11,7 +11,6 @@ import { useAddForgetPasswordEmail } from "../_hooks/use-add-forget-password-ema
 import { Step } from "@lib/types/auth/auth";
 import { FORGOT_PASSWORD_STEPS } from "@lib/constants/auth.constants";
 import { AuthError } from "../../_components/auth-error";
-import Link from "next/link";
 
 // component handles first step of "forgot password" flow
 export default function ForgetPasswordEmail({
@@ -40,7 +39,7 @@ export default function ForgetPasswordEmail({
             onSuccess: () => {
                 form.reset();
                 setEmail(values.email);
-                setStep(FORGOT_PASSWORD_STEPS.PASSWORD);
+                setStep(FORGOT_PASSWORD_STEPS.OTP);
             },
         });
     };
@@ -86,14 +85,6 @@ export default function ForgetPasswordEmail({
                     </div>
                 </form>
             </Form>
-            <div className="mt-2.5">
-                <p className="text-center text-sm text-zinc-800 dark:text-zinc-50">
-                    Don’t have an account yet?{" "}
-                    <Link href="/register" className="dark:text-softpink-300 text-maroon-700 font-medium hover:underline">
-                        Create one now!
-                    </Link>
-                </p>
-            </div>
         </div>
     );
 }

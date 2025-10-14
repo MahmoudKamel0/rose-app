@@ -10,7 +10,7 @@ export function useAddForgetPasswordEmail() {
                 throw new Error("No response from server");
             }
 
-            if ("error" in res && res.error) {
+            if ("error" in res) {
                 // throw to make React Query register an error
                 throw new Error(res.error);
             }

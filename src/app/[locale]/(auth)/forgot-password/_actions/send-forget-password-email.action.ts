@@ -9,7 +9,7 @@ export async function SendForgetPasswordEmail(data: EmailForgetPasswordValue) {
 
         // Prefer the standard Authorization header (Bearer token).
 
-        const res = await fetch(`${process.env.BASE_URL!}${process.env.FORGET_PASSWORD_URL!}`, {
+        const res = await fetch(`https://flower.elevateegy.com/api/v1/auth/forgotPassword`, {
             method: "POST",
             body: JSON.stringify(data),
             headers,
