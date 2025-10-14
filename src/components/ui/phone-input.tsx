@@ -18,17 +18,28 @@ type PhoneInputProps = Omit<React.ComponentProps<"input">, "onChange" | "value" 
 const PhoneInput = React.forwardRef<React.ElementRef<typeof RPNInput.default>, PhoneInputProps>(
     ({ className, onChange, value, ...props }, ref) => {
         return (
-            <RPNInput.default
-                ref={ref}
-                className={cn("flex w-full", className)}
-                flagComponent={FlagComponent}
-                countrySelectComponent={CountrySelect}
-                inputComponent={InputComponent}
-                smartCaret={false}
-                value={value || undefined}
-                onChange={(value) => onChange?.(value || ("" as RPNInput.Value))}
-                {...props}
-            />
+            <div
+                className={cn(
+                    // Main container style
+                    "border-input focus-within:!border-maroon-600 focus-visible:!border-maroon-600 !flex h-12 w-full items-center rounded-[10px] border bg-transparent px-3 py-1 text-base text-zinc-800 transition-colors placeholder:text-zinc-400 invalid:border-red-500 hover:border-zinc-400 has-[input:invalid]:border-red-500 md:text-sm [&_svg]:stroke-zinc-400",
+                    // Disabled styles
+                    "disabled:cursor-not-allowed disabled:border-transparent disabled:bg-zinc-100",
+                    "has-[input:disabled]:cursor-not-allowed has-[input:disabled]:border-transparent has-[input:disabled]:bg-zinc-100",
+                    className
+                )}
+            >
+                <RPNInput.default
+                    ref={ref}
+                    className="flex w-full"
+                    flagComponent={FlagComponent}
+                    countrySelectComponent={CountrySelect}
+                    inputComponent={InputComponent}
+                    smartCaret={false}
+                    value={value || undefined}
+                    onChange={(value) => onChange?.(value || ("" as RPNInput.Value))}
+                    {...props}
+                />
+            </div>
         );
     }
 );
@@ -38,7 +49,7 @@ const InputComponent = React.forwardRef<HTMLInputElement, React.ComponentProps<"
     <Input
         ref={ref}
         placeholder="Phone number"
-        className={cn("rounded-s-none rounded-e-md border-l-0 text-sm focus-visible:ring-0 focus-visible:ring-offset-0", className)}
+        className={cn("rounded-none border-0 text-sm focus-visible:ring-0 focus-visible:ring-offset-0", className)}
         {...props}
     />
 ));
@@ -70,12 +81,14 @@ const CountrySelect = ({ disabled, value: selectedCountry, options: countryList,
             <PopoverTrigger asChild>
                 <Button
                     type="button"
-                    variant="outline"
-                    className="flex items-center gap-2 rounded-s-md rounded-e-none border-r-0 px-3 py-2 text-sm font-normal focus:z-10"
+                    variant="ghost"
+                    className="flex items-center gap-2 rounded-none border-0 px-3 py-2 text-sm font-normal focus:z-10"
                     disabled={disabled}
                 >
                     <div className="flex items-center gap-2">
-                        <FlagComponent country={selectedCountry} countryName={selectedCountry} />
+                        <div className="flex h-6 w-6 items-center justify-center overflow-hidden rounded-full">
+                            <FlagComponent country={selectedCountry} countryName={selectedCountry} />
+                        </div>
                         <span className="text-sm font-medium">{selectedCountry}</span>
                         <span className="text-muted-foreground text-sm">(+{RPNInput.getCountryCallingCode(selectedCountry)})</span>
                         <ChevronsUpDown className={cn("size-4 opacity-50", disabled ? "hidden" : "opacity-100")} />
@@ -147,7 +160,7 @@ const CountrySelectOption = ({ country, countryName, selectedCountry, onChange, 
 const FlagComponent = ({ country, countryName }: RPNInput.FlagProps) => {
     const Flag = flags[country];
     return (
-        <span className="flex h-4 w-6 overflow-hidden rounded-sm [&_svg:not([class*='size-'])]:size-full">
+        <span className="flex h-6 w-6 overflow-hidden rounded-full [&_svg:not([class*='size-'])]:size-full">
             {Flag && <Flag title={countryName} />}
         </span>
     );
