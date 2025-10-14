@@ -6,11 +6,7 @@ const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(
     return (
         <input
             type={type}
-            className={cn(
-                "file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-zinc-400 ",
-                INPUT_STYLE,
-                className
-            )}
+            className={cn("file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-zinc-400", INPUT_STYLE, className)}
             ref={ref}
             {...props}
         />

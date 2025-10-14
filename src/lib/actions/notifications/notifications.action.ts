@@ -108,10 +108,6 @@ export async function DeleteNotification(notification_id: string) {
 
         const response: ApiResponse<DeleteSingleNotificationResponse> = await res.json();
 
-        if ("error" in response) {
-            throw new Error(response.error || "Something went wrong");
-        }
-
         return response;
     } catch (err) {
         return { error: `${err || "There's something wrong, please try again"}` };

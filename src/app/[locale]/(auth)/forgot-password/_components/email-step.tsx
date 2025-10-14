@@ -7,10 +7,11 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { EmailForgetPasswordSchema, EmailForgetPasswordValue } from "@/lib/schemas/forget-password-schema";
-import { MoveRight } from "lucide-react";
 import { useAddForgetPasswordEmail } from "../_hooks/use-add-forget-password-email";
 import { Step } from "@lib/types/auth/auth";
 import { FORGOT_PASSWORD_STEPS } from "@lib/constants/auth.constants";
+import { AuthError } from "../../_components/auth-error";
+import Link from "next/link";
 
 // component handles first step of "forgot password" flow
 export default function ForgetPasswordEmail({
@@ -18,10 +19,10 @@ export default function ForgetPasswordEmail({
     setEmail,
 }: {
     setStep: React.Dispatch<React.SetStateAction<Step>>;
-    setEmail: React.Dispatch<React.SetStateAction<string | null>>;
+    setEmail: React.Dispatch<React.SetStateAction<string>>;
 }) {
     // hook to send email request
-    const { mutateAsync, error, isPending } = useAddForgetPasswordEmail();
+    const { mutateAsync, isPending, error } = useAddForgetPasswordEmail();
 
     // form config with zod validation
     const form = useForm({
@@ -35,34 +36,35 @@ export default function ForgetPasswordEmail({
 
     // handle submit
     const onSubmit: SubmitHandler<EmailForgetPasswordValue> = async (values) => {
-        const res = await mutateAsync(values, {
+        await mutateAsync(values, {
             onSuccess: () => {
                 form.reset();
                 setEmail(values.email);
-                setStep(FORGOT_PASSWORD_STEPS.OTP);
+                setStep(FORGOT_PASSWORD_STEPS.PASSWORD);
             },
         });
     };
 
     return (
-        <div className="mx-auto max-w-md rounded-lg bg-white p-6 font-mono">
-            <div className="mb-4 flex-col items-start justify-center gap-2">
-                <h1 className="font-inter mb-2 text-3xl font-bold text-gray-800">Forgot Password</h1>
-                <p className="mb-6 font-mono text-base font-normal text-gray-500">
-                    Don&apos;t worry, we will help you recover your account.
-                </p>
+        <div className="mx-auto">
+            <div className="mb-4 flex-col items-start justify-center gap-2 text-zinc-800 dark:text-white">
+                <h1 className="mb-2 text-2xl font-semibold">Forgot Password</h1>
+                <p className="mb-6 text-base font-normal">Worry not, we&apos;ll send you instructions to help you reset it.</p>
             </div>
 
             {/* simple form to collect user email */}
 
             <Form {...form}>
-                <form onSubmit={form.handleSubmit((values) => onSubmit(values))} className="space-y-6">
+                <form
+                    onSubmit={form.handleSubmit((values) => onSubmit(values))}
+                    className="h-full w-full space-y-6 border-y-2 py-9 dark:border-y-zinc-800"
+                >
                     <FormField
                         name="email"
                         control={form.control}
                         render={({ field }) => (
-                            <FormItem>
-                                <FormLabel className="text-base font-medium text-gray-800">Email</FormLabel>
+                            <FormItem className="w-full">
+                                <FormLabel className="mb-1.5 text-base font-medium text-gray-800 dark:text-white">Email</FormLabel>
                                 <FormControl>
                                     <Input type="email" placeholder="user@example.com" {...field} />
                                 </FormControl>
@@ -70,19 +72,28 @@ export default function ForgetPasswordEmail({
                             </FormItem>
                         )}
                     />
-
-                    <div className="flex flex-col gap-10">
-                        {error && <AuthError error={error.message} />}
+                    {error && <AuthError error={error.message} />}
+                    <div className="mt-9 flex flex-col gap-10">
+                        {/* {error && <AuthError error={error.message} />} */}
                         <Button
                             type="submit"
                             disabled={!isValid || isPending}
-                            className="flex h-11 w-full items-center justify-center gap-2 bg-blue-600 font-medium text-white"
+                            className="w-input flex h-11 items-center justify-center gap-2 font-medium text-white"
+                            isLoading={isPending}
                         >
-                            <span>Continue</span> <MoveRight />
+                            Continue
                         </Button>
                     </div>
                 </form>
             </Form>
+            <div className="mt-2.5">
+                <p className="text-center text-sm text-zinc-800 dark:text-zinc-50">
+                    Don’t have an account yet?{" "}
+                    <Link href="/register" className="dark:text-softpink-300 text-maroon-700 font-medium hover:underline">
+                        Create one now!
+                    </Link>
+                </p>
+            </div>
         </div>
     );
 }
