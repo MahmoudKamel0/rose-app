@@ -26,6 +26,23 @@
     "testimonials-subtitle": "Testimonials",
     "testimonials-heading": "Real Words from Happy Customers",
 
+    "forget-password-email": {
+        "title": "Forgot Password",
+        "desc": "Worry not, we&apos;ll send you instructions to help you reset it.",
+        "label": "Email",
+        "continue": "Continue",
+        "checking": "checking..."
+    },
+
+    "reset-password": {
+        "title": "Create a New Password",
+        "desc": "Set a strong password to secure your account.",
+        "newPassLabel": "New Password",
+        "resetPassLabel": "Confirm New Password",
+        "continue": "Reset password",
+        "loading": "Loading..."
+    },
+
     "otp": {
         "enter-title": "Enter the OTP Code",
         "sent": "We have sent a 6-digit code to {email}",
