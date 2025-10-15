@@ -11,7 +11,6 @@ export async function verifyOtpAction(resetCode: string): Promise<VerifyOtpRespo
 
     const payload: VerifyOtpResponse = await response.json();
 
-    console.log("Server action response:", payload);
     return payload;
 }
 

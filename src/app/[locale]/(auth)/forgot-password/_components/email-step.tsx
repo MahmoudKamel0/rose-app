@@ -12,6 +12,8 @@ import { Step } from "@lib/types/auth/auth";
 import { FORGOT_PASSWORD_STEPS } from "@lib/constants/auth.constants";
 import { AuthError } from "../../_components/auth-error";
 import { useTranslations } from "next-intl";
+import Link from "next/link";
+import { toast } from "sonner";
 
 // component handles first step of "forgot password" flow
 export default function ForgetPasswordEmail({
@@ -42,6 +44,10 @@ export default function ForgetPasswordEmail({
     const onSubmit: SubmitHandler<EmailForgetPasswordValue> = async (values) => {
         await mutateAsync(values, {
             onSuccess: () => {
+                toast.success(t("toast"), {
+                    description: t("toast-desc"),
+                    duration: 3000,
+                });
                 form.reset();
                 setEmail(values.email);
                 setStep(FORGOT_PASSWORD_STEPS.OTP);
@@ -70,7 +76,7 @@ export default function ForgetPasswordEmail({
                         control={form.control}
                         render={({ field }) => (
                             <FormItem className="w-full">
-                                <FormLabel className="mb-1.5 text-base font-medium text-gray-800 dark:text-white">{t("label")}</FormLabel>
+                                <FormLabel className="mb-1.5 text-base font-medium">{t("label")}</FormLabel>
                                 <FormControl>
                                     <Input type="email" placeholder="user@example.com" {...field} />
                                 </FormControl>
@@ -92,6 +98,14 @@ export default function ForgetPasswordEmail({
                     </div>
                 </form>
             </Form>
+            <div className="mt-4">
+                <p className="mt-5 text-center text-sm font-medium text-zinc-800 dark:text-zinc-50">
+                    {t("footer-msg")}{" "}
+                    <Link href="/contact" className="text-maroon-700 dark:text-softpink-300 font-bold">
+                        {t("footer-link")}
+                    </Link>
+                </p>
+            </div>
         </div>
     );
 }

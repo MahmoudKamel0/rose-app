@@ -75,7 +75,14 @@ const FormLabel = React.forwardRef<
 >(({ className, ...props }, ref) => {
     const { error, formItemId } = useFormField();
 
-    return <Label ref={ref} className={cn(error && "text-red-900", className)} htmlFor={formItemId} {...props} />;
+    return (
+        <Label
+            ref={ref}
+            className={cn(error?.message ? "text-red-500" : "text-zinc-800 dark:text-zinc-50", className)}
+            htmlFor={formItemId}
+            {...props}
+        />
+    );
 });
 FormLabel.displayName = "FormLabel";
 

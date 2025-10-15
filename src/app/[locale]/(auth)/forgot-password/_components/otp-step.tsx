@@ -13,6 +13,7 @@ import { useVerifyOtp } from "../_hooks/use-verify-otp";
 
 import { toast } from "sonner";
 import ResendOtpButton from "./resend-otp-btn";
+import Link from "next/link";
 
 type OtpStepProps = {
     email: string | null;
@@ -106,6 +107,14 @@ export default function OtpStep({ email, setStep }: OtpStepProps) {
                     {isSubmitting || isPending ? t("verifying") : t("verify")}
                 </Button>
             </form>
+            <div className="mt-4">
+                <p className="mt-5 text-center text-sm font-medium text-zinc-800 dark:text-zinc-50">
+                    {t("need-help")}{" "}
+                    <Link href="/contact" className="text-maroon-700 dark:text-softpink-300 font-bold">
+                        {t("contact-us")}
+                    </Link>
+                </p>
+            </div>
         </div>
     );
 }

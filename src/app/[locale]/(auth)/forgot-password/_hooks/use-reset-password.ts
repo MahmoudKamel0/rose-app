@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { ResetPasswordRequest } from "../_types/reset-password";
+import { ResetPasswordRequest, ResetPasswordResponse } from "../_types/reset-password";
 import { ResetPasswordAction } from "../_actions/forget-password.actions";
 
 export function useResetPassword() {
@@ -10,7 +10,7 @@ export function useResetPassword() {
                 throw new Error("No response from server");
             }
 
-            if ("error" in res && res.error) {
+            if ("error" in res) {
                 // throw to make React Query register an error
                 throw new Error(res.error);
             }

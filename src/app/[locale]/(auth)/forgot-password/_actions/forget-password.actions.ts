@@ -1,3 +1,4 @@
+"use server";
 import { EmailForgetPasswordValue } from "@lib/schemas/forget-password-schema";
 import { EmailForgetPasswordResponse } from "../_types/forget-password-email-response";
 import { ResetPasswordRequest, ResetPasswordResponse } from "../_types/reset-password";
@@ -12,10 +13,10 @@ export async function SendForgetPasswordEmail(data: EmailForgetPasswordValue) {
 
         // Prefer the standard Authorization header (Bearer token).
 
-        const res = await fetch(`https://flower.elevateegy.com/api/v1/auth/forgotPassword`, {
+        const res = await fetch(`${process.env.BASE_URL!}${process.env.FORGET_PASSWORD_URL!}`, {
             method: "POST",
             body: JSON.stringify(data),
-            headers,
+            headers: { "Content-Type": "application/json" },
         });
         const response: ApiResponse<EmailForgetPasswordResponse> = await res.json();
 
@@ -33,7 +34,7 @@ export async function ResetPasswordAction(data: ResetPasswordRequest) {
             "Content-Type": "application/json",
         };
 
-        const res = await fetch(`https://flower.elevateegy.com/api/v1/auth/resetPassword`, {
+        const res = await fetch(`${process.env.BASE_URL!}${process.env.RESET_PASSWORD_URL!}`, {
             method: "PUT",
             body: JSON.stringify(data),
             headers,

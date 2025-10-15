@@ -28,10 +28,14 @@
 
     "forget-password-email": {
         "title": "Forgot Password",
-        "desc": "Worry not, we&apos;ll send you instructions to help you reset it.",
+        "desc": "Worry not, we'll send you instructions to help you reset it.",
         "label": "Email",
         "continue": "Continue",
-        "checking": "checking..."
+        "checking": "checking...",
+        "footer-msg": "Don't have an account yet?",
+        "footer-link": "Create one now!",
+        "toast": "A secret code will be sent to your email.",
+        "toast-desc": "wait until you recive the secret code"
     },
 
     "reset-password": {
@@ -40,7 +44,9 @@
         "newPassLabel": "New Password",
         "resetPassLabel": "Confirm New Password",
         "continue": "Reset password",
-        "loading": "Loading..."
+        "loading": "Loading...",
+        "toast": "Your password has been updated successfully..",
+        "toast-desc": "You will be redirected to the login page. Please wait."
     },
 
     "otp": {

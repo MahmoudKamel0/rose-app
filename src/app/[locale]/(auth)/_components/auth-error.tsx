@@ -7,7 +7,7 @@ export function AuthError({ error }: { error: string }) {
                 <div className="absolute top-3 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full">
                     <XCircle className="h-5 w-5 text-red-500" />
                 </div>
-                <div className="dark:text-maroon-700 w-full truncate border border-red-800 bg-red-50 px-4 py-2 text-center font-mono text-sm font-normal text-red-600 dark:bg-zinc-900">
+                <div className="w-full truncate border border-red-800 bg-red-50 px-4 py-2 text-center font-mono text-sm font-normal text-red-600 dark:bg-zinc-900 dark:text-red-500">
                     {/* Error message */}
                     {error}
                 </div>
