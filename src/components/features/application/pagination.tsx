@@ -1,5 +1,6 @@
 "use client";
-import { usePagination } from "@/hooks/use-pagination ";
+import { usePagination } from "@/hooks/use-pagination";
+import { cn } from "@lib/utils/cn.utils";
 import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from "lucide-react";
 import { ReactNode, useId, useState } from "react";
 
@@ -19,35 +20,38 @@ import { ReactNode, useId, useState } from "react";
  * @component
  */
 export default function Pagination() {
-    const id = useId()
+    const id = useId();
     const { currentPage, pageRange, handlePageChange, goToPreviousPage, goToNextPage, jumpBackward, jumpForward } = usePagination({
         totalPages: 100,
         siblingCount: 1,
     });
 
     return (
-        <div className="flex items-center justify-center gap-1.5">
+        <div className="flex items-center gap-1.5">
             {/* Previous buttons */}
             <button
                 onClick={() => jumpBackward()}
                 aria-label="previous 10 steps"
-                className="!flex h-[32px] w-[32px] items-center justify-center rounded-lg border border-zinc-100 text-sm"
+                className="!flex h-8 w-8 items-center justify-center rounded-lg border border-zinc-100 text-sm dark:border-zinc-700 dark:bg-zinc-700 dark:text-zinc-50"
             >
-                <ChevronsLeft size="16" className="!stroke-black" />
+                <ChevronsLeft size="16" className="stroke-black dark:stroke-zinc-50" />
             </button>
             <button
                 onClick={goToPreviousPage}
                 aria-label="previous page"
-                className="!flex h-[32px] w-[32px] items-center justify-center rounded-lg border border-zinc-100 text-sm"
+                className="!flex h-8 w-8 items-center justify-center rounded-lg border border-zinc-100 text-sm dark:border-zinc-700 dark:bg-zinc-700 dark:text-zinc-50"
             >
-                <ChevronLeft size="16" className="!stroke-black" />
+                <ChevronLeft size="16" className="stroke-black dark:stroke-zinc-50" />
             </button>
 
             {/* Mapping pages numbers */}
             {pageRange.map((page, index) => (
                 <button
                     key={`${id + index}`}
-                    className={`!flex h-[32px] w-[32px] items-center justify-center rounded-lg border border-zinc-100 text-sm ${page === currentPage && "bg-maroon-600 text-white"}`}
+                    className={cn(
+                        "!flex h-8 w-8 items-center justify-center rounded-lg border border-zinc-100 text-sm dark:border-zinc-700 dark:bg-zinc-700 dark:text-zinc-50",
+                        page === currentPage && "bg-maroon-600 dark:bg-softpink-200 text-white dark:text-zinc-700"
+                    )}
                     onClick={() => handlePageChange(page as number)} // 2
                 >
                     {page as ReactNode}
@@ -58,16 +62,16 @@ export default function Pagination() {
             <button
                 onClick={goToNextPage}
                 aria-label="next page"
-                className="!flex h-[32px] w-[32px] items-center justify-center rounded-lg border border-zinc-100 text-sm"
+                className="!flex h-8 w-8 items-center justify-center rounded-lg border border-zinc-100 text-sm dark:border-zinc-700 dark:bg-zinc-700 dark:text-zinc-50"
             >
-                <ChevronRight size="16" className="!stroke-black" />
+                <ChevronRight size="16" className="stroke-black dark:stroke-zinc-50" />
             </button>
             <button
                 onClick={() => jumpForward()}
                 aria-label="next 10 steps"
-                className="!flex h-[32px] w-[32px] items-center justify-center rounded-lg border border-zinc-100 text-sm"
+                className="!flex h-8 w-8 items-center justify-center rounded-lg border border-zinc-100 text-sm dark:border-zinc-700 dark:bg-zinc-700 dark:text-zinc-50"
             >
-                <ChevronsRight size="16" className="!stroke-black" />
+                <ChevronsRight size="16" className="stroke-black dark:stroke-zinc-50" />
             </button>
         </div>
     );

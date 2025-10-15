@@ -1,6 +1,16 @@
 "use client";
 import { useState, useCallback, useMemo } from "react";
 
+interface PaginationReturn {
+    currentPage: number;
+    pageRange: (number | string)[];
+    handlePageChange: (page: number) => void;
+    goToPreviousPage: () => void;
+    goToNextPage: () => void;
+    jumpBackward: (steps?: number) => void;
+    jumpForward: (steps?: number) => void;
+}
+
 /**
  * Custom React hook for pagination logic.
  *
@@ -13,7 +23,7 @@ import { useState, useCallback, useMemo } from "react";
  * @param {number} [params.initialPage=1] - The page to start on (default: 1).
  * @param {number} [params.siblingCount=1] - How many sibling pages to show adjacent to the current page (default: 1).
  *
- * @returns {Object} Pagination state and methods:
+ * @returns {PaginationReturn} Pagination state and methods:
  *   - {number} `currentPage`           The current active page.
  *   - {Array<number | string>} `pageRange`    Array of page numbers and ellipsis ("...") for pagination control display.
  *   - {Function} `handlePageChange`    Set a specific page number as the current page.
@@ -33,7 +43,7 @@ export function usePagination({
     totalPages: number;
     initialPage?: number;
     siblingCount?: number;
-}): object {
+}): PaginationReturn {
     const [currentPage, setCurrentPage] = useState<number>(initialPage);
 
     // Handle manual page change (when user clicks a specific page number)
@@ -72,7 +82,7 @@ export function usePagination({
     );
 
     const pageRange = useMemo(() => {
-        const range: unknown[] = [];
+        const range: (number | string)[] = [];
 
         const leftSiblingIndex = Math.max(currentPage - siblingCount, 1);
         const rightSiblingIndex = Math.min(currentPage + siblingCount, totalPages);

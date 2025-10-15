@@ -1,7 +1,8 @@
+import { withSentryConfig } from "@sentry/nextjs";
 import createNextIntlPlugin from "next-intl/plugin";
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    // Allow images from (flower.elevateegy.com) domain
+    // rmote images source
     images: {
         remotePatterns: [
             {
@@ -12,8 +13,8 @@ const nextConfig = {
             },
         ],
     },
-    // Handle multiple path redirects
     async redirects() {
+
         return [
             {
                 source: "/",
@@ -28,4 +29,3 @@ const nextConfig = {
 // ===== Apply next-intl plugin =====
 const withNextIntl = createNextIntlPlugin();
 export default withNextIntl(nextConfig);
-

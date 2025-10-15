@@ -1,11 +1,11 @@
 {
-       "cSpell.words": [
-              "commitlint",
-              "elevateegy",
-              "sarabun",
-              "softpink"
-       ],
-       "i18n-ally.localesPaths": [
-              "src/i18n"
-       ]
+    "cSpell.words": [
+        "commitlint",
+        "elevateegy",
+        "sarabun",
+        "softpink"
+    ],
+    "i18n-ally.localesPaths": [
+        "src/i18n"
+    ]
 }
