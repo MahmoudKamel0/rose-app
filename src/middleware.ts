@@ -1,29 +1,49 @@
 import createMiddleware from "next-intl/middleware";
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { routing } from "./i18n/routing";
+import { getToken } from "next-auth/jwt";
 
-const publicPages = ["/", "/login"];
+const authRoutes = ["/login", "/register", "/forgot-password"];
+const publicPages = ["/", ...authRoutes];
 const handleI18nRouting = createMiddleware(routing);
 
-export default function middleware(req: NextRequest) {
-    // Regex to check if the page is public
-    const publicPathnameRegex = RegExp(
-        `^(/(${routing.locales.join("|")}))?(${publicPages.flatMap((p) => (p === "/" ? ["", "/"] : p)).join("|")})/?$`,
-        "i"
-    );
+export default async function middleware(req: NextRequest) {
+  const pathname = req.nextUrl.pathname;
 
-    // Check if the current request is for a public page
-    const isPublicPage = publicPathnameRegex.test(req.nextUrl.pathname);
+  // get the language from URL
+  const segments = pathname.split("/");
+  const locale = routing.locales.includes(
+    segments[1] as (typeof routing.locales)[number]
+  )
+    ? (segments[1] as (typeof routing.locales)[number])
+    : routing.defaultLocale;
 
-    // If the page is not public, you can add custom logic here (e.g., authentication)
-    if (isPublicPage) {
-        return handleI18nRouting(req);
+    // Get user's token
+  const token = await getToken({ req });
+
+  // If the user request public route
+  if (publicPages.some((page) => pathname.endsWith(page))) {
+    // authenticated, redirect to landing page
+    if (authRoutes.some((page) => pathname.endsWith(page)) && token) {
+      const redirectUrl = new URL(`/${locale}`, req.nextUrl.origin);
+      return NextResponse.redirect(redirectUrl);
     }
 
-    // If the page is public, just handle i18n routing
+    // Not authenticated, pass 
     return handleI18nRouting(req);
+  }
+
+    // If the user request Protected route
+  if (!token) {
+    // Not authenticated, redirect to login page
+    const redirectUrl = new URL(`/${locale}/login`, req.nextUrl.origin);
+    redirectUrl.searchParams.set("callbackUrl", req.nextUrl.pathname);
+    return NextResponse.redirect(redirectUrl);
+  }
+  // authenticated, pass
+  return handleI18nRouting(req);
 }
 
 export const config = {
-    matcher: ["/((?!api|_next|.*\\..*).*)"], // Match all app pages except api, _next, and static files
+  matcher: ["/((?!api|_next|.*\\..*).*)"], // Match all app pages except api, _next, and static files
 };

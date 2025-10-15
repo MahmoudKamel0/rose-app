@@ -1,7 +1,7 @@
 import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
-import { ThemeProvider } from "@components/providers/theme.provider";
+import { ThemeProvider } from "@components/providers/components/theme.provider";
 import Providers from "@components/providers";
 import { ModeToggle } from "@components/ui/mode-toggle";
 import { cn } from "@lib/utils/cn.utils";
