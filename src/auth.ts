@@ -4,6 +4,7 @@ import { NextAuthOptions } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 
 export const authOptions: NextAuthOptions = {
+    // Customize NextAuth pages
     pages: {
         signIn: '/login'
     },
@@ -14,7 +15,9 @@ export const authOptions: NextAuthOptions = {
                 email: {},
                 password: {},
             },
+             // Authorize function validates user credentials
             authorize: async (credentials) => {
+                // Call login API
                 const response = await fetch(`${process.env.BASE_URL}/auth/signin`, {
                     method: 'POST',
                     body: JSON.stringify({
@@ -26,11 +29,13 @@ export const authOptions: NextAuthOptions = {
                     }
                 });
                 
+                // Parse the API response
                 const payload: ApiResponse<LoginResponse> = await response.json();
 
                 if('error' in payload) {
                     throw new Error(payload.error);
                 }
+                // Return user object to store in JWT
                 return {
                     id: payload.user._id,
                     user: payload.user,

@@ -91,3 +91,14 @@ export const tajawal = localFont({
     display: "swap",
     preload: true,
 });
+
+export const edwardian = localFont({
+  src: [
+    {
+      path: "../../public/fonts/edwardian/edwardianscriptitc.ttf",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+  variable: "--font-edwardian",
+});

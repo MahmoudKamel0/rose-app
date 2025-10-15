@@ -10,9 +10,14 @@ import Link from "next/link";
 import { Label } from "@components/ui/label";
 import { Input } from "@components/ui/input";
 import { useLogin } from "../_hooks/use-login";
+import { useTranslations } from "next-intl";
+import SubmissionFeedback from "@components/shared/submission-feedback";
 
 export default function LoginForm() {
-    // login form
+    // Translation
+    const t = useTranslations("login");
+  
+    // Form
     const form = useForm<LoginValues>({
         resolver: zodResolver(loginSchema),
         defaultValues: {
@@ -21,65 +26,63 @@ export default function LoginForm() {
         }
     });
 
-    //Mutation
+    // Mutation
     const { login, isPending, error } = useLogin();
 
-// const onSubmit: SubmitHandler<LoginValues> = (values) => {
-//   login(values);
-// };
-
-    //Function
+    // Function
     const onSubmit: SubmitHandler<LoginValues> = (values) => {
         console.log(values);
+        login(values);
     }
 
     return <Form {...form} >
-        <form onSubmit={form.handleSubmit(onSubmit)} className= "w-full flex flex-col">
+        <form onSubmit={form.handleSubmit(onSubmit)} className= "w-[25.5rem] flex flex-col border-y border-zinc-200 pt-6 pb-9 mb-5">
             {/* Email */}
             <FormField 
-                name="email"
-                control={form.control}
-                render={(field) => <FormItem className="mb-4 w-full">
-                {/* label */}
-                <Label>Email</Label>
-                {/* field */}
-                <FormControl>
-                    <Input {...field} placeholder="user@example.com" />
-                </FormControl>
-                {/* message */}
-                <FormMessage />
-                </FormItem>}
+              name="email"
+              control={form.control}
+              render={({ field }) => (
+                <FormItem className="mb-4">
+                  <Label>{t("email")} </Label>
+                  <FormControl>
+                    <Input {...field} placeholder="user@example.com" className="w-full"/>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
             />
 
             {/* Password */}
             <FormField 
-                name="password"
-                control={form.control}
-                render={(field) => <FormItem className="mb-2.5">
-                {/* label */}
-                <Label>Password</Label>
-                {/* field */}
-                <FormControl>
-                    <Input {...field} placeholder="********" type="password" />
-                </FormControl>
-                {/* message */}
-                <FormMessage />
-                </FormItem>}
+              name="password"
+              control={form.control}
+              render={({ field }) => (
+                <FormItem className="mb-2.5">
+                  <Label>{t("password")} </Label>
+                  <FormControl>
+                    <Input {...field} placeholder="********" type="password" className="w-full"/>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
             />
 
-            <Link href="/forgot-password" className="font-semibold text-sm text-maroon-700 mb-9 text-end">Forgot your password?</Link>
-            {/* Submit */}
+            {/* Forgot Password */}
+            <Link href="/forgot-password" className="font-semibold text-sm text-maroon-700 mb-9 text-end dark:text-softpink-300">{t("forgotpss")}</Link>
 
+            {/* Feedback */}
+              <SubmissionFeedback>{error?.message}</SubmissionFeedback>
+
+            {/* Submit */}
              <Button
                 type="submit"
                 variant="default"
                 size="default"
                 disabled={isPending || (form.formState.isSubmitted && !form.formState.isValid)}
-                className="mt-5 h-12 w-full bg-maroon-600 text-base font-medium text-white"
+                className="h-12 w-full bg-maroon-600 text-base font-medium text-white"
                 >
-                Login
+                {t("login")} 
                 </Button>
-
         </form>
     </Form>
 }
