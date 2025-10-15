@@ -1,4 +1,5 @@
 "use server";
+
 import { RegisterInput } from "@lib/schemes/auth.schema";
 
 // Server action to register a new user

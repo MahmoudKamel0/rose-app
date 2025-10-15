@@ -9,7 +9,7 @@ export default async function AuthLayout({ children }: { children: ReactNode }) 
         <div className="flex h-screen">
             {/* Left Section */}
             <main className="w-6/12 overflow-y-auto px-28 py-[3.3rem]">
-                <div className="flex w-[25.4rem] flex-col items-center justify-center">
+                <div className="mx-auto flex w-[25.4rem] flex-col items-center justify-center">
                     <div className="flex w-full justify-end">
                         <ToggleLocale />
                     </div>
@@ -29,7 +29,7 @@ export default async function AuthLayout({ children }: { children: ReactNode }) 
             </main>
 
             {/* Right Section */}
-            <section className="h-full w-6/12">
+            <section className="relative h-full w-6/12">
                 <SideImage />
             </section>
         </div>

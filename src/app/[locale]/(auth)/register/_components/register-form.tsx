@@ -3,23 +3,26 @@
 import { useTranslations } from "next-intl";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
-import { XCircle } from "lucide-react";
-import { RegisterInput, registerSchema } from "@/lib/schemes/auth.schema";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useRegister } from "../_hooks/use-register";
 import { PhoneInput } from "@components/ui/phone-input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ErrorMessage } from "@components/shared/error-message";
 import { toast } from "sonner";
+import { Link } from "@/i18n/navigation";
+import { RegisterInput, useRegisterSchema } from "@lib/schemes/auth.schema";
 
-export function RegisterForm() {
-    const router = useRouter();
+export default function RegisterForm() {
+    // Translations
     const t = useTranslations();
 
+    //Hook
+    const registerSchema = useRegisterSchema();
+
+    // Form state and validation
     const form = useForm<RegisterInput>({
         resolver: zodResolver(registerSchema),
         defaultValues: {
@@ -33,19 +36,20 @@ export function RegisterForm() {
         },
     });
 
+    // Mutation hook for registration
     const registerMutation = useRegister();
 
+    // Handle form submission
     const onSubmit = (data: RegisterInput) => {
-        console.log(data);
-
+        // Execute the registration mutation
         registerMutation.mutate(data, {
+            // Success callbacks
             onSuccess: () => {
-                toast.success("Account created successfully!");
-                router.push("/login");
+                toast.success(t("account-created-successfully"));
             },
+            // Error callback
             onError: (err) => {
                 console.error("Register error:", err);
-                toast.error(err instanceof Error ? err.message : "Something went wrong while creating the account.");
             },
         });
     };
@@ -186,7 +190,7 @@ export function RegisterForm() {
                     {/* Link to Login */}
                     <div className="mt-5 border-t border-zinc-200 pt-5 text-center text-sm">
                         <span className="text-sm font-medium text-zinc-800">{t("already")} </span>
-                        <Link href="/login" className="text-maroon-700 font-bold underline">
+                        <Link href={{ pathname: "/login" }} className="text-maroon-700 font-bold underline">
                             {t("login")}
                         </Link>
                     </div>
