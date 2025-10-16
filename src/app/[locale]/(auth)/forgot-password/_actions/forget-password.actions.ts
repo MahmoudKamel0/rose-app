@@ -1,4 +1,5 @@
 "use server";
+
 import { EmailForgetPasswordValue } from "@lib/schemas/forget-password-schema";
 import { EmailForgetPasswordResponse } from "../_types/forget-password-email-response";
 import { ResetPasswordRequest, ResetPasswordResponse } from "../_types/reset-password";
@@ -11,12 +12,10 @@ export async function SendForgetPasswordEmail(data: EmailForgetPasswordValue) {
             "Content-Type": "application/json",
         };
 
-        // Prefer the standard Authorization header (Bearer token).
-
         const res = await fetch(`${process.env.BASE_URL!}${process.env.FORGET_PASSWORD_URL!}`, {
             method: "POST",
             body: JSON.stringify(data),
-            headers: { "Content-Type": "application/json" },
+            headers,
         });
         const response: ApiResponse<EmailForgetPasswordResponse> = await res.json();
 

@@ -19,10 +19,10 @@ export default function ResetPassword({ email }: { email: string }) {
     const t = useTranslations("reset-password");
     const o = useTranslations("otp");
 
-    // hooks
+    // Hooks
     const { error, isPending, mutateAsync } = useResetPassword();
 
-    // form hook
+    // Form hook
     const form = useForm<CreateNewPasswordValues>({
         resolver: zodResolver(CreateNewPasswordSchema),
         mode: "onSubmit",
@@ -33,20 +33,21 @@ export default function ResetPassword({ email }: { email: string }) {
         },
     });
 
-    //  get is vaild form formState
+    //  Get is vaild form formState
     const { isValid } = form.formState;
 
-    // Handle form submission
+    // Functions
     const onSubmit: SubmitHandler<CreateNewPasswordValues> = async (values) => {
         if (values?.newPassword) {
             const allValues = { email, newPassword: values.newPassword };
 
-            const res = await mutateAsync(allValues, {
+            await mutateAsync(allValues, {
                 onSuccess: () => {
                     toast.success(t("toast"), {
                         description: t("toast-desc"),
                         duration: 5000,
                     });
+                    form.reset();
                     window.location.href = "/login";
                 },
             });
@@ -60,7 +61,6 @@ export default function ResetPassword({ email }: { email: string }) {
                 <h1 className="text-2xl font-semibold">{t("title")}</h1>
                 <p className="text-base font-normal">{t("desc")}</p>
             </div>
-
             {/* Password form */}
             <Form {...form}>
                 <form

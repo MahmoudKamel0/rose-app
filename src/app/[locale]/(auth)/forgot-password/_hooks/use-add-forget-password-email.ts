@@ -5,8 +5,8 @@ import { EmailForgetPasswordResponse } from "../_types/forget-password-email-res
 
 export function useAddForgetPasswordEmail() {
     const { mutateAsync, error, isPending } = useMutation({
-        mutationFn: async (data: EmailForgetPasswordValue) => {
-            const res: ApiResponse<EmailForgetPasswordResponse> = await SendForgetPasswordEmail(data);
+        mutationFn: async (email: EmailForgetPasswordValue) => {
+            const res: ApiResponse<EmailForgetPasswordResponse> = await SendForgetPasswordEmail(email);
             if (!res) {
                 throw new Error("No response from server");
             }

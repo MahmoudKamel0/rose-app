@@ -24,7 +24,6 @@ export default function ForgetPasswordEmail({
     setEmail: React.Dispatch<React.SetStateAction<string>>;
 }) {
     // Translation
-
     const t = useTranslations("forget-password-email");
 
     // hook to send email request
@@ -38,9 +37,10 @@ export default function ForgetPasswordEmail({
         },
     });
 
+    // Get is valid form formState
     const { isValid } = form.formState;
 
-    // handle submit
+    //  Functions
     const onSubmit: SubmitHandler<EmailForgetPasswordValue> = async (values) => {
         await mutateAsync(values, {
             onSuccess: () => {
