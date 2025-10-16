@@ -20,11 +20,11 @@ type OtpStepProps = {
 };
 
 export default function OtpStep({ email, setStep }: OtpStepProps) {
-    // State to store OTP error messages (string)
-    const [otpError, setOtpError] = useState<string>();
-
     // Translation hook scoped to "otp" namespace
     const t = useTranslations("otp");
+
+    // State to store OTP error messages (string)
+    const [otpError, setOtpError] = useState<string>();
 
     // React Query mutation for verifying OTP
     const { isPending, verifyOtp } = useVerifyOtp();
@@ -39,17 +39,22 @@ export default function OtpStep({ email, setStep }: OtpStepProps) {
         defaultValues: { resetCode: "" }, // Initial form values
     });
 
+    // Handle form submission
     const onSubmit = async (data: OtpFormData) => {
         await verifyOtp(data.resetCode, {
             onSuccess: () => {
-                toast.success("OTP verified successfully", {
-                    description: "You can now reset your password",
+                toast.success(t("toast.verifySuccess.title"), {
+                    description: t("toast.verifySuccess.description"),
                     duration: 4000,
                 });
                 // Move to the next step on successful OTP verification
                 setStep(FORGOT_PASSWORD_STEPS.PASSWORD);
             },
             onError: (err: Error) => {
+                toast.error(t("toast.error.title"), {
+                    description: t("toast.error.description"),
+                    duration: 4000,
+                });
                 setOtpError(err.message || "Something went wrong");
             },
         });
@@ -62,7 +67,7 @@ export default function OtpStep({ email, setStep }: OtpStepProps) {
                 <h2 className="text-lg font-medium">{t("enter-title")}</h2>
                 <p className="text-sm">
                     {t("sent", { email: email ?? "user@example.com" })}
-                    <Button variant="link" size="link" className="ms-0.5 text-blue-700 capitalize underline" type="button">
+                    <Button variant="link" size="link" className="ms-0.5 text-blue-700 capitalize underline" type="button" onClick={() => setStep(FORGOT_PASSWORD_STEPS.EMAIL)}>
                         {t("edit")}
                     </Button>
                 </p>
