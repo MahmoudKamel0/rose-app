@@ -2,7 +2,7 @@ import { cn } from "@lib/utils/cn.utils";
 
 export const INPUT_STYLE = cn(
     // Light mode
-    "w-input rounded-10 border-input focus-visible:!border-maroon-600 focus-within:!border-maroon-600 has-[input:invalid]:border-red-500 invalid:border-red-500 !flex items-center h-12 border bg-transparent px-3 py-1 text-base text-zinc-800 transition-colors placeholder:text-zinc-400 [&_svg]:stroke-zinc-400 hover:border-zinc-400 focus-visible:outline-none md:text-sm",
+    "rounded-10 w-full border-input focus-visible:!border-maroon-600 focus-within:!border-maroon-600 has-[input:invalid]:border-red-500 invalid:border-red-500 !flex items-center h-12 border bg-transparent px-3 py-1 text-base text-zinc-800 transition-colors placeholder:text-zinc-400 [&_svg]:stroke-zinc-400 hover:border-zinc-400 focus-visible:outline-none md:text-sm",
     "disabled:cursor-not-allowed disabled:border-transparent disabled:bg-zinc-100",
     "has-[input:disabled]:cursor-not-allowed has-[input:disabled]:border-transparent has-[input:disabled]:bg-zinc-100 aria-[invalid=true]:border-red-500",
 

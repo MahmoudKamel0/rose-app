@@ -1,12 +1,37 @@
-import React from "react";
+import { ReactNode } from "react";
+import SideImage from "./_components/layout/side-image";
+import DecorationImage from "./_components/layout/decoration-image";
+import ToggleLocale from "@components/layout/header/toggle-locale";
+import AuthMessage from "./_components/layout/auth-message";
 
-export default function AuthLayout({ children }: { children: React.ReactNode }) {
+export default async function AuthLayout({ children }: { children: ReactNode }) {
     return (
-        <div className="grid h-screen grid-cols-2">
-            <div className="flex h-full items-center">
-                <div className="mx-auto w-[406px]">{children}</div>
-            </div>
-            <div className="h-full bg-red-400">welcome</div>
+        <div className="flex h-screen">
+            {/* Left Section */}
+            <main className="w-6/12 overflow-y-auto px-28 py-[3.3rem]">
+                <div className="mx-auto flex w-[25.4rem] flex-col items-center justify-center">
+                    <div className="flex w-full justify-end">
+                        <ToggleLocale />
+                    </div>
+
+                    {/* Decoration */}
+                    <DecorationImage margin="mb-10 mt-4" />
+
+                    {/* Auth Message */}
+                    <AuthMessage />
+
+                    {/* Children */}
+                    {children}
+
+                    {/* Decoration */}
+                    <DecorationImage rotated margin="mt-10 mb-0" />
+                </div>
+            </main>
+
+            {/* Right Section */}
+            <section className="relative h-full w-6/12">
+                <SideImage />
+            </section>
         </div>
     );
 }
