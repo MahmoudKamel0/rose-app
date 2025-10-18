@@ -12,6 +12,7 @@ import Header from "@components/features/header/header";
 import Footer from "@components/layout/footer";
 import Headers from "@components/features/header/header";
 import Headerr from "@components/layout/header";
+import { Toaster } from "@components/ui/sonner";
 
 // Generate static params for each locale
 export function generateStaticParams() {
@@ -57,7 +58,10 @@ export default async function LocaleLayout({ children, params }: Props) {
                 {/* Providers */}
                 {/* <Header /> */}
 
-                <Providers>{children}</Providers>
+                <Providers>
+                 
+                    {children}
+                </Providers>
             </body>
         </html>
     );

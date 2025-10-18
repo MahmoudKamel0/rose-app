@@ -24,5 +24,33 @@
     "testimonials-content": "I've been ordering from this flower shop for years and they never disappoint. The quality and service are exceptional!!",
     "testimonials-date": "Reviewed on {date}",
     "testimonials-subtitle": "Testimonials",
-    "testimonials-heading": "Real Words from Happy Customers"
+    "testimonials-heading": "Real Words from Happy Customers",
+
+    "otp": {
+        "enter-title": "Enter the OTP Code",
+        "sent": "We have sent a 6-digit code to {email}",
+        "edit": "edit",
+        "sending": "Sending...",
+        "send-new": "Send new code",
+        "verify": "Verify OTP",
+        "verifying": "Verifying...",
+        "error": "Please enter all 6 digits",
+        "need-help": "Need help?",
+        "contact-us": "Contact us",
+        "resend-in": "Resend in {seconds}s",
+        "toast": {
+            "verifySuccess": {
+                "title": "OTP verified successfully",
+                "description": "You can now reset your password"
+            },
+            "success": {
+                "title": "OTP resent successfully",
+                "description": "Please check your email for the new OTP"
+            },
+            "error": {
+                "title": "Failed to resend OTP",
+                "description": "Something went wrong, please try again later"
+            }
+        }
+    }
 }

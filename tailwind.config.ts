@@ -46,9 +46,6 @@ const config: Config = {
                     "4": "hsl(var(--chart-4))",
                     "5": "hsl(var(--chart-5))",
                 },
-<<<<<<< HEAD
-=======
-
                 brand: {
                     light: "#3AB0FF",
                     DEFAULT: "#0077FF",
@@ -57,13 +54,11 @@ const config: Config = {
                 customGray: "#f5f5f5",
                 maroon: "#FBEAEA",
                 "maroon-600": "#A6252A",
->>>>>>> f548faeb73a5e172321986a7289b20a097d352d4
             },
             borderRadius: {
                 lg: "var(--radius)",
                 md: "calc(var(--radius) - 2px)",
                 sm: "calc(var(--radius) - 4px)",
-<<<<<<< HEAD
                 10: "10px",
             },
             height: {
@@ -74,13 +69,6 @@ const config: Config = {
             },
         },
     },
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-=======
-            },
-        },
-    },
->>>>>>> f548faeb73a5e172321986a7289b20a097d352d4
-    plugins: [require("tailwindcss-animate")],
 };
 
 export default config;
