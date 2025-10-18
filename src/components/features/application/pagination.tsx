@@ -1,8 +1,9 @@
 "use client";
+
 import { usePagination } from "@/hooks/use-pagination";
 import { cn } from "@lib/utils/cn.utils";
 import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from "lucide-react";
-import { ReactNode, useId, useState } from "react";
+import { ReactNode, useId } from "react";
 
 /**
  * Pagination component
@@ -19,11 +20,11 @@ import { ReactNode, useId, useState } from "react";
  *
  * @component
  */
-export default function Pagination() {
+export default function Pagination({ totalPages }: { totalPages: number }) {
     const id = useId();
     const { currentPage, pageRange, handlePageChange, goToPreviousPage, goToNextPage, jumpBackward, jumpForward } = usePagination({
-        totalPages: 100,
-        siblingCount: 1,
+        totalPages,
+        siblingCount: 2,
     });
 
     return (

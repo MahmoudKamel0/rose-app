@@ -1,8 +1,11 @@
 "use client";
-import { useState, useCallback, useMemo } from "react";
+
+import { useState, useCallback, useMemo, useEffect } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
 
 interface PaginationReturn {
     currentPage: number;
+    totalPages: number;
     pageRange: (number | string)[];
     handlePageChange: (page: number) => void;
     goToPreviousPage: () => void;
@@ -11,107 +14,125 @@ interface PaginationReturn {
     jumpForward: (steps?: number) => void;
 }
 
-/**
- * Custom React hook for pagination logic.
- *
- * Provides state and utility methods to manage paginated UI, including:
- * - Navigation between pages (next, previous, jump forward/backward)
- * - Calculation of the display page range with optional sibling count and ellipsis
- *
- * @param {Object} params
- * @param {number} params.totalPages - Total number of pages available in the pagination control (required).
- * @param {number} [params.initialPage=1] - The page to start on (default: 1).
- * @param {number} [params.siblingCount=1] - How many sibling pages to show adjacent to the current page (default: 1).
- *
- * @returns {PaginationReturn} Pagination state and methods:
- *   - {number} `currentPage`           The current active page.
- *   - {Array<number | string>} `pageRange`    Array of page numbers and ellipsis ("...") for pagination control display.
- *   - {Function} `handlePageChange`    Set a specific page number as the current page.
- *   - {Function} `goToPreviousPage`    Move to the previous page.
- *   - {Function} `goToNextPage`        Move to the next page.
- *   - {Function} `jumpBackward`        Jump backward by a given number of pages (default: 10).
- *   - {Function} `jumpForward`         Jump forward by a given number of pages (default: 10).
- *
- * @example
- * const { currentPage, pageRange, goToNextPage, handlePageChange } = usePagination({ totalPages: 10 });
- */
-export function usePagination({
-    totalPages,
-    initialPage = 1,
-    siblingCount = 1,
-}: {
+interface UsePaginationParams {
     totalPages: number;
-    initialPage?: number;
+    pageParamName?: string;
     siblingCount?: number;
-}): PaginationReturn {
-    const [currentPage, setCurrentPage] = useState<number>(initialPage);
+}
 
-    // Handle manual page change (when user clicks a specific page number)
-    const handlePageChange = useCallback(
+export function usePagination({ totalPages, pageParamName = "page", siblingCount = 0 }: UsePaginationParams): PaginationReturn {
+    const router = useRouter(); // initialize router from Next.js navigation
+    const searchParams = useSearchParams(); // get URL search parameters
+
+    const getPageFromUrl = () => { // fetch the current page number from URL
+        const param = searchParams.get(pageParamName);
+        if (!param) return 1;
+
+        const page = parseInt(param, 10);
+        if (page < 1) return 1;
+        if (page > totalPages) return totalPages;
+        return page;
+    };
+
+    const [currentPage, setCurrentPage] = useState(getPageFromUrl()); // state management for current page
+
+    useEffect(() => { // synchronize currentPage state with the URL
+        const urlPage = getPageFromUrl();
+        if (urlPage !== currentPage) {
+            setCurrentPage(urlPage);
+        }
+    }, [searchParams]);
+
+    const updateUrl = (page: number) => { // update the URL with new page value
+        const params = new URLSearchParams(searchParams.toString());
+
+        if (page === 1) {
+            params.delete(pageParamName);
+        } else {
+            params.set(pageParamName, page.toString());
+        }
+
+        const newUrl = params.toString() ? `?${params.toString()}` : window.location.pathname;
+        router.push(newUrl, { scroll: false });
+    };
+
+    const handlePageChange = useCallback( // handle going to a specific page
         (page: number) => {
-            if (page >= 1 && page <= totalPages) {
+            if (page >= 1 && page <= totalPages && page !== currentPage) {
                 setCurrentPage(page);
+                updateUrl(page);
             }
         },
-        [totalPages]
+        [currentPage, totalPages]
     );
 
-    // Go to the previous page (won’t go below page 1)
-    const goToPreviousPage = useCallback(() => {
-        setCurrentPage((prev) => Math.max(1, prev - 1));
-    }, []);
+    const goToPreviousPage = useCallback(() => { // go to previous page
+        if (currentPage > 1) {
+            handlePageChange(currentPage - 1);
+        }
+    }, [currentPage, handlePageChange]);
 
-    // Go to the next page (won’t go beyond the last page)
-    const goToNextPage = useCallback(() => {
-        setCurrentPage((prev) => Math.min(totalPages, prev + 1));
-    }, [totalPages]);
+    const goToNextPage = useCallback(() => { // go to next page
+        if (currentPage < totalPages) {
+            handlePageChange(currentPage + 1);
+        }
+    }, [currentPage, totalPages, handlePageChange]);
 
-    // Jump backward by a given number of steps (default: 10)
-    // Ensures it doesn't go below page 1
-    const jumpBackward = useCallback((steps = 10) => {
-        setCurrentPage((prev) => Math.max(1, prev - steps));
-    }, []);
-
-    // Jump forward by a given number of steps (default: 10)
-    // Ensures it doesn't exceed the total number of pages
-    const jumpForward = useCallback(
+    const jumpBackward = useCallback( // jump backward by a number of pages
         (steps = 10) => {
-            setCurrentPage((prev) => Math.min(totalPages, prev + steps));
+            const newPage = Math.max(1, currentPage - steps);
+            handlePageChange(newPage);
         },
-        [totalPages]
+        [currentPage, handlePageChange]
     );
 
-    const pageRange = useMemo(() => {
-        const range: (number | string)[] = [];
+    const jumpForward = useCallback( // jump forward by a number of pages
+        (steps = 10) => {
+            const newPage = Math.min(totalPages, currentPage + steps);
+            handlePageChange(newPage);
+        },
+        [currentPage, totalPages, handlePageChange]
+    );
 
-        const leftSiblingIndex = Math.max(currentPage - siblingCount, 1);
-        const rightSiblingIndex = Math.min(currentPage + siblingCount, totalPages);
+    const pageRange = useMemo(() => { // calculate visible range of page numbers
+        if (totalPages === 1) return [1];
 
-        const shouldShowLeftDots = leftSiblingIndex > 2;
-        const shouldShowRightDots = rightSiblingIndex < totalPages - 1;
-
-        if (!shouldShowLeftDots && shouldShowRightDots) {
-            const leftItemCount = 3 + 2 * siblingCount;
-            const leftRange = Array.from({ length: leftItemCount }, (_, i) => i + 1);
-            return [...leftRange, "...", totalPages];
+        if (totalPages <= 4) {
+            return Array.from({ length: totalPages }, (_, i) => i + 1);
         }
 
-        if (shouldShowLeftDots && !shouldShowRightDots) {
-            const rightItemCount = 3 + 2 * siblingCount;
-            const rightRange = Array.from({ length: rightItemCount }, (_, i) => totalPages - rightItemCount + i + 1);
-            return [1, "...", ...rightRange];
+        const pages: (number | string)[] = [];
+
+        const leftSide = Math.max(2, currentPage - siblingCount);
+        const rightSide = Math.min(totalPages - 1, currentPage + siblingCount);
+
+        const needLeftDots = leftSide > 2;
+        const needRightDots = rightSide < totalPages - 1;
+
+        pages.push(1);
+
+        if (needLeftDots) { // add left ellipsis if needed
+            pages.push("...");
         }
 
-        if (shouldShowLeftDots && shouldShowRightDots) {
-            const middleRange = Array.from({ length: rightSiblingIndex - leftSiblingIndex + 1 }, (_, i) => leftSiblingIndex + i);
-            return [1, "...", ...middleRange, "...", totalPages];
+        for (let i = leftSide; i <= rightSide; i++) { // add range of middle pages
+            if (i !== 1 && i !== totalPages) {
+                pages.push(i);
+            }
         }
 
-        return range;
+        if (needRightDots) { // add right ellipsis if needed
+            pages.push("...");
+        }
+
+        pages.push(totalPages);
+
+        return pages;
     }, [currentPage, totalPages, siblingCount]);
 
-    return {
+    return { // expose pagination API
         currentPage,
+        totalPages,
         pageRange,
         handlePageChange,
         goToPreviousPage,

@@ -1,6 +1,5 @@
 {
     "extends": ["next/core-web-vitals", "next/typescript"],
-    "plugins": ["local-rules"],
     "rules": {
         "quotes": ["error", "double", { "avoidEscape": true, "allowTemplateLiterals": true }],
         "semi": "error",

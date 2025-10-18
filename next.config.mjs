@@ -1,8 +1,7 @@
-import { withSentryConfig } from "@sentry/nextjs";
 import createNextIntlPlugin from "next-intl/plugin";
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    // rmote images source
+    // remote images source
     images: {
         remotePatterns: [
             {
