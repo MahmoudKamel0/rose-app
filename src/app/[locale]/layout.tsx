@@ -58,10 +58,7 @@ export default async function LocaleLayout({ children, params }: Props) {
                 {/* Providers */}
                 {/* <Header /> */}
 
-                <Providers>
-                 
-                    {children}
-                </Providers>
+                <Providers>{children}</Providers>
             </body>
         </html>
     );
