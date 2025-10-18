@@ -1,7 +1,8 @@
 import { Badge } from "@components/ui/badge";
 import { cn } from "@lib/utils/cn.utils";
-import { Heart, ShoppingCart, Bell } from "lucide-react";
+import { Heart, ShoppingCart } from "lucide-react";
 import Link from "next/link";
+import NotificationMenu from "./Notification";
 
 /**
  * ShoShopHeader
@@ -16,13 +17,12 @@ import Link from "next/link";
  */
 
 export default function ShopHeader() {
-    
     // BadgeStyle: reusable utility class for notification/favorite/cart badge styling
     const BadgeStyle = cn(
         "text-10 absolute -top-1.5 -right-1.5 flex h-3.5 w-3.5 items-center justify-center p-2 font-medium text-white",
         "dark:bg-red-500 dark:text-zinc-50"
-    )
-    
+    );
+
     return (
         <div className={cn("flex items-center gap-2.5 border-x border-zinc-200 px-4 py-3", "dark:border-zinc-700")}>
             {/* Favorites icon button - navigates to user's favorite items */}
@@ -37,10 +37,7 @@ export default function ShopHeader() {
             </Link>
 
             {/* Notification bell icon button - shows number of notifications */}
-            <Link className={cn("relative")} href="/">
-                <Bell className={cn("stroke-zinc-700 dark:stroke-zinc-50")} />
-                <Badge className={BadgeStyle}>8</Badge>
-            </Link>
+            <NotificationMenu />
         </div>
     );
 }

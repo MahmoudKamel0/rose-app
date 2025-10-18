@@ -8,46 +8,59 @@ import { Button } from "@/components/ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CreateNewPasswordSchema, CreateNewPasswordValues } from "@/lib/schemas/forget-password-schema";
 import { useResetPassword } from "../_hooks/use-reset-password";
-import { Link } from "lucide-react";
 import { AuthError } from "../../_components/auth-error";
+import { useTranslations } from "next-intl";
+import Link from "next/link";
+import { toast } from "sonner";
 
 // Forget password step: Create a new password
 export default function ResetPassword({ email }: { email: string }) {
+    // Translation
+    const t = useTranslations("reset-password");
+    const o = useTranslations("otp");
+
+    // Hooks
     const { error, isPending, mutateAsync } = useResetPassword();
 
+    // Form hook
     const form = useForm<CreateNewPasswordValues>({
         resolver: zodResolver(CreateNewPasswordSchema),
         mode: "onSubmit",
+
         defaultValues: {
             newPassword: "",
             rePassword: "",
         },
     });
 
-    // Handle form submission
+    //  Get is vaild form formState
+    const { isValid } = form.formState;
+
+    // Functions
     const onSubmit: SubmitHandler<CreateNewPasswordValues> = async (values) => {
         if (values?.newPassword) {
             const allValues = { email, newPassword: values.newPassword };
 
-            const res = await mutateAsync(allValues, {
+            await mutateAsync(allValues, {
                 onSuccess: () => {
-                    console.log("success");
+                    toast.success(t("toast"), {
+                        description: t("toast-desc"),
+                        duration: 5000,
+                    });
+                    form.reset();
+                    window.location.href = "/login";
                 },
             });
-            console.log(res);
         }
     };
 
     return (
         <div className="w-full">
-            {/* Back button */}
-
             {/* Heading and description */}
             <div className="dark:zinc-50 mb-2 flex flex-col items-start justify-center gap-2 text-zinc-800 dark:text-zinc-50">
-                <h1 className="text-2xl font-semibold">Create a New Password</h1>
-                <p className="text-base font-normal">Set a strong password to secure your account.</p>
+                <h1 className="text-2xl font-semibold">{t("title")}</h1>
+                <p className="text-base font-normal">{t("desc")}</p>
             </div>
-
             {/* Password form */}
             <Form {...form}>
                 <form
@@ -60,7 +73,7 @@ export default function ResetPassword({ email }: { email: string }) {
                         control={form.control}
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel className="text-base font-medium text-zinc-800 dark:text-zinc-50">New Password</FormLabel>
+                                <FormLabel className="text-base font-medium">{t("newPassLabel")}</FormLabel>
                                 <FormControl>
                                     <Input
                                         {...field}
@@ -80,9 +93,7 @@ export default function ResetPassword({ email }: { email: string }) {
                         control={form.control}
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel className="text-base font-medium text-zinc-800 dark:text-zinc-50">
-                                    Confirm New Password
-                                </FormLabel>
+                                <FormLabel className="text-base font-medium">{t("resetPassLabel")}</FormLabel>
                                 <FormControl>
                                     <Input
                                         {...field}
@@ -100,11 +111,19 @@ export default function ResetPassword({ email }: { email: string }) {
                     {error && <AuthError error={error.message} />}
 
                     {/* Submit button */}
-                    <Button type="submit" className="w-input font-semibold text-white" disabled={isPending}>
-                        {isPending ? "Loading..." : "Reset password"}
+                    <Button type="submit" className="w-input font-semibold text-white" disabled={isPending || !isValid}>
+                        {isPending ? t("loading") : t("continue")}
                     </Button>
                 </form>
             </Form>
+            <div className="mt-4">
+                <p className="mt-5 text-center text-sm font-medium text-zinc-800 dark:text-zinc-50">
+                    {o("need-help")}{" "}
+                    <Link href="/contact" className="text-maroon-700 dark:text-softpink-300 font-bold">
+                        {o("contact-us")}
+                    </Link>
+                </p>
+            </div>
         </div>
     );
 }

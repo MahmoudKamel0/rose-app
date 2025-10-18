@@ -25,6 +25,30 @@
     "testimonials-date": "Reviewed on {date}",
     "testimonials-subtitle": "Testimonials",
     "testimonials-heading": "Real Words from Happy Customers",
+
+    "forget-password-email": {
+        "title": "Forgot Password",
+        "desc": "Worry not, we'll send you instructions to help you reset it.",
+        "label": "Email",
+        "continue": "Continue",
+        "checking": "checking...",
+        "footer-msg": "Don't have an account yet?",
+        "footer-link": "Create one now!",
+        "toast": "A secret code will be sent to your email.",
+        "toast-desc": "wait until you recive the secret code"
+    },
+
+    "reset-password": {
+        "title": "Create a New Password",
+        "desc": "Set a strong password to secure your account.",
+        "newPassLabel": "New Password",
+        "resetPassLabel": "Confirm New Password",
+        "continue": "Reset password",
+        "loading": "Loading...",
+        "toast": "Your password has been updated successfully..",
+        "toast-desc": "You will be redirected to the login page. Please wait."
+    },
+
     "firstName": "First Name",
     "lastName": "Last Name",
     "email": "Email",
