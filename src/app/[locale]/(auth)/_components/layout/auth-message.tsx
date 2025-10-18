@@ -1,9 +1,9 @@
 "use client";
 
-import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { greatVibes } from "@fonts";
 import { cn } from "@lib/utils/cn.utils";
+import { usePathname } from "@/i18n/navigation";
 
 export default function AuthMessage() {
     // Determine the current path to display the appropriate message
