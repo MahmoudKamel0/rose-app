@@ -26,10 +26,10 @@ export default function ForgetPasswordEmail({
     // Translation
     const t = useTranslations("forget-password-email");
 
-    // hook to send email request
+    // Hooks
     const { mutateAsync, isPending, error } = useAddForgetPasswordEmail();
 
-    // form config with zod validation
+    // Form
     const form = useForm({
         resolver: zodResolver(EmailForgetPasswordSchema),
         defaultValues: {
