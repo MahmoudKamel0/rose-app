@@ -58,5 +58,32 @@
     "password-first-capital": "Password must start with a capital letter",
     "password-special-char": "Password must contain at least one special character",
     "confirmPassword-required": "Confirm password is required",
-    "passwords-not-match": "Passwords do not match"
+    "passwords-not-match": "Passwords do not match",
+    "otp": {
+        "enter-title": "Enter the OTP Code",
+        "sent": "We have sent a 6-digit code to {email}",
+        "edit": "edit",
+        "sending": "Sending...",
+        "send-new": "Send new code",
+        "verify": "Verify OTP",
+        "verifying": "Verifying...",
+        "error": "Please enter all 6 digits",
+        "need-help": "Need help?",
+        "contact-us": "Contact us",
+        "resend-in": "Resend in {seconds}s",
+        "toast": {
+            "verifySuccess": {
+                "title": "OTP verified successfully",
+                "description": "You can now reset your password"
+            },
+            "success": {
+                "title": "OTP resent successfully",
+                "description": "Please check your email for the new OTP"
+            },
+            "error": {
+                "title": "Failed to resend OTP",
+                "description": "Something went wrong, please try again later"
+            }
+        }
+    }
 }

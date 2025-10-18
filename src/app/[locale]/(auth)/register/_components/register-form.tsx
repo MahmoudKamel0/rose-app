@@ -110,7 +110,7 @@ export default function RegisterForm() {
                         render={({ field }) => (
                             <FormItem>
                                 <FormLabel>{t("phone")}</FormLabel>
-                                <FormControl>
+                                <FormControl className="w-full">
                                     <PhoneInput
                                         className="w-full"
                                         placeholder="1012345678"
@@ -189,8 +189,8 @@ export default function RegisterForm() {
 
                     {/* Link to Login */}
                     <div className="mt-5 border-t border-zinc-200 pt-5 text-center text-sm">
-                        <span className="text-sm font-medium text-zinc-800">{t("already")} </span>
-                        <Link href={{ pathname: "/login" }} className="text-maroon-700 font-bold underline">
+                        <span className="text-sm font-medium text-zinc-800 dark:text-zinc-50">{t("already")} </span>
+                        <Link href={{ pathname: "/login" }} className="text-maroon-700 dark:text-softpink-300 font-bold underline">
                             {t("login")}
                         </Link>
                     </div>

@@ -1,3 +1,5 @@
+"use client";
+
 import * as React from "react";
 import { CheckIcon, ChevronsUpDown } from "lucide-react";
 import * as RPNInput from "react-phone-number-input";
@@ -9,6 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@lib/utils/cn.utils";
+import { INPUT_STYLE } from "@lib/constants/style.constant";
 
 type PhoneInputProps = Omit<React.ComponentProps<"input">, "onChange" | "value" | "ref"> &
     Omit<RPNInput.Props<typeof RPNInput.default>, "onChange"> & {
@@ -18,16 +21,7 @@ type PhoneInputProps = Omit<React.ComponentProps<"input">, "onChange" | "value" 
 const PhoneInput = React.forwardRef<React.ElementRef<typeof RPNInput.default>, PhoneInputProps>(
     ({ className, onChange, value, ...props }, ref) => {
         return (
-            <div
-                className={cn(
-                    // Main container style
-                    "border-input focus-within:!border-maroon-600 focus-visible:!border-maroon-600 !flex h-12 w-full items-center rounded-[10px] border bg-transparent px-3 py-1 text-base text-zinc-800 transition-colors placeholder:text-zinc-400 invalid:border-red-500 hover:border-zinc-400 has-[input:invalid]:border-red-500 md:text-sm [&_svg]:stroke-zinc-400",
-                    // Disabled styles
-                    "disabled:cursor-not-allowed disabled:border-transparent disabled:bg-zinc-100",
-                    "has-[input:disabled]:cursor-not-allowed has-[input:disabled]:border-transparent has-[input:disabled]:bg-zinc-100",
-                    className
-                )}
-            >
+            <div className={cn(INPUT_STYLE, className)}>
                 <RPNInput.default
                     ref={ref}
                     className="flex w-full"
@@ -49,7 +43,7 @@ const InputComponent = React.forwardRef<HTMLInputElement, React.ComponentProps<"
     <Input
         ref={ref}
         placeholder="Phone number"
-        className={cn("rounded-none border-0 text-sm focus-visible:ring-0 focus-visible:ring-offset-0", className)}
+        className={cn("rounded-none border-0 text-sm focus-visible:ring-0 focus-visible:ring-offset-0 dark:bg-transparent", className)}
         {...props}
     />
 ));
@@ -82,15 +76,17 @@ const CountrySelect = ({ disabled, value: selectedCountry, options: countryList,
                 <Button
                     type="button"
                     variant="ghost"
-                    className="flex items-center gap-2 rounded-none border-0 px-3 py-2 text-sm font-normal focus:z-10"
+                    className="flex items-center gap-2 rounded-none border-0 px-3 py-2 text-sm font-normal hover:bg-transparent focus:z-10"
                     disabled={disabled}
                 >
-                    <div className="flex items-center gap-2">
-                        <div className="flex h-6 w-6 items-center justify-center overflow-hidden rounded-full">
+                    <div className="flex items-center gap-2 hover:bg-transparent">
+                        <div className="flex h-6 w-6 items-center justify-center overflow-hidden rounded-full hover:bg-transparent">
                             <FlagComponent country={selectedCountry} countryName={selectedCountry} />
                         </div>
-                        <span className="text-sm font-medium">{selectedCountry}</span>
-                        <span className="text-muted-foreground text-sm">(+{RPNInput.getCountryCallingCode(selectedCountry)})</span>
+                        <span className="text-sm font-medium hover:bg-transparent">{selectedCountry}</span>
+                        <span className="text-muted-foreground text-sm hover:bg-transparent">
+                            (+{RPNInput.getCountryCallingCode(selectedCountry)})
+                        </span>
                         <ChevronsUpDown className={cn("size-4 opacity-50", disabled ? "hidden" : "opacity-100")} />
                     </div>
                 </Button>
