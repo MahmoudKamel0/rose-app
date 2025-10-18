@@ -9,9 +9,12 @@ import OtpStep from "../otp-step";
 import ResetPassword from "../reset-password";
 
 export default function ForgotPasswordLayout() {
-    const [email, setEmail] = useState<string | null>(null);
+    // Manage  email state
+    const [email, setEmail] = useState<string>("");
+    // Manage current step state
     const [step, setStep] = useState<Step>(FORGOT_PASSWORD_STEPS.EMAIL);
 
+    // Define components for each step
     const steps = {
         [FORGOT_PASSWORD_STEPS.EMAIL]: <EmailStep setEmail={setEmail} setStep={setStep} />,
         [FORGOT_PASSWORD_STEPS.OTP]: <OtpStep email={email} setStep={setStep} />,
