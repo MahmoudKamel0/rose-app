@@ -20,5 +20,13 @@ export default function ToggleLocale() {
         );
     }
 
-    return <Button onClick={toggleLocale}>{locale === "en" ? "العربية" : "English"}</Button>;
+    return (
+        <Button
+            onClick={toggleLocale}
+            variant="ghost"
+            className="px-2 py-1 align-middle font-[Zain] text-base leading-[100%] font-normal tracking-normal text-zinc-700 hover:bg-transparent dark:hover:bg-transparent hover:text-zinc-900"
+        >
+            {locale === "en" ? "العربية" : "English"}
+        </Button>
+    );
 }

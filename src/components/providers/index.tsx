@@ -3,6 +3,7 @@ import NextIntlClientProvider from "./nextIntl-client/components/nextIntl-client
 import ReactQueryProvider from "./components/react-query.provider";
 import { ThemeProvider } from "./components/theme.provider";
 import NextAuthProvider from "./components/next-auth.provider";
+import { Toaster } from "@components/ui/sonner";
 
 export default function Providers({ children }: { children: React.ReactNode }) {
     return (
@@ -10,8 +11,9 @@ export default function Providers({ children }: { children: React.ReactNode }) {
             <NextAuthProvider>
                 <NextIntlClientProvider>
                      <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-                        {children}
-                            {/* <ModeToggle /> */}
+                        <Toaster position="bottom-right" richColors />
+                            {children}
+                        <ModeToggle />
                     </ThemeProvider>
                 </NextIntlClientProvider>
             </NextAuthProvider>

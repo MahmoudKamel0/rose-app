@@ -29,9 +29,9 @@ export default function TopHeader() {
     const IS_AUTH = false;
 
     const LoginLinkStyle = cn(
-        "!flex items-center ps-4 gap-1.5 text-zinc-700 [&-svg]:stoke-zinc-700", 
+        "!flex items-center ps-4 gap-1.5 text-zinc-700 [&-svg]:stoke-zinc-700",
         "dark:text-zinc-50 dark:[&-svg]:stoke-zinc-50"
-    )
+    );
 
     return (
         <div className={cn("flex items-center gap-4 px-9 py-1")}>
@@ -47,8 +47,13 @@ export default function TopHeader() {
             <SearchInput className={cn("flex-auto")} placeholder="What awesome gift are you looking for?" />
 
             {/* (Is Authenticated): display Account user, Or display link sign in if not authenticated */}
-            {IS_AUTH ? <AccountDropdown /> : <Link href="/" className={LoginLinkStyle}><User size="20" /> Login</Link>
-            }
+            {IS_AUTH ? (
+                <AccountDropdown />
+            ) : (
+                <Link href="/" className={LoginLinkStyle}>
+                    <User size="20" /> Login
+                </Link>
+            )}
 
             {/* Shop controls: favorites, shopping cart, notifications */}
             <ShopHeader />

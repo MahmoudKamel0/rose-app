@@ -1,5 +1,8 @@
+import React from "react";
+import RegisterForm from "./_components/register-form";
+
 export default function Page() {
-    return(
-        <h1>Register Page</h1>
-    )
+    // Render the RegisterForm component
+    return <RegisterForm />;
 }
+

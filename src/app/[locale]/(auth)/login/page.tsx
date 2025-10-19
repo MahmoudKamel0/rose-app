@@ -1,4 +1,3 @@
-
 import LoginForm from "./_components/login-form";
 import { edwardian } from "@fonts";
 import { getTranslations } from "next-intl/server";

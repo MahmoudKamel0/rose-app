@@ -11,7 +11,7 @@ const buttonVariants = cva(
             variant: {
                 // Button Design (one)
                 default:
-                    "bg-primary text-primary-foreground hover:bg-maroon-700 disabled:bg-zinc-300 disabled:text-zinc-500 dark:bg-softpink-300 dark:text-zinc-800 dark:hover:bg-softpink-400 dark:disabled:text-zinc-600 [&_svg]:stroke-primary-foreground dark:[&_svg]:stroke-zinc-600",
+                    "bg-maroon-600 text-primary-foreground hover:bg-maroon-700 disabled:bg-zinc-300 disabled:text-zinc-500 dark:bg-softpink-300 dark:text-zinc-800 dark:hover:bg-softpink-400 dark:disabled:text-zinc-600 [&_svg]:stroke-primary-foreground dark:[&_svg]:stroke-zinc-600",
                 // Button Design (two)
                 secondary:
                     "bg-destructive text-destructive-foreground hover:bg-maroon-100 disabled:bg-zinc-300 disabled:text-zinc-500 dark:bg-zinc-700 dark:text-softpink-300 dark:hover:bg-zinc-600 dark:disabled:text-zinc-600 [&_svg]:stroke-destructive-foreground disabled:[&_svg]:stroke-zinc-500 dark:[&_svg]:stroke-softpink-300 dark:disabled:[&_svg]:stroke-zinc-600",
@@ -26,12 +26,19 @@ const buttonVariants = cva(
                     "bg-transparent text-zinc-800 hover:bg-zinc-100 disabled:bg-zinc-100 disabled:text-zinc-400 [&_svg]:stroke-zinc-800 disabled:[&_svg]:stroke-zinc-400 dark:bg-transparent dark:text-zinc-50 dark:hover:bg-zinc-700 dark:disabled:bg-zinc-700 dark:disabled:text-zinc-600 dark:[&_svg]:stroke-zinc-50 dark:disabled:[&_svg]:stroke-zinc-600",
                 // Button Design (sex)
                 red: "bg-red-600 text-white hover:bg-red-700 disabled:bg-zinc-300 disabled:text-zinc-500 [&_svg]:stroke-white disabled:[&_svg]:stroke-zinc-500 dark:bg-red-500 dark:text-zinc-50 dark:hover:bg-red-600 dark:disabled:bg-zinc-700 dark:disabled:text-zinc-600 dark:[&_svg]:stroke-zinc-50 dark:disabled:[&_svg]:stroke-zinc-600",
+                // (seven) NEW → Link style
+                link: "bg-transparent text-primary underline-offset-4 hover:underline hover:text-maroon-700 disabled:text-zinc-400  dark:hover:text-softpink-400 dark:disabled:text-zinc-600 [&_svg]:stroke-current",
+
+                // (eight) NEW → Ghost style
+                ghost: "bg-transparent text-primary hover:bg-maroon-50 hover:text-maroon-700 disabled:text-zinc-400 dark:text-zinc-50 dark:hover:bg-zinc-700 dark:hover:text-softpink-400 dark:disabled:text-zinc-600 [&_svg]:stroke-current",
             },
             size: {
                 default: "h-button w-button px-4 py-2",
                 sm: "h-8 rounded-md px-3 text-xs",
                 lg: "h-10 rounded-md px-8",
                 icon: "h-9 w-9",
+                // Added "link" size for inline text-style buttons (no padding, auto height, inline-flex).
+                link: "h-auto p-0 inline-flex items-center text-sm",
             },
         },
         defaultVariants: {
@@ -72,8 +79,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({ className, va
  */
 const MainButton: React.FC<ButtonProps & { isLoading?: boolean }> = ({ children, isLoading, ...props }) => (
     <Button className={cn("!flex justify-center")} {...props}>
-        {children}
-        {isLoading && <Spinner />}
+        {children} {isLoading && <Spinner />}
     </Button>
 );
 
