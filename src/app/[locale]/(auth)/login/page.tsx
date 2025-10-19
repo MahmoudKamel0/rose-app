@@ -1,8 +1,9 @@
 
-import Link from "next/link";
 import LoginForm from "./_components/login-form";
 import { edwardian } from "@fonts";
 import { getTranslations } from "next-intl/server";
+import { cn } from "@lib/utils/cn.utils";
+import { Link } from "@/i18n/navigation";
 
 export default async function Page() {
   const t = await getTranslations("login");
@@ -11,7 +12,7 @@ export default async function Page() {
     <main className="flex items-center justify-center min-h-screen dark:bg-zinc-800">
       <div className="max-w-[29rem] space-y-10">
         {/* Headline */}
-        <h1 className={`${edwardian.className} text-5xl text-center text-maroon-700 mb-4 dark:text-softpink-300`}> {t("title")}</h1>
+        <h1 className={cn(edwardian.className, "text-5xl text-center text-maroon-700 mb-4 dark:text-softpink-30")}> {t("title")}</h1>
 
         {/* Login form */}
         <LoginForm/>

@@ -1,16 +1,19 @@
+import { useTranslations } from "next-intl";
 import { z } from "zod";
 
-// Login Schema
-const loginSchema = z.object({
-    email: z.email("Please enter a valid email address").nonempty("Please enter your email address"),
-    password: z.string("Please enter your password").nonempty("Please enter your password")
-})
+export const useLoginSchema = () => {
+  // Translation
+  const t = useTranslations();
 
-type LoginValues = z.infer<typeof loginSchema>;
+  return z.object({
+    email: z
+      .email({ message: t("email-invalid") })
+      .min(1, { message: t("email-required") }),
 
-export { loginSchema };
+    password: z
+      .string()
+      .min(1, { message: t("password-required") }),
+  });
+};
 
-export type { LoginValues };
-
-
-
+export type LoginFields = z.infer<ReturnType<typeof useLoginSchema>>;

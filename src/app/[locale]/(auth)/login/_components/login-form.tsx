@@ -1,12 +1,12 @@
 "use client";
 
-import { loginSchema, LoginValues } from "@lib/schemas/auth.schema";
+import { LoginFields, useLoginSchema } from "@lib/schemas/auth.schema";
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import {zodResolver} from '@hookform/resolvers/zod'
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@components/ui/form";
 import { Button } from "@components/ui/button";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { Label } from "@components/ui/label";
 import { Input } from "@components/ui/input";
 import { useLogin } from "../_hooks/use-login";
@@ -18,8 +18,8 @@ export default function LoginForm() {
     const t = useTranslations("login");
   
     // Form
-    const form = useForm<LoginValues>({
-        resolver: zodResolver(loginSchema),
+    const form = useForm<LoginFields>({
+        resolver: zodResolver(useLoginSchema()),
         defaultValues: {
             email: "",
             password: "",
@@ -30,8 +30,7 @@ export default function LoginForm() {
     const { login, isPending, error } = useLogin();
 
     // Function
-    const onSubmit: SubmitHandler<LoginValues> = (values) => {
-        console.log(values);
+    const onSubmit: SubmitHandler<LoginFields> = (values) => {
         login(values);
     }
 
@@ -68,8 +67,8 @@ export default function LoginForm() {
             />
 
             {/* Forgot Password */}
-            <Link href="/forgot-password" className="font-semibold text-sm text-maroon-700 mb-9 text-end dark:text-softpink-300">{t("forgotpss")}</Link>
-
+            <Link href= "/forgot-password" className="font-semibold text-sm text-maroon-700 mb-9 text-end dark:text-softpink-300">{t("forgotpss")}</Link>
+            
             {/* Feedback */}
               <SubmissionFeedback>{error?.message}</SubmissionFeedback>
 

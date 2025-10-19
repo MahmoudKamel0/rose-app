@@ -1,17 +1,17 @@
 "use client";
 
-import { LoginValues } from "@lib/schemas/auth.schema";
+import { LoginFields } from "@lib/schemas/auth.schema";
 import { useMutation } from "@tanstack/react-query";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 
-export const useLogin = () => {
+const useLogin = () => {
 
     const router = useRouter();
 
     const { isPending, error, mutate } = useMutation({
-        mutationFn: async (values: LoginValues) => {
+        mutationFn: async (values: LoginFields) => {
         const response = await signIn("credentials", {
             ...values,
             redirect: false,
@@ -31,3 +31,6 @@ export const useLogin = () => {
 
     return { isPending, error, login: mutate }
 };
+
+// Custom hook for login mutation
+export { useLogin };
