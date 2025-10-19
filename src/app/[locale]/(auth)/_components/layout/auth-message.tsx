@@ -24,7 +24,7 @@ export default function AuthMessage() {
         <h1
             className={cn(
                 greatVibes.className,
-                "text-maroon-700 dark:text-softpink-300 mb-6 w-full border-b border-b-zinc-200 pb-4 text-center text-5xl leading-[100%] font-normal"
+                "text-maroon-700 dark:text-softpink-300 mb-6 w-full pb-4 text-center text-5xl leading-[100%] font-normal"
             )}
         >
             {message}

@@ -1,6 +1,8 @@
 "use server";
 
 import { VerifyOtpResponse } from "@lib/types/auth/auth";
+import { EmailForgetPasswordValue } from "@lib/schemas/auth/forget-password-schema";
+import { EmailForgetPasswordResponse } from "../_types/forget-password-email-response";
 
 export async function verifyOtpAction(resetCode: string): Promise<VerifyOtpResponse> {
     const response = await fetch(`${process.env.BASE_URL}auth/verifyResetCode`, {
@@ -13,9 +15,6 @@ export async function verifyOtpAction(resetCode: string): Promise<VerifyOtpRespo
 
     return payload;
 }
-
-import { EmailForgetPasswordValue } from "@lib/schemas/forget-password-schema";
-import { EmailForgetPasswordResponse } from "../forgot-password/_types/forget-password-email-response";
 
 export async function SendForgetPasswordEmail(data: EmailForgetPasswordValue) {
     try {

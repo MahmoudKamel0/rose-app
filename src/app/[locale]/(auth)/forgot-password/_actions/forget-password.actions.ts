@@ -1,6 +1,6 @@
 "use server";
 
-import { EmailForgetPasswordValue } from "@lib/schemas/forget-password-schema";
+import { EmailForgetPasswordValue } from "@lib/schemas/auth/forget-password-schema";
 import { EmailForgetPasswordResponse } from "../_types/forget-password-email-response";
 import { ResetPasswordRequest, ResetPasswordResponse } from "../_types/reset-password";
 

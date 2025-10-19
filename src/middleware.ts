@@ -4,7 +4,7 @@ import { routing } from "./i18n/routing";
 import { getToken } from "next-auth/jwt";
 
 const authRoutes = ["/login", "/register", "/forgot-password"];
-const publicPages = ["/", ...authRoutes];
+const publicPages = ["/en", "/ar" , "/en/products","/en/products", ...authRoutes];
 const handleI18nRouting = createMiddleware(routing);
 
 export default async function middleware(req: NextRequest) {

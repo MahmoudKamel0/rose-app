@@ -7,7 +7,7 @@ import { Button } from "@components/ui/button";
 import { FORGOT_PASSWORD_STEPS } from "@lib/constants/auth.constants";
 import { Step } from "@lib/types/auth/auth";
 import { InputOTP, InputOTPSlot } from "@components/ui/input-otp";
-import { OtpFormData, OtpSchema } from "@lib/schemas/auth.schemas";
+import { OtpFormData, OtpSchema } from "@lib/schemas/auth/otp.schema";
 import { useTranslations } from "next-intl";
 import { useVerifyOtp } from "../_hooks/use-verify-otp";
 

@@ -12,17 +12,6 @@ const nextConfig = {
             },
         ],
     },
-    async redirects() {
-
-        return [
-            {
-                source: "/",
-                destination: "/overview",
-                permanent: true,
-            },
-        ];
-
-    },
 };
 
 // ===== Apply next-intl plugin =====

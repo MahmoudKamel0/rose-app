@@ -6,7 +6,7 @@ import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { EmailForgetPasswordSchema, EmailForgetPasswordValue } from "@/lib/schemas/forget-password-schema";
+import { EmailForgetPasswordSchema, EmailForgetPasswordValue } from "@lib/schemas/auth/forget-password-schema";
 import { useAddForgetPasswordEmail } from "../_hooks/use-add-forget-password-email";
 import { Step } from "@lib/types/auth/auth";
 import { FORGOT_PASSWORD_STEPS } from "@lib/constants/auth.constants";

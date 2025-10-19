@@ -7,8 +7,8 @@ import GallerySection from "@components/features/gallary-section/gallery-section
 import TestimonialsSection from "@components/features/testimonials/testimonials-section";
 import Header from "@components/layout/header";
 
-import BestSellingSection from "@app/_components/best-selling-section/best-selling";
-import MostPopularSection from "@app/_components/most-popular-section/most-popular";
+import BestSellingSection from "@components/features/best-selling-section/best-selling";
+import MostPopularSection from "@components/features/most-popular-section/most-popular";
 import { useTranslations } from "next-intl";
 
 export default function Page() {
