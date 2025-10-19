@@ -25,6 +25,15 @@
     "testimonials-date": "تمت المراجعة في {date}",
     "testimonials-subtitle": "آراء العملاء",
     "testimonials-heading": "كلمات من العملاء السعيدة",
+    "login": {
+        "title": "مرحباً بعودتك!",
+        "noAccount": "ليس لديك حساب بعد؟",
+        "createNow": "أنشئ واحداً الآن!",
+        "forgotpss": "نسيت رقمك السري؟",
+        "login": "دخول",
+        "password": "كلمة المرور",
+        "email": "البريد الالكتروني"
+    },
 
     "forget-password-email": {
         "title": "نسيت كلمة المرور",
@@ -63,7 +72,6 @@
     "loading": "جارٍ التحميل...",
     "createAccount": "إنشاء حساب",
     "already": "هل لديك حساب بالفعل؟",
-    "login": "تسجيل الدخول",
     "login-message": "مرحبًا بعودتك!",
     "register-message": "انضم إلى عائلتنا!",
     "account-created-successfully": "تم إنشاء الحساب بنجاح!",
@@ -111,3 +119,4 @@
         }
     }
 }
+

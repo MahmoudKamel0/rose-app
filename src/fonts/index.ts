@@ -31,6 +31,17 @@ export const tajawal = localFont({
     preload: true,
 });
 
+export const edwardian = localFont({
+  src: [
+    {
+      path: "../../public/fonts/edwardian/edwardianscriptitc.ttf",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+  variable: "--font-edwardian",
+});
+
 export const greatVibes = localFont({
     src: [{ path: "../../public/fonts/greatVibes-regular/GreatVibes-Regular.ttf", weight: "400", style: "normal" }],
     variable: "--font-great-vibes",

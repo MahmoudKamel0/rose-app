@@ -25,6 +25,14 @@
     "testimonials-date": "Reviewed on {date}",
     "testimonials-subtitle": "Testimonials",
     "testimonials-heading": "Real Words from Happy Customers",
+    "login": {
+        "title": "Welcome back!",
+        "noAccount": "Don't have an account yet?",
+        "createNow": "Create one now!",
+        "forgotpss": "Forgot your password?",
+        "login": "Login",
+        "password": "Password",
+        "email": "Email",
 
     "forget-password-email": {
         "title": "Forgot Password",
@@ -111,3 +119,7 @@
         }
     }
 }
+}
+
+
+  
