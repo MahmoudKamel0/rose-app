@@ -1,7 +1,7 @@
 "use client";
 
 import { useMutation } from "@tanstack/react-query";
-import { RegisterInput } from "@lib/schemas/auth.schema";
+import { RegisterInput } from "@lib/schemas/auth/register.schema";
 import { registerAction } from "../_action/register.action";
 
 export const useRegister = () => {

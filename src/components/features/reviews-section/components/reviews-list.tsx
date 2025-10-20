@@ -18,7 +18,11 @@ export default async function ReviewsList({ productId }: { productId: string }) 
             {/* List of reviews */}
             <div className="mt-6 h-[15.4rem] space-y-[0.6rem] overflow-y-auto">
                 {reviews.map((review) => {
+                    // Format full name
                     const fullName = `${review.user.firstName} ${review.user.lastName}`;
+
+                    // Get first letter of first name
+                    const firstLetter = review.user.firstName?.charAt(0)?.toUpperCase() || "?";
 
                     // Format created date
                     const createdDate = format.dateTime(new Date(review.createdAt), "short");
@@ -28,8 +32,12 @@ export default async function ReviewsList({ productId }: { productId: string }) 
                             {/* Header */}
                             <div className="mb-3 flex items-center">
                                 {/* Avatar */}
-                                <div className="bg-maroon-800 relative mr-[0.44rem] h-11 w-11 overflow-hidden rounded-full">
-                                    <Image src={review.user.photo} alt={fullName} fill className="rounded-full object-cover" />
+                                <div className="bg-maroon-800 relative mr-[0.44rem] flex h-11 w-11 items-center justify-center overflow-hidden rounded-full text-lg font-semibold text-white">
+                                    {review?.user?.photo ? (
+                                        <Image src={review.user.photo} alt={fullName} fill className="rounded-full object-cover" />
+                                    ) : (
+                                        <span>{firstLetter}</span>
+                                    )}
                                 </div>
 
                                 {/* Name & Date */}

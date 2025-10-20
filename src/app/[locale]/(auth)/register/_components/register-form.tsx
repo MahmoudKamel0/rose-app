@@ -5,7 +5,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useRouter } from "next/navigation";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useRegister } from "../_hooks/use-register";
 import { PhoneInput } from "@components/ui/phone-input";
@@ -13,7 +12,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { ErrorMessage } from "@components/shared/error-message";
 import { toast } from "sonner";
 import { Link } from "@/i18n/navigation";
-import { RegisterInput, useRegisterSchema } from "@lib/schemas/auth.schema";
+import { RegisterInput, useRegisterSchema } from "@lib/schemas/auth/register.schema";
 
 export default function RegisterForm() {
     // Translations
@@ -57,7 +56,7 @@ export default function RegisterForm() {
     return (
         <div className="flex w-full flex-col justify-center gap-10">
             <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                <form onSubmit={form.handleSubmit(onSubmit)} className="border-y border-zinc-200 py-6">
                     {/* First + Last Name */}
                     <div className="grid grid-cols-2 gap-5">
                         <FormField
@@ -188,9 +187,9 @@ export default function RegisterForm() {
                     </Button>
 
                     {/* Link to Login */}
-                    <div className="mt-5 border-t border-zinc-200 pt-5 text-center text-sm">
+                    <div className="mt-5 border-zinc-200 pt-5 text-center text-sm">
                         <span className="text-sm font-medium text-zinc-800 dark:text-zinc-50">{t("already")} </span>
-                        <Link href={{ pathname: "/login" }} className="text-maroon-700 dark:text-softpink-300 font-bold underline">
+                        <Link href="/login" className="text-maroon-700 dark:text-softpink-300 font-bold underline">
                             {t("login")}
                         </Link>
                     </div>

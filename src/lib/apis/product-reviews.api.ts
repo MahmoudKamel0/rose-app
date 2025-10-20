@@ -1,10 +1,14 @@
 import { ReviewsErrorResponse, ReviewsResponse } from "@lib/types/review-product";
+import { getAccessToken } from "@lib/utils/get-token.util";
 
 /**
  * Fetch product reviews from the API.
  * @param productId The ID of the product to fetch reviews for.
  */
 export async function fetchProductReviews(productId: string): Promise<ReviewsResponse> {
+    // Get the access token
+    const token = await getAccessToken();
+
     // Construct the API URL
     const url = `${process.env.NEXT_PUBLIC_API_BASE}/products/${productId}/reviews`;
 
@@ -14,7 +18,7 @@ export async function fetchProductReviews(productId: string): Promise<ReviewsRes
             next: { revalidate: 60 },
             headers: {
                 "Content-Type": "application/json",
-                Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
+                Authorization: `Bearer ${token}`,
             },
         });
 

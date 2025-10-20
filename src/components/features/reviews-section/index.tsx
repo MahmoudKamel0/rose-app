@@ -8,8 +8,10 @@ import { fetchRelatedProducts } from "@lib/apis/related-products.api";
 import EmblaCarousel from "@app/_components/best-selling-section/components/right-side-best-selling/embla-carousel-best-selling";
 import HighlightedHeading from "@components/shared/highlighted-heading";
 import { getTranslations } from "next-intl/server";
+import EmblaCarouselSkeleton from "@components/shared/embla-carousel-skeleton";
 
-export default async function Page() {
+export default async function Reviews() {
+    // Translation hook
     const t = await getTranslations("relatedProducts");
     const productId = "673e2e1f1159920171828153";
 
@@ -37,7 +39,9 @@ export default async function Page() {
             <HighlightedHeading className="mt-15 mb-[1.3rem]" text={t("title")} highlightWidth="154px" borderWidth="60px" />
 
             {/* EMBLA CAROUSEL */}
-            <EmblaCarousel fetchFn={fetchRelatedProducts} productId={productId} productNumber={4} />
+            <Suspense fallback={<EmblaCarouselSkeleton productNumber={4} />}>
+                <EmblaCarousel fetchFn={fetchRelatedProducts} productId={productId} productNumber={4} />
+            </Suspense>
         </section>
     );
 }

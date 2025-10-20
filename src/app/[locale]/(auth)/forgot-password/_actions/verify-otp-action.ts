@@ -1,8 +1,24 @@
-import { EmailForgetPasswordValue } from "@lib/schemas/forget-password-schema";
+"use server";
+
+import { VerifyOtpResponse } from "@lib/types/auth/auth";
+import { EmailForgetPasswordValue } from "@lib/schemas/auth/forget-password-schema";
 import { EmailForgetPasswordResponse } from "../_types/forget-password-email-response";
+
+export async function verifyOtpAction(resetCode: string): Promise<VerifyOtpResponse> {
+    const response = await fetch(`${process.env.BASE_URL}auth/verifyResetCode`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ resetCode }),
+    });
+
+    const payload: VerifyOtpResponse = await response.json();
+
+    return payload;
+}
 
 export async function SendForgetPasswordEmail(data: EmailForgetPasswordValue) {
     try {
+        // define the headers as variable
         const headers: Record<string, string> = {
             "Content-Type": "application/json",
         };

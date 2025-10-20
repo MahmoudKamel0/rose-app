@@ -5,3 +5,4 @@ export default function Page() {
     // Render the RegisterForm component
     return <RegisterForm />;
 }
+

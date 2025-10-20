@@ -13,10 +13,13 @@ import { ReviewInput, reviewSchema } from "@lib/schemas/review.schema";
 import { toast } from "sonner";
 import { useReview } from "../hooks/use-review";
 import { useTranslations } from "next-intl";
+import { getAccessToken } from "@lib/utils/get-token.util";
 
 export default function ReviewForm({ productId }: { productId: string }) {
+    // Translations
     const t = useTranslations("reviewForm");
 
+    // Form state and validation
     const form = useForm<ReviewInput>({
         resolver: zodResolver(reviewSchema),
         defaultValues: {
@@ -27,29 +30,45 @@ export default function ReviewForm({ productId }: { productId: string }) {
         },
     });
 
+    // Rating state
     const [rating, setRating] = useState(0);
+
+    // Authentication state
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
+    // Mutation hook
     const reviewMutation = useReview();
 
+    // Check authentication on mount
     useEffect(() => {
-        // Check token (you can change localStorage to cookies if needed)
-        const token = localStorage.getItem("token");
-        setIsAuthenticated(!!token);
+        // Check authentication status
+        const checkAuth = async () => {
+            // Get the access token
+            const token = await getAccessToken();
+            // Set authentication state
+            setIsAuthenticated(!!token);
+        };
+
+        checkAuth();
     }, []);
 
+    // Handle form submission
     const onSubmit = (data: ReviewInput) => {
+        // Prevent submission if not authenticated
         if (!isAuthenticated) {
             toast.error("Please login to be able to review the product");
             return;
         }
 
+        // Execute the review mutation
         reviewMutation.mutate(data, {
+            // Success callback
             onSuccess: () => {
                 toast.success(t("toast.success"));
                 form.reset();
                 setRating(0);
             },
+            // Error callback
             onError: (err: any) => {
                 toast.error(err.message || t("toast.error"));
             },
@@ -58,11 +77,12 @@ export default function ReviewForm({ productId }: { productId: string }) {
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="relative w-[30.25rem] space-y-3 rounded-md border p-4">
+            {/* Form */}
+            <form onSubmit={form.handleSubmit(onSubmit)} className="relative w-[30.25rem] space-y-3 border-l-1 p-4">
                 {!isAuthenticated && (
                     <div className="absolute inset-0 z-10 flex items-center justify-center rounded-md bg-white/80">
                         <p className="font-primary text-[16px] leading-[100%] font-semibold tracking-[0] text-zinc-800 not-italic dark:text-zinc-50">
-                            Please login to be able to review the product
+                            {t("authenticationRequired")}
                         </p>
                     </div>
                 )}

@@ -21,6 +21,8 @@ import { useQueryClient } from "@tanstack/react-query";
 import { useDeleteAllNotifications } from "@/hooks/notifications/use-delete-all-notifications.hook";
 import { useMarkNotificationsAsRead } from "@/hooks/notifications/use-mark-notification-as-read.hook";
 import { useDeleteSingleNotification } from "@/hooks/notifications/use-delete-single-notification";
+import { Badge } from "@components/ui/badge";
+import { cn } from "@lib/utils/cn.utils";
 
 // Header action type
 
@@ -101,15 +103,20 @@ export default function NotificationMenu() {
         <Popover>
             {/* Notification icon trigger */}
             <PopoverTrigger asChild>
-                <Button variant="ghost" className="relative flex items-center justify-center hover:bg-transparent">
+                <button type="button" className="relative flex items-center justify-center hover:bg-transparent">
                     {unReadCount > 0 && (
-                        <div className="absolute top-1 right-2 flex h-4 w-4 items-center justify-center rounded-full bg-red-600 text-white">
+                        <Badge
+                            className={cn(
+                                "text-10 absolute -top-1.5 -right-1.5 flex h-3.5 w-3.5 items-center justify-center p-2 font-medium text-white",
+                                "dark:bg-red-500 dark:text-zinc-50"
+                            )}
+                        >
                             {unReadCount}
-                        </div>
+                        </Badge>
                     )}
 
-                    <Bell  style={{ width: "24px", height: "24px" }} />
-                </Button>
+                    <Bell style={{ width: "24px", height: "24px" }} />
+                </button>
             </PopoverTrigger>
 
             {/* Notification content popover */}
@@ -197,14 +204,9 @@ export default function NotificationMenu() {
                                         {/* Dropdown for each notification */}
                                         <DropdownMenu>
                                             <DropdownMenuTrigger asChild>
-                                                <Button
-                                                    type="button"
-                                                    variant={"ghost"}
-                                                    size={"icon"}
-                                                    className={`flex items-center justify-center hover:bg-transparent`}
-                                                >
+                                                <button type="button" className={`flex items-center justify-center hover:bg-transparent`}>
                                                     <EllipsisVertical style={{ width: 20, height: 20 }} color="gray" />
-                                                </Button>
+                                                </button>
                                             </DropdownMenuTrigger>
 
                                             <DropdownMenuContent
@@ -215,7 +217,6 @@ export default function NotificationMenu() {
                                                 <DropdownMenuItem className={`text-sm font-medium text-zinc-800 dark:text-white`}>
                                                     <Button
                                                         variant={"ghost"}
-                                                        size={"xs"}
                                                         className={`!flex items-center justify-start gap-2`}
                                                         type="button"
                                                         onClick={() => markAsRead(notification._id, notification.isRead)}
@@ -241,7 +242,6 @@ export default function NotificationMenu() {
                                                         type="button"
                                                         onClick={() => deleteSingle(notification._id)}
                                                         variant={"ghost"}
-                                                        size={"xs"}
                                                         disabled={isDeletingSingle}
                                                     >
                                                         <Trash2 className={`mr-2`} style={{ width: 18, height: 18 }} color="red" />

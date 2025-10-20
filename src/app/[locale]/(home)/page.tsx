@@ -1,14 +1,12 @@
 import Features from "@components/features/features/Features";
-import Headers from "@components/features/header/header";
 import Occasions from "@components/features/occasions/occasions";
 import AboutSection from "@components/features/about-section/about-section";
 import CompaniesSection from "@components/features/companies-section/companies-section";
 import GallerySection from "@components/features/gallary-section/gallery-section";
 import TestimonialsSection from "@components/features/testimonials/testimonials-section";
-import Header from "@components/layout/header";
 
-import BestSellingSection from "@app/_components/best-selling-section/best-selling";
-import MostPopularSection from "@app/_components/most-popular-section/most-popular";
+import BestSellingSection from "@components/features/best-selling-section/best-selling";
+import MostPopularSection from "@components/features/most-popular-section/most-popular";
 import { useTranslations } from "next-intl";
 
 export default function Page() {
@@ -17,7 +15,7 @@ export default function Page() {
         <>
             <main className="">
                 {/* Header */}
-               {/* <Header /> */}
+                {/* <Header /> */}
                 {/* <Headers /> */}
                 <div className="mx-auto flex w-7xl flex-col">
                     <Occasions />
@@ -26,14 +24,13 @@ export default function Page() {
                     <MostPopularSection />
                     <AboutSection />
                     <GallerySection />
-                </div>  
+                </div>
                 <TestimonialsSection />
                 <div className="mx-auto flex w-7xl flex-col">
                     <CompaniesSection />
                 </div>
-                
             </main>
-            
+
             {/* <ToggleLocale /> */}
         </>
     );

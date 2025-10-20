@@ -1,11 +1,12 @@
-import { EmailForgetPasswordValue } from "@lib/schemas/forget-password-schema";
+import { EmailForgetPasswordValue } from "@lib/schemas/auth/forget-password-schema";
 import { useMutation } from "@tanstack/react-query";
-import { SendForgetPasswordEmail } from "../_actions/send-forget-password-email.action";
+import { SendForgetPasswordEmail } from "../_actions/forget-password.actions";
+import { EmailForgetPasswordResponse } from "../_types/forget-password-email-response";
 
 export function useAddForgetPasswordEmail() {
     const { mutateAsync, error, isPending } = useMutation({
-        mutationFn: async (data: EmailForgetPasswordValue) => {
-            const res = await SendForgetPasswordEmail(data);
+        mutationFn: async (email: EmailForgetPasswordValue) => {
+            const res: ApiResponse<EmailForgetPasswordResponse> = await SendForgetPasswordEmail(email);
             if (!res) {
                 throw new Error("No response from server");
             }

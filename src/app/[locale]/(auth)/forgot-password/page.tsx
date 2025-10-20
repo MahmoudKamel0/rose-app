@@ -10,14 +10,6 @@ export default function ForgotPassword() {
     return (
         <div>
             <ForgotPasswordLayout />
-
-            {/* Footer Section */}
-            <p className="mt-5 text-center text-sm font-medium">
-                {t("need-help")}{" "}
-                <Link href="/contact" className="font-bold text-[#741C21]">
-                    {t("contact-us")}
-                </Link>
-            </p>
         </div>
     );
 }

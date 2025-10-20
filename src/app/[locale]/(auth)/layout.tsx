@@ -6,16 +6,16 @@ import AuthMessage from "./_components/layout/auth-message";
 
 export default async function AuthLayout({ children }: { children: ReactNode }) {
     return (
-        <div className="flex h-screen">
+        <div className="flex h-screen overflow-hidden">
             {/* Left Section */}
-            <main className="w-6/12 overflow-y-auto px-28 py-[3.3rem]">
-                <div className="mx-auto flex w-[25.4rem] flex-col items-center justify-center">
+            <main className="h-full w-6/12 overflow-y-auto px-28">
+                <div className="mx-auto flex  w-[25.4rem] flex-col items-center justify-center mt-1">
                     <div className="flex w-full justify-end">
                         <ToggleLocale />
                     </div>
 
                     {/* Decoration */}
-                    <DecorationImage margin="mb-10 mt-4" />
+                    <DecorationImage margin="mb-8 mt-4" />
 
                     {/* Auth Message */}
                     <AuthMessage />

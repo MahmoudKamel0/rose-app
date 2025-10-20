@@ -1,8 +1,8 @@
 import * as React from "react";
 import { cn } from "@lib/utils/cn.utils";
 import { getBestSellingProducts } from "@lib/apis/best-selling.api";
-import Leftside from "./components/left-side-best-selling/left-side-best-selling";
-import EmblaCarousel from "./components/right-side-best-selling/embla-carousel-best-selling";
+import Leftside from "@app/_components/best-selling-section/components/left-side-best-selling/left-side-best-selling";
+import EmblaCarousel from "@app/_components/best-selling-section/components/right-side-best-selling/embla-carousel-best-selling";
 
 export default async function BestSellingSection() {
     return (
