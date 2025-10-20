@@ -1,6 +1,6 @@
 "use server";
 
-import { RegisterInput } from "@lib/schemes/auth.schema";
+import { RegisterInput } from "@lib/schemas/auth.schema";
 
 // Server action to register a new user
 export async function registerAction(data: RegisterInput) {

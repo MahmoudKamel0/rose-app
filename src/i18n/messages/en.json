@@ -85,5 +85,33 @@
                 "description": "Something went wrong, please try again later"
             }
         }
+    },
+    "reviewForm": {
+        "yourRating": "Your rating:",
+        "title": "Title",
+        "titlePlaceholder": "Enter review title",
+        "review": "Review",
+        "commentPlaceholder": "What do you think of this product?",
+        "submit": "Add Review",
+        "submitting": "Submitting...",
+        "toast": {
+            "success": "Review submitted successfully!",
+            "error": "Failed to submit review"
+        }
+    },
+    "reviewsSection": {
+        "title": "Product Reviews",
+        "generalRating": "General rating:",
+        "averageRating": "{rating} ({count} ratings)"
+    },
+    "reviewsList": {
+        "reviewedOn": "Reviewed on {date}"
+    },
+    "relatedProducts": {
+        "title": "Related Products"
+    },
+    "emblaCarousel": {
+        "title": "Related Products",
+        "noProducts": "No products available"
     }
 }

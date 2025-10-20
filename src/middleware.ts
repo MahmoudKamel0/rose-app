@@ -14,7 +14,7 @@ export default function middleware(req: NextRequest) {
 
     // Check if the current request is for a public page
     const isPublicPage = publicPathnameRegex.test(req.nextUrl.pathname);
-
+    `       `;
     // If the page is not public, you can add custom logic here (e.g., authentication)
     if (isPublicPage) {
         return handleI18nRouting(req);

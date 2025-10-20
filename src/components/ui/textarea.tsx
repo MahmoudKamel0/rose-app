@@ -1,5 +1,6 @@
 import * as React from "react";
 import { INPUT_STYLE } from "@lib/constants/style.constant";
+import { cn } from "@lib/utils/cn.utils";
 
 /**
  * Textarea component
@@ -14,7 +15,7 @@ import { INPUT_STYLE } from "@lib/constants/style.constant";
  * @returns {JSX.Element} A textarea element with applied styles and props.
  */
 const Textarea = React.forwardRef<HTMLTextAreaElement, React.ComponentProps<"textarea">>(({ className, ...props }, ref) => {
-    return <textarea className={INPUT_STYLE} ref={ref} {...props} />;
+    return <textarea className={cn(INPUT_STYLE, className)} ref={ref} {...props} />;
 });
 Textarea.displayName = "Textarea";
 

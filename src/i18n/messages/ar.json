@@ -85,5 +85,33 @@
                 "description": "حدث خطأ ما، يرجى المحاولة لاحقًا"
             }
         }
+    },
+    "reviewForm": {
+        "yourRating": "تقييمك:",
+        "title": "العنوان",
+        "titlePlaceholder": "أدخل عنوان التقييم",
+        "review": "المراجعة",
+        "commentPlaceholder": "ما رأيك في هذا المنتج؟",
+        "submit": "إضافة التقييم",
+        "submitting": "جاري الإرسال...",
+        "toast": {
+            "success": "تم إرسال التقييم بنجاح!",
+            "error": "فشل في إرسال التقييم"
+        }
+    },
+    "reviewsSection": {
+        "title": "تقييمات المنتج",
+        "generalRating": "التقييم العام:",
+        "averageRating": "{rating} ({count} تقييم)"
+    },
+    "reviewsList": {
+        "reviewedOn": "تمت المراجعة في {date}"
+    },
+    "relatedProducts": {
+        "title": "منتجات ذات صلة"
+    },
+    "emblaCarousel": {
+        "title": "منتجات ذات صلة",
+        "noProducts": "لا توجد منتجات متاحة"
     }
 }

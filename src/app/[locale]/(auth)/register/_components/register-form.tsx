@@ -13,7 +13,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { ErrorMessage } from "@components/shared/error-message";
 import { toast } from "sonner";
 import { Link } from "@/i18n/navigation";
-import { RegisterInput, useRegisterSchema } from "@lib/schemes/auth.schema";
+import { RegisterInput, useRegisterSchema } from "@lib/schemas/auth.schema";
 
 export default function RegisterForm() {
     // Translations
