@@ -16,3 +16,6 @@
     --primary: 210 100% 60%;
     --primary-foreground: 0 0% 0%;
 }
+.filter-white {
+    filter: brightness(0) invert(1);
+}
