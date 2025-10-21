@@ -4,7 +4,7 @@ import { cn } from "@lib/utils/cn.utils";
 import { getTranslations } from "next-intl/server";
 import { Suspense } from "react";
 import TestimonialsContent from "./testimonials-content";
-import TestimonialsSkeleton from "@components/skeletons/testimonials-skeleton";
+import TestimonialsSkeleton from "@components/skeletons/testimonials-section/testimonials-skeleton";
 
 export default async function TestimonialsSection() {
     //  Translations

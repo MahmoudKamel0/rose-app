@@ -1,8 +1,8 @@
 import { Suspense } from "react";
 import ReviewsSection from "./components/general-rating";
 import ReviewsList from "./components/reviews-list";
-import ReviewsSectionSkeleton from "./components/reviews-section-skeleton";
-import ReviewsListSkeleton from "./components/reviewsList-skeleton";
+import ReviewsSectionSkeleton from "../../skeletons/reviews-section/reviews-section.skeleton";
+import ReviewsListSkeleton from "../../skeletons/reviews-section/reviews-list.skeleton";
 import ReviewForm from "./components/review-form";
 import { fetchRelatedProducts } from "@lib/apis/related-products.api";
 import EmblaCarousel from "@app/_components/best-selling-section/components/right-side-best-selling/embla-carousel-best-selling";
