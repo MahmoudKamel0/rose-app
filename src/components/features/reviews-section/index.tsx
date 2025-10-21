@@ -9,8 +9,9 @@ import EmblaCarousel from "@app/_components/best-selling-section/components/righ
 import HighlightedHeading from "@components/shared/highlighted-heading";
 import { getTranslations } from "next-intl/server";
 import EmblaCarouselSkeleton from "@components/shared/embla-carousel-skeleton";
+import { ReviewsSectionProps } from "@lib/types/review-product";
 
-export default async function Reviews({ productId }: { productId: string }) {
+export default async function Reviews({ productId }: ReviewsSectionProps) {
     // Translation hook
     const t = await getTranslations("relatedProducts");
     const productIdd = "673e2e1f1159920171828153";

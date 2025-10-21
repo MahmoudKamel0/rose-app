@@ -14,8 +14,9 @@ import { toast } from "sonner";
 import { useReview } from "../hooks/use-review";
 import { useTranslations } from "next-intl";
 import { getAccessToken } from "@lib/utils/get-token.util";
+import { ReviewsSectionProps } from "@lib/types/review-product";
 
-export default function ReviewForm({ productId }: { productId: string }) {
+export default function ReviewForm({ productId }: ReviewsSectionProps) {
     // Translations
     const t = useTranslations("reviewForm");
 

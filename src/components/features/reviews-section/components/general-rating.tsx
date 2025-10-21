@@ -1,13 +1,8 @@
 import HighlightedHeading from "@components/shared/highlighted-heading";
 import { RatingStars } from "@components/shared/rating-stars";
 import { fetchProductReviews } from "@lib/apis/product-reviews.api";
-import { ReviewsSuccessResponse } from "@lib/types/review-product";
+import { ReviewsSectionProps, ReviewsSuccessResponse } from "@lib/types/review-product";
 import { getTranslations } from "next-intl/server";
-
-// Props for the ReviewsSection component
-interface ReviewsSectionProps {
-    productId: string;
-}
 
 export default async function ReviewsSection({ productId }: ReviewsSectionProps) {
     // Translation

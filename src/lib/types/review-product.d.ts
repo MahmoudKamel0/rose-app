@@ -50,3 +50,8 @@ export interface ReviewsErrorResponse {
 
 /** Union type for both possible responses */
 export type ReviewsResponse = ReviewsSuccessResponse | ReviewsErrorResponse;
+
+// Props for ReviewsSection component
+export interface ReviewsSectionProps {
+    productId: string;
+}

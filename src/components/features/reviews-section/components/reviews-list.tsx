@@ -1,10 +1,10 @@
 import Image from "next/image";
 import { RatingStars } from "@components/shared/rating-stars";
 import { fetchProductReviews } from "@lib/apis/product-reviews.api";
-import { ReviewsSuccessResponse } from "@lib/types/review-product";
+import { ReviewsSectionProps, ReviewsSuccessResponse } from "@lib/types/review-product";
 import { getTranslations, getFormatter } from "next-intl/server";
 
-export default async function ReviewsList({ productId }: { productId: string }) {
+export default async function ReviewsList({ productId }: ReviewsSectionProps) {
     // Translation & Formatter
     const t = await getTranslations("reviewsList");
     const format = await getFormatter();
