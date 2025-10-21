@@ -1,4 +1,3 @@
-import { ModeToggle } from "@components/ui/mode-toggle";
 import NextIntlClientProvider from "./nextIntl-client/components/nextIntl-client.provider";
 import ReactQueryProvider from "./components/react-query.provider";
 import { ThemeProvider } from "./components/theme.provider";
@@ -10,10 +9,9 @@ export default function Providers({ children }: { children: React.ReactNode }) {
         <ReactQueryProvider>
             <NextAuthProvider>
                 <NextIntlClientProvider>
-                     <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+                    <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
                         <Toaster position="bottom-right" richColors />
-                            {children}
-                        <ModeToggle />
+                        {children}
                     </ThemeProvider>
                 </NextIntlClientProvider>
             </NextAuthProvider>

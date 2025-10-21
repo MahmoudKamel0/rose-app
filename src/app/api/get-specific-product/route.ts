@@ -3,15 +3,13 @@ import { ProductResponse } from "@lib/types/products";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
-    // const { searchParams } = new URL(req.url);
-    // const limit = searchParams.get("limit") || "6";
-    // const page = searchParams.get("page") || "1";
-
     try {
         // Fetch data from external API
+        const { searchParams } = new URL(req.url);
+        const productId = searchParams.get("productId");
 
         // const res = await fetch(`${process.env.BASE_URL}${process.env.ALL_NOTIFICATION_URL}/673e1cd711599201718280fb`, {
-        const res = await fetch(`https://flower.elevateegy.com/api/v1/products/673e1cd711599201718280fb`, {
+        const res = await fetch(`https://flower.elevateegy.com/api/v1/products/${productId}`, {
             method: "GET",
             headers: JSON_HEADER,
         });

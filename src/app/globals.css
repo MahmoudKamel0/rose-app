@@ -16,3 +16,9 @@
     --primary: 210 100% 60%;
     --primary-foreground: 0 0% 0%;
 }
+
+button svg[data-noinherit="true"] {
+    stroke: unset !important;
+    fill: unset !important;
+    color: unset !important;
+}

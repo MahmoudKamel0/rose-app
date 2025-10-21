@@ -1,18 +1,11 @@
 import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
-import { ThemeProvider } from "@components/providers/components/theme.provider";
 import Providers from "@components/providers";
-import { ModeToggle } from "@components/ui/mode-toggle";
 import { cn } from "@lib/utils/cn.utils";
 import { sarabun, tajawal } from "@fonts";
 import { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import Header from "@components/features/header/header";
-import Footer from "@components/layout/footer";
-import Headers from "@components/features/header/header";
-import Headerr from "@components/layout/header";
-import { Toaster } from "@components/ui/sonner";
 
 // Generate static params for each locale
 export function generateStaticParams() {
