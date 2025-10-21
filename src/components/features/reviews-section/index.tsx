@@ -10,17 +10,17 @@ import HighlightedHeading from "@components/shared/highlighted-heading";
 import { getTranslations } from "next-intl/server";
 import EmblaCarouselSkeleton from "@components/shared/embla-carousel-skeleton";
 
-export default async function Reviews() {
+export default async function Reviews({ productId }: { productId: string }) {
     // Translation hook
     const t = await getTranslations("relatedProducts");
-    const productId = "673e2e1f1159920171828153";
+    const productIdd = "673e2e1f1159920171828153";
 
     return (
         <section className="px-20">
             {/* Wrap the fetching component inside Suspense */}
             <Suspense fallback={<ReviewsSectionSkeleton />}>
                 {/* Render the fetched data */}
-                <ReviewsSection productId={productId} />
+                <ReviewsSection productId={productIdd} />
             </Suspense>
 
             {/* Wrap the fetching component inside Suspense */}
@@ -28,11 +28,11 @@ export default async function Reviews() {
                 {/* Render the fetched data */}
                 <Suspense fallback={<ReviewsListSkeleton />}>
                     {/* Render the fetched data */}
-                    <ReviewsList productId={productId} />
+                    <ReviewsList productId={productIdd} />
                 </Suspense>
 
                 {/* Review form */}
-                <ReviewForm productId={productId} />
+                <ReviewForm productId={productIdd} />
             </div>
 
             {/* Related Products */}
@@ -40,7 +40,7 @@ export default async function Reviews() {
 
             {/* EMBLA CAROUSEL */}
             <Suspense fallback={<EmblaCarouselSkeleton productNumber={4} />}>
-                <EmblaCarousel fetchFn={fetchRelatedProducts} productId={productId} productNumber={4} />
+                <EmblaCarousel fetchFn={fetchRelatedProducts} productId={productIdd} productNumber={4} />
             </Suspense>
         </section>
     );
