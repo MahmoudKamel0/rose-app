@@ -12,6 +12,7 @@ export async function getDecodeToken() {
             token: tokenCookie,
             secret: process.env.NEXTAUTH_SECRET!,
         });
+
         return jwt;
     } catch (error) {
         void error;

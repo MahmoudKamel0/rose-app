@@ -6,8 +6,6 @@ import Image from "next/image";
 import { cn } from "@/lib/utils/cn.utils";
 import { Heart, Loader2, Minus, Package, Plus, Star } from "lucide-react";
 import CartBtn from "./add-to-cart-button";
-import { useSession } from "next-auth/react";
-import { useAddCart } from "../_hooks/use-products";
 import { useTranslations } from "next-intl";
 
 export default function ProductDetailes({ productId }: { productId: string }) {
@@ -20,43 +18,9 @@ export default function ProductDetailes({ productId }: { productId: string }) {
 
     // Hooks
     const { specificProductData, error, isPending } = useSpecificProduct(productId);
-    const { data: sessionData } = useSession();
-    const { mutateAddCart } = useAddCart(); //  use mutateAsync to await properly
-
     const data = specificProductData?.product;
 
     // useEffect
-    // Sync localStorage → backend if user logs in (async version)
-    useEffect(() => {
-        if (typeof window === "undefined") return;
-        if (!sessionData) return;
-
-        const syncCart = async () => {
-            const localCart = localStorage.getItem("cart");
-            if (!localCart) return;
-
-            try {
-                const parsed = JSON.parse(localCart);
-                if (Array.isArray(parsed) && parsed.length > 0) {
-                    for (const item of parsed) {
-                        try {
-                            await mutateAddCart({ product: item.product, quantity: item.quantity || 1 });
-                        } catch (err) {
-                            return err;
-                        }
-                    }
-
-                    localStorage.removeItem("cart");
-                }
-            } catch (err) {
-                return err;
-            }
-        };
-
-        syncCart();
-    }, [sessionData, mutateAddCart]);
-
-    // UseEffect for images
     useEffect(() => {
         if (data?.images?.length && !activeImage) {
             setActiveImage(data.images[0]);

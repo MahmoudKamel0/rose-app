@@ -9,7 +9,7 @@ export async function addToCart(data: CartRequest) {
 
         const token = await getDecodeToken();
         if (token) {
-            headers["Authorization"] = `Bearer ${token}`;
+            headers["Authorization"] = `Bearer ${token.accessToken}`;
         }
 
         const res = await fetch(`${process.env.BASE_URL!}${process.env.PRODUCT_CART!}`, {

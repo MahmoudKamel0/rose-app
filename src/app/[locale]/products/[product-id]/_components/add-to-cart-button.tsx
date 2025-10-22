@@ -19,7 +19,7 @@ export default function CartBtn({ productId, numberProduct }: CartType) {
     const t = useTranslations("product-detailes");
 
     // Use state
-    const [btnActive, setBtnActive] = useState<boolean>(false);
+    const [btnDisable, setBtnDisable] = useState<boolean>(false);
 
     // Hooks
     const { data: sessionData } = useSession();
@@ -33,7 +33,7 @@ export default function CartBtn({ productId, numberProduct }: CartType) {
         if (sessionData) {
             await mutateAddCart(cart, {
                 onSuccess: () => {
-                    setBtnActive(true);
+                    setBtnDisable(true);
                     toast.success("success", {
                         description: "The Product was added to the cart",
                         duration: 3000,
@@ -56,7 +56,7 @@ export default function CartBtn({ productId, numberProduct }: CartType) {
             cartArray.push(cart);
             localStorage.setItem("cart", JSON.stringify(cartArray));
             toast.success("Added to cart", { duration: 2500 });
-            setBtnActive(true);
+            setBtnDisable(true);
         }
     };
 
@@ -80,9 +80,6 @@ export default function CartBtn({ productId, numberProduct }: CartType) {
         setCart().then(() => {
             localStorage.removeItem("cart");
         });
-
-        toast.success("Your local cart has been synced!", { duration: 3000 });
-        localStorage.removeItem("cart");
     }, [sessionData, mutateAddCart]);
 
     // Check if already in localStorage (disable button)
@@ -93,15 +90,15 @@ export default function CartBtn({ productId, numberProduct }: CartType) {
 
         const parsed = JSON.parse(existing);
         if (Array.isArray(parsed) && parsed.some((item: CartRequest) => item.product === productId)) {
-            setBtnActive(true);
+            setBtnDisable(true);
         }
     }, [productId]);
 
     return (
         <div className="flex-1">
-            <Button size={"xl"} isLoading={isPending} type="button" onClick={handleCart} disabled={btnActive || !numberProduct}>
+            <Button size={"xl"} isLoading={isPending} type="button" onClick={handleCart} disabled={btnDisable || !numberProduct}>
                 <ShoppingCart className="h-6 w-6 text-white dark:text-zinc-800" />
-                {!btnActive ? t("add-cart") : t("added")}
+                {!btnDisable ? t("add-cart") : t("added")}
             </Button>
             {error && <AuthError error={error?.message} />}
         </div>
