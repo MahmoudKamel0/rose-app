@@ -2,7 +2,7 @@
 import { Button } from "@components/ui/button";
 import { ShoppingCart } from "lucide-react";
 import React, { useEffect, useState } from "react";
-import { useAddCart } from "../_hooks/use-products";
+import { useAddCart, useGetUserCart } from "../_hooks/use-products.hook";
 import { CartRequest } from "../_types/product-id";
 import { toast } from "sonner";
 import { AuthError } from "@app/[locale]/(auth)/_components/auth-error";
@@ -20,10 +20,12 @@ export default function CartBtn({ productId, numberProduct }: CartType) {
 
     // Use state
     const [btnDisable, setBtnDisable] = useState<boolean>(false);
+    const [btnDisableLogged, setBtnDisableLogged] = useState<boolean>(false);
 
     // Hooks
     const { data: sessionData } = useSession();
     const { mutateAddCart, error, isPending } = useAddCart();
+    const { cartItem, error: checkError, isPending: checkIsPending } = useGetUserCart();
 
     // Functions
     const handleCart = async () => {
@@ -94,9 +96,27 @@ export default function CartBtn({ productId, numberProduct }: CartType) {
         }
     }, [productId]);
 
+    // Check if already in localStorage (disable button)
+
+    useEffect(() => {
+        if (sessionData && cartItem && !checkIsPending && !checkError && cartItem?.cart.cartItems.length > 0) {
+            const find = cartItem?.cart.cartItems.find((item) => item.product._id === productId);
+
+            if (!!find) {
+                setBtnDisableLogged(true);
+            }
+        }
+    }, [productId, cartItem, sessionData, checkError, checkIsPending]);
+
     return (
         <div className="flex-1">
-            <Button size={"xl"} isLoading={isPending} type="button" onClick={handleCart} disabled={btnDisable || !numberProduct}>
+            <Button
+                size={"xl"}
+                isLoading={isPending}
+                type="button"
+                onClick={handleCart}
+                disabled={btnDisable || !numberProduct || btnDisableLogged}
+            >
                 <ShoppingCart className="h-6 w-6 text-white dark:text-zinc-800" />
                 {!btnDisable ? t("add-cart") : t("added")}
             </Button>

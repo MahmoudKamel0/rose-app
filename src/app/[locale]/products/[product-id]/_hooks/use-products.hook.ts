@@ -5,6 +5,7 @@ import { ProductResponse } from "@lib/types/products";
 import { useQuery } from "@tanstack/react-query";
 import { CartRequest, CartResponse } from "../_types/product-id";
 import { addToCart } from "../_actions/product-id.action";
+import { useSession } from "next-auth/react";
 
 export function useSpecificProduct(productId: string) {
     const {
@@ -57,4 +58,29 @@ export function useAddCart() {
         },
     });
     return { mutateAddCart, error, isPending };
+}
+
+export function useGetUserCart() {
+    const { data: session } = useSession();
+    const {
+        data: cartItem,
+        error,
+        isPending,
+    } = useQuery<CartResponse>({
+        queryKey: ["user cart"],
+        queryFn: async () => {
+            const res = await fetch(`/api/check-product-cart`);
+            const data: ApiResponse<CartResponse> = await res.json();
+
+            if (!res) {
+                throw Error("Something went wrong please try again");
+            }
+            if ("error" in data) {
+                throw Error(data.error);
+            }
+            return data;
+        },
+        enabled: !!session,
+    });
+    return { cartItem, error, isPending };
 }

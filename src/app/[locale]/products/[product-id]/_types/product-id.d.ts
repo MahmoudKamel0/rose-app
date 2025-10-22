@@ -23,7 +23,7 @@ export interface Cart {
 }
 
 export interface CartItem {
-    product: ProductResponse;
+    product: ProductResponse["product"];
     price: number;
     quantity: number;
     _id: string;
