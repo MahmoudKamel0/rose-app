@@ -32,8 +32,8 @@
         "forgotpss": "Forgot your password?",
         "login": "Login",
         "password": "Password",
-        "email": "Email",
-
+        "email": "Email"
+    },
     "forget-password-email": {
         "title": "Forgot Password",
         "desc": "Worry not, we'll send you instructions to help you reset it.",
@@ -117,9 +117,24 @@
                 "description": "Something went wrong, please try again later"
             }
         }
+    },
+
+    "Price": {
+        "title": "Price",
+        "from": "from",
+        "to": "to"
+    },
+
+    "Occasions": {
+        "title": "Occasion",
+        "loading": "loading.."
+    },
+
+    "reset": {
+        "label": "Reset"
     }
 }
-}
+
 
 
   

@@ -22,7 +22,7 @@ const useLogin = () => {
             if (response?.url) {
                 router.push(response.url);
             } else {
-                router.push("/overview");
+                router.push("/");
             }
         },
     });

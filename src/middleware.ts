@@ -25,7 +25,7 @@ export default async function middleware(req: NextRequest) {
   if (publicPages.some((page) => pathname.endsWith(page))) {
     // authenticated, redirect to landing page
     if (authRoutes.some((page) => pathname.endsWith(page)) && token) {
-      const redirectUrl = new URL(`/${locale}/overview`, req.nextUrl.origin);
+      const redirectUrl = new URL(`/${locale}/`, req.nextUrl.origin);
       return NextResponse.redirect(redirectUrl);
     }
 

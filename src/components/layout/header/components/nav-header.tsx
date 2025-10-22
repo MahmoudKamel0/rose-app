@@ -45,7 +45,7 @@ export default function NavHeader() {
             <ul onMouseLeave={() => setWidth(0)} className={cn("relative flex h-full w-fit items-center justify-center gap-10")}>
                 {NAV_LINKS.map((item) => (
                     <li key={item.name} onMouseEnter={(e) => handleHover(e.currentTarget as HTMLElement)}>
-                        <Link className={LinkStyle} href="/">{item.icon} {item.name}</Link>
+                        <Link className={LinkStyle} href={item.path || "/"}>{item.icon} {item.name}</Link>
                     </li>
                 ))}
 

@@ -10,6 +10,7 @@ export const NAV_LINKS = [
     {
         icon: <Gift size="20" className={cn("stroke-zinc-50", "dark:stroke-zinc-800")} />,
         name: "Products",
+        path: "/products",
     },
     {
         icon: <ClipboardList size="20" className={cn("stroke-zinc-50", "dark:stroke-zinc-800")} />,
