@@ -1,4 +1,4 @@
-import Reviews from "@components/features/reviews-section";
+import Reviews from "@components/features/reviews-section/components/reviews-section";
 import { ReviewsSectionProps } from "@lib/types/review-product";
 
 // Page component for product reviews

@@ -23,7 +23,7 @@ export default async function ReviewsSection({ productId }: ReviewsSectionProps)
 
             {/* General rating info */}
             <div className="mt-4 space-y-1">
-                <h3 className="font-font-primary align-middle text-[20px] leading-none font-semibold tracking-normal text-zinc-900 dark:text-zinc-50">
+                <h3 className="font-font-primary align-middle text-xl leading-none font-semibold tracking-normal text-zinc-900 dark:text-zinc-50">
                     {t("generalRating")}
                 </h3>
 

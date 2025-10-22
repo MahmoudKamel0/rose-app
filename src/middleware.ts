@@ -4,13 +4,14 @@ import { routing } from "./i18n/routing";
 import { getToken } from "next-auth/jwt";
 
 const authRoutes = ["/login", "/register", "/forgot-password"];
-const publicPages = ["/en", "/ar", "/en/products", "/en/products", ...authRoutes];
+const publicPages = ["/en", "/ar", "/en/products", ...authRoutes];
+
 const handleI18nRouting = createMiddleware(routing);
 
 export default async function middleware(req: NextRequest) {
     const pathname = req.nextUrl.pathname;
 
-    // get the language from URL
+    // Get the locale from the URL
     const segments = pathname.split("/");
     const locale = routing.locales.includes(segments[1] as (typeof routing.locales)[number])
         ? (segments[1] as (typeof routing.locales)[number])
@@ -19,26 +20,31 @@ export default async function middleware(req: NextRequest) {
     // Get user's token
     const token = await getToken({ req });
 
-    // If the user request public route
-    if (publicPages.some((page) => pathname.endsWith(page))) {
-        // authenticated, redirect to landing page
+    // Check if the route is public
+    const isPublic =
+        publicPages.some((page) => pathname === page || pathname.startsWith(`${page}/`)) ||
+        pathname.startsWith("/en/products/") || // support dynamic product pages
+        pathname.startsWith("/ar/products/");
+
+    if (isPublic) {
+        // If authenticated user tries to access auth routes, redirect to home
         if (authRoutes.some((page) => pathname.endsWith(page)) && token) {
             const redirectUrl = new URL(`/${locale}`, req.nextUrl.origin);
             return NextResponse.redirect(redirectUrl);
         }
 
-        // Not authenticated, pass
+        // Public route → allow
         return handleI18nRouting(req);
     }
 
-    // If the user request Protected route
+    // Protected routes → require authentication
     if (!token) {
-        // Not authenticated, redirect to login page
         const redirectUrl = new URL(`/${locale}/login`, req.nextUrl.origin);
         redirectUrl.searchParams.set("callbackUrl", req.nextUrl.pathname);
         return NextResponse.redirect(redirectUrl);
     }
-    // authenticated, pass
+
+    // Authenticated → allow
     return handleI18nRouting(req);
 }
 

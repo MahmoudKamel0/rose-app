@@ -13,7 +13,6 @@ import { ReviewInput, reviewSchema } from "@lib/schemas/review.schema";
 import { toast } from "sonner";
 import { useReview } from "../hooks/use-review";
 import { useTranslations } from "next-intl";
-import { getAccessToken } from "@lib/utils/get-token.util";
 import { ReviewsSectionProps } from "@lib/types/review-product";
 
 export default function ReviewForm({ productId }: ReviewsSectionProps) {
@@ -42,14 +41,33 @@ export default function ReviewForm({ productId }: ReviewsSectionProps) {
 
     // Check authentication on mount
     useEffect(() => {
-        // Check authentication status
+        // Function to check authentication status
         const checkAuth = async () => {
-            // Get the access token
-            const token = await getAccessToken();
-            // Set authentication state
-            setIsAuthenticated(!!token);
+            try {
+                // Fetch token
+                const res = await fetch("/api/auth/token", { credentials: "include" });
+
+                // Handle non-OK responses
+                if (!res.ok) {
+                    console.warn("Failed to fetch token:", res.status);
+                    setIsAuthenticated(false);
+                    return;
+                }
+
+                // Parse response data
+                const data = await res.json();
+
+                // Check if access token exists
+                setIsAuthenticated(!!data?.accessToken);
+            } catch (error) {
+                console.error("Error checking auth status:", error);
+
+                // Set authentication status to false
+                setIsAuthenticated(false);
+            }
         };
 
+        // Call the checkAuth function
         checkAuth();
     }, []);
 
@@ -57,7 +75,7 @@ export default function ReviewForm({ productId }: ReviewsSectionProps) {
     const onSubmit = (data: ReviewInput) => {
         // Prevent submission if not authenticated
         if (!isAuthenticated) {
-            toast.error("Please login to be able to review the product");
+            toast.error(t("authenticationRequired"));
             return;
         }
 
@@ -145,7 +163,7 @@ export default function ReviewForm({ productId }: ReviewsSectionProps) {
                             <FormControl>
                                 <Textarea
                                     placeholder={t("commentPlaceholder")}
-                                    className="min-h-[9.4rem]"
+                                    className="max-h-[9.4rem] min-h-[9.4rem]"
                                     {...field}
                                     disabled={!isAuthenticated}
                                 />

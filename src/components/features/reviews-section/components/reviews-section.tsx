@@ -1,15 +1,15 @@
 import { Suspense } from "react";
-import ReviewsSection from "./components/general-rating";
-import ReviewsList from "./components/reviews-list";
-import ReviewsSectionSkeleton from "../../skeletons/reviews-section/reviews-section.skeleton";
-import ReviewsListSkeleton from "../../skeletons/reviews-section/reviews-list.skeleton";
-import ReviewForm from "./components/review-form";
 import { fetchRelatedProducts } from "@lib/apis/related-products.api";
-import EmblaCarousel from "@app/_components/best-selling-section/components/right-side-best-selling/embla-carousel-best-selling";
 import HighlightedHeading from "@components/shared/highlighted-heading";
 import { getTranslations } from "next-intl/server";
 import EmblaCarouselSkeleton from "@components/shared/embla-carousel-skeleton";
 import { ReviewsSectionProps } from "@lib/types/review-product";
+import ReviewsSectionSkeleton from "@components/skeletons/reviews-section/reviews-section.skeleton";
+import ReviewsSection from "./general-rating";
+import ReviewsListSkeleton from "@components/skeletons/reviews-section/reviews-list.skeleton";
+import ReviewsList from "./reviews-list";
+import ReviewForm from "./review-form";
+import EmblaCarousel from "@components/features/best-selling-section/components/right-side-best-selling/embla-carousel-best-selling";
 
 export default async function Reviews({ productId }: ReviewsSectionProps) {
     // Translation hook
@@ -17,7 +17,7 @@ export default async function Reviews({ productId }: ReviewsSectionProps) {
     const productIdd = "673e2e1f1159920171828153";
 
     return (
-        <section className="px-20">
+        <section className="container mx-auto max-w-[80rem]">
             {/* Wrap the fetching component inside Suspense */}
             <Suspense fallback={<ReviewsSectionSkeleton />}>
                 {/* Render the fetched data */}

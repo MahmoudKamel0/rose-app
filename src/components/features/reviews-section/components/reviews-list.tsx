@@ -7,10 +7,34 @@ import { getTranslations, getFormatter } from "next-intl/server";
 export default async function ReviewsList({ productId }: ReviewsSectionProps) {
     // Translation & Formatter
     const t = await getTranslations("reviewsList");
+
+    // Formatter
     const format = await getFormatter();
 
-    // Fetch reviews from API
-    const data = (await fetchProductReviews(productId)) as ReviewsSuccessResponse;
+    // State
+    let data: ReviewsSuccessResponse | null = null;
+    let error = false;
+
+    try {
+        // Fetch reviews from API
+        data = (await fetchProductReviews(productId)) as ReviewsSuccessResponse;
+    } catch (err) {
+        console.error("Failed to fetch product reviews:", err);
+        error = true;
+    }
+
+    // Handle API error or empty data
+    if (error || !data || !data.reviews?.length) {
+        return (
+            <div className="mt-6 flex h-[15.4rem] flex-1 items-center justify-center text-zinc-600 dark:text-zinc-400">
+                {error
+                    ? t("fetchError", { default: "Failed to load reviews. Please try again later." })
+                    : t("noReviews", { default: "No reviews yet." })}
+            </div>
+        );
+    }
+
+    // Destructure reviews
     const { reviews } = data;
 
     return (

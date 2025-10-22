@@ -8,7 +8,7 @@ export const useRegisterSchema = () => {
         .object({
             firstName: z.string().min(1, t("firstName-required")).min(2, t("firstName-min")),
             lastName: z.string().min(1, t("lastName-required")).min(2, t("lastName-min")),
-            email: z.string().min(1, t("email-required")).email(t("email-invalid")),
+            email: z.email(t("email-invalid")).min(1, t("email-required")),
             phone: z
                 .string()
                 .min(1, t("phone-required"))

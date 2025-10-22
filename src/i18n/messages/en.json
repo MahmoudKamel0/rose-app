@@ -147,5 +147,8 @@
     "emblaCarousel": {
         "title": "Related Products",
         "noProducts": "No products available"
-    }
+    },
+    "fetchError": "Failed to load reviews. Please try again later.",
+    "noReviews": "No reviews yet.",
+    "authenticationRequired": "Please login to be able to review the product"
 }
