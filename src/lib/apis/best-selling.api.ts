@@ -2,9 +2,9 @@
 export async function getBestSellingProducts() {
   try {
     const payload = await fetch(`${process.env.BASE_URL}/products?sort=-sold`, {
-      method: 'GET',
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
     });
 
@@ -16,7 +16,7 @@ export async function getBestSellingProducts() {
     return Array.isArray(data.products) ? data.products : [];
 
   } catch (error) {
-    console.error('Failed to fetch Best Selling Products:', error);
+    console.error("Failed to fetch Best Selling Products:", error);
     throw error;
   }
 }

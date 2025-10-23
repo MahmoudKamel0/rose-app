@@ -5,7 +5,7 @@ import Autoplay from "embla-carousel-autoplay";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import TestimonialCard from "./testimonial-card";
 import { Testimonial } from "@lib/types/testimonial";
-import { cn } from "@lib/utils/cn.utils";
+import { cn } from "@lib/utils/cn.util";
 
 export default function TestimonialsCarousel({ testimonials }: { testimonials: Testimonial[] }) {
     //  Carousel settings

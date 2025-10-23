@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "@lib/utils/cn.utils";
+import { cn } from "@lib/utils/cn.util";
 import { Spinner } from "@components/ui/spinner";
 
 const buttonVariants = cva(
@@ -11,7 +11,7 @@ const buttonVariants = cva(
             variant: {
                 // Button Design (one)
                 default:
-                    "bg-maroon-600 text-primary-foreground hover:bg-maroon-700 disabled:bg-zinc-300 disabled:text-zinc-500 dark:bg-softpink-300 dark:text-zinc-800 dark:hover:bg-softpink-400 dark:disabled:text-zinc-600 [&_svg]:stroke-primary-foreground dark:[&_svg]:stroke-zinc-600",
+                    "bg-maroon-600 text-primary-foreground hover:bg-maroon-700 disabled:bg-zinc-300 disabled:text-zinc-500 dark:bg-softpink-300 dark:text-zinc-800 dark:hover:bg-softpink-400 dark:disabled:text-zinc-600 [&_svg]:stroke-white dark:[&_svg]:stroke-zinc-600",
                 // Button Design (two)
                 secondary:
                     "bg-destructive text-destructive-foreground hover:bg-maroon-100 disabled:bg-zinc-300 disabled:text-zinc-500 dark:bg-zinc-700 dark:text-softpink-300 dark:hover:bg-zinc-600 dark:disabled:text-zinc-600 [&_svg]:stroke-destructive-foreground disabled:[&_svg]:stroke-zinc-500 dark:[&_svg]:stroke-softpink-300 dark:disabled:[&_svg]:stroke-zinc-600",
@@ -78,7 +78,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({ className, va
  * 6. `red`         → Destructive or danger action button.
  */
 const MainButton: React.FC<ButtonProps & { isLoading?: boolean }> = ({ children, isLoading, ...props }) => (
-    <Button className={cn("!flex justify-center")} {...props}>
+    <Button className={cn("!flex justify-center gap-1")} {...props}>
         {children} {isLoading && <Spinner />}
     </Button>
 );
