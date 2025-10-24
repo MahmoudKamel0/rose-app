@@ -2,7 +2,7 @@
 
 import { useMutation } from "@tanstack/react-query";
 import { ReviewInput } from "@lib/schemas/review.schema";
-import { createReviewAction } from "../action/review.action";
+import { createReviewAction } from "@lib/actions/reviews/review.action";
 
 export const useReview = () => {
     // Mutation hook

@@ -5,10 +5,10 @@ import { getTranslations } from "next-intl/server";
 import EmblaCarouselSkeleton from "@components/shared/embla-carousel-skeleton";
 import { ReviewsSectionProps } from "@lib/types/review-product";
 import ReviewsSectionSkeleton from "@components/skeletons/reviews-section/reviews-section.skeleton";
-import ReviewsSection from "./general-rating";
+import ReviewsSection from "./components/general-rating";
 import ReviewsListSkeleton from "@components/skeletons/reviews-section/reviews-list.skeleton";
-import ReviewsList from "./reviews-list";
-import ReviewForm from "./review-form";
+import ReviewsList from "./components/reviews-list";
+import ReviewForm from "./components/review-form";
 import EmblaCarousel from "@components/features/best-selling-section/components/right-side-best-selling/embla-carousel-best-selling";
 
 export default async function Reviews({ productId }: ReviewsSectionProps) {

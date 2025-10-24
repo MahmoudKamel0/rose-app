@@ -11,7 +11,7 @@ import { Star } from "lucide-react";
 import clsx from "clsx";
 import { ReviewInput, reviewSchema } from "@lib/schemas/review.schema";
 import { toast } from "sonner";
-import { useReview } from "../hooks/use-review";
+import { useReview } from "../../../../hooks/reviews/use-review";
 import { useTranslations } from "next-intl";
 import { ReviewsSectionProps } from "@lib/types/review-product";
 
