@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { useSpecificProduct } from "@app/[locale]/products/[product-id]/_hooks/use-products.hook";
+import { useSpecificProduct } from "@app/[locale]/products/[productId]/_hooks/use-products.hook";
 import Image from "next/image";
 import { cn } from "@/lib/utils/cn.utils";
 import { Heart, Loader2, Minus, Package, Plus, Star } from "lucide-react";
