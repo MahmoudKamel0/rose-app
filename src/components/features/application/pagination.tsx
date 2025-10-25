@@ -1,7 +1,8 @@
 "use client";
 
 import { usePagination } from "@/hooks/use-pagination";
-import { cn } from "@lib/utils/cn.utils";
+import { PaginationProps } from "@lib/types/components/products";
+import { cn } from "@lib/utils/cn.util";
 import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from "lucide-react";
 import { ReactNode, useId } from "react";
 
@@ -20,7 +21,7 @@ import { ReactNode, useId } from "react";
  *
  * @component
  */
-export default function Pagination({ totalPages }: { totalPages: number }) {
+export default function Pagination({ totalPages, className }: PaginationProps) {
     const id = useId();
     const { currentPage, pageRange, handlePageChange, goToPreviousPage, goToNextPage, jumpBackward, jumpForward } = usePagination({
         totalPages,
@@ -28,7 +29,7 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
     });
 
     return (
-        <div className="flex items-center gap-1.5">
+        <div className={cn("flex items-center justify-center gap-1.5", className)}>
             {/* Previous buttons */}
             <button
                 onClick={() => jumpBackward()}

@@ -1,8 +1,8 @@
 import { Badge } from "@components/ui/badge";
-import { cn } from "@lib/utils/cn.utils";
+import { cn } from "@lib/utils/cn.util";
 import { Heart, ShoppingCart } from "lucide-react";
 import Link from "next/link";
-import NotificationMenu from "./Notification";
+// import NotificationMenu from "./Notification";
 
 /**
  * ShoShopHeader
@@ -37,7 +37,7 @@ export default function ShopHeader() {
             </Link>
 
             {/* Notification bell icon button - shows number of notifications */}
-            <NotificationMenu />
+            {/* <NotificationMenu /> */}
         </div>
     );
 }

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { cn } from "@lib/utils/cn.utils";
+import { cn } from "@lib/utils/cn.util";
 import MainImage from "./main-image";
 
 // Reusable rounded styles
