@@ -36,9 +36,9 @@ export default function CartBtn({ productId, numberProduct }: CartType) {
             await mutateAddCart(cart, {
                 onSuccess: () => {
                     setBtnDisable(true);
-                    toast.success("success", {
-                        description: "The Product was added to the cart",
-                        duration: 3000,
+                    toast.success(t("success"), {
+                        description: t("toast-added"),
+                        duration: 2000,
                     });
                 },
             });
@@ -57,7 +57,7 @@ export default function CartBtn({ productId, numberProduct }: CartType) {
 
             cartArray.push(cart);
             localStorage.setItem("cart", JSON.stringify(cartArray));
-            toast.success("Added to cart", { duration: 2500 });
+            toast.success(t("toast-added"), { duration: 2000 });
             setBtnDisable(true);
         }
     };
@@ -115,10 +115,10 @@ export default function CartBtn({ productId, numberProduct }: CartType) {
                 isLoading={isPending}
                 type="button"
                 onClick={handleCart}
-                disabled={btnDisable || !numberProduct || btnDisableLogged}
+                disabled={btnDisable || numberProduct < 1 || btnDisableLogged}
             >
                 <ShoppingCart className="h-6 w-6 text-white dark:text-zinc-800" />
-                {!btnDisable ? t("add-cart") : t("added")}
+                {numberProduct < 1 ? t("sold-out") : !btnDisable ? t("add-cart") : t("added")}
             </Button>
             {error && <AuthError error={error?.message} />}
         </div>

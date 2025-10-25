@@ -1,7 +1,7 @@
 
 
 import * as React from "react";
-import { cn } from "@lib/utils/cn.utils";
+import { cn } from "@lib/utils/cn.util";
 import { getBestSellingProducts } from "@lib/apis/best-selling.api";
 import Subtitle from "@components/shared/subtitle";
 import ProductCard from "@components/shared/product-card";

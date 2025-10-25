@@ -12,7 +12,7 @@ import NavHeader from "./components/nav-header";
  * Usage:
  * Place `<Header />` at the top of your layout to provide a consistent navigation and account section across pages.
  */
-export default function Headerr() {
+export default function Header() {
     return (
         <header className="mb-20">
             <TopHeader />

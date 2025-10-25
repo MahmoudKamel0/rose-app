@@ -1,7 +1,7 @@
 import React from "react";
 import ProductDetailes from "./_components/product-detailes";
 
-async function ProductId({ params }: { params: { "product-id": string } }) {
+export default async function ProductId({ params }: { params: { "product-id": string } }) {
     const { "product-id": productId } = params;
 
     return (
@@ -10,5 +10,3 @@ async function ProductId({ params }: { params: { "product-id": string } }) {
         </main>
     );
 }
-
-export default ProductId;

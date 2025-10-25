@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { cn } from "@lib/utils/cn.utils";
+import { cn } from "@lib/utils/cn.util";
 import { Button } from "@components/ui/button";
 import { ArrowRight } from "lucide-react";
 

@@ -32,101 +32,104 @@
         "forgotpss": "Forgot your password?",
         "login": "Login",
         "password": "Password",
-        "email": "Email",
+        "email": "Email"
+    },
 
-        "forget-password-email": {
-            "title": "Forgot Password",
-            "desc": "Worry not, we'll send you instructions to help you reset it.",
-            "label": "Email",
-            "continue": "Continue",
-            "checking": "checking...",
-            "footer-msg": "Don't have an account yet?",
-            "footer-link": "Create one now!",
-            "toast": "A secret code will be sent to your email.",
-            "toast-desc": "wait until you recive the secret code"
-        },
+    "forget-password-email": {
+        "title": "Forgot Password",
+        "desc": "Worry not, we'll send you instructions to help you reset it.",
+        "label": "Email",
+        "continue": "Continue",
+        "checking": "checking...",
+        "footer-msg": "Don't have an account yet?",
+        "footer-link": "Create one now!",
+        "toast": "A secret code will be sent to your email.",
+        "toast-desc": "wait until you recive the secret code"
+    },
 
-        "reset-password": {
-            "title": "Create a New Password",
-            "desc": "Set a strong password to secure your account.",
-            "newPassLabel": "New Password",
-            "resetPassLabel": "Confirm New Password",
-            "continue": "Reset password",
-            "loading": "Loading...",
-            "toast": "Your password has been updated successfully..",
-            "toast-desc": "You will be redirected to the login page. Please wait."
-        },
-
-        "product-detailes": {
-            "loading": "please wait...",
-            "price": "EGP",
-            "out": "Out of stock",
-            "left": "left in stock",
-            "rate": " Rating",
-            "no-rate": "No rates yet",
-            "add-cart": "Add To Cart",
-            "added": "Added To Cart"
-        },
-
-        "firstName": "First Name",
-        "lastName": "Last Name",
-        "email": "Email",
-        "phone": "Phone",
-        "gender": "Gender",
-        "selectGender": "Select gender",
-        "male": "Male",
-        "female": "Female",
-        "password": "Password",
-        "rePassword": "Confirm Password",
-        "error": "Something went wrong",
+    "reset-password": {
+        "title": "Create a New Password",
+        "desc": "Set a strong password to secure your account.",
+        "newPassLabel": "New Password",
+        "resetPassLabel": "Confirm New Password",
+        "continue": "Reset password",
         "loading": "Loading...",
-        "createAccount": "Create Account",
-        "already": "Already have an account?",
-        "login": "Login",
-        "login-message": "Welcome back!",
-        "register-message": "Become part of our family!",
-        "account-created-successfully": "Account created successfully!",
-        "error-creating-account": "Something went wrong while creating the account.",
-        "firstName-required": "First name is required",
-        "firstName-min": "First name must be at least 2 characters",
-        "lastName-required": "Last name is required",
-        "lastName-min": "Last name must be at least 2 characters",
-        "email-required": "Email is required",
-        "email-invalid": "Please enter a valid email address",
-        "phone-required": "Phone number is required",
-        "phone-invalid": "Invalid phone number format (must start with + and contain 6–15 digits)",
-        "gender-required": "Please select your gender",
-        "password-required": "Password is required",
-        "password-min": "Password must be at least 8 characters",
-        "password-first-capital": "Password must start with a capital letter",
-        "password-special-char": "Password must contain at least one special character",
-        "confirmPassword-required": "Confirm password is required",
-        "passwords-not-match": "Passwords do not match",
-        "otp": {
-            "enter-title": "Enter the OTP Code",
-            "sent": "We have sent a 6-digit code to {email}",
-            "edit": "edit",
-            "sending": "Sending...",
-            "send-new": "Send new code",
-            "verify": "Verify OTP",
-            "verifying": "Verifying...",
-            "error": "Please enter all 6 digits",
-            "need-help": "Need help?",
-            "contact-us": "Contact us",
-            "resend-in": "Resend in {seconds}s",
-            "toast": {
-                "verifySuccess": {
-                    "title": "OTP verified successfully",
-                    "description": "You can now reset your password"
-                },
-                "success": {
-                    "title": "OTP resent successfully",
-                    "description": "Please check your email for the new OTP"
-                },
-                "error": {
-                    "title": "Failed to resend OTP",
-                    "description": "Something went wrong, please try again later"
-                }
+        "toast": "Your password has been updated successfully..",
+        "toast-desc": "You will be redirected to the login page. Please wait."
+    },
+
+    "product-detailes": {
+        "loading": "please wait...",
+        "price": "EGP",
+        "out": "Out of stock",
+        "left": "left in stock",
+        "rate": " Rating",
+        "no-rate": "No rates yet",
+        "add-cart": "Add To Cart",
+        "added": "Added To Cart",
+        "toast-added": "Added to cart",
+        "success": "success",
+        "sold-out": "Sold out"
+    },
+
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "phone": "Phone",
+    "gender": "Gender",
+    "selectGender": "Select gender",
+    "male": "Male",
+    "female": "Female",
+    "password": "Password",
+    "rePassword": "Confirm Password",
+    "error": "Something went wrong",
+    "loading": "Loading...",
+    "createAccount": "Create Account",
+    "already": "Already have an account?",
+    "login": "Login",
+    "login-message": "Welcome back!",
+    "register-message": "Become part of our family!",
+    "account-created-successfully": "Account created successfully!",
+    "error-creating-account": "Something went wrong while creating the account.",
+    "firstName-required": "First name is required",
+    "firstName-min": "First name must be at least 2 characters",
+    "lastName-required": "Last name is required",
+    "lastName-min": "Last name must be at least 2 characters",
+    "email-required": "Email is required",
+    "email-invalid": "Please enter a valid email address",
+    "phone-required": "Phone number is required",
+    "phone-invalid": "Invalid phone number format (must start with + and contain 6–15 digits)",
+    "gender-required": "Please select your gender",
+    "password-required": "Password is required",
+    "password-min": "Password must be at least 8 characters",
+    "password-first-capital": "Password must start with a capital letter",
+    "password-special-char": "Password must contain at least one special character",
+    "confirmPassword-required": "Confirm password is required",
+    "passwords-not-match": "Passwords do not match",
+    "otp": {
+        "enter-title": "Enter the OTP Code",
+        "sent": "We have sent a 6-digit code to {email}",
+        "edit": "edit",
+        "sending": "Sending...",
+        "send-new": "Send new code",
+        "verify": "Verify OTP",
+        "verifying": "Verifying...",
+        "error": "Please enter all 6 digits",
+        "need-help": "Need help?",
+        "contact-us": "Contact us",
+        "resend-in": "Resend in {seconds}s",
+        "toast": {
+            "verifySuccess": {
+                "title": "OTP verified successfully",
+                "description": "You can now reset your password"
+            },
+            "success": {
+                "title": "OTP resent successfully",
+                "description": "Please check your email for the new OTP"
+            },
+            "error": {
+                "title": "Failed to resend OTP",
+                "description": "Something went wrong, please try again later"
             }
         }
     }
