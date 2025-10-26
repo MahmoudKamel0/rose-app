@@ -4,7 +4,7 @@ import { Testimonial } from "@lib/types/testimonial";
 import { Star } from "lucide-react";
 import Image from "next/image";
 import { useFormatter, useTranslations } from "next-intl";
-import { cn } from "@lib/utils/cn.utils";
+import { cn } from "@lib/utils/cn.util";
 
 export default function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
     //  Translations

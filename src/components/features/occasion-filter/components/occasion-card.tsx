@@ -1,9 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { cn } from "@lib/utils/cn.utils";
 import { Button } from "@components/ui/button";
 import { OccasionCardProps } from "@lib/types/occasions";
+import { cn } from "@lib/utils/cn.util";
 
 export default function OccasionCard({ id, name, image, selected, onToggle }: OccasionCardProps) {
 

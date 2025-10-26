@@ -1,6 +1,6 @@
 "use client";
 import { NAV_LINKS } from "@lib/constants/component-ui.constant";
-import { cn } from "@lib/utils/cn.utils";
+import { cn } from "@lib/utils/cn.util";
 import { ClipboardList, Gift, Headset, Home, Info, PartyPopper } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";

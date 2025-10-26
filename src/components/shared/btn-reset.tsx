@@ -3,8 +3,8 @@
 import React from "react";
 import { X } from "lucide-react";
 import { Button } from '@components/ui/button';
-import { cn } from '@lib/utils/cn.utils';
 import { useTranslations } from "next-intl";
+import { cn } from "@lib/utils/cn.util";
 
 type ResetButtonProps = {
   onClick: () => void;

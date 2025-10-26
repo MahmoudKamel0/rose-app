@@ -13,7 +13,6 @@ export async function GET(req: NextRequest) {
             "Content-Type": "application/json",
         };
 
-        // Prefer the standard Authorization header (Bearer token).
         if (token) {
             headers["Authorization"] = `Bearer ${token}`;
         }

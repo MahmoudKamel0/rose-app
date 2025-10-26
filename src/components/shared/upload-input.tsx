@@ -2,7 +2,7 @@
 import { Upload } from "lucide-react";
 import { Input } from "@components/ui/input";
 import React, { useRef, useState } from "react";
-import { cn } from "@lib/utils/cn.utils";
+import { cn } from "@lib/utils/cn.util";
 
 const UploadInput = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(({ className, disabled, ...props }, ref) => {
     const [fileName, setFileName] = useState<string>("");

@@ -1,31 +1,37 @@
-import { cn } from "@lib/utils/cn.utils";
+import { cn } from "@lib/utils/cn.util";
 import { Home, Gift, ClipboardList, PartyPopper, Headset, Info, LogOut, MapPinHouse, ScrollText, Settings, User } from "lucide-react";
 
 // For NavHeader component: (components/layout/header/components/nav-header)
 export const NAV_LINKS = [
     {
         icon: <Home size="20" className={cn("stroke-zinc-50", "dark:stroke-zinc-800")} />,
+        path: "/",
         name: "Home",
     },
     {
         icon: <Gift size="20" className={cn("stroke-zinc-50", "dark:stroke-zinc-800")} />,
+        path: "/products",
         name: "Products",
         path: "/products",
     },
     {
         icon: <ClipboardList size="20" className={cn("stroke-zinc-50", "dark:stroke-zinc-800")} />,
+        path: "/",
         name: "Categories",
     },
     {
         icon: <PartyPopper size="20" className={cn("stroke-zinc-50", "dark:stroke-zinc-800")} />,
+        path: "/",
         name: "Occasions",
     },
     {
         icon: <Headset size="20" className={cn("stroke-zinc-50", "dark:stroke-zinc-800")} />,
+        path: "/",
         name: "Contact",
     },
     {
         icon: <Info size="20" className={cn("stroke-zinc-50", "dark:stroke-zinc-800")} />,
+        path: "/",
         name: "About",
     },
 ];

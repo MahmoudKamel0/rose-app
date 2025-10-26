@@ -1,5 +1,5 @@
 import { Alert, AlertTitle } from "@components/ui/alert";
-import { cn } from "@lib/utils/cn.utils";
+import { cn } from "@lib/utils/cn.util";
 import { Info, X } from "lucide-react";
 
 /**

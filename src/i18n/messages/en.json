@@ -57,6 +57,20 @@
         "toast-desc": "You will be redirected to the login page. Please wait."
     },
 
+    "product-detailes": {
+        "loading": "please wait...",
+        "price": "EGP",
+        "out": "Out of stock",
+        "left": "left in stock",
+        "rate": " Rating",
+        "no-rate": "No rates yet",
+        "add-cart": "Add To Cart",
+        "added": "Added To Cart",
+        "toast-added": "Added to cart",
+        "success": "success",
+        "sold-out": "Sold out"
+    },
+
     "firstName": "First Name",
     "lastName": "Last Name",
     "email": "Email",
@@ -135,7 +149,3 @@
         "label": "Reset"
     }
 }
-
-
-
-  
