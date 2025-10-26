@@ -22,3 +22,6 @@ button svg[data-noinherit="true"] {
     fill: unset !important;
     color: unset !important;
 }
+.filter-white {
+    filter: brightness(0) invert(1);
+}
