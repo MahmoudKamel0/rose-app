@@ -1,4 +1,4 @@
-import { cn } from "@lib/utils/cn.utils";
+import { cn } from "@lib/utils/cn.util";
 import { Alert, AlertTitle } from "../ui/alert";
 import { X } from "lucide-react";
 

@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { greatVibes } from "@fonts";
-import { cn } from "@lib/utils/cn.utils";
+import { cn } from "@lib/utils/cn.util";
 import { usePathname } from "@/i18n/navigation";
 
 export default function AuthMessage() {

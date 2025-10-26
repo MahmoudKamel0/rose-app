@@ -1,18 +1,19 @@
 import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
-import { ThemeProvider } from "@components/providers/components/theme.provider";
 import Providers from "@components/providers";
-import { ModeToggle } from "@components/ui/mode-toggle";
+<<<<<<< HEAD
 import { cn } from "@lib/utils/cn.utils";
 import { sarabun, tajawal } from "@fonts";
 import { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import Header from "@components/features/header/header";
-import Footer from "@components/layout/footer";
-import Headers from "@components/features/header/header";
-import Headerr from "@components/layout/header";
-import { Toaster } from "@components/ui/sonner";
+=======
+import { cn } from "@lib/utils/cn.util";
+import { sarabun, tajawal } from "@fonts";
+import { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import Header from "@components/layout/header";
+>>>>>>> 54f27d8f79cc709188ec8e853b50c3dea765fc67
 
 // Generate static params for each locale
 export function generateStaticParams() {
@@ -55,10 +56,10 @@ export default async function LocaleLayout({ children, params }: Props) {
     return (
         <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
             <body className={cn(sarabun.className, tajawal.variable, "antialiased")}>
-                {/* Providers */}
-                {/* <Header /> */}
-
-                <Providers>{children}</Providers>
+                <Providers>
+                    <Header />
+                    {children}
+                </Providers>
             </body>
         </html>
     );

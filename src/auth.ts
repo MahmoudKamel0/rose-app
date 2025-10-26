@@ -6,11 +6,11 @@ import Credentials from "next-auth/providers/credentials";
 export const authOptions: NextAuthOptions = {
     // Customize NextAuth pages
     pages: {
-        signIn: '/login'
+        signIn: "/login"
     },
     providers: [
         Credentials ({
-            name: 'Credentials',
+            name: "Credentials",
             credentials: {
                 email: {},
                 password: {},
@@ -19,7 +19,7 @@ export const authOptions: NextAuthOptions = {
             authorize: async (credentials) => {
                 // Call login API
                 const response = await fetch(`${process.env.BASE_URL}/auth/signin`, {
-                    method: 'POST',
+                    method: "POST",
                     body: JSON.stringify({
                         email: credentials?.email,
                         password: credentials?.password,
@@ -32,7 +32,7 @@ export const authOptions: NextAuthOptions = {
                 // Parse the API response
                 const payload: ApiResponse<LoginResponse> = await response.json();
 
-                if('error' in payload) {
+                if("error" in payload) {
                     throw new Error(payload.error);
                 }
                 // Return user object to store in JWT
@@ -40,7 +40,7 @@ export const authOptions: NextAuthOptions = {
                     id: payload.user._id,
                     user: payload.user,
                     accessToken: payload.token,
-                }
+                };
             }
         })
     ],
@@ -58,4 +58,4 @@ export const authOptions: NextAuthOptions = {
             return session;
         }
     }
-}
+};

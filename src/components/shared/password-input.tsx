@@ -2,7 +2,7 @@
 import { EyeIcon, EyeOff } from "lucide-react";
 import { Input } from "@components/ui/input";
 import React, { useState } from "react";
-import { cn } from "@lib/utils/cn.utils";
+import { cn } from "@lib/utils/cn.util";
 import { INPUT_STYLE } from "@lib/constants/style.constant";
 
 /**

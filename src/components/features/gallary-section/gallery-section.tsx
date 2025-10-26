@@ -1,6 +1,6 @@
 import HighlightedHeading from "@components/shared/highlighted-heading";
 import Subtitle from "@components/shared/subtitle";
-import { cn } from "@lib/utils/cn.utils";
+import { cn } from "@lib/utils/cn.util";
 import Image from "next/image";
 
 export default function GallerySection() {

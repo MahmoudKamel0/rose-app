@@ -1,4 +1,4 @@
-import { cn } from "@lib/utils/cn.utils";
+import { cn } from "@lib/utils/cn.util";
 
 export const INPUT_STYLE = cn(
     // Light mode
