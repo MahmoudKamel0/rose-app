@@ -2,103 +2,87 @@
 
 import { useTranslations } from "next-intl";
 import BtnReset from "@components/shared/btn-reset";
-import { useFormContext } from "react-hook-form";
 import { getProductsByPrice } from "@lib/apis/price-filter.api";
-import { useEffect, useState } from "react";
+import { useFilters } from "@/hooks/products-filters/use-filters";
+import { useQuery } from "@tanstack/react-query";
+import { Price } from "@lib/types/price";
+import { useRouter } from "next/navigation"
+import { Label } from "@components/ui/label";
+import { Input } from "@components/ui/input";
 
 export default function PriceFilter() {
   const t = useTranslations("Price");
-  const { watch, setValue } = useFormContext();
+  const router = useRouter();
+  const { updateParam, searchParams } = useFilters();
+  
 
-  // Watch Price inputs
-  const priceFrom = watch("priceFrom");
-  const priceTo = watch("priceTo");
+  // Read current price range from URL
+const priceFromParam = searchParams.get("priceFrom");
+const priceToParam = searchParams.get("priceTo");
 
-  // Requested Products state
-  const [products, setProducts] = useState<any[]>([]);
-  const [loading, setLoading] = useState(false);
+const priceFrom = priceFromParam ? Number(priceFromParam) : undefined;
+const priceTo = priceToParam ? Number(priceToParam) : undefined;
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      // If user didn't type price
-      if (priceFrom === undefined && priceTo === undefined) return;
+  // Fetch products automatically with React Query
+  const { data: products = [], isFetching } = useQuery<Price[]>({
+    queryKey: ["products-by-price", priceFrom, priceTo],
+    queryFn: () => getProductsByPrice(priceFrom, priceTo),
+    enabled: Boolean(priceFrom && priceTo),
+    staleTime: 1000 * 60 * 5,
+  });
 
-      try {
-        setLoading(true);
-        const data = await getProductsByPrice(priceFrom, priceTo);
-        setProducts(data);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    // Refetch data when the inputs change
-    fetchProducts();
-  }, [priceFrom, priceTo]); 
-
-  // Reset btn
+  // Reset all prices
   const handleReset = () => {
-    setValue("priceFrom", undefined);
-    setValue("priceTo", undefined);
-    setProducts([]); 
+    const params = new URLSearchParams(searchParams.toString());
+    params.delete("priceFrom");
+    params.delete("priceTo");
+    router.replace(`?${params.toString()}`);
   };
 
   return (
-    <section aria-labelledby="price-filter-title" className="mt-6 border-t-1">
-      <div className="flex items-center justify-between mb-4">
-        <h2 id="price-filter-title" className="text-lg font-semibold text-zinc-800">
+    <section className="space-y-3 mt-6 border-t pt-4">
+      <div className="flex items-center justify-between mb-2.5">
+        <h2 className="text-lg font-semibold text-zinc-800">
           {t("title")}
         </h2>
-        <BtnReset onClick={handleReset} label="Reset" />
+        {(priceFrom || priceTo) && <BtnReset onClick={handleReset} />}
       </div>
 
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-2 gap-3 w-full"> 
+        {/* Price From input */}
         <div>
-          <label htmlFor="priceFrom" className="block text-sm mb-1">
+          <Label htmlFor="priceFrom" className="block text-sm mb-1">
             {t("from")}
-          </label>
-          <input
+          </Label>
+          <Input
+            id="priceFrom"
             type="number"
             placeholder="From"
             value={priceFrom ?? ""}
             onChange={(e) =>
-              setValue(
-                "priceFrom",
-                e.target.value ? Number(e.target.value) : undefined
-              )
+              updateParam("priceFrom", e.target.value ? [e.target.value] : undefined)
             }
             className="border rounded-10 px-2 py-1 w-36 h-12"
             min={0}
           />
         </div>
-
+        {/* Price To input */}
         <div>
-          <label htmlFor="priceTo" className="block text-sm mb-1">
+          <Label htmlFor="priceTo" className="block text-sm mb-1">
             {t("to")}
-          </label>
-          <input
+          </Label>
+          <Input
+            id="priceTo"
             type="number"
             placeholder="To"
             value={priceTo ?? ""}
             onChange={(e) =>
-              setValue(
-                "priceTo",
-                e.target.value ? Number(e.target.value) : undefined
-              )
+              updateParam("priceTo", e.target.value ? [e.target.value] : undefined)
             }
             className="border rounded-10 px-2 py-1 w-36 h-12"
             min={0}
           />
         </div>
-      </div>
-
-      <div className="mt-4">
-        {loading && <p className="text-sm text-gray-500">Loading...</p>}
-        {!loading && products.length > 0 && (
-          <p className="text-sm text-gray-700">
-            {products.length} products found
-          </p>
-        )}
       </div>
     </section>
   );

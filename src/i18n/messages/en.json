@@ -127,7 +127,8 @@
 
     "Occasions": {
         "title": "Occasion",
-        "loading": "loading.."
+        "loading": "loading..",
+        "noOccasions": "No Occasions Found"
     },
 
     "reset": {
