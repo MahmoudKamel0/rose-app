@@ -4,7 +4,7 @@ import * as React from "react";
 import Autoplay from "embla-carousel-autoplay";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import TestimonialCard from "./testimonial-card";
-import { Testimonial } from "@lib/types/testimonial";
+import { Testimonial } from "@lib/types/end-point-api/testimonial";
 import { cn } from "@lib/utils/cn.util";
 
 export default function TestimonialsCarousel({ testimonials }: { testimonials: Testimonial[] }) {

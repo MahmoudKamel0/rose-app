@@ -57,7 +57,7 @@ export async function MarkNotificationAsRead(notificationIds: MarkNotificationAs
     }
 }
 
-import { DeleteAllNotificationsRequest } from "@lib/types/delete-all-notifications";
+import { DeleteAllNotificationsRequest } from "@lib/types/end-point-api/delete-all-notifications";
 
 export async function DeleteAllNotifications() {
     try {
@@ -83,7 +83,7 @@ export async function DeleteAllNotifications() {
     }
 }
 
-import { DeleteSingleNotificationResponse } from "@lib/types/delete-notifications";
+import { DeleteSingleNotificationResponse } from "@lib/types/end-point-api/delete-notifications";
 
 export async function DeleteNotification(notification_id: string) {
     try {

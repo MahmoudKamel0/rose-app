@@ -6,7 +6,7 @@ import GallerySection from "@components/features/application/home/gallary-sectio
 import TestimonialsSection from "@components/features/application/home/testimonials-section/testimonials-section";
 
 import { Container } from "@components/layout/container";
-import MostPopularSection from "@components/features/application/home/most-popular-section/indxe";
+// import MostPopularSection from "@components/features/application/home/most-popular-section/indxe";
 import BestSellingSection from "@components/features/application/home/best-selling-section/best-selling";
 
 export default function HomePage() {

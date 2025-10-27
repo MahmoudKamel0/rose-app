@@ -1,21 +1,20 @@
 import { JSON_HEADER } from "@lib/constants/shared.constant";
-import { LoginResponse } from "@lib/types/auth";
 import { NextAuthOptions } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 
 export const authOptions: NextAuthOptions = {
     // Customize NextAuth pages
     pages: {
-        signIn: "/login"
+        signIn: "/login",
     },
     providers: [
-        Credentials ({
+        Credentials({
             name: "Credentials",
             credentials: {
                 email: {},
                 password: {},
             },
-             // Authorize function validates user credentials
+            // Authorize function validates user credentials
             authorize: async (credentials) => {
                 // Call login API
                 const response = await fetch(`${process.env.BASE_URL}/auth/signin`, {
@@ -25,14 +24,14 @@ export const authOptions: NextAuthOptions = {
                         password: credentials?.password,
                     }),
                     headers: {
-                        ...JSON_HEADER
-                    }
+                        ...JSON_HEADER,
+                    },
                 });
-                
+
                 // Parse the API response
                 const payload: ApiResponse<LoginResponse> = await response.json();
 
-                if("error" in payload) {
+                if ("error" in payload) {
                     throw new Error(payload.error);
                 }
                 // Return user object to store in JWT
@@ -41,12 +40,12 @@ export const authOptions: NextAuthOptions = {
                     user: payload.user,
                     accessToken: payload.token,
                 };
-            }
-        })
+            },
+        }),
     ],
     callbacks: {
         jwt: ({ token, user }) => {
-            if(user){
+            if (user) {
                 token.accessToken = user.accessToken;
                 token.user = user.user;
             }
@@ -56,6 +55,6 @@ export const authOptions: NextAuthOptions = {
             session.user = token.user;
 
             return session;
-        }
-    }
+        },
+    },
 };

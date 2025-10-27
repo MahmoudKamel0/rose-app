@@ -1,6 +1,6 @@
 "use client";
 
-import { Testimonial } from "@lib/types/testimonial";
+import { Testimonial } from "@lib/types/end-point-api/testimonial";
 import { Star } from "lucide-react";
 import Image from "next/image";
 import { useFormatter, useTranslations } from "next-intl";
@@ -14,7 +14,7 @@ export default function TestimonialCard({ testimonial }: { testimonial: Testimon
     return (
         <div
             className={cn(
-                "relative flex w-[22rem] flex-col items-center rounded-3xl bg-white ps-5 pe-5 pt-14 pb-5 text-center shadow-md transition-all duration-300 hover:shadow-lg"
+                "relative flex w-[22rem] flex-col items-center rounded-3xl bg-white pb-5 pe-5 ps-5 pt-14 text-center shadow-md transition-all duration-300 hover:shadow-lg"
             )}
         >
             {/* Avatar */}
@@ -40,7 +40,7 @@ export default function TestimonialCard({ testimonial }: { testimonial: Testimon
             </h3>
 
             {/* Stars */}
-            <div className={cn("mt-8 mb-2 flex items-center justify-center gap-1.5")}>
+            <div className={cn("mb-2 mt-8 flex items-center justify-center gap-1.5")}>
                 {Array.from({ length: testimonial.rating }).map((_, i) => (
                     <Star
                         key={`star-${testimonial._id}-${i}`}

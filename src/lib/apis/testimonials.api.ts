@@ -1,4 +1,4 @@
-import { TestimonialsResponse } from "@lib/types/testimonial";
+import { TestimonialsResponse } from "@lib/types/end-point-api/testimonial";
 
 {
     /* Fetches testimonials from the API */

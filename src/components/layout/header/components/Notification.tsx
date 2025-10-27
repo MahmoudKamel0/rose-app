@@ -14,7 +14,7 @@ import {
     DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
 import { useAllNotifications } from "@hooks/notifications/use-all-notifications.hook";
-import { Notification } from "@lib/types/all-notifications";
+import { Notification } from "@lib/types/end-point-api/all-notifications";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useMarkAllNotificationsAsRead } from "@/hooks/notifications/use-mark-all-notifications-as-read.hook";
 import { useQueryClient } from "@tanstack/react-query";
@@ -107,7 +107,7 @@ export default function NotificationMenu() {
                     {unReadCount > 0 && (
                         <Badge
                             className={cn(
-                                "text-10 absolute -top-1.5 -right-1.5 flex h-3.5 w-3.5 items-center justify-center p-2 font-medium text-white",
+                                "absolute -right-1.5 -top-1.5 flex h-3.5 w-3.5 items-center justify-center p-2 text-10 font-medium text-white",
                                 "dark:bg-red-500 dark:text-zinc-50"
                             )}
                         >
@@ -123,7 +123,7 @@ export default function NotificationMenu() {
             <PopoverContent className="mr-10 w-96 max-w-none rounded-b-md border-0 bg-white p-0 dark:bg-zinc-800">
                 {/* Header */}
                 <div className="flex w-full flex-col items-center justify-center">
-                    <div className="bg-maroon-700 dark:bg-softpink-200 flex w-full items-center justify-between rounded-t-md border-b p-3">
+                    <div className="flex w-full items-center justify-between rounded-t-md border-b bg-maroon-700 p-3 dark:bg-softpink-200">
                         <h4 className="text-xl font-bold text-white dark:text-zinc-800">
                             Notifications ({data?.pages?.[0]?.metadata?.totalItems ?? allNotifications.length})
                         </h4>
@@ -193,7 +193,7 @@ export default function NotificationMenu() {
                             {allNotifications.map((notification) => (
                                 <div
                                     key={notification._id}
-                                    className={`hover:bg-accent h-24 w-full p-4 text-left transition-colors ${
+                                    className={`h-24 w-full p-4 text-left transition-colors hover:bg-accent ${
                                         notification.isRead ? "bg-zinc-200 dark:bg-zinc-800" : "bg-white dark:bg-zinc-900"
                                     }`}
                                 >
@@ -255,7 +255,7 @@ export default function NotificationMenu() {
                                     </div>
 
                                     {/* Notification body */}
-                                    <p className={`line-clamp-2 text-sm leading-snug font-normal text-zinc-400`}>{notification.body}</p>
+                                    <p className={`line-clamp-2 text-sm font-normal leading-snug text-zinc-400`}>{notification.body}</p>
                                 </div>
                             ))}
                             {/* Footer hint: show scroll hint if more pages, otherwise end of list */}

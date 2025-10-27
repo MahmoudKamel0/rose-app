@@ -1,4 +1,4 @@
-import { AllNotificationsResponse } from "@lib/types/all-notifications";
+import { AllNotificationsResponse } from "@lib/types/end-point-api/all-notifications";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
