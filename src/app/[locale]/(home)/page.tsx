@@ -5,9 +5,9 @@ import CompaniesSection from "@components/features/companies-section/companies-s
 import GallerySection from "@components/features/gallary-section/gallery-section";
 import TestimonialsSection from "@components/features/testimonials/testimonials-section";
 
-import BestSellingSection from "@components/features/best-selling-section/best-selling";
 import MostPopularSection from "@components/features/most-popular-section/most-popular";
 import { useTranslations } from "next-intl";
+import BestSelling from "@components/features/best-selling-section/best-selling-section";
 
 export default function Page() {
     const t = useTranslations();
@@ -20,7 +20,7 @@ export default function Page() {
                 <div className="mx-auto flex w-7xl flex-col">
                     <Occasions />
                     <Features />
-                    <BestSellingSection />
+                    <BestSelling />
                     <MostPopularSection />
                     <AboutSection />
                     <GallerySection />
