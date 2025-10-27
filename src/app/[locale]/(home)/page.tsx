@@ -7,6 +7,7 @@ import TestimonialsSection from "@components/features/testimonials/testimonials-
 
 import { Container } from "@components/layout/container";
 import MostPopularSection from "@components/features/application/home/most-popular-section/indxe";
+import BestSellingSection from "@components/features/best-selling-section/best-selling";
 
 export default function HomePage() {
     return (
@@ -14,11 +15,13 @@ export default function HomePage() {
             <Container>
                 <SpecialGiftsSection />
                 <FeaturesSection />
-                {/* <BestSellingSection /> */}
+                <BestSellingSection />
                 {/* <MostPopularSection /> */}
                 <AboutSection />
                 <GallerySection />
-                <TestimonialsSection />
+            </Container>
+            <TestimonialsSection />
+            <Container>
                 <div className="w-7xl mx-auto flex flex-col">
                     <CompaniesSection />
                 </div>

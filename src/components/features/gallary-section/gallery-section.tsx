@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function GallerySection() {
     return (
         //  Main Gallery Section
-        <section className="gallery-section">
+        <section className="gallery-section mt-32 pt-1">
             {/*  Section Header: Subtitle + Heading */}
             <div className="flex flex-col items-center gap-2 p-4 text-center">
                 <Subtitle text="Gallery" />

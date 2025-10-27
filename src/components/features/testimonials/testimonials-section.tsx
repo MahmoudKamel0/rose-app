@@ -11,7 +11,7 @@ export default async function TestimonialsSection() {
     const t = await getTranslations();
 
     return (
-        <section className={cn("flex flex-col gap-11")}>
+        <section className={cn("flex flex-col gap-11 mt-32 py-2.5")}>
             <div className={cn("flex flex-col items-center gap-2 p-4 text-center")}>
                 {/* Subtitle and highlighted heading */}
                 <Subtitle text={t("testimonials-subtitle")} />

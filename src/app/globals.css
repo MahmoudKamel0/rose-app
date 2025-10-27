@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.filter-white {
+    filter: brightness(0) invert(1);
+}
+
 @import "../style/fonts.css";
 @import "../style/default-elements.css";
 @import "../style/design-based.css";

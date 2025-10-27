@@ -1,5 +1,5 @@
+import { Link } from "@i18n/navigation";
 import { FOOTER_LINKS } from "@lib/constants/component-ui.constant";
-import { Link } from "lucide-react";
 
 /**
  * ListLinks Component
@@ -16,13 +16,13 @@ export default function ListLinks() {
         <ul className="flex-auto">
             {/* Title links */}
             <li>
-                <h4 className="text-softpink-300 text-lg font-semibold">Discover our website</h4>
+                <h4 className="text-lg font-semibold text-softpink-300">Discover our website</h4>
             </li>
 
             {/* Links important */}
             {FOOTER_LINKS.map((item) => (
                 <li key={item.name}>
-                    <Link className="font-medium text-zinc-50" href={item.path}>
+                    <Link className="font-medium text-zinc-50"  href={item.path}>
                         {item.name}
                     </Link>
                 </li>

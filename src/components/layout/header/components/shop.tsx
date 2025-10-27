@@ -2,8 +2,8 @@ import { Badge } from "@components/ui/badge";
 import { cn } from "@lib/utils/cn.util";
 import { Heart, ShoppingCart } from "lucide-react";
 import { Link } from "@i18n/navigation";
+import NotificationMenu from "./Notification";
 // import NotificationMenu from "./Notification";
-
 
 /**
  * ShoShopHeader
@@ -18,7 +18,6 @@ import { Link } from "@i18n/navigation";
  */
 
 export default function ShopHeader() {
-
     return (
         <div className="flex items-center gap-2.5 border-x border-zinc-200 px-4 py-3 dark:border-zinc-700">
             {/* Favorites icon button - navigates to user's favorite items */}
@@ -29,7 +28,9 @@ export default function ShopHeader() {
             {/* Shopping Cart icon button - shows number of items in cart */}
             <Link className="relative" href="/">
                 <ShoppingCart className="stroke-zinc-700 dark:stroke-zinc-50" />
-                <Badge className="absolute -top-1.5 -right-1.5 min-h-3.5 min-w-3.5 text-10 text-white p-1 items-center justify-center">8</Badge>
+                <Badge className="absolute -right-1.5 -top-1.5 min-h-3.5 min-w-3.5 items-center justify-center p-1 text-10 text-white">
+                    8
+                </Badge>
             </Link>
 
             {/* Notification bell icon button - shows number of notifications */}

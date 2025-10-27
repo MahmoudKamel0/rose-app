@@ -1,5 +1,6 @@
+import Footer from "@components/layout/footer";
 import Header from "@components/layout/header";
-import { ReactNode } from "react";
+import { Fragment, ReactNode } from "react";
 
 /**
  * OverviewLayout
@@ -13,10 +14,10 @@ import { ReactNode } from "react";
  */
 export default function OverviewLayout({ children }: { children: ReactNode }) {
     return (
-        <>
+        <main className="flex min-h-screen flex-col justify-between">
             <Header />
             {children}
-            {/* <Footer /> */}
-        </>
+            <Footer />
+        </main>
     );
 }
