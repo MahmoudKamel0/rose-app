@@ -10,7 +10,7 @@ import { CreateNewPasswordSchema, CreateNewPasswordValues } from "@lib/schemas/a
 import { useResetPassword } from "../_hooks/use-reset-password";
 import { AuthError } from "../../_components/auth-error";
 import { useTranslations } from "next-intl";
-import Link from "next/link";
+import { Link } from "@i18n/navigation";
 import { toast } from "sonner";
 
 // Forget password step: Create a new password

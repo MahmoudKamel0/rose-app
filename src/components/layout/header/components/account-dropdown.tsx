@@ -1,9 +1,16 @@
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger } from "@components/ui/dropdown-menu";
 import { ACCOUNT_DROPDOWN_LINKS } from "@lib/constants/component-ui.constant";
 import { cn } from "@lib/utils/cn.util";
 import { ChevronDown } from "lucide-react";
-import Link from "next/link";
+import { Link } from "@i18n/navigation";
+import dynamic from "next/dynamic";
 
+// Lazy load dropdown menu components using Next.js dynamic imports.
+// This improves performance by only loading these components when needed (e.g., when the dropdown is used),
+const DropdownMenu = dynamic(() => import("@components/ui/dropdown-menu").then(mod => mod.DropdownMenu));
+const DropdownMenuContent = dynamic(() => import("@components/ui/dropdown-menu").then(mod => mod.DropdownMenuContent));
+const DropdownMenuItem = dynamic(() => import("@components/ui/dropdown-menu").then(mod => mod.DropdownMenuItem));
+const DropdownMenuLabel = dynamic(() => import("@components/ui/dropdown-menu").then(mod => mod.DropdownMenuLabel));
+const DropdownMenuTrigger = dynamic(() => import("@components/ui/dropdown-menu").then(mod => mod.DropdownMenuTrigger));
 /**
  * AccountDropdown
  *
@@ -11,7 +18,8 @@ import Link from "next/link";
  * Intended to display user account options such as profile, addresses, orders, and sign out.
  */
 
-export default function AccountDropdown({ firstName, lastName }: { firstName: string; lastName: string }) {
+export default function AccountDropdown() {
+    
     return (
         <DropdownMenu>
             {/* Button that triggers the account dropdown menu when clicked */}
@@ -19,7 +27,7 @@ export default function AccountDropdown({ firstName, lastName }: { firstName: st
                 {/* dropdown account */}
                 <div aria-label="Account menu dropdown to access user profile, orders, and settings">
                     <span className={cn("text-12 dark:text-zinc-400")}>hello</span>
-                    <p className={cn("text-maroon-700 dark:text-softpink-200 font-medium")}>{firstName}</p>
+                    <p className={cn("text-maroon-700 dark:text-softpink-200 font-medium")}>Jonathan</p>
                 </div>
 
                 {/* icon arrow button */}
@@ -27,20 +35,20 @@ export default function AccountDropdown({ firstName, lastName }: { firstName: st
             </DropdownMenuTrigger>
 
             {/* Dropdown links */}
-            <DropdownMenuContent className={cn("mt-3 w-56 rounded-xl border border-zinc-100 px-0 dark:border-zinc-600")} align="end">
+            <DropdownMenuContent className={cn("mt-3 w-56 rounded-xl px-0 border border-zinc-100 dark:border-zinc-600")} align="end">
                 {/* user name label in dropdown */}
-                <DropdownMenuLabel className="mb-1 border-b border-zinc-100 dark:border-zinc-600">{`${firstName} ${lastName}`}</DropdownMenuLabel>
+                <DropdownMenuLabel className={cn("mb-1 border-b border-zinc-100 dark:border-zinc-600")}>
+                    Jonathan Adrian
+                </DropdownMenuLabel>
 
                 {/* render each account dropdown link as a menu item with its icon and label */}
                 {ACCOUNT_DROPDOWN_LINKS.map((link) => (
                     <DropdownMenuItem
                         key={link.name}
-                        className={cn(
-                            link.name === "Dashboard" && "mt-1 rounded-none border-y border-zinc-100 px-2 py-0 dark:border-zinc-600"
-                        )}
+                        className={cn(link.name === "Dashboard" && "rounded-none border-y border-zinc-100 mt-1 dark:border-zinc-600", "px-2 py-0")}
                     >
                         <Link
-                            className="hover:bg-maroon-50 dark:hover:bg-softpink-200 !flex w-full items-center gap-2 rounded-sm px-1.5 py-1.5"
+                            className={cn("hover:bg-maroon-50 dark:hover:bg-softpink-200 !flex w-full items-center gap-2 rounded-sm px-1.5 py-1.5")}
                             href={link.path}
                         >
                             {link.icon} {link.name}

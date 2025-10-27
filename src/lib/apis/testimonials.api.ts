@@ -23,7 +23,6 @@ export async function fetchTestimonials(): Promise<TestimonialsResponse> {
         return payload;
     } catch (error) {
         // Log and re-throw the error
-        console.error("Error fetching testimonials:", error);
         throw error;
     }
 }

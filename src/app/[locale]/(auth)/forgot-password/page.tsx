@@ -1,6 +1,6 @@
 import React from "react";
 import ForgotPasswordLayout from "./_components/layout/forgot-passowrd-layout";
-import Link from "next/link";
+import { Link } from "@i18n/navigation";
 import { useTranslations } from "next-intl";
 
 export default function ForgotPassword() {

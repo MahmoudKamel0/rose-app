@@ -1,3 +1,4 @@
+import { usePathname } from "@i18n/navigation";
 import TopHeader from "./components/top-header";
 import NavHeader from "./components/nav-header";
 
@@ -13,10 +14,13 @@ import NavHeader from "./components/nav-header";
  * Place `<Header />` at the top of your layout to provide a consistent navigation and account section across pages.
  */
 export default function Header() {
+
+
     return (
-        <header className="mb-20">
+        <header>
             <TopHeader />
             <NavHeader />
         </header>
     );
 }
+

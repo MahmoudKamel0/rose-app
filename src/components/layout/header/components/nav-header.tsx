@@ -1,9 +1,9 @@
 "use client";
-import { NAV_LINKS } from "@lib/constants/component-ui.constant";
+import { getNavLinks } from "@lib/constants/component-ui.constant";
 import { cn } from "@lib/utils/cn.util";
-import { ClipboardList, Gift, Headset, Home, Info, PartyPopper } from "lucide-react";
-import Link from "next/link";
+import { Link } from "@i18n/navigation";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 
 /**
  * NavHeader
@@ -19,6 +19,8 @@ import { useState } from "react";
  */
 
 export default function NavHeader() {
+    const t = useTranslations("Layout.header");
+    const NAV_LINKS = getNavLinks(t);
     const [left, setLeft] = useState<number>(0);
     const [width, setWidth] = useState<number>(0);
 
@@ -41,7 +43,7 @@ export default function NavHeader() {
     };
 
     return (
-        <nav className={cn("bg-maroon-700 dark:bg-softpink-200 flex h-11 items-center justify-center")}>
+        <nav className="bg-maroon-700 dark:bg-softpink-200 flex h-11 items-center justify-center">
             <ul onMouseLeave={() => setWidth(0)} className={cn("relative flex h-full w-fit items-center justify-center gap-10")}>
                 {NAV_LINKS.map((item) => (
                     <li key={item.name} onMouseEnter={(e) => handleHover(e.currentTarget as HTMLElement)}>

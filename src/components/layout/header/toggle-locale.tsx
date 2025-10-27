@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathname, useRouter } from "@/i18n/navigation";
+import { usePathname, useRouter } from "@i18n/navigation";
 import { Button } from "@components/ui/button";
 import { useLocale } from "next-intl";
 

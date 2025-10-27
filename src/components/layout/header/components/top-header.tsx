@@ -1,16 +1,14 @@
-"use client";
 import { SearchInput } from "@components/shared/search-input";
-import { tajawal } from "@fonts";
-import { cn } from "@lib/utils/cn.util";
+import { User } from "lucide-react";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/auth";
+import { Link } from "@i18n/navigation";
+import { getTranslations } from "next-intl/server";
 import Image from "next/image";
-import Link from "next/link";
 import DeliverToClient from "./deliver-to-client";
 import AccountDropdown from "./account-dropdown";
 import ShopHeader from "./shop";
-import { User } from "lucide-react";
-import { cookies } from "next/headers";
-import { COOKIE } from "@lib/constants/shared.constant";
-import { useSession } from "next-auth/react";
+import ToggleLocale from "./toggle-locale";
 
 /**
  * TopHeader
@@ -28,35 +26,34 @@ import { useSession } from "next-auth/react";
  * whether to show authenticated user controls or a sign-in link.
  */
 
-export default function TopHeader() {
-    // For test is user authenticated or no
-    const { data: session, status } = useSession();
-    const isAuth = status === "authenticated" && session;
-
-    const LoginLinkStyle = cn(
-        "!flex items-center ps-4 gap-1.5 text-zinc-700 [&-svg]:stoke-zinc-700",
-        "dark:text-zinc-50 dark:[&-svg]:stoke-zinc-50"
-    );
+export default async function TopHeader() {
+    // Using server components improves performance and reduces unnecessary client-side rendering.
+    const SESSION = await getServerSession(authOptions);
+    const t = await getTranslations("Layout.header");
 
     return (
-        <div className={cn("flex items-center gap-4 px-9 py-1")}>
-            {/* Logo website */}
+        <div className="flex items-center gap-4 px-9 py-1">
+            {/* Brand Logo website */}
             <Link href="/">
-                <Image src="/images/logo.webp" alt="logo rose app" loading="lazy" width="85" height="80" />
+                {/* why used classes (h-fit max-w-fit)? for disabled classes tailwindcss for images */}
+                <Image className="h-fit max-w-fit" src="/images/logo.webp" alt="logo rose app" width="85" height="80" />
             </Link>
 
             {/* (Is Authenticated): display Deliver Services */}
-            {isAuth && <DeliverToClient address={session.user.addresses} />}
+            {SESSION?.user && <DeliverToClient address={SESSION.user.addresses} />}
 
             {/* input search for find products */}
-            <SearchInput className={cn("flex-auto")} placeholder="What awesome gift are you looking for?" />
+            <SearchInput className="flex-auto" placeholder={t("input-search")} />
 
             {/* (Is Authenticated): display Account user, Or display link sign in if not authenticated */}
-            {isAuth ? (
-                <AccountDropdown firstName={session.user.firstName} lastName={session.user.lastName} />
+            {SESSION?.user ? (
+                <AccountDropdown />
             ) : (
-                <Link href="/" className={LoginLinkStyle}>
-                    <User size="20" /> Login
+                <Link
+                    href="/login"
+                    className="[&-svg]:stoke-zinc-700 dark:[&-svg]:stoke-zinc-50 !flex items-center gap-1.5 text-nowrap ps-4 text-zinc-700 dark:text-zinc-50"
+                >
+                    <User size="20" /> {t("login")}
                 </Link>
             )}
 
@@ -64,7 +61,7 @@ export default function TopHeader() {
             <ShopHeader />
 
             {/* translations */}
-            <button className={cn(tajawal.className, "dark:text-zinc-50")}>العربية</button>
+            <ToggleLocale />
         </div>
     );
 }

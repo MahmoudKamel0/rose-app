@@ -1,27 +1,7 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "../style/fonts.css";
 @import "../style/default-elements.css";
 @import "../style/design-based.css";
-/* @import "tw-animate-css"; */
-
-:root {
-    --background: 0 0% 100%;
-    --foreground: 220 10% 10%;
-    --primary: 210 100% 50%;
-    --primary-foreground: 0 0% 100%;
-}
-
-.dark {
-    --background: 220 10% 12%;
-    --foreground: 210 10% 92%;
-    --primary: 210 100% 60%;
-    --primary-foreground: 0 0% 0%;
-}
-
-button svg[data-noinherit="true"] {
-    stroke: unset !important;
-    fill: unset !important;
-    color: unset !important;
-}
-.filter-white {
-    filter: brightness(0) invert(1);
-}

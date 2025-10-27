@@ -1,43 +1,49 @@
+import { JSON_HEADER } from "@lib/constants/shared.constant";
+import { OccasionsResponse, OccasionsSpecific } from "@lib/types/end-point-api/occasions";
 
-/* Get all occasions */ 
-export async function getOccasions() {
-  try {
-    const payload = await fetch(`${process.env.BASE_URL}/occasions`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+/**
+ * Fetches all occasions from the API.
+ *
+ * @returns {Promise<OccasionsResponse>} A promise that resolves to an OccasionsResponse object containing all occasions data.
+ * @throws {Error} Throws an error if the request fails or an unexpected issue occurs.
+ */
+export async function getAllOccasions(): Promise<OccasionsResponse> {
+    try {
+        const response = await fetch(`${process.env.BASE_URL}/occasions`, {
+            headers: JSON_HEADER,
+            next: { revalidate: 60 * 10 }, //=> 10 minutes
+        });
 
-    if (!payload.ok){
-      throw new Error(`Failed to fetch occasions: ${payload.status}`);
-    } 
-    const data = await payload.json();
-    return data;
+        if (!response.ok) {
+            throw new Error(`Failed to fetch occasions: ${response.status}`);
+        }
 
-  } catch (error) {
-    console.error("Error fetching occasion:", error);
-    return null;
-  }
+        return response.json();
+    } catch {
+        throw new Error("Something went wrong while fetching occasions.");
+    }
 }
 
-/* filter products by occasion id */ 
-export async function getProductsByOccasion(occasionId: string) {
-  try {
-    const payload = await fetch(`${process.env.BASE_URL}/products?occasion=${occasionId}`, {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' },
-      cache: 'no-store',
-    });
+/**
+ * Fetch products filtered by occasion ID, limiting results to 12 products.
+ * @param {string} occasionId - The occasion identifier.
+ * @returns {Promise<any[]>} Array of products for a given occasion, or an empty array if error occurs.
+ */
+export async function getProductsByOccasion(occasionId: Occ): Promise<OccasionsSpecific | []> {
+    try {
+        const response = await fetch(`${process.env.BASE_URL}/occasions/${occasionId}`, {
+            headers: JSON_HEADER,
+            next: { revalidate: 60 * 10 }, //=> 10 minutes
+        });
 
-    if (!payload.ok) {
-      throw new Error(`Failed to fetch products: ${payload.status}`);
+        if (!response.ok) {
+            throw new Error(`Failed to fetch products: ${response.status}`);
+        }
+
+        const { occasion } = await response.json();
+        return Array.isArray(occasion.) ? data.products.slice(0, 12) : [];
+    } catch {
+        // Return an empty array on error to keep consumers safe
+        return [];
     }
-
-    const data = await payload.json();
-    return Array.isArray(data.products) ? data.products.slice(0, 12) : [];
-  } catch (error) {
-    console.error('Error fetching products:', error);
-    return [];
-  }
 }

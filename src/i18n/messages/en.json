@@ -1,23 +1,33 @@
 {
-    "hello-world": "Hello World",
-    "title": "Rose Store – Premium Flower Boutique | Luxury Roses & Elegant Bouquets",
-    "description": "Rose Store is a premium online flower boutique offering luxury roses, handcrafted bouquets, and personalized floral arrangements. Perfect for weddings, gifts, and special occasions — delivered with elegance and care.",
-    "keywords": [
-        "Rose Store",
-        "Luxury flower shop",
-        "Premium roses",
-        "Elegant bouquets",
-        "Online flower delivery",
-        "Handcrafted floral arrangements",
-        "Wedding flowers",
-        "Gift bouquets",
-        "Romantic roses",
-        "Fresh flowers online",
-        "Same day flower delivery"
-    ],
-    "ogTitle": "Rose Store – Premium Flower Boutique | Luxury Roses & Elegant Bouquets",
-    "ogDescription": "Experience luxury in every petal — Rose Store offers handcrafted bouquets and premium flower delivery for every occasion.",
-    "siteName": "Rose Store",
+    "Metadata": {
+        "title": "Rose Store – Premium Flower Boutique | Luxury Roses & Elegant Bouquets",
+        "description": "Rose Store is a premium online flower boutique offering luxury roses, handcrafted bouquets, and personalized floral arrangements. Perfect for weddings, gifts, and special occasions — delivered with elegance and care.",
+        "keywords": "Rose Store, Luxury flower shop, Premium roses, Elegant bouquets, Online flower delivery, Handcrafted floral arrangements, Wedding flowers, Gift bouquets, Romantic roses, Fresh flowers online, Same day flower delivery",
+        "ogTitle": "Rose Store – Premium Flower Boutique | Luxury Roses & Elegant Bouquets",
+        "ogDescription": "Experience luxury in every petal — Rose Store offers handcrafted bouquets and premium flower delivery for every occasion.",
+        "siteName": "Rose Store"
+    },
+   
+    "Layout": {
+        "header": {
+            "deliver-to": "Deliver to",
+            "input-search": "What awesome gift are you looking for?",
+            "login": "Login",
+            "greeting-user": "Hello",
+            "home": "Home",
+            "products": "Products",
+            "categories": "Categories",
+            "occasions": "Occasions",
+            "contact": "Contact",
+            "about": "About"
+        }
+    },
+
+    "Home-Page": {
+        "hero-section": {
+
+        }
+    },
     "abourt": "About Us",
     "testimonials-title": "Testimonials",
     "testimonials-name": "{firstName} {lastName}",
@@ -86,7 +96,6 @@
     "loading": "Loading...",
     "createAccount": "Create Account",
     "already": "Already have an account?",
-    "login": "Login",
     "login-message": "Welcome back!",
     "register-message": "Become part of our family!",
     "account-created-successfully": "Account created successfully!",

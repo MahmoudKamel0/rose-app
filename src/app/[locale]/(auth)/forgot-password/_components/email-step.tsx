@@ -12,7 +12,7 @@ import { Step } from "@lib/types/auth/auth";
 import { FORGOT_PASSWORD_STEPS } from "@lib/constants/auth.constants";
 import { AuthError } from "../../_components/auth-error";
 import { useTranslations } from "next-intl";
-import Link from "next/link";
+import { Link } from "@i18n/navigation";
 import { toast } from "sonner";
 
 // component handles first step of "forgot password" flow
