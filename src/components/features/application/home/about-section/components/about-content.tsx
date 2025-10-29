@@ -1,6 +1,7 @@
 import Subtitle from "@components/shared/subtitle";
 import DiscoverButton from "./discover-button";
 import AboutFeatures from "./about-features";
+import BtnPrimary from "@components/shared/btn-primary";
 
 export default function AboutContent() {
     return (
@@ -9,12 +10,11 @@ export default function AboutContent() {
             <div className="about-heading mt-5 flex flex-col gap-6 pt-0.5">
                 <Subtitle text="about" />
 
-                <h2 className="text-3xl font-bold text-[#741C21] capitalize dark:text-[#FFC2D0]">
+                <h2 className="text-3xl font-bold capitalize text-[#741C21] dark:text-[#FFC2D0]">
                     delivering the <span className="text-[#FF668B] dark:text-[#D75458]">finest</span> gift boxes for your <br />{" "}
                     <span className="text-[#FF668B] dark:text-[#D75458]">special</span> moments
                 </h2>
             </div>
-
             {/* About Description */}
             <div className="about-description">
                 <p className="mt-2 leading-none tracking-[0em] text-zinc-500 dark:text-[#C4C4C4]">
@@ -24,11 +24,11 @@ export default function AboutContent() {
                     lasting impression — because thoughtful gifting starts here.
                 </p>
             </div>
-
             {/* DiscoverButton  */}
-            <DiscoverButton />
-
-            {/* AboutFeatures  */}
+            <div className="mt-9">
+                <BtnPrimary text="Discover" />
+            </div>
+             {/* AboutFeatures  */}
             <AboutFeatures />
         </div>
     );
