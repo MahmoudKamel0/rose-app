@@ -54,7 +54,9 @@ export default function CategoriesFilters() {
             <div className="flex flex-col gap-1">
                 {isLoading ? (
                     // ✅ Show loading state while fetching
-                    <Loading label="Loading categories..." />
+                    <div className="h-48 flex justify-center items-center">
+                        <Loading label="Loading categories..." />
+                    </div>
                 ) : isError ? (
                     // ❌ Optional: handle error
                     <p className="text-sm text-red-500">Failed to load categories.</p>
