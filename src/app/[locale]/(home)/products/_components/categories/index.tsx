@@ -4,6 +4,7 @@ import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { useCategories } from "../../_hooks/use-categories";
 import ResetButton from "../common/reset-button";
 import CategoryItem from "./components/category-item";
+import Loading from "@components/shared/loading";
 
 export default function CategoriesFilters() {
     // Next.js navigation hooks
@@ -50,17 +51,25 @@ export default function CategoriesFilters() {
                 {/* ✅ Reusable Reset Button */}
                 <ResetButton onReset={handleCategoryReset} />
             </div>
-            {/* Categories List */}
             <div className="flex flex-col gap-1">
-                {categories.map((cat) => (
-                    <CategoryItem
-                        key={cat._id}
-                        label={cat.name}
-                        active={activeCategory === cat.slug}
-                        image={cat.image}
-                        onClick={() => handleCategoryClick(cat.slug)}
-                    />
-                ))}
+                {isLoading ? (
+                    // ✅ Show loading state while fetching
+                    <Loading label="Loading categories..." />
+                ) : isError ? (
+                    // ❌ Optional: handle error
+                    <p className="text-sm text-red-500">Failed to load categories.</p>
+                ) : (
+                    // ✅ Render categories after load
+                    categories.map((cat) => (
+                        <CategoryItem
+                            key={cat._id}
+                            label={cat.name}
+                            active={activeCategory === cat.slug}
+                            image={cat.image}
+                            onClick={() => handleCategoryClick(cat.slug)}
+                        />
+                    ))
+                )}
             </div>
         </div>
     );
