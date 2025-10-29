@@ -1,5 +1,4 @@
 import Subtitle from "@components/shared/subtitle";
-import DiscoverButton from "./discover-button";
 import AboutFeatures from "./about-features";
 import BtnPrimary from "@components/shared/btn-primary";
 
