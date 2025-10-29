@@ -1,8 +1,8 @@
 "use client";
 import { getNavLinks } from "@lib/constants/component-ui.constant";
 import { cn } from "@lib/utils/cn.util";
-import { Link } from "@i18n/navigation";
-import { useState } from "react";
+import { Link, usePathname } from "@i18n/navigation";
+import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 
 /**
@@ -20,9 +20,20 @@ import { useTranslations } from "next-intl";
 
 export default function NavHeader() {
     const t = useTranslations("Layout.header");
+    const pathname = usePathname();
     const NAV_LINKS = getNavLinks(t);
+
     const [left, setLeft] = useState<number>(0);
     const [width, setWidth] = useState<number>(0);
+
+    // Refs to track active link element
+    useEffect(() => {
+        const activeLink = document.querySelector<HTMLElement>(`li[data-path="${pathname}"]`);
+        if (activeLink) {
+            setLeft(activeLink.offsetLeft);
+            setWidth(activeLink.offsetWidth);
+        }
+    }, [pathname]);
 
     // Style for navigation links
     const LinkStyle = cn(
@@ -31,10 +42,7 @@ export default function NavHeader() {
     );
 
     // Style for the animated underline
-    const LineHoverStyle = cn(
-        "bg-softpink-200 transition-left absolute bottom-0 left-0 h-0.5 w-full duration-500",
-        "dark:bg-maroon-800"
-    );
+    const LineHoverStyle = cn("bg-softpink-200 transition-left absolute bottom-0 left-0 h-0.5 w-full duration-500", "dark:bg-maroon-800");
 
     // Update underline position and width on hover
     const handleHover = (element: HTMLElement) => {
@@ -42,14 +50,38 @@ export default function NavHeader() {
         setWidth(element.offsetWidth);
     };
 
+    // ACTIVE STYLE
+    const handleMouseLeave = () => {
+        const activeLink = document.querySelector<HTMLElement>(`li[data-path="${pathname}"]`);
+        if (activeLink) {
+            setLeft(activeLink.offsetLeft);
+            setWidth(activeLink.offsetWidth);
+        } else {
+            setWidth(0);
+        }
+    };
+
     return (
-        <nav className="bg-maroon-700 dark:bg-softpink-200 flex h-11 items-center justify-center">
-            <ul onMouseLeave={() => setWidth(0)} className={cn("relative flex h-full w-fit items-center justify-center gap-10")}>
-                {NAV_LINKS.map((item) => (
-                    <li key={item.name} onMouseEnter={(e) => handleHover(e.currentTarget as HTMLElement)}>
-                        <Link className={LinkStyle} href={item.path}>{item.icon} {item.name}</Link>
-                    </li>
-                ))}
+        <nav className="flex h-11 items-center justify-center bg-maroon-700 dark:bg-softpink-200">
+            <ul onMouseLeave={handleMouseLeave} className="relative flex h-full w-fit items-center justify-center gap-10">
+                {NAV_LINKS.map((item) => {
+                    const isActive = pathname === item.path;
+
+                    return (
+                        <li key={item.name} data-path={item.path} onMouseEnter={(e) => handleHover(e.currentTarget as HTMLElement)}>
+                            <Link
+                                className={cn(
+                                    LinkStyle,
+                                    isActive &&
+                                        "text-softpink-200 dark:text-maroon-800 [&_svg]:stroke-softpink-200 dark:[&_svg]:stroke-maroon-800"
+                                )}
+                                href={item.path}
+                            >
+                                {item.icon} {item.name}
+                            </Link>
+                        </li>
+                    );
+                })}
 
                 {/* line hover Effect */}
                 <div className={LineHoverStyle} style={{ width: width, left: left }}></div>

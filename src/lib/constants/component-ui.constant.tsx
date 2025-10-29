@@ -25,12 +25,12 @@ export const getNavLinks = (t: (key: string) => string) => [
     },
     {
         icon: <Headset size={20} className={cn("stroke-zinc-50", "dark:stroke-zinc-800")} />,
-        path: "/contact",
+        path: "/#footer",
         name: t("contact"),
     },
     {
         icon: <Info size={20} className={cn("stroke-zinc-50", "dark:stroke-zinc-800")} />,
-        path: "/about",
+        path: "/#about",
         name: t("about"),
     },
 ];
