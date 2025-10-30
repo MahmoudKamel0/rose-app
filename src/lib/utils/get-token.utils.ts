@@ -1,24 +1,30 @@
-import { getToken } from "next-auth/jwt";
 import { cookies } from "next/headers";
+import jwt from "jsonwebtoken";
 
-export default async function GetToken() {
-    // Fetch token using next-auth's getToken utility
+/**
+ * GetCookieDiagnostic: retrieves and decodes the accessToken from the NextAuth session cookie
+ */
+export async function GetCookieDiagnostic() {
+    const raw = cookies().get("next-auth.session-token")?.value || cookies().get("__Secure-next-auth.session-token")?.value;
+
+    if (!raw) {
+        return null;
+    }
+
+    const secret = process.env.NEXTAUTH_SECRET;
+    if (!secret) {
+        return null;
+    }
+
     try {
-        const token = await getToken({
-            req: { cookies: cookies() } as any,
-            secret: process.env.NEXTAUTH_SECRET,
-        });
-
-        // Check if token and accessToken exist
-        if (!token?.accessToken) {
-            console.warn("No access token found in JWT.");
+        const verified: any = jwt.verify(raw, secret);
+        return verified?.accessToken || null;
+    } catch {
+        try {
+            const decoded: any = jwt.decode(raw, { json: true });
+            return decoded?.accessToken || null;
+        } catch {
             return null;
         }
-
-        // Return the access token
-        return token.accessToken;
-    } catch (error: any) {
-        console.error("Error while fetching token in Server Component:", error?.message || error);
-        return null;
     }
 }

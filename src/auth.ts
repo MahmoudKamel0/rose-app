@@ -1,13 +1,36 @@
 import { JSON_HEADER } from "@lib/constants/shared.constant";
-import { LoginResponse } from "@lib/types/auth";
 import { NextAuthOptions } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
+import jwt from "jsonwebtoken";
 
 export const authOptions: NextAuthOptions = {
-    // Customize NextAuth pages
     pages: {
         signIn: "/login",
     },
+
+    session: {
+        strategy: "jwt",
+    },
+
+    jwt: {
+        encode: async ({ secret, token }) => {
+            if (!token) return "";
+            return jwt.sign(token, secret, { algorithm: "HS256" });
+        },
+
+        decode: async ({ secret, token }) => {
+            if (!token) return null;
+            try {
+                const decoded = jwt.verify(token, secret);
+                if (typeof decoded === "string") return null;
+                return decoded as any;
+            } catch (error) {
+                console.error("JWT decode failed:", error);
+                return null;
+            }
+        },
+    },
+
     providers: [
         Credentials({
             name: "Credentials",
@@ -15,9 +38,7 @@ export const authOptions: NextAuthOptions = {
                 email: {},
                 password: {},
             },
-            // Authorize function validates user credentials
             authorize: async (credentials) => {
-                // Call login API
                 const response = await fetch(`${process.env.BASE_URL}/auth/signin`, {
                     method: "POST",
                     body: JSON.stringify({
@@ -29,13 +50,12 @@ export const authOptions: NextAuthOptions = {
                     },
                 });
 
-                // Parse the API response
-                const payload: ApiResponse<LoginResponse> = await response.json();
+                const payload = await response.json();
 
                 if ("error" in payload) {
                     throw new Error(payload.error);
                 }
-                // Return user object to store in JWT
+
                 return {
                     id: payload.user._id,
                     user: payload.user,
@@ -44,6 +64,7 @@ export const authOptions: NextAuthOptions = {
             },
         }),
     ],
+
     callbacks: {
         jwt: ({ token, user }) => {
             if (user) {
@@ -52,11 +73,12 @@ export const authOptions: NextAuthOptions = {
             }
             return token;
         },
+
         session: ({ session, token }) => {
             session.user = token.user;
-
             return session;
         },
     },
+
     secret: process.env.NEXTAUTH_SECRET,
 };

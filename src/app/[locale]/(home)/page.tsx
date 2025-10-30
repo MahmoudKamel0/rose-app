@@ -8,6 +8,7 @@ import TestimonialsSection from "@components/features/testimonials/testimonials-
 import MostPopularSection from "@components/features/most-popular-section/most-popular";
 import { useTranslations } from "next-intl";
 import BestSelling from "@components/features/best-selling-section/best-selling-section";
+import Footer from "@components/layout/footer";
 
 export default function Page() {
     const t = useTranslations();
@@ -29,6 +30,8 @@ export default function Page() {
                 <div className="mx-auto flex w-7xl flex-col">
                     <CompaniesSection />
                 </div>
+
+                <Footer />
             </main>
 
             {/* <ToggleLocale /> */}
