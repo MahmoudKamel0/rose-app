@@ -1,76 +1,111 @@
-"use client";
+"use client"; 
 
-import { useSearchParams, useRouter, usePathname } from "next/navigation";
-import { useCategories } from "../../_hooks/use-categories";
-import ResetButton from "../common/reset-button";
-import CategoryItem from "./components/category-item";
-import Loading from "@components/shared/loading";
+import useInfiniteScroll from "react-infinite-scroll-hook"; 
+import { usePathname, useRouter } from "@i18n/navigation";
+import { useSearchParams } from "next/navigation"; 
+import CategoryItem from "./components/category-item"; 
+import Loading from "@components/shared/loading"; 
+import ResetButton from "../common/reset-button"; 
+import { useInfiniteCategories } from "../../_hooks/use-categories"; 
 
 export default function CategoriesFilters() {
-    // Next.js navigation hooks
+    // Hooks for navigation and reading the current URL.
     const router = useRouter();
     const pathname = usePathname();
     const searchParams = useSearchParams();
 
-    // Fetch categories using custom hook
-    const { data, isLoading, isError } = useCategories();
+    // Fetch categories with pagination using React Query's infinite query.
+    const {
+        data,
+        fetchNextPage,
+        hasNextPage,
+        isFetchingNextPage,
+        isLoading,
+        isError,
+    } = useInfiniteCategories();
 
-    //categories data
-    const categories = data || [];
+    // Flatten the paginated data into a single array of categories.
+    const categories = data?.pages.flatMap((page) => page.categories) ?? [];
 
-    // Get the current active category from the URL
+    // Get the currently selected category from the URL (if any).
     const activeCategory = searchParams.get("category");
 
-    // Handle category click
+    // Handle user clicking on a category.
     const handleCategoryClick = (category: string) => {
         const params = new URLSearchParams(searchParams);
+
+        // If the clicked category is already active → remove it (unselect).
         if (activeCategory === category) {
-            // If the user clicks again on the same one, remove it (toggle off)
             params.delete("category");
         } else {
-            // Set the new category in the query string
+            // Otherwise, set it as the active category in the URL.
             params.set("category", category);
         }
 
-        // Update the URL without refreshing the page
+        // Update the URL with new query parameters (without full reload).
         router.push(`${pathname}?${params.toString()}`);
     };
 
-    // Reset category filter
+    // Handle reset button click → clear the active category filter.
     const handleCategoryReset = () => {
         const params = new URLSearchParams(searchParams);
-        params.delete("category"); // remove only category
-        router.push(`${pathname}?${params.toString()}`); // keep other params like rating
+        params.delete("category");
+        router.push(`${pathname}?${params.toString()}`);
     };
+
+    // Set up infinite scroll behavior.
+    const [sentryRef] = useInfiniteScroll({
+        loading: isFetchingNextPage,
+        hasNextPage: !!hasNextPage,
+        onLoadMore: fetchNextPage, 
+        disabled: isLoading || isError, 
+        rootMargin: "0px 0px 400px 0px", 
+        delayInMs: 3000, 
+    });
 
     return (
         <div>
-            {/* Header with Reset Button */}
+            {/* ===== Header Section ===== */}
             <div className="mb-2 flex items-center justify-between">
                 <h2 className="text-lg font-semibold text-zinc-800">Category</h2>
-                {/* ✅ Reusable Reset Button */}
+
+                {/* Reset button to clear the selected category */}
                 <ResetButton onReset={handleCategoryReset} />
             </div>
+
+            {/* ===== Categories List Section ===== */}
             <div className="flex flex-col gap-1">
                 {isLoading ? (
-                    // ✅ Show loading state while fetching
-                    <div className="h-48 flex justify-center items-center">
+                    // Show loading spinner while categories are being fetched.
+                    <div className="flex h-48 items-center justify-center">
                         <Loading label="Loading categories..." />
                     </div>
                 ) : isError ? (
-                    // ❌ Optional: handle error
+                    // Show error message if fetching fails.
                     <p className="text-sm text-red-500">Failed to load categories.</p>
                 ) : (
-                    // ✅ Render categories after load
-                    categories.map((cat) => (
-                        <CategoryItem
-                            key={cat._id}
-                            label={cat.name}
-                            active={activeCategory === cat.slug}
-                            image={cat.image}
-                            onClick={() => handleCategoryClick(cat.slug)}
-                        />
-                    ))
+                    <>
+                        {/* Render all loaded categories */}
+                        {categories.map((cat) => (
+                            <CategoryItem
+                                key={cat._id}
+                                label={cat.name} // Category name
+                                active={activeCategory === cat.slug} // Highlight if selected
+                                image={cat.image} // Category image
+                                onClick={() => handleCategoryClick(cat.slug)} // Handle click
+                            />
+                        ))}
+
+                        {/* Invisible element that triggers fetching next page when in view */}
+                        <div ref={sentryRef} className="h-1" />
+
+                        {/* Show loading spinner while fetching the next page */}
+                        {isFetchingNextPage && (
+                            <div className="flex h-16 items-center justify-center">
+                                <Loading label="Loading more..." />
+                            </div>
+                        )}
+                    </>
                 )}
             </div>
         </div>
