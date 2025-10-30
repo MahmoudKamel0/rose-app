@@ -20,7 +20,7 @@ type ProductsPageProps = {
 export default async function ProductsPage({ searchParams }: ProductsPageProps) {
     return (
         <main className="m-auto mx-20 mt-3 flex gap-6">
-            <div className="filters flex w-1/4 flex-col gap-2.5 border-e-1 border-zinc-100 h-screen">
+            <div className="filters flex w-1/4 flex-col gap-2.5 border-e border-zinc-100 h-screen">
                 <CategoriesFilters />
                 <OccasionFilter />
                 <RatingFilter />

@@ -55,7 +55,7 @@ import { getToken } from "next-auth/jwt";
 //     matcher: ["/((?!api|_next|.*\\..*).*)"], // Match all non-static app pages
 // };
 
-const UNPROTECTED_ROUTES = ["/login", "/register", "/forgot-password", "/"];
+const PROTECTED_ROUTES = ["/wishlist", "/checkout", "/profile"];
 const intlMiddleware = createMiddleware(routing);
 
 export default async function middleware(req: NextRequest) {
@@ -67,15 +67,15 @@ export default async function middleware(req: NextRequest) {
 
     // Check authentication
     const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
-    const isAuthPage = UNPROTECTED_ROUTES.includes(pathWithoutLocale);
+    const isAuthPage = PROTECTED_ROUTES.includes(pathWithoutLocale);
 
     // Authenticated user on auth page → redirect to home-page
-    if (token && isAuthPage) {
-        return NextResponse.redirect(new URL(`/${locale}/`, req.url));
-    }
+    // if (token && isAuthPage) {
+    //     return NextResponse.redirect(new URL(`/${locale}/`, req.url));
+    // }
 
     // Unauthenticated user on non-auth page → redirect to login
-    if (!token && !isAuthPage) {
+    if (!token && isAuthPage) {
         const loginUrl = new URL(`/${locale}/login`, req.url);
         loginUrl.searchParams.set("callbackUrl", pathname);
         return NextResponse.redirect(loginUrl);
