@@ -38,7 +38,7 @@ export default function LoginForm() {
         <Form {...form}>
             <form
                 onSubmit={form.handleSubmit(onSubmit)}
-                className="mb-5 flex w-[25.5rem] flex-col  border-y border-zinc-200 py-6 dark:border-zinc-700"
+                className="mb-5 flex w-[25.5rem] flex-col border-y border-zinc-200 py-6 dark:border-zinc-700"
             >
                 {/* Email */}
                 <FormField

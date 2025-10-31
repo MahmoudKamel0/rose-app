@@ -4,14 +4,14 @@ import { cn } from "@lib/utils/cn.util";
 import { getTranslations } from "next-intl/server";
 import { Suspense } from "react";
 import TestimonialsContent from "./testimonials-content";
-import TestimonialsSkeleton from "@components/skeletons/testimonials-skeleton";
+import TestimonialsSkeleton from "@components/skeletons/testimonials-section/testimonials-skeleton";
 
 export default async function TestimonialsSection() {
     //  Translations
-    const t = await getTranslations();
+    const t = await getTranslations("testimonials");
 
     return (
-        <section className={cn("flex flex-col gap-11 mt-32 py-2.5")}>
+        <section className={cn("mt-32 flex flex-col gap-11 py-2.5")}>
             <div className={cn("flex flex-col items-center gap-2 p-4 text-center")}>
                 {/* Subtitle and highlighted heading */}
                 <Subtitle text={t("testimonials-subtitle")} />
