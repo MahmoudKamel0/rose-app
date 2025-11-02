@@ -1,4 +1,5 @@
-import { AllNotificationsResponse } from "@lib/types/all-notifications";
+import { AllNotificationsResponse } from "@lib/types/end-point-api/all-notifications";
+import { getToken } from "next-auth/jwt";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
@@ -8,16 +9,17 @@ export async function GET(req: NextRequest) {
 
     try {
         // Fetch data from external API
-        const token = process.env.ACCESS_TOKEN;
+        const token = await getToken({ req });
+
         const headers: Record<string, string> = {
             "Content-Type": "application/json",
         };
 
         if (token) {
-            headers["Authorization"] = `Bearer ${token}`;
+            headers["Authorization"] = `Bearer ${token.accessToken}`;
         }
 
-        const res = await fetch(`${process.env.BASE_URL}${process.env.ALL_NOTIFICATION_URL}?limit=${limit}&page=${page}`, {
+        const res = await fetch(`${process.env.BASE_URL}notifications/user?limit=${limit}&page=${page}`, {
             method: "GET",
             headers,
             cache: "no-store",

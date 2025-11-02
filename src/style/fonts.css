@@ -1,0 +1,147 @@
+/* Sarabun font for Latin characters */
+@font-face {
+    font-family: "Sarabun";
+    src: url("/fonts/sarabun/Sarabun-Thin.woff2") format("woff2");
+    font-weight: 100;
+    font-display: swap;
+    unicode-range:
+        U+0020-007E, U+00A0-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
+        U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: "Sarabun";
+    src: url("/fonts/sarabun/Sarabun-ExtraLight.woff2") format("woff2");
+    font-weight: 200;
+    font-display: swap;
+    unicode-range:
+        U+0020-007E, U+00A0-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
+        U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: "Sarabun";
+    src: url("/fonts/sarabun/Sarabun-Light.woff2") format("woff2");
+    font-weight: 300;
+    font-display: swap;
+    unicode-range:
+        U+0020-007E, U+00A0-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
+        U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: "Sarabun";
+    src: url("/fonts/sarabun/Sarabun-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-display: swap;
+    unicode-range:
+        U+0020-007E, U+00A0-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
+        U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: "Sarabun";
+    src: url("/fonts/sarabun/Sarabun-Medium.woff2") format("woff2");
+    font-weight: 500;
+    font-display: swap;
+    unicode-range:
+        U+0020-007E, U+00A0-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
+        U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: "Sarabun";
+    src: url("/fonts/sarabun/Sarabun-SemiBold.woff2") format("woff2");
+    font-weight: 600;
+    font-display: swap;
+    unicode-range:
+        U+0020-007E, U+00A0-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
+        U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: "Sarabun";
+    src: url("/fonts/sarabun/Sarabun-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-display: swap;
+    unicode-range:
+        U+0020-007E, U+00A0-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
+        U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: "Sarabun";
+    src: url("/fonts/sarabun/Sarabun-ExtraBold.woff2") format("woff2");
+    font-weight: 800;
+    font-display: swap;
+    unicode-range:
+        U+0020-007E, U+00A0-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
+        U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Tajawal - للحروف العربية فقط */
+@font-face {
+    font-family: "Tajawal";
+    src: url("/fonts/tajawal/Tajawal-ExtraLight.woff2") format("woff2");
+    font-weight: 200;
+    font-display: swap;
+    unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
+}
+
+@font-face {
+    font-family: "Tajawal";
+    src: url("/fonts/tajawal/Tajawal-Light.woff2") format("woff2");
+    font-weight: 300;
+    font-display: swap;
+    unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
+}
+
+@font-face {
+    font-family: "Tajawal";
+    src: url("/fonts/tajawal/Tajawal-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-display: swap;
+    unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
+}
+
+@font-face {
+    font-family: "Tajawal";
+    src: url("/fonts/tajawal/Tajawal-Medium.woff2") format("woff2");
+    font-weight: 500;
+    font-display: swap;
+    unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
+}
+
+@font-face {
+    font-family: "Tajawal";
+    src: url("/fonts/tajawal/Tajawal-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-display: swap;
+    unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
+}
+
+@font-face {
+    font-family: "Tajawal";
+    src: url("/fonts/tajawal/Tajawal-ExtraBold.woff2") format("woff2");
+    font-weight: 800;
+    font-display: swap;
+    unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
+}
+
+@font-face {
+    font-family: "Tajawal";
+    src: url("/fonts/tajawal/Tajawal-Black.woff2") format("woff2");
+    font-weight: 900;
+    font-display: swap;
+    unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
+}
+
+/* Default English (LTR) */
+body {
+    font-family: var(--font-sarabun), "Sarabun", system-ui, sans-serif;
+}
+
+/* Arabic (RTL) */
+html[lang="ar"] body {
+    font-family: var(--font-tajawal), "Tajawal", system-ui, sans-serif;
+}

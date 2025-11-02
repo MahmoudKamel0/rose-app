@@ -1,4 +1,4 @@
-import { TestimonialsResponse } from "@lib/types/testimonial";
+import { TestimonialsResponse } from "@lib/types/end-point-api/testimonial";
 
 {
     /* Fetches testimonials from the API */
@@ -23,7 +23,6 @@ export async function fetchTestimonials(): Promise<TestimonialsResponse> {
         return payload;
     } catch (error) {
         // Log and re-throw the error
-        console.error("Error fetching testimonials:", error);
         throw error;
     }
 }

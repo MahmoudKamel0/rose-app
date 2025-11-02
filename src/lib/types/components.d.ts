@@ -1,4 +1,35 @@
-export declare namespace Pagination {
+export = App
+namespace App {
+    /**
+     * Interfaces related to layout components.
+     * Place shared layout component types here for better organization and reusability.
+     */
+
+    export interface LocaleLayoutProps {
+        children: React.ReactNode;
+        params: Promise<{ locale: string }>;
+    };
+
+    export interface ContainerProps {
+        children?: ReactNode,
+        className?: string
+    }
+
+    /**
+     * Interfaces related to features components.
+     * Place home-page features component types here for better organization and reusability.
+     */
+    export interface OccasionProps {
+        _id: string;
+        name: string;
+        productsCount: number;
+    }
+
+    /**
+     * Interfaces related to features components.
+     * Place shared features component types here for better organization and reusability.
+     */
+
     export interface PaginationReturn {
         currentPage: number;
         totalPages: number;
@@ -16,6 +47,3 @@ export declare namespace Pagination {
         siblingCount?: number;
     }
 }
-
-export type PaginationReturn = Products.PaginationReturn;
-export type UsePaginationParams = Products.UsePaginationParams;

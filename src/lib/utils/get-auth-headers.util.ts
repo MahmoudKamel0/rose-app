@@ -1,6 +1,7 @@
 import { NextRequest } from "next/server";
 import { getToken } from "next-auth/jwt";
 import { cookies } from "next/headers";
+import { JSON_HEADER } from "@lib/constants/shared.constant";
 
 
 /**
@@ -24,7 +25,7 @@ export async function getAuthHeaders(): Promise<Record<string, string>> {
     });
 
     return {
-        "Content-Type": "application/json",
+        ...JSON_HEADER,
         Authorization: `Bearer ${token?.accessToken}` || "",
     };
 }

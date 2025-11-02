@@ -1,17 +1,11 @@
-import { Container } from "@components/features/application/container";
-import { Button } from "@components/ui/button";
-import { Input } from "@components/ui/input";
-import { FOOTER_LINKS } from "@lib/constants/component-ui.constant";
-import { ArrowRight } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
+import { Container } from "@components/layout/container";
 import LogoCopyright from "./components/logo-copyright";
 import ListLinks from "./components/list-links";
 import Subscription from "./components/subscription";
 
 /**
  * Footer Component
- * 
+ *
  * A comprehensive footer component for the Rose E-Commerce application that includes:
  * - Company branding with logo and copyright information
  * - Navigation links for website discovery
@@ -19,7 +13,7 @@ import Subscription from "./components/subscription";
  */
 export default function Footer() {
     return (
-        <footer className="h-96 bg-zinc-800 py-10">
+        <footer className="h-96 bg-zinc-800 py-10 mt-44" id="footer">
             <Container className="flex justify-between gap-5">
                 {/* Logo & Copy right */}
                 <LogoCopyright />

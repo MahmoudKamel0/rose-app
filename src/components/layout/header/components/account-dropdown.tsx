@@ -1,9 +1,20 @@
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger } from "@components/ui/dropdown-menu";
+"use client";
+
 import { ACCOUNT_DROPDOWN_LINKS } from "@lib/constants/component-ui.constant";
 import { cn } from "@lib/utils/cn.util";
-import { ChevronDown } from "lucide-react";
-import Link from "next/link";
+import { ChevronDown, LogOut } from "lucide-react";
+import { Link } from "@i18n/navigation";
+import dynamic from "next/dynamic";
+import { Button } from "@components/ui/button";
+import { signOut } from "next-auth/react";
 
+// Lazy load dropdown menu components using Next.js dynamic imports.
+// This improves performance by only loading these components when needed (e.g., when the dropdown is used),
+const DropdownMenu = dynamic(() => import("@components/ui/dropdown-menu").then((mod) => mod.DropdownMenu));
+const DropdownMenuContent = dynamic(() => import("@components/ui/dropdown-menu").then((mod) => mod.DropdownMenuContent));
+const DropdownMenuItem = dynamic(() => import("@components/ui/dropdown-menu").then((mod) => mod.DropdownMenuItem));
+const DropdownMenuLabel = dynamic(() => import("@components/ui/dropdown-menu").then((mod) => mod.DropdownMenuLabel));
+const DropdownMenuTrigger = dynamic(() => import("@components/ui/dropdown-menu").then((mod) => mod.DropdownMenuTrigger));
 /**
  * AccountDropdown
  *
@@ -11,15 +22,15 @@ import Link from "next/link";
  * Intended to display user account options such as profile, addresses, orders, and sign out.
  */
 
-export default function AccountDropdown({ firstName, lastName }: { firstName: string; lastName: string }) {
+export default function AccountDropdown() {
     return (
         <DropdownMenu>
             {/* Button that triggers the account dropdown menu when clicked */}
-            <DropdownMenuTrigger className={cn("!flex items-center justify-center gap-1 ps-4 text-start leading-4 capitalize outline-0")}>
+            <DropdownMenuTrigger className={cn("!flex items-center justify-center gap-1 ps-4 text-start capitalize leading-4 outline-0")}>
                 {/* dropdown account */}
                 <div aria-label="Account menu dropdown to access user profile, orders, and settings">
                     <span className={cn("text-12 dark:text-zinc-400")}>hello</span>
-                    <p className={cn("text-maroon-700 dark:text-softpink-200 font-medium")}>{firstName}</p>
+                    <p className={cn("font-semibold text-maroon-700 dark:text-softpink-200")}>Jonathan</p>
                 </div>
 
                 {/* icon arrow button */}
@@ -27,26 +38,39 @@ export default function AccountDropdown({ firstName, lastName }: { firstName: st
             </DropdownMenuTrigger>
 
             {/* Dropdown links */}
-            <DropdownMenuContent className={cn("mt-3 w-56 rounded-xl border border-zinc-100 px-0 dark:border-zinc-600")} align="end">
+            <DropdownMenuContent
+                className={cn(
+                    "mt-3 w-56 rounded-xl border border-zinc-100 bg-white px-0 text-sm text-zinc-700 dark:border-zinc-600 dark:text-zinc-50"
+                )}
+                align="end"
+            >
                 {/* user name label in dropdown */}
-                <DropdownMenuLabel className="mb-1 border-b border-zinc-100 dark:border-zinc-600">{`${firstName} ${lastName}`}</DropdownMenuLabel>
+                <DropdownMenuLabel className={cn("mb-1 border-b border-zinc-100 dark:border-zinc-500")}>Jonathan Adrian</DropdownMenuLabel>
 
                 {/* render each account dropdown link as a menu item with its icon and label */}
                 {ACCOUNT_DROPDOWN_LINKS.map((link) => (
                     <DropdownMenuItem
                         key={link.name}
                         className={cn(
-                            link.name === "Dashboard" && "mt-1 rounded-none border-y border-zinc-100 px-2 py-0 dark:border-zinc-600"
+                            link.name === "Dashboard" && "mt-1 rounded-none border-y border-zinc-100 dark:border-zinc-500",
+                            "px-2 py-0"
                         )}
                     >
                         <Link
-                            className="hover:bg-maroon-50 dark:hover:bg-softpink-200 !flex w-full items-center gap-2 rounded-sm px-1.5 py-1.5"
+                            className={cn(
+                                "!flex w-full items-center gap-2 rounded-sm px-1.5 py-1.5 hover:bg-maroon-50 dark:hover:bg-softpink-200"
+                            )}
                             href={link.path}
                         >
                             {link.icon} {link.name}
                         </Link>
                     </DropdownMenuItem>
                 ))}
+                <DropdownMenuItem>
+                    <Button variant="ghost" size={"link"} className="w-full justify-start px-1.5" onClick={() => signOut()}>
+                        <LogOut size="16" className="me-2" /> Sign out
+                    </Button>
+                </DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>
     );

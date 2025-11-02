@@ -9,9 +9,12 @@ export const routing = defineRouting({
 
     // Map of pathnames to localized pathnames
     pathnames: {
-        "/overview": { en: "/", ar: "/" },
+        "/": { en: "/", ar: "/" },
         "/forgot-password": { en: "/forgot-password", ar: "/نسيت-كلمة-المرور" },
-        "/register": { en: "/register", ar: "/تسجيل-الدخول" },
+        "/login": { en: "/login", ar: "/تسجيل-الدخول" },
+        "/register": { en: "/register", ar: "/انشاء حساب" },
+
+        // Products
         "/products": { en: "/products", ar: "/المنتجات" },
     },
 });

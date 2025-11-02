@@ -1,63 +1,11 @@
+
 import createMiddleware from "next-intl/middleware";
 import { NextRequest, NextResponse } from "next/server";
 import { routing } from "./i18n/routing";
 import { getToken } from "next-auth/jwt";
 
-<<<<<<< HEAD
-// Auth-related routes (language-independent)
-const authRoutes = ["/login", "/register", "/forgot-password"];
-
-// Create i18n middleware
-const handleI18nRouting = createMiddleware(routing);
-
-export default async function middleware(req: NextRequest) {
-    const pathname = req.nextUrl.pathname;
-
-    // Detect locale from URL
-    const segments = pathname.split("/");
-    const locale = routing.locales.includes(segments[1] as (typeof routing.locales)[number])
-        ? (segments[1] as (typeof routing.locales)[number])
-        : routing.defaultLocale;
-
-    // User token (next-auth)
-    const token = await getToken({ req });
-
-    // --- Define public pages dynamically ---
-    const isAuthRoute = authRoutes.some((route) => pathname === `/${locale}${route}`);
-    const isProductsPage = pathname === `/${locale}/products` || pathname.startsWith(`/${locale}/products/`);
-    const isRootPage = pathname === `/${locale}`;
-
-    const isPublic = isAuthRoute || isProductsPage || isRootPage;
-
-    // --- Public pages handling ---
-    if (isPublic) {
-        // If authenticated and trying to access login/register, redirect to overview
-        if (token && isAuthRoute) {
-            const redirectUrl = new URL(`/${locale}/overview`, req.nextUrl.origin);
-            return NextResponse.redirect(redirectUrl);
-        }
-
-        // Allow access to public pages
-        return handleI18nRouting(req);
-    }
-
-    // --- Protected pages handling ---
-    if (!token) {
-        const redirectUrl = new URL(`/${locale}/login`, req.nextUrl.origin);
-        redirectUrl.searchParams.set("callbackUrl", req.nextUrl.pathname);
-        return NextResponse.redirect(redirectUrl);
-    }
-
-    // Authenticated user → proceed
-    return handleI18nRouting(req);
-}
-
-export const config = {
-    matcher: ["/((?!api|_next|.*\\..*).*)"], // Match all non-static app pages
-};
-=======
-const UNPROTECTED_ROUTES = ["/login", "/register", "/forgot-password", "/"];
 const intlMiddleware = createMiddleware(routing);
+const PROTECTED_ROUTES = ["/wishlist", "/checkout", "/profile"];
 
 export default async function middleware(req: NextRequest) {
     const { pathname } = req.nextUrl;
@@ -68,7 +16,7 @@ export default async function middleware(req: NextRequest) {
 
     // Check authentication
     const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
-    const isAuthPage = UNPROTECTED_ROUTES.includes(pathWithoutLocale);
+    const isAuthPage = PROTECTED_ROUTES.includes(pathWithoutLocale);
 
     // Authenticated user on auth page → redirect to home-page
     if (token && isAuthPage) {
@@ -76,7 +24,7 @@ export default async function middleware(req: NextRequest) {
     }
 
     // Unauthenticated user on non-auth page → redirect to login
-    if (!token && !isAuthPage) {
+    if (!token && isAuthPage) {
         const loginUrl = new URL(`/${locale}/login`, req.url);
         loginUrl.searchParams.set("callbackUrl", pathname);
         return NextResponse.redirect(loginUrl);
@@ -88,4 +36,3 @@ export default async function middleware(req: NextRequest) {
 export const config = {
     matcher: ["/((?!api|_next|.*\\..*).*)", "/"],
 };
->>>>>>> 54f27d8f79cc709188ec8e853b50c3dea765fc67

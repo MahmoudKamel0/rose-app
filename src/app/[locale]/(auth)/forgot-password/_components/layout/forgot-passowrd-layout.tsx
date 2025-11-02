@@ -1,7 +1,7 @@
 "use client";
 
 import { FORGOT_PASSWORD_STEPS } from "@lib/constants/auth.constants";
-import { Step } from "@lib/types/auth/auth";
+import { Step } from "@lib/types/auth/verfiy";
 import { useState } from "react";
 import React from "react";
 import EmailStep from "../email-step";
