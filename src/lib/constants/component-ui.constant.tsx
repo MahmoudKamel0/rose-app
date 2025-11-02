@@ -1,37 +1,37 @@
 import { cn } from "@lib/utils/cn.util";
-import { Home, Gift, ClipboardList, PartyPopper, Headset, Info, LogOut, MapPinHouse, ScrollText, Settings, User } from "lucide-react";
+import { Home, Gift, ClipboardList, PartyPopper, Headset, Info, MapPinHouse, ScrollText, Settings, User } from "lucide-react";
 
 // For NavHeader component: (components/layout/header/components/nav-header)
-export const NAV_LINKS = [
+export const getNavLinks = (t: (key: string) => string) => [
     {
-        icon: <Home size="20" className={cn("stroke-zinc-50", "dark:stroke-zinc-800")} />,
+        icon: <Home size={20} className={cn("stroke-zinc-50", "dark:stroke-zinc-800")} />,
         path: "/",
-        name: "Home",
+        name: t("home"),
     },
     {
-        icon: <Gift size="20" className={cn("stroke-zinc-50", "dark:stroke-zinc-800")} />,
+        icon: <Gift size={20} className={cn("stroke-zinc-50", "dark:stroke-zinc-800")} />,
         path: "/products",
-        name: "Products",
+        name: t("products"),
     },
     {
-        icon: <ClipboardList size="20" className={cn("stroke-zinc-50", "dark:stroke-zinc-800")} />,
-        path: "/",
-        name: "Categories",
+        icon: <ClipboardList size={20} className={cn("stroke-zinc-50", "dark:stroke-zinc-800")} />,
+        path: "/categories",
+        name: t("categories"),
     },
     {
-        icon: <PartyPopper size="20" className={cn("stroke-zinc-50", "dark:stroke-zinc-800")} />,
-        path: "/",
-        name: "Occasions",
+        icon: <PartyPopper size={20} className={cn("stroke-zinc-50", "dark:stroke-zinc-800")} />,
+        path: "/occasions",
+        name: t("occasions"),
     },
     {
-        icon: <Headset size="20" className={cn("stroke-zinc-50", "dark:stroke-zinc-800")} />,
-        path: "/",
-        name: "Contact",
+        icon: <Headset size={20} className={cn("stroke-zinc-50", "dark:stroke-zinc-800")} />,
+        path: "/#footer",
+        name: t("contact"),
     },
     {
-        icon: <Info size="20" className={cn("stroke-zinc-50", "dark:stroke-zinc-800")} />,
-        path: "/",
-        name: "About",
+        icon: <Info size={20} className={cn("stroke-zinc-50", "dark:stroke-zinc-800")} />,
+        path: "/#about",
+        name: t("about"),
     },
 ];
 
@@ -40,66 +40,53 @@ export const ACCOUNT_DROPDOWN_LINKS = [
     {
         icon: <User size="16" />,
         name: "My Profile",
-        path: "/",
+        path: "/profile",
     },
     {
         icon: <MapPinHouse size="16" />,
         name: "My Addresses",
-        path: "/",
+        path: "/address",
     },
     {
         icon: <ScrollText size="16" />,
         name: "My Orders",
-        path: "/",
+        path: "/orders",
     },
     {
         icon: <Settings size="16" />,
         name: "Dashboard",
-        path: "/",
+        path: "/dashboard",
+    },
+];
+
+// For SliderOffers component: (components/features/application/home/special-gifts/components/slider-offers)
+export const IMAGES_SLIDERS_OFFERS = [
+    {
+        imagePath: "/images/img4.webp",
+        title: "Say It with Flowers",
+        description: "Elegant gifts for every special moment.",
     },
     {
-        icon: <LogOut size="16" />,
-        name: "Log out",
-        path: "/",
+        imagePath: "/images/s2.webp",
+        title: "Say It with Flowers",
+        description: "Elegant gifts for every special moment.",
+    },
+    {
+        imagePath: "/images/img3.webp",
+        title: "Say It with Flowers",
+        description: "Elegant gifts for every special moment.",
     },
 ];
 
 // For Footer component: (components/layout/footer)
 export const FOOTER_LINKS = [
-    {
-        path: "/",
-        name: "Home",
-    },
-    {
-        path: "/",
-        name: "Products",
-    },
-    {
-        path: "/",
-        name: "Categories",
-    },
-    {
-        path: "/",
-        name: "Occasions",
-    },
-    {
-        path: "/",
-        name: "Contact",
-    },
-    {
-        path: "/",
-        name: "About",
-    },
-    {
-        path: "/",
-        name: "Terms & Conditions",
-    },
-    {
-        path: "/",
-        name: "Privacy Policy",
-    },
-    {
-        path: "/",
-        name: "FAQs",
-    },
+    { path: "/", name: "home" },
+    { path: "/products", name: "products" },
+    { path: "/categories", name: "categories" },
+    { path: "/occasions", name: "occasions" },
+    { path: "/contact", name: "contact" },
+    { path: "/about", name: "about" },
+    { path: "/terms", name: "terms" }, 
+    { path: "/privacy", name: "privacy" }, 
+    { path: "/faqs", name: "faqs" }, 
 ];

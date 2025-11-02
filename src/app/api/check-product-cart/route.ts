@@ -1,4 +1,4 @@
-import { CartResponse } from "@app/[locale]/products/[productId]/_types/product-id";
+import { CartResponse } from "@app/[locale]/(home)/products/[productId]/_types/product-id";
 import { JSON_HEADER } from "@lib/constants/shared.constant";
 import { getToken } from "next-auth/jwt";
 import { NextRequest, NextResponse } from "next/server";

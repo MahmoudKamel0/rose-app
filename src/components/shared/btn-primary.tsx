@@ -20,7 +20,7 @@ export default function BtnPrimary({ text }: BtnPrimaryProps) {
         // } as React.CSSProperties
         //     } 
       className={cn(
-        "inline-flex items-center justify-between gap-2 px-4 py-2.5 bg-maroon-600 dark:bg-softpink-200"
+        "inline-flex items-center justify-center gap-2.5 px-4 py-2.5 bg-maroon-600 dark:bg-softpink-200"
         // bgColor,
         // textColor
       )}

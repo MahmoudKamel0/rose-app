@@ -69,10 +69,10 @@ const CountrySelect = ({ disabled, value: selectedCountry, options: countryList,
             modal
             onOpenChange={(open) => {
                 setIsOpen(open);
-                open && setSearchValue("");
+                if (open) setSearchValue("");
             }}
         >
-            <PopoverTrigger asChild>
+            <PopoverTrigger asChild className="">
                 <Button
                     type="button"
                     variant="ghost"
@@ -84,14 +84,14 @@ const CountrySelect = ({ disabled, value: selectedCountry, options: countryList,
                             <FlagComponent country={selectedCountry} countryName={selectedCountry} />
                         </div>
                         <span className="text-sm font-medium hover:bg-transparent">{selectedCountry}</span>
-                        <span className="text-muted-foreground text-sm hover:bg-transparent">
+                        <span className="text-sm text-muted-foreground hover:bg-transparent">
                             (+{RPNInput.getCountryCallingCode(selectedCountry)})
                         </span>
                         <ChevronsUpDown className={cn("size-4 opacity-50", disabled ? "hidden" : "opacity-100")} />
                     </div>
                 </Button>
             </PopoverTrigger>
-            <PopoverContent className="w-[300px] p-0">
+            <PopoverContent className="w-[300px] bg-zinc-50 dark:bg-zinc-800">
                 <Command>
                     <CommandInput
                         value={searchValue}
@@ -106,7 +106,7 @@ const CountrySelect = ({ disabled, value: selectedCountry, options: countryList,
                         }}
                         placeholder="Search country..."
                     />
-                    <CommandList>
+                    <CommandList className="">
                         <ScrollArea ref={scrollAreaRef} className="h-72">
                             <CommandEmpty>No country found.</CommandEmpty>
                             <CommandGroup>
@@ -144,10 +144,10 @@ const CountrySelectOption = ({ country, countryName, selectedCountry, onChange, 
     };
 
     return (
-        <CommandItem className="gap-2" onSelect={handleSelect}>
+        <CommandItem className="cursor-pointer gap-2" onSelect={handleSelect}>
             <FlagComponent country={country} countryName={countryName} />
             <span className="flex-1 text-sm">{countryName}</span>
-            <span className="text-foreground/50 text-sm">{`+${RPNInput.getCountryCallingCode(country)}`}</span>
+            <span className="text-sm text-foreground/50">{`+${RPNInput.getCountryCallingCode(country)}`}</span>
             <CheckIcon className={`ml-auto size-4 ${country === selectedCountry ? "opacity-100" : "opacity-0"}`} />
         </CommandItem>
     );

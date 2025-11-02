@@ -1,12 +1,23 @@
+import Footer from "@components/layout/footer";
 import Header from "@components/layout/header";
-import React from "react";
+import { Fragment, ReactNode } from "react";
 
-export default function OverviewLayout({ children }: { children: React.ReactNode }) {
+/**
+ * OverviewLayout
+ *
+ * This layout component wraps the homepage and its sub-routes.
+ * It renders the global Header and the provided page content.
+ *
+ * @param {Object} props
+ * @param {ReactNode} props.children - Child nodes representing page content
+ * @returns {JSX.Element}
+ */
+export default function OverviewLayout({ children }: { children: ReactNode }) {
     return (
-        <div>
+        <main className="flex min-h-screen flex-col justify-between">
             <Header />
             {children}
-            {/* <Footer /> */}
-        </div>
+            <Footer />
+        </main>
     );
 }

@@ -1,4 +1,5 @@
-import { CategoriesResponse } from "@app/[locale]/products/_types/categories";
+
+import { CategoriesResponse } from "@app/[locale]/(home)/products/_types/categories";
 import { NextResponse } from "next/server";
 
 export async function GET(req: Request) {

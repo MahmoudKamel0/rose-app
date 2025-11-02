@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@components/ui/button";
 import { FORGOT_PASSWORD_STEPS } from "@lib/constants/auth.constants";
-import { Step } from "@lib/types/auth/auth";
+import { Step } from "@lib/types/auth/verfiy";
 import { InputOTP, InputOTPSlot } from "@components/ui/input-otp";
 import { OtpFormData, OtpSchema } from "@lib/schemas/auth/otp.schema";
 import { useTranslations } from "next-intl";
@@ -13,13 +13,7 @@ import { useVerifyOtp } from "../_hooks/use-verify-otp";
 
 import { toast } from "sonner";
 import ResendOtpButton from "./resend-otp-btn";
-import {
-    Form,
-    FormControl,
-    FormField,
-    FormItem,
-    FormMessage,
-} from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
 
 type OtpStepProps = {
     email: string;
@@ -79,7 +73,7 @@ export default function OtpStep({ email, setStep }: OtpStepProps) {
                     <Button
                         variant="link"
                         size="link"
-                        className="ms-0.5 text-blue-700 capitalize underline"
+                        className="ms-0.5 capitalize text-blue-700 underline"
                         type="button"
                         onClick={() => setStep(FORGOT_PASSWORD_STEPS.EMAIL)}
                     >
@@ -90,10 +84,7 @@ export default function OtpStep({ email, setStep }: OtpStepProps) {
 
             {/* OTP Form */}
             <Form {...form}>
-                <form
-                    onSubmit={handleSubmit(onSubmit)}
-                    className="flex flex-col items-center gap-6 border-t border-b border-zinc-200 py-6"
-                >
+                <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col items-center gap-6 border-b border-t border-zinc-200 py-6">
                     {/* OTP Input Field */}
                     <FormField
                         control={control}
@@ -111,20 +102,12 @@ export default function OtpStep({ email, setStep }: OtpStepProps) {
                                         className="justify-center"
                                     >
                                         {Array.from({ length: 6 }).map((_, i) => (
-                                            <InputOTPSlot
-                                                key={i}
-                                                index={i}
-                                                hasError={!!otpError}
-                                            />
+                                            <InputOTPSlot key={i} index={i} hasError={!!otpError} />
                                         ))}
                                     </InputOTP>
                                 </FormControl>
                                 {/* Display OTP error message if exists */}
-                                {otpError && (
-                                    <p className="-mt-3 text-sm font-medium text-red-500">
-                                        {otpError}
-                                    </p>
-                                )}
+                                {otpError && <p className="-mt-3 text-sm font-medium text-red-500">{otpError}</p>}
                                 <FormMessage />
                             </FormItem>
                         )}
@@ -136,12 +119,10 @@ export default function OtpStep({ email, setStep }: OtpStepProps) {
                     {/* Submit OTP */}
                     <Button
                         type="submit"
-                        className="mt-4 mb-3 w-full bg-[#A6252A] font-medium text-white"
+                        className="mb-3 mt-4 w-full bg-[#A6252A] font-medium text-white"
                         disabled={isPending || isSubmitting}
                     >
-                        {isSubmitting || isPending
-                            ? t("verifying")
-                            : t("verify")}
+                        {isSubmitting || isPending ? t("verifying") : t("verify")}
                     </Button>
                 </form>
             </Form>

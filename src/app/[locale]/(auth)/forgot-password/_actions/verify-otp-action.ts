@@ -1,6 +1,6 @@
 "use server";
 
-import { VerifyOtpResponse } from "@lib/types/auth/auth";
+import { VerifyOtpResponse } from "@lib/types/auth/verfiy";
 import { EmailForgetPasswordValue } from "@lib/schemas/auth/forget-password-schema";
 import { EmailForgetPasswordResponse } from "../_types/forget-password-email-response";
 

@@ -23,7 +23,7 @@
       "@configuration/*": ["./src/configuration/*"],
       "@fonts": ["./src/fonts/index.ts"],
       "@lib/*": ["./src/lib/*"],
-      "@services/*": ["./src/services/*"],
+      "@i18n/*": ["./src/i18n/*"],
       "@tests/*": ["./src/tests/*"],
       "@public/*": ["./public/*"],
       "@/*": ["./src/*"]
