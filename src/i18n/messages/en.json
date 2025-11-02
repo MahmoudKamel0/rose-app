@@ -45,6 +45,35 @@
         "password": "Password",
         "email": "Email"
     },
+    "about-section": {
+        "subtitle": "about",
+        "heading": {
+            "part1": "delivering the",
+            "highlight1": "finest",
+            "part2": "gift boxes for your",
+            "highlight2": "special",
+            "part3": "moments"
+        },
+        "description": "Make every moment memorable with our premium gift boxes. Carefully curated and <br /> beautifully packaged, each box is filled with handpicked items designed to impress.<br />Whether it's for a birthday, wedding, or a simple “thank you,” our gift boxes are crafted to <br /> leave a lasting impression — because thoughtful gifting starts here.",
+        "button": "Discover",
+        "features": {
+            "competitive": "Competitive Prices & Easy Shopping",
+            "premium": "Premium Quality & Elegant Packaging",
+            "occasion": "Perfect for Every Occasion",
+            "delivery": "Fast & Reliable Delivery"
+        }
+    },
+    "gallery-section": {
+        "subtitle": "Gallery",
+        "heading": "Check Out our Wonderful Gallery"
+    },
+    "trusted-section": {
+        "heading": {
+            "before": "Trusted by over",
+            "highlight": "4.5k+",
+            "after": "companies"
+        }
+    },
     "forget-password-email": {
         "title": "Forgot Password",
         "desc": "Don’t worry, we’ll send you instructions to reset it.",

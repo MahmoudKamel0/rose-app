@@ -13,7 +13,7 @@ import Subscription from "./components/subscription";
  */
 export default function Footer() {
     return (
-        <footer className="mt-44 h-96 bg-zinc-800 py-10">
+        <footer className="h-96 bg-zinc-800 py-10 mt-44" id="footer">
             <Container className="flex justify-between gap-5">
                 {/* Logo & Copy right */}
                 <LogoCopyright />
