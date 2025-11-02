@@ -84,7 +84,7 @@
         }
     },
 
-    "product-detailes": {
+    "product-details": {
         "loading": "please wait...",
         "price": "EGP",
         "out": "Out of stock",

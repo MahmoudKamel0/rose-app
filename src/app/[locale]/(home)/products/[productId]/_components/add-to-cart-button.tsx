@@ -19,7 +19,7 @@ type CartType = {
 
 export default function CartBtn({ productId, numberProduct, size = "xl", isText = true }: CartType) {
     // Translation
-    const t = useTranslations("product-detailes");
+    const t = useTranslations("product-details");
 
     // Use state
     const [btnDisable, setBtnDisable] = useState<boolean>(false);

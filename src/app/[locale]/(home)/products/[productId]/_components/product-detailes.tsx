@@ -3,14 +3,15 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils/cn.util";
-import { Heart, Loader2, Minus, Package, Plus, Star } from "lucide-react";
+import { Heart, Minus, Package, Plus, Star } from "lucide-react";
 import CartBtn from "./add-to-cart-button";
 import { useTranslations } from "next-intl";
 import { useSpecificProduct } from "../_hooks/use-products.hook";
+import PageLoader from "@components/shared/page-loader";
 
 export default function ProductDetailes({ productId }: { productId: string }) {
     // Translation
-    const t = useTranslations("product-detailes");
+    const t = useTranslations("product-details");
 
     // State
     const [activeImage, setActiveImage] = useState<string>("");
@@ -33,12 +34,7 @@ export default function ProductDetailes({ productId }: { productId: string }) {
     return (
         <div className="flex gap-16">
             {/* Handel loading */}
-            {isPending && (
-                <div className="flex min-h-screen w-full flex-col items-center justify-center">
-                    <Loader2 className="animate-spin text-maroon-500" size={56} />
-                    <p>{t("loading")}</p>
-                </div>
-            )}
+            {isPending && <PageLoader />}
 
             {/* Handel error */}
             {error && <div>Error: {error.message}</div>}
@@ -130,7 +126,7 @@ export default function ProductDetailes({ productId }: { productId: string }) {
                         <div className="mt-9 flex items-center justify-center gap-1.5">
                             <button
                                 onClick={() => setLiked(!liked)}
-                                className={`flex h-button w-12 items-center justify-center rounded-xl transition-colors ${
+                                className={`h-button flex w-12 items-center justify-center rounded-xl transition-colors ${
                                     liked ? "bg-zinc-800 text-zinc-50" : "bg-gray-100 text-gray-600 dark:bg-zinc-800 dark:text-zinc-50"
                                 }`}
                             >
