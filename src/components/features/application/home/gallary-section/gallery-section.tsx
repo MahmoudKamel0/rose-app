@@ -1,16 +1,18 @@
 import HighlightedHeading from "@components/shared/highlighted-heading";
 import Subtitle from "@components/shared/subtitle";
 import { cn } from "@lib/utils/cn.util";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 
 export default function GallerySection() {
+    const t = useTranslations("gallery-section");
     return (
         //  Main Gallery Section
         <section className="gallery-section mt-32 pt-1">
             {/*  Section Header: Subtitle + Heading */}
             <div className="flex flex-col items-center gap-2 p-4 text-center">
-                <Subtitle text="Gallery" />
-                <HighlightedHeading text="Check Out our Wonderful Gallery" highlightWidth="335px" borderWidth="133px" />
+                <Subtitle text={t("subtitle")} />
+                <HighlightedHeading   text={t("heading")} highlightWidth="335px" borderWidth="133px" />
             </div>
 
             {/*  Image Grid Layout */}
