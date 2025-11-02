@@ -5,7 +5,7 @@ import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 
 export default async function Page() {
-    const t = await getTranslations("login");
+    const t = await getTranslations("login-page");
     return (
         <main className="flex items-center justify-center dark:bg-zinc-800">
             <div className="max-w-[29rem]">

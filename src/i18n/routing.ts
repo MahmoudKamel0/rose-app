@@ -9,13 +9,10 @@ export const routing = defineRouting({
 
     // Map of pathnames to localized pathnames
     pathnames: {
-        // Index route
-        "/": "/",
-
-        // Authentication
+        "/": { en: "/", ar: "/" },
+        "/forgot-password": { en: "/forgot-password", ar: "/نسيت-كلمة-المرور" },
         "/login": { en: "/login", ar: "/تسجيل-الدخول" },
         "/register": { en: "/register", ar: "/انشاء حساب" },
-        "/forgot-password": { en: "/forgot-password", ar: "/نسيت-كلمة-المرور" },
 
         // Products
         "/products": { en: "/products", ar: "/المنتجات" },

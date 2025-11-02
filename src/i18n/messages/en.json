@@ -36,14 +36,14 @@
         "testimonials-heading": "Words from Our Happy Customers"
     },
 
-    "login": {
+    "login-page": {
         "title": "Welcome Back!",
         "noAccount": "Don’t have an account yet?",
         "createNow": "Create one now!",
         "forgotpss": "Forgot your password?",
-        "login": "Login",
         "password": "Password",
-        "email": "Email"
+        "email": "Email",
+        "submit": "Login"
     },
     "about-section": {
         "subtitle": "about",
@@ -162,6 +162,10 @@
         "toast-added": "Added to cart",
         "success": "success",
         "sold-out": "Sold out"
+    },
+
+    "best-selling": {
+        "Best Selling": "Best Selling"
     },
     "otp": {
         "enter-title": "Enter Verification Code",
