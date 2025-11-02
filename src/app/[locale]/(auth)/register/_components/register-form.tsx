@@ -13,10 +13,14 @@ import { ErrorMessage } from "@components/shared/error-message";
 import { toast } from "sonner";
 import { Link } from "@/i18n/navigation";
 import { RegisterInput, useRegisterSchema } from "@lib/schemas/auth/register.schema";
+import { useRouter } from "next/navigation";
 
 export default function RegisterForm() {
+    // Hooks
+    const router = useRouter();
+
     // Translations
-    const t = useTranslations();
+    const t = useTranslations("register");
 
     //Hook
     const registerSchema = useRegisterSchema();
@@ -45,6 +49,7 @@ export default function RegisterForm() {
             // Success callbacks
             onSuccess: () => {
                 toast.success(t("account-created-successfully"));
+                router.push("/login");
             },
             // Error callback
             onError: (err) => {

@@ -26,6 +26,22 @@ export default function ProductCard({ product }) {
                     <button className="rounded-full bg-white p-3 text-maroon-600 transition hover:bg-maroon-600 hover:text-white">
                         <Heart className="h-5 w-5" strokeWidth={2} />
                     </button>
+    return (
+        <Card className={cn("overflow-hidden border-none shadow-none transition-all duration-200")}>
+            <div className={cn("group relative")}>
+                <Image
+                    src={product.imgCover || "/images/placeholder.jpg"}
+                    alt={product.title}
+                    width={302}
+                    height={272}
+                    className={cn("h-64 w-full rounded-xl object-cover")}
+                />
+                {/* Overlay */}
+                <div className="absolute inset-0 flex items-center justify-center gap-3 rounded-xl bg-[#E6507380] opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    {/* Heart Icon */}
+                    <button className="rounded-full bg-white p-3 text-maroon-600 transition hover:bg-maroon-600 hover:text-white">
+                        <Heart className="h-5 w-5" strokeWidth={2} />
+                    </button>
 
                     {/* Eye Icon */}
                     <button className="rounded-full bg-white p-3 text-maroon-600 transition hover:bg-maroon-600 hover:text-white">
@@ -45,7 +61,20 @@ export default function ProductCard({ product }) {
                         NEW
                     </Badge>
                 )}
+                {/* NEW Badge */}
+                {product.sold < 20 && (
+                    <Badge className={cn("absolute right-2 top-2 rounded-full bg-zinc-100 px-2 py-0.5 text-xs uppercase text-zinc-700")}>
+                        NEW
+                    </Badge>
+                )}
 
+                {/* OUT OF STOCK Badge */}
+                {product.quantity < 1 && (
+                    <Badge className={cn("absolute right-2 top-2 rounded-full bg-red-600 px-2 py-0.5 text-xs uppercase text-white")}>
+                        OUT OF STOCK
+                    </Badge>
+                )}
+            </div>
                 {/* OUT OF STOCK Badge */}
                 {product.quantity < 1 && (
                     <Badge className={cn("absolute right-2 top-2 rounded-full bg-red-600 px-2 py-0.5 text-xs uppercase text-white")}>

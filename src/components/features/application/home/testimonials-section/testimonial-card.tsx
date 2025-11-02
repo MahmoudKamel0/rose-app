@@ -8,7 +8,7 @@ import { cn } from "@lib/utils/cn.util";
 
 export default function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
     //  Translations
-    const t = useTranslations();
+    const t = useTranslations("testimonials");
     const formatter = useFormatter();
 
     return (
