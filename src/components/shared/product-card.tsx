@@ -34,7 +34,7 @@ export default function ProductCard({ product }) {
                 </div>
                 {/* HOT Badge */}
                 {product.sold > 300 && (
-                    <Badge className={cn("absolute right-2 top-2 rounded-full bg-maroon-50 px-2 py-0.5 text-xs uppercase text-maroon-600")}>
+                    <Badge className={cn("bg-maroon-50 absolute right-2 top-2 rounded-full px-2 py-0.5 text-xs uppercase text-maroon-600")}>
                         HOT
                     </Badge>
                 )}
@@ -56,7 +56,7 @@ export default function ProductCard({ product }) {
 
             <CardContent className={cn("space-y-1.5 px-0 py-5")}>
                 {/* Product Title */}
-                <h3 className={cn("line-clamp-1 text-lg font-semibold capitalize text-maroon-700 dark:text-[#FFC2D0]")}>{product.title}</h3>
+                <h3 className={cn("text-maroon-700 line-clamp-1 text-lg font-semibold capitalize dark:text-[#FFC2D0]")}>{product.title}</h3>
 
                 {/* Rating */}
                 <div className="flex items-center justify-center">
@@ -77,7 +77,7 @@ export default function ProductCard({ product }) {
                         <div className="flex items-center justify-center gap-4">
                             {/* Prices */}
                             <div className="flex items-center gap-2">
-                                <p className="text-base font-medium text-maroon-700 dark:text-[#FFC2D0]">
+                                <p className="text-maroon-700 text-base font-medium dark:text-[#FFC2D0]">
                                     {product.priceAfterDiscount} EGP
                                 </p>
                                 {product.priceAfterDiscount < product.price && (

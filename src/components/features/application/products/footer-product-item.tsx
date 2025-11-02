@@ -1,9 +1,7 @@
+import CartBtn from "@app/[locale]/(home)/products/[productId]/_components/add-to-cart-button";
 import RateStars from "@components/shared/rate-stars";
-import { Button } from "@components/ui/button";
 import { CardFooter } from "@components/ui/card";
 import { FooterProductItemProps } from "@lib/types/components/products";
-import { ShoppingCart } from "lucide-react";
-
 
 /**
  * FooterProductItem component
@@ -23,9 +21,9 @@ export default function FooterProductItem({ product }: FooterProductItemProps) {
     const OLD_PRICE = product.priceAfterDiscount > 0;
 
     return (
-        <CardFooter id="footer-item-product" className="h-20 block p-0">
+        <CardFooter id="footer-item-product" className="block h-20 p-0">
             {/* Product title */}
-            <h3 className="text-maroon-700 overflow-hidden text-lg font-semibold text-nowrap text-ellipsis" title={product.title}>
+            <h3 className="text-maroon-700 overflow-hidden text-ellipsis text-nowrap text-lg font-semibold" title={product.title}>
                 {product.title}
             </h3>
 
@@ -46,9 +44,7 @@ export default function FooterProductItem({ product }: FooterProductItemProps) {
                 </div>
 
                 {/* Add-to-cart button */}
-                <Button className="!h-10 !w-10 place-items-center rounded-full">
-                    <ShoppingCart className="!stroke-white" size="24" />
-                </Button>
+                <CartBtn productId={product._id} numberProduct={product.quantity} size="rounded-icon" isText={false} />
             </div>
         </CardFooter>
     );

@@ -147,7 +147,6 @@ export default function ProductDetailes({ productId }: { productId: string }) {
 
                             {/* Add to cart button */}
                             <div className="flex-1">
-                                {" "}
                                 <CartBtn productId={productId} numberProduct={data.quantity} />
                             </div>
                         </div>
