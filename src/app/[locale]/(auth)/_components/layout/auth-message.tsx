@@ -8,7 +8,7 @@ import { usePathname } from "@/i18n/navigation";
 export default function AuthMessage() {
     // Determine the current path to display the appropriate message
     const pathname = usePathname();
-    const t = useTranslations();
+    const t = useTranslations("register");
 
     // Set message based on the current path
     let message = "";

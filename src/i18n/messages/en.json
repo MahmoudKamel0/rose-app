@@ -26,16 +26,19 @@
     "Home-Page": {
         "hero-section": {}
     },
-    "abourt": "About Us",
-    "testimonials-title": "Testimonials",
-    "testimonials-name": "{firstName} {lastName}",
-    "testimonials-content": "I've been ordering from this flower shop for years and they never disappoint. The quality and service are exceptional!!",
-    "testimonials-date": "Reviewed on {date}",
-    "testimonials-subtitle": "Testimonials",
-    "testimonials-heading": "Real Words from Happy Customers",
+    "testimonials": {
+        "abourt": "About Us",
+        "testimonials-title": "Customer Testimonials",
+        "testimonials-name": "{lastName} {firstName}",
+        "testimonials-content": "I’ve been ordering from this store for years, and they’ve never disappointed me. The quality and service are truly exceptional!",
+        "testimonials-date": "Reviewed on {date}",
+        "testimonials-subtitle": "Customer Feedback",
+        "testimonials-heading": "Words from Our Happy Customers"
+    },
+
     "login": {
-        "title": "Welcome back!",
-        "noAccount": "Don't have an account yet?",
+        "title": "Welcome Back!",
+        "noAccount": "Don’t have an account yet?",
         "createNow": "Create one now!",
         "forgotpss": "Forgot your password?",
         "login": "Login",
@@ -73,25 +76,60 @@
     },
     "forget-password-email": {
         "title": "Forgot Password",
-        "desc": "Worry not, we'll send you instructions to help you reset it.",
+        "desc": "Don’t worry, we’ll send you instructions to reset it.",
         "label": "Email",
         "continue": "Continue",
-        "checking": "checking...",
-        "footer-msg": "Don't have an account yet?",
+        "checking": "Checking...",
+        "footer-msg": "Don’t have an account yet?",
         "footer-link": "Create one now!",
-        "toast": "A secret code will be sent to your email.",
-        "toast-desc": "wait until you recive the secret code"
+        "toast": "A secret code has been sent to your email.",
+        "toast-desc": "Please wait until you receive the code."
     },
-
     "reset-password": {
         "title": "Create a New Password",
         "desc": "Set a strong password to secure your account.",
         "newPassLabel": "New Password",
         "resetPassLabel": "Confirm New Password",
-        "continue": "Reset password",
+        "continue": "Reset Password",
         "loading": "Loading...",
-        "toast": "Your password has been updated successfully..",
-        "toast-desc": "You will be redirected to the login page. Please wait."
+        "toast": "Your password has been updated successfully.",
+        "toast-desc": "You will be redirected to the login page shortly."
+    },
+    "register": {
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "email": "Email",
+        "phone": "Phone Number",
+        "gender": "Gender",
+        "selectGender": "Select Gender",
+        "male": "Male",
+        "female": "Female",
+        "password": "Password",
+        "rePassword": "Confirm Password",
+        "error": "Something went wrong",
+        "loading": "Loading...",
+        "createAccount": "Create Account",
+        "already": "Already have an account?",
+        "login-message": "Welcome back!",
+        "register-message": "Join our family!",
+        "account-created-successfully": "Account created successfully!",
+        "error-creating-account": "An error occurred while creating the account.",
+        "firstName-required": "First name is required",
+        "firstName-min": "First name must be at least 2 characters long",
+        "lastName-required": "Last name is required",
+        "lastName-min": "Last name must be at least 2 characters long",
+        "email-required": "Email is required",
+        "email-invalid": "Please enter a valid email address",
+        "phone-required": "Phone number is required",
+        "phone-invalid": "Invalid phone number format (must start with + and contain 6 to 15 digits)",
+        "gender-required": "Please select gender",
+        "password-required": "Password is required",
+        "password-min": "Password must be at least 8 characters long",
+        "password-first-capital": "Password must start with a capital letter",
+        "password-special-char": "Password must include at least one special character",
+        "confirmPassword-required": "Confirm password is required",
+        "passwords-not-match": "Passwords do not match",
+        "login": "Login"
     },
 
     "product-detailes": {
@@ -107,65 +145,91 @@
         "success": "success",
         "sold-out": "Sold out"
     },
-
-    "firstName": "First Name",
-    "lastName": "Last Name",
-    "email": "Email",
-    "phone": "Phone",
-    "gender": "Gender",
-    "selectGender": "Select gender",
-    "male": "Male",
-    "female": "Female",
-    "password": "Password",
-    "rePassword": "Confirm Password",
-    "error": "Something went wrong",
-    "loading": "Loading...",
-    "createAccount": "Create Account",
-    "already": "Already have an account?",
-    "login-message": "Welcome back!",
-    "register-message": "Become part of our family!",
-    "account-created-successfully": "Account created successfully!",
-    "error-creating-account": "Something went wrong while creating the account.",
-    "firstName-required": "First name is required",
-    "firstName-min": "First name must be at least 2 characters",
-    "lastName-required": "Last name is required",
-    "lastName-min": "Last name must be at least 2 characters",
-    "email-required": "Email is required",
-    "email-invalid": "Please enter a valid email address",
-    "phone-required": "Phone number is required",
-    "phone-invalid": "Invalid phone number format (must start with + and contain 6–15 digits)",
-    "gender-required": "Please select your gender",
-    "password-required": "Password is required",
-    "password-min": "Password must be at least 8 characters",
-    "password-first-capital": "Password must start with a capital letter",
-    "password-special-char": "Password must contain at least one special character",
-    "confirmPassword-required": "Confirm password is required",
-    "passwords-not-match": "Passwords do not match",
     "otp": {
-        "enter-title": "Enter the OTP Code",
-        "sent": "We have sent a 6-digit code to {email}",
-        "edit": "edit",
+        "enter-title": "Enter Verification Code",
+        "sent": "We’ve sent a 6-digit code to {email}",
+        "edit": "Edit",
         "sending": "Sending...",
-        "send-new": "Send new code",
-        "verify": "Verify OTP",
+        "send-new": "Send New Code",
+        "verify": "Verify Code",
         "verifying": "Verifying...",
-        "error": "Please enter all 6 digits",
+        "error": "Please enter all six digits",
         "need-help": "Need help?",
-        "contact-us": "Contact us",
-        "resend-in": "Resend in {seconds}s",
+        "contact-us": "Contact Us",
+        "resend-in": "Resend in {seconds} seconds",
         "toast": {
             "verifySuccess": {
-                "title": "OTP verified successfully",
-                "description": "You can now reset your password"
+                "title": "Code Verified Successfully",
+                "description": "You can now reset your password."
             },
             "success": {
-                "title": "OTP resent successfully",
-                "description": "Please check your email for the new OTP"
+                "title": "Code Sent Successfully",
+                "description": "Please check your email for the new code."
             },
             "error": {
-                "title": "Failed to resend OTP",
-                "description": "Something went wrong, please try again later"
+                "title": "Failed to Send Code",
+                "description": "Something went wrong. Please try again later."
             }
+        }
+    },
+    "reviewForm": {
+        "authenticationRequired": "Please log in to add a review.",
+        "yourRating": "Your Rating:",
+        "title": "Title",
+        "titlePlaceholder": "Enter review title",
+        "review": "Review",
+        "commentPlaceholder": "What do you think about this product?",
+        "submit": "Submit Review",
+        "submitting": "Submitting...",
+        "toast": {
+            "success": "Review submitted successfully!",
+            "error": "Failed to submit review."
+        }
+    },
+    "reviewsSection": {
+        "title": "Product Reviews",
+        "generalRating": "Overall Rating:",
+        "averageRating": "{rating} ({count} reviews)"
+    },
+    "reviewsList": {
+        "reviewedOn": "Reviewed on {date}"
+    },
+    "relatedProducts": {
+        "title": "Related Products"
+    },
+    "emblaCarousel": {
+        "title": "Related Products",
+        "noProducts": "No products available"
+    },
+    "fetchError": "Failed to load reviews. Please try again later.",
+    "noReviews": "No reviews yet.",
+    "authenticationRequired": "Please log in to review this product.",
+    "footer": {
+        "logo-alt": "rose logo",
+        "app-title": "Rose E-Commerce App",
+        "copyright": "All rights reserved | 2025",
+
+        "list-links": {
+            "title": "Discover our website",
+            "links": {
+                "home": "Home",
+                "products": "Products",
+                "categories": "Categories",
+                "occasions": "Occasions",
+                "contact": "Contact",
+                "about": "About",
+                "terms": "Terms & Conditions",
+                "privacy": "Privacy Policy",
+                "faqs": "FAQs"
+            }
+        },
+
+        "subscription": {
+            "title": "Get 20% Off Discount Coupon",
+            "highlight": "20%",
+            "description": "By subscribing to our newsletter",
+            "input-placeholder": "Enter Your Email",
+            "button": "Subscribe"
         }
     }
 }

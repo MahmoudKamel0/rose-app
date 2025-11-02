@@ -10,7 +10,7 @@ import { LocaleLayoutProps } from "@lib/types/components";
 
 // Generate static parameters for all supported locales, enabling pre-rendering for each language version
 export function generateStaticParams() {
-    return routing.locales.map(locale => ({ locale }));
+    return routing.locales.map((locale) => ({ locale }));
 }
 
 // Generate static params for each supported locale (Next.js i18n pre-rendering)
@@ -60,4 +60,3 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
         </html>
     );
 }
-
