@@ -30,7 +30,7 @@ export default async function MostPopularSection() {
       {/* Render the tabs component and pass the top four occasions as props */}
        <TabsSection topFour={topFour} />
        <div className="flex justify-end">
-        <BtnSecondary text="View More " />
+        <BtnSecondary text="View More " href="/products" />
        </div>
     </div>
   );

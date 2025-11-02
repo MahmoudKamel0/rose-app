@@ -25,14 +25,14 @@
     "testimonials-date": "Reviewed on {date}",
     "testimonials-subtitle": "Testimonials",
     "testimonials-heading": "Real Words from Happy Customers",
-    "login": {
+    "login-page": {
         "title": "Welcome back!",
         "noAccount": "Don't have an account yet?",
         "createNow": "Create one now!",
         "forgotpss": "Forgot your password?",
-        "login": "Login",
         "password": "Password",
-        "email": "Email"
+        "email": "Email",
+        "submit": "Login"
     },
 
     "forget-password-email": {
@@ -70,6 +70,10 @@
         "toast-added": "Added to cart",
         "success": "success",
         "sold-out": "Sold out"
+    },
+
+    "best-selling": {
+        "Best Selling": "Best Selling"
     },
 
     "firstName": "First Name",

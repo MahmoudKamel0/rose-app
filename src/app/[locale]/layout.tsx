@@ -2,18 +2,11 @@ import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import Providers from "@components/providers";
-<<<<<<< HEAD
-import { cn } from "@lib/utils/cn.utils";
-import { sarabun, tajawal } from "@fonts";
-import { Metadata } from "next";
-import { getTranslations, setRequestLocale } from "next-intl/server";
-=======
 import { cn } from "@lib/utils/cn.util";
 import { sarabun, tajawal } from "@fonts";
 import { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import Header from "@components/layout/header";
->>>>>>> 54f27d8f79cc709188ec8e853b50c3dea765fc67
 
 // Generate static params for each locale
 export function generateStaticParams() {

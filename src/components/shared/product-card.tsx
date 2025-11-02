@@ -54,7 +54,7 @@ export default function ProductCard({ product }) {
 
         {/* NEW Badge */}
         {product.sold < 20 && (
-          <Badge className={cn("absolute top-2 right-2 bg-zinc-100 py-0.5 px-2 rounded-full text-zinc-700 text-xs uppercase")}>
+          <Badge className={cn("absolute top-2 right-2 bg-zinc-100 py-0.5 px-2 rounded-full text-zinc-700 text-xs uppercase")} variant="new">
             NEW
           </Badge>
         )}

@@ -25,12 +25,12 @@
     "testimonials-date": "تمت المراجعة في {date}",
     "testimonials-subtitle": "آراء العملاء",
     "testimonials-heading": "كلمات من العملاء السعيدة",
-    "login": {
+    "login-page": {
         "title": "مرحباً بعودتك!",
         "noAccount": "ليس لديك حساب بعد؟",
         "createNow": "أنشئ واحداً الآن!",
         "forgotpss": "نسيت رقمك السري؟",
-        "login": "دخول",
+        "submit": "دخول",
         "password": "كلمة المرور",
         "email": "البريد الالكتروني"
     },
@@ -56,6 +56,10 @@
         "loading": "جارٍ التحميل...",
         "toast": "تم تحديث كلمة السر الخاصة بك بنجاح ..",
         "toast-desc": "سيتم تحويلك على صفحة تسجيل الدخول يرجى الانتظار "
+    },
+
+    "best-selling": {
+        "Best Selling": "افضل المبيعات"
     },
 
     "product-detailes": {

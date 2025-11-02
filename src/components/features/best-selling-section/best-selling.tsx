@@ -13,10 +13,13 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import BtnPrimary from "@components/shared/btn-primary";
+import ProductItem from "../application/products/product-item";
+import { getTranslations } from "next-intl/server";
 
 
 export default async function BestSellingSection() {
   const products = await getBestSellingProducts();
+  const t = await getTranslations("best-selling");
 
   return (
     <section>
@@ -24,7 +27,7 @@ export default async function BestSellingSection() {
         {/* LEFT SIDE */}
         <div className={cn("md:w-1/4 space-y-4")}>
          {/* REUSABLE SUBTITLE */}
-          <Subtitle text="Best Selling" />
+          <Subtitle text={t("Best Selling")} />
            {/* HEADING */}
           <h2 className={cn("text-3xl font-bold text-maroon-700 dark:text-softpink-200")}>
             <span className={cn("text-softpink-500")}>Check Out</span> What <br />
@@ -50,13 +53,12 @@ export default async function BestSellingSection() {
                     key={product._id}
                     className={cn("basis-full sm:basis-1/2 lg:basis-1/3")}
                   >
-          <ProductCard product={product} />
-
+                    <ProductItem product={product} />
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious className={cn("absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white shadow rounded-full")}/>
-              <CarouselNext className={cn("absolute -right-0.5 top-1/2 -translate-y-1/2 z-10 rounded-full bg-red-900")} />
+              <CarouselPrevious className="absolute gap-0 whitespace-normal left-[-15px] [&_svg]:stroke-white hover:[&_svg]:stroke-maroon-600 top-1/2 -translate-y-1/2 z-10 bg-maroon-600 hover:bg-white shadow rounded-full"/>
+              <CarouselNext className="absolute gap-0 whitespace-normal right-[-15px] [&_svg]:stroke-white hover:[&_svg]:stroke-maroon-600 top-1/2 -translate-y-1/2 z-10 bg-maroon-600 hover:bg-white shadow rounded-full" />
             </Carousel>
           ) : (
             <p className="text-gray-500">No products available</p>

@@ -2,6 +2,7 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/com
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import ProductCard from "@components/shared/product-card";
 import { getProductsByOccasion } from "@lib/apis/most-popular.api";
+import ProductItem from "../application/products/product-item";
 
 /*declare occasion*/
 interface Occasion {
@@ -52,7 +53,7 @@ export default async function TabsSection({ topFour }: { topFour: Occasion[] }) 
               {products?.length ? (
                 <div className="grid grid-cols-4 gap-6">
                   {products.map((product: Product) => (
-                    <ProductCard key={product._id} product={product} />
+                    <ProductItem key={product._id} product={product} />
                   ))}
                 </div>
               ) : (
