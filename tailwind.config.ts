@@ -101,6 +101,7 @@ const config: Config = {
             height: {
                 "441": "441px",
                 button: "46px",
+                "pro-detailes": "402px",
             },
             width: {
                 button: "181px",

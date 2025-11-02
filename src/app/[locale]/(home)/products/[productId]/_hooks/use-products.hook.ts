@@ -1,8 +1,7 @@
 "use client";
 
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { ProductResponse } from "@lib/types/products";
-import { useQuery } from "@tanstack/react-query";
 import { CartRequest, CartResponse } from "../_types/product-id";
 import { addToCart } from "../_actions/product-id.action";
 import { useSession } from "next-auth/react";
@@ -38,6 +37,8 @@ export function useSpecificProduct(productId: string) {
 }
 
 export function useAddCart() {
+    const queryClient = useQueryClient();
+
     const {
         mutateAsync: mutateAddCart,
         error,
@@ -50,11 +51,14 @@ export function useAddCart() {
             }
 
             if ("error" in res) {
-                // throw to make React Query register an error
                 throw new Error(res.error);
             }
 
             return res;
+        },
+        onSuccess: () => {
+            // This will force a refetch of the cart data
+            queryClient.invalidateQueries({ queryKey: ["user cart"] });
         },
     });
     return { mutateAddCart, error, isPending };

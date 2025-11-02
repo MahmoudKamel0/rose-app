@@ -1,6 +1,6 @@
 "use client";
 import { Button } from "@components/ui/button";
-import { ShoppingCart } from "lucide-react";
+import { Check, ShoppingCart } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { useAddCart, useGetUserCart } from "../_hooks/use-products.hook";
 import { CartRequest } from "../_types/product-id";
@@ -12,18 +12,25 @@ import { useTranslations } from "next-intl";
 type CartType = {
     productId: string;
     numberProduct: number;
+    size?: "xl" | "icon" | "link" | "default" | "sm" | "lg" | "rounded-icon";
+    isText?: boolean;
+    inStock?: boolean;
 };
 
-export default function CartBtn({ productId, numberProduct }: CartType) {
+export default function CartBtn({ productId, numberProduct, size = "xl", isText = true }: CartType) {
     // Translation
     const t = useTranslations("product-detailes");
 
     // Use state
     const [btnDisable, setBtnDisable] = useState<boolean>(false);
     const [btnDisableLogged, setBtnDisableLogged] = useState<boolean>(false);
+    const [isPendingCheck, setIsPendingCheck] = useState<boolean>(false);
 
     // Hooks
     const { data: sessionData } = useSession();
+
+    // Update isPendingCheck based on session status
+
     const { mutateAddCart, error, isPending } = useAddCart();
     const { cartItem, error: checkError, isPending: checkIsPending } = useGetUserCart();
 
@@ -36,6 +43,7 @@ export default function CartBtn({ productId, numberProduct }: CartType) {
             await mutateAddCart(cart, {
                 onSuccess: () => {
                     setBtnDisable(true);
+                    setBtnDisableLogged(true); // Immediately update the button state
                     toast.success(t("success"), {
                         description: t("toast-added"),
                         duration: 2000,
@@ -57,34 +65,18 @@ export default function CartBtn({ productId, numberProduct }: CartType) {
 
             cartArray.push(cart);
             localStorage.setItem("cart", JSON.stringify(cartArray));
-            toast.success(t("toast-added"), { duration: 2000 });
+            toast.success(t("success"), {
+                description: t("toast-added"),
+                duration: 2000,
+            });
             setBtnDisable(true);
+            setBtnDisableLogged(true); // Set to show check mark icon
         }
     };
 
-    // UseEffect
-    //  Sync localStorage → backend when user logs in
-    useEffect(() => {
-        if (typeof window === "undefined" || !sessionData) return;
+    // Sync is now handled by CartSyncProvider
 
-        const localCart = localStorage.getItem("cart");
-        if (!localCart) return;
-
-        const parsed = JSON.parse(localCart);
-        if (!Array.isArray(parsed) || parsed.length === 0) return;
-
-        async function setCart() {
-            for (const item of parsed) {
-                await mutateAddCart({ product: item.product, quantity: item.quantity || 1 });
-            }
-        }
-
-        setCart().then(() => {
-            localStorage.removeItem("cart");
-        });
-    }, [sessionData, mutateAddCart]);
-
-    // Check if already in localStorage (disable button)
+    // Check if already in localStorage (disable button and show check mark)
     useEffect(() => {
         if (typeof window === "undefined") return;
         const existing = localStorage.getItem("cart");
@@ -93,12 +85,17 @@ export default function CartBtn({ productId, numberProduct }: CartType) {
         const parsed = JSON.parse(existing);
         if (Array.isArray(parsed) && parsed.some((item: CartRequest) => item.product === productId)) {
             setBtnDisable(true);
+            setBtnDisableLogged(true); // Set to show check mark icon for items in localStorage
         }
     }, [productId]);
 
     // Check if already in localStorage (disable button)
 
     useEffect(() => {
+        // Set isPendingCheck based on session status
+        setIsPendingCheck(sessionData ? !!checkIsPending : false);
+
+        // Check cart items if we have session and cart data
         if (sessionData && cartItem && !checkIsPending && !checkError && cartItem?.cart.cartItems.length > 0) {
             const find = cartItem?.cart.cartItems.find((item) => item.product._id === productId);
 
@@ -109,18 +106,25 @@ export default function CartBtn({ productId, numberProduct }: CartType) {
     }, [productId, cartItem, sessionData, checkError, checkIsPending]);
 
     return (
-        <div className="flex-1">
+        <>
             <Button
-                size={"xl"}
-                isLoading={isPending}
+                size={size}
+                isLoading={isPending || isPendingCheck}
                 type="button"
-                onClick={handleCart}
-                disabled={btnDisable || numberProduct < 1 || btnDisableLogged}
+                onClick={() => handleCart()}
+                disabled={btnDisable || numberProduct < 1 || btnDisableLogged || isPendingCheck}
+                className={`text-white dark:text-zinc-800 ${btnDisableLogged && "!bg-green-700 dark:!bg-zinc-50"}`}
             >
-                <ShoppingCart className="h-6 w-6 text-white dark:text-zinc-800" />
-                {numberProduct < 1 ? t("sold-out") : !btnDisable ? t("add-cart") : t("added")}
+                <>
+                    {btnDisableLogged ? (
+                        <Check className="h-6 w-6 text-white dark:text-zinc-800" strokeWidth={2} />
+                    ) : (
+                        <ShoppingCart className="h-6 w-6 text-white dark:text-zinc-800" />
+                    )}
+                    {isText && <span> {numberProduct < 1 ? t("sold-out") : !btnDisable ? t("add-cart") : t("added")}</span>}
+                </>
             </Button>
             {error && <AuthError error={error?.message} />}
-        </div>
+        </>
     );
 }

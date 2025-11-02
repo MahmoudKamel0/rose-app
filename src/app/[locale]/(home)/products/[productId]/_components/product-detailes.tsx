@@ -1,12 +1,12 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { useSpecificProduct } from "@app/[locale]/products/[productId]/_hooks/use-products.hook";
 import Image from "next/image";
-import { cn } from "@/lib/utils/cn.utils";
+import { cn } from "@/lib/utils/cn.util";
 import { Heart, Loader2, Minus, Package, Plus, Star } from "lucide-react";
 import CartBtn from "./add-to-cart-button";
 import { useTranslations } from "next-intl";
+import { useSpecificProduct } from "../_hooks/use-products.hook";
 
 export default function ProductDetailes({ productId }: { productId: string }) {
     // Translation
@@ -35,7 +35,7 @@ export default function ProductDetailes({ productId }: { productId: string }) {
             {/* Handel loading */}
             {isPending && (
                 <div className="flex min-h-screen w-full flex-col items-center justify-center">
-                    <Loader2 className="text-maroon-500 h-14 w-14 animate-spin" />
+                    <Loader2 className="animate-spin text-maroon-500" size={56} />
                     <p>{t("loading")}</p>
                 </div>
             )}
@@ -47,8 +47,14 @@ export default function ProductDetailes({ productId }: { productId: string }) {
             {data && (
                 <>
                     <div className="flex flex-col items-center justify-between">
-                        <div className="relative h-96 w-xl overflow-hidden rounded-xl">
-                            <Image src={mainImage} alt={data.title} fill className="rounded-10 object-fill transition" />
+                        <div className="relative h-auto overflow-hidden rounded-xl">
+                            <Image
+                                src={mainImage}
+                                alt={data.title}
+                                width={605}
+                                height={402}
+                                className="h-pro-detailes rounded-10 object-cover transition"
+                            />
                         </div>
 
                         {/* Thumbnails */}
@@ -124,7 +130,7 @@ export default function ProductDetailes({ productId }: { productId: string }) {
                         <div className="mt-9 flex items-center justify-center gap-1.5">
                             <button
                                 onClick={() => setLiked(!liked)}
-                                className={`h-button flex w-12 items-center justify-center rounded-xl transition-colors ${
+                                className={`flex h-button w-12 items-center justify-center rounded-xl transition-colors ${
                                     liked ? "bg-zinc-800 text-zinc-50" : "bg-gray-100 text-gray-600 dark:bg-zinc-800 dark:text-zinc-50"
                                 }`}
                             >
@@ -144,7 +150,10 @@ export default function ProductDetailes({ productId }: { productId: string }) {
                             </button>
 
                             {/* Add to cart button */}
-                            <CartBtn productId={productId} numberProduct={data.quantity} />
+                            <div className="flex-1">
+                                {" "}
+                                <CartBtn productId={productId} numberProduct={data.quantity} />
+                            </div>
                         </div>
                     </div>
                 </>

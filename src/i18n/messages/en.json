@@ -7,7 +7,7 @@
         "ogDescription": "Experience luxury in every petal — Rose Store offers handcrafted bouquets and premium flower delivery for every occasion.",
         "siteName": "Rose Store"
     },
-   
+
     "Layout": {
         "header": {
             "deliver-to": "Deliver to",
@@ -24,9 +24,7 @@
     },
 
     "Home-Page": {
-        "hero-section": {
-
-        }
+        "hero-section": {}
     },
     "abourt": "About Us",
     "testimonials-title": "Testimonials",
@@ -66,6 +64,24 @@
         "loading": "Loading...",
         "toast": "Your password has been updated successfully..",
         "toast-desc": "You will be redirected to the login page. Please wait."
+    },
+    "features": {
+        "free-delivery": {
+            "title": "Free Delivery",
+            "subTitle": "For orders above 120 EGP"
+        },
+        "get-refund": {
+            "title": "Get Refund",
+            "subTitle": "Refunds within 30 days"
+        },
+        "safe-payment": {
+            "title": "Safe Payment",
+            "subTitle": "100% Secure Payment"
+        },
+        "support": {
+            "title": "24/7 Support",
+            "subTitle": "Contact us at any time"
+        }
     },
 
     "product-detailes": {

@@ -58,7 +58,7 @@ export default async function TopHeader() {
             )}
 
             {/* Shop controls: favorites, shopping cart, notifications */}
-            <ShopHeader />
+            <ShopHeader showNotifications={!!SESSION?.user} />
 
             {/* translations */}
             <ToggleLocale />

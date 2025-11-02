@@ -10,5 +10,5 @@ import { cn } from "@lib/utils/cn.util";
  * @param children as `ReactNode` The content to be rendered inside the container.
  */
 export function Container({ children, className }: ContainerProps) {
-    return <div className={cn("container w-[1279px] mx-auto", className)}>{children}</div>;
+    return <div className={cn("container mx-auto w-[1279px]", className)}>{children}</div>;
 }

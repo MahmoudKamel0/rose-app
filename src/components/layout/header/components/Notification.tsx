@@ -13,7 +13,6 @@ import {
     DropdownMenuItem,
     DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
-import { useAllNotifications } from "@hooks/notifications/use-all-notifications.hook";
 import { Notification } from "@lib/types/end-point-api/all-notifications";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useMarkAllNotificationsAsRead } from "@/hooks/notifications/use-mark-all-notifications-as-read.hook";
@@ -22,9 +21,7 @@ import { useDeleteAllNotifications } from "@/hooks/notifications/use-delete-all-
 import { useMarkNotificationsAsRead } from "@/hooks/notifications/use-mark-notification-as-read.hook";
 import { useDeleteSingleNotification } from "@/hooks/notifications/use-delete-single-notification";
 import { Badge } from "@components/ui/badge";
-import { cn } from "@lib/utils/cn.util";
-
-// Header action type
+import { useAllNotifications } from "@/hooks/notifications/use-all-notifications.hook";
 
 export default function NotificationMenu() {
     // Fetching paginated notifications
@@ -97,26 +94,26 @@ export default function NotificationMenu() {
     const allNotifications: Notification[] = data?.pages.flatMap((p) => p?.notifications ?? []) || [];
 
     // get unread notifications count
-    const unReadCount = data?.pages[0]?.metadata.unreadCount || 0;
+    const unReadCount = data?.pages[0]?.metadata?.unreadCount || 0;
 
     return (
         <Popover>
             {/* Notification icon trigger */}
             <PopoverTrigger asChild>
-                <button type="button" className="relative flex items-center justify-center hover:bg-transparent">
+                <Button
+                    type="button"
+                    className="relative flex items-center justify-center hover:bg-transparent"
+                    variant={"ghost"}
+                    size={"icon"}
+                >
                     {unReadCount > 0 && (
-                        <Badge
-                            className={cn(
-                                "absolute -right-1.5 -top-1.5 flex h-3.5 w-3.5 items-center justify-center p-2 text-10 font-medium text-white",
-                                "dark:bg-red-500 dark:text-zinc-50"
-                            )}
-                        >
+                        <Badge className="absolute -right-1.5 -top-1.5 min-h-3.5 min-w-3.5 items-center justify-center p-1 text-10 text-white">
                             {unReadCount}
                         </Badge>
                     )}
 
-                    <Bell style={{ width: "24px", height: "24px" }} />
-                </button>
+                    <Bell size={24} className="text-zinc-700 dark:text-zinc-50" />
+                </Button>
             </PopoverTrigger>
 
             {/* Notification content popover */}
@@ -130,29 +127,31 @@ export default function NotificationMenu() {
                     </div>
 
                     {/* Header actions */}
-                    <div className="flex w-full justify-between bg-white p-2.5 text-zinc-800 dark:bg-zinc-700">
-                        <div className="flex w-full items-center justify-between">
+                    <div className="flex w-full justify-between bg-white text-zinc-800 dark:bg-zinc-700">
+                        <div className="flex w-full items-center justify-between p-2.5">
                             {/* Clean All Button */}
                             <Button
                                 variant={"ghost"}
+                                size={"link"}
                                 type="button"
                                 className="relative !flex flex-nowrap items-center justify-center gap-2"
                                 onClick={() => deleteAll()}
                                 disabled={allNotifications.length < 1 || isPendingData}
                             >
-                                <BrushCleaning className="inline-block" style={{ width: 18, height: 18 }} color="gray" />
+                                <BrushCleaning className="inline-block text-zinc-600 dark:text-zinc-300" size={18} />
                                 <span className="text-sm font-semibold text-zinc-800 dark:text-white">Clear all notifications</span>
                             </Button>
 
                             {/* Mark all as read button */}
                             <Button
                                 variant={"ghost"}
+                                size={"link"}
                                 type="button"
                                 className="relative !flex flex-nowrap items-center justify-center gap-2"
                                 onClick={() => markAllAsRead()}
                                 disabled={allNotifications.length < 1 || unReadCount < 1 || isPendingData}
                             >
-                                <CheckCheck className="inline-block" style={{ width: 18, height: 18 }} color="gray" />
+                                <CheckCheck className="inline-block text-zinc-600 dark:text-zinc-300" size={18} />
                                 <span className="text-sm font-semibold text-zinc-800 dark:text-white">Mark all as read</span>
                             </Button>
                         </div>
@@ -164,7 +163,7 @@ export default function NotificationMenu() {
                 {/* No notifications */}
                 {allNotifications.length === 0 && !isPendingData ? (
                     <div className="flex h-56 flex-col items-center justify-center gap-4 rounded-b-md bg-white text-center dark:bg-zinc-900">
-                        <BellOff style={{ width: 60, height: 60 }} color="gray" />
+                        <BellOff style={{ width: 60, height: 60 }} className="text-zinc-400 dark:text-zinc-300" />
                         <p className="text-base font-medium text-zinc-500 dark:text-zinc-300">No notifications to display.</p>
                     </div>
                 ) : isPendingData ? (
@@ -205,7 +204,10 @@ export default function NotificationMenu() {
                                         <DropdownMenu>
                                             <DropdownMenuTrigger asChild>
                                                 <button type="button" className={`flex items-center justify-center hover:bg-transparent`}>
-                                                    <EllipsisVertical style={{ width: 20, height: 20 }} color="gray" />
+                                                    <EllipsisVertical
+                                                        style={{ width: 20, height: 20 }}
+                                                        className="text-zinc-600 dark:text-zinc-300"
+                                                    />
                                                 </button>
                                             </DropdownMenuTrigger>
 
@@ -225,7 +227,6 @@ export default function NotificationMenu() {
                                                         <Check
                                                             className={`mr-2 text-sm font-semibold text-zinc-800 dark:text-zinc-50`}
                                                             style={{ width: 18, height: 18 }}
-                                                            color="gray"
                                                         />
                                                         <span className={`text-sm font-semibold text-zinc-800 dark:text-zinc-50`}>
                                                             Mark as read
@@ -244,7 +245,7 @@ export default function NotificationMenu() {
                                                         variant={"ghost"}
                                                         disabled={isDeletingSingle}
                                                     >
-                                                        <Trash2 className={`mr-2`} style={{ width: 18, height: 18 }} color="red" />
+                                                        <Trash2 className={`mr-2 text-red-500`} style={{ width: 18, height: 18 }} />
                                                         <span className={`text-sm font-semibold text-zinc-800 dark:text-zinc-50`}>
                                                             Delete notification
                                                         </span>

@@ -1,5 +1,5 @@
 import { cn } from "@lib/utils/cn.util";
-import { Home, Gift, ClipboardList, PartyPopper, Headset, Info, LogOut, MapPinHouse, ScrollText, Settings, User } from "lucide-react";
+import { Home, Gift, ClipboardList, PartyPopper, Headset, Info, MapPinHouse, ScrollText, Settings, User } from "lucide-react";
 
 // For NavHeader component: (components/layout/header/components/nav-header)
 export const getNavLinks = (t: (key: string) => string) => [
@@ -40,27 +40,22 @@ export const ACCOUNT_DROPDOWN_LINKS = [
     {
         icon: <User size="16" />,
         name: "My Profile",
-        path: "/",
+        path: "/profile",
     },
     {
         icon: <MapPinHouse size="16" />,
         name: "My Addresses",
-        path: "/",
+        path: "/address",
     },
     {
         icon: <ScrollText size="16" />,
         name: "My Orders",
-        path: "/",
+        path: "/orders",
     },
     {
         icon: <Settings size="16" />,
         name: "Dashboard",
-        path: "/",
-    },
-    {
-        icon: <LogOut size="16" />,
-        name: "Log out",
-        path: "/",
+        path: "/dashboard",
     },
 ];
 
