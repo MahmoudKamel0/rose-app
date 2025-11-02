@@ -17,7 +17,7 @@ import NotificationMenu from "./Notification";
  * Intended for display within the application's top header.
  */
 
-export default function ShopHeader() {
+export default function ShopHeader({ showNotifications = false }: { showNotifications?: boolean }) {
     return (
         <div className="flex items-center gap-2.5 border-x border-zinc-200 px-4 py-3 dark:border-zinc-700">
             {/* Favorites icon button - navigates to user's favorite items */}
@@ -34,7 +34,7 @@ export default function ShopHeader() {
             </Link>
 
             {/* Notification bell icon button - shows number of notifications */}
-            {/* <NotificationMenu /> */}
+            {showNotifications && <NotificationMenu />}
         </div>
     );
 }

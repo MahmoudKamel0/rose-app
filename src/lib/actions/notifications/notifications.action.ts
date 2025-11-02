@@ -1,15 +1,17 @@
 "use server";
 
+import { getDecodeToken } from "@lib/utils/get-decode-token";
+
 export async function MarkAllNotificationsAsRead() {
     try {
-        const token = process.env.ACCESS_TOKEN;
+        const token = await getDecodeToken();
         const headers: Record<string, string> = {
             "Content-Type": "application/json",
         };
 
         // Prefer the standard Authorization header (Bearer token).
         if (token) {
-            headers["Authorization"] = `Bearer ${token}`;
+            headers["Authorization"] = `Bearer ${token.accessToken}`;
         }
 
         const res = await fetch(`${process.env.BASE_URL}${process.env.MARK_ALL_NOTIFICATION_AS_READ_URL}`, {
@@ -28,14 +30,14 @@ import { MarkNotificationAsReadRequest } from "@lib/types/mark-single-notificati
 
 export async function MarkNotificationAsRead(notificationIds: MarkNotificationAsReadRequest) {
     try {
-        const token = process.env.ACCESS_TOKEN;
+        const token = await getDecodeToken();
         const headers: Record<string, string> = {
             "Content-Type": "application/json",
         };
 
         // Prefer the standard Authorization header (Bearer token).
         if (token) {
-            headers["Authorization"] = `Bearer ${token}`;
+            headers["Authorization"] = `Bearer ${token.accessToken}`;
         }
 
         const res = await fetch(
@@ -61,14 +63,14 @@ import { DeleteAllNotificationsRequest } from "@lib/types/end-point-api/delete-a
 
 export async function DeleteAllNotifications() {
     try {
-        const token = process.env.ACCESS_TOKEN;
+        const token = await getDecodeToken();
         const headers: Record<string, string> = {
             "Content-Type": "application/json",
         };
 
         // Prefer the standard Authorization header (Bearer token).
         if (token) {
-            headers["Authorization"] = `Bearer ${token}`;
+            headers["Authorization"] = `Bearer ${token.accessToken}`;
         }
 
         const res = await fetch(`${process.env.BASE_URL}${process.env.CLEAR_ALL_NOTIFICATION_URL}`, {
@@ -87,14 +89,14 @@ import { DeleteSingleNotificationResponse } from "@lib/types/end-point-api/delet
 
 export async function DeleteNotification(notification_id: string) {
     try {
-        const token = process.env.ACCESS_TOKEN;
+        const token = await getDecodeToken();
         const headers: Record<string, string> = {
             "Content-Type": "application/json",
         };
 
         // Prefer the standard Authorization header (Bearer token).
         if (token) {
-            headers["Authorization"] = `Bearer ${token}`;
+            headers["Authorization"] = `Bearer ${token.accessToken}`;
         }
 
         const res = await fetch(

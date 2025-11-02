@@ -39,6 +39,7 @@ const buttonVariants = cva(
                 lg: "h-10 rounded-md px-8",
                 xl: "w-full h-11 py-2.5 px-4 text-base",
                 icon: "h-9 w-9",
+                "rounded-icon": "h-10 w-10 rounded-full",
                 // Added "link" size for inline text-style buttons (no padding, auto height, inline-flex).
                 link: "h-auto p-0 inline-flex items-center text-sm",
             },
@@ -85,14 +86,13 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({ className, va
  * This wraps the base Button, adding an optional loading spinner.
  * Note: Uses React.forwardRef for ref forwarding compatibility.
  */
-const MainButton = React.forwardRef<HTMLButtonElement, ButtonProps & { isLoading?: boolean }>(
-    ({ children, isLoading, ...props }, ref) => (
-        <Button ref={ref} className={cn("!flex justify-center gap-1")} {...props}>
-            {children} {isLoading && <Spinner />}
-        </Button>
-    )
-);
+const MainButton = React.forwardRef<HTMLButtonElement, ButtonProps & { isLoading?: boolean }>(({ children, isLoading, ...props }, ref) => (
+    <Button ref={ref} className={cn("!flex justify-center gap-1")} {...props}>
+        {children} {isLoading && <Spinner />}
+    </Button>
+));
 
 Button.displayName = "Button";
+MainButton.displayName = "MainButton";
 
 export { MainButton as Button, buttonVariants };

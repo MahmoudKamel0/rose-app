@@ -2,15 +2,16 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { Heart, Loader2, Minus, Package, Plus, Star } from "lucide-react";
+import { cn } from "@/lib/utils/cn.util";
+import { Heart, Minus, Package, Plus, Star } from "lucide-react";
 import CartBtn from "./add-to-cart-button";
 import { useTranslations } from "next-intl";
 import { useSpecificProduct } from "../_hooks/use-products.hook";
-import { cn } from "@lib/utils/cn.util";
+import PageLoader from "@components/shared/page-loader";
 
 export default function ProductDetailes({ productId }: { productId: string }) {
     // Translation
-    const t = useTranslations("product-detailes");
+    const t = useTranslations("product-details");
 
     // State
     const [activeImage, setActiveImage] = useState<string>("");
@@ -33,12 +34,7 @@ export default function ProductDetailes({ productId }: { productId: string }) {
     return (
         <div className="flex gap-16">
             {/* Handel loading */}
-            {isPending && (
-                <div className="flex min-h-screen w-full flex-col items-center justify-center">
-                    <Loader2 className="text-maroon-500 h-14 w-14 animate-spin" />
-                    <p>{t("loading")}</p>
-                </div>
-            )}
+            {isPending && <PageLoader />}
 
             {/* Handel error */}
             {error && <div>Error: {error.message}</div>}
@@ -47,8 +43,14 @@ export default function ProductDetailes({ productId }: { productId: string }) {
             {data && (
                 <>
                     <div className="flex flex-col items-center justify-between">
-                        <div className="relative h-96 w-xl overflow-hidden rounded-xl">
-                            <Image src={mainImage} alt={data.title} fill className="rounded-10 object-fill transition" />
+                        <div className="relative h-auto overflow-hidden rounded-xl">
+                            <Image
+                                src={mainImage}
+                                alt={data.title}
+                                width={605}
+                                height={402}
+                                className="h-pro-detailes rounded-10 object-cover transition"
+                            />
                         </div>
 
                         {/* Thumbnails */}
@@ -144,7 +146,9 @@ export default function ProductDetailes({ productId }: { productId: string }) {
                             </button>
 
                             {/* Add to cart button */}
-                            <CartBtn productId={productId} numberProduct={data.quantity} />
+                            <div className="flex-1">
+                                <CartBtn productId={productId} numberProduct={data.quantity} />
+                            </div>
                         </div>
                     </div>
                 </>

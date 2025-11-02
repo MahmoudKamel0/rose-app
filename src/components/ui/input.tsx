@@ -2,12 +2,8 @@
 import * as React from "react";
 import { cn } from "@/lib/utils/cn.util";
 import { INPUT_STYLE } from "@lib/constants/style.constant";
-import { useLocale } from "next-intl";
 
 const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(({ className, type, ...props }, ref) => {
-    // Translations
-    // const locale = useLocale(); //  get current locale
-
     // State
     const [showPassword, setShowPassword] = React.useState(false);
 
@@ -29,7 +25,7 @@ const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(
                     type="button"
                     onClick={() => setShowPassword((prev) => !prev)}
                     className={cn(
-                        "absolute top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-700 focus:outline-none",
+                        "absolute top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-700 focus:outline-none ltr:right-2 rtl:left-2"
                         // locale === "ar" ? "left-3" : "right-3" //  flip side dynamically
                     )}
                     aria-label={showPassword ? "Hide password" : "Show password"}

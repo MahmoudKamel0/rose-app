@@ -131,8 +131,26 @@
         "passwords-not-match": "Passwords do not match",
         "login": "Login"
     },
+    "features": {
+        "free-delivery": {
+            "title": "Free Delivery",
+            "subTitle": "For orders above 120 EGP"
+        },
+        "get-refund": {
+            "title": "Get Refund",
+            "subTitle": "Refunds within 30 days"
+        },
+        "safe-payment": {
+            "title": "Safe Payment",
+            "subTitle": "100% Secure Payment"
+        },
+        "support": {
+            "title": "24/7 Support",
+            "subTitle": "Contact us at any time"
+        }
+    },
 
-    "product-detailes": {
+    "product-details": {
         "loading": "please wait...",
         "price": "EGP",
         "out": "Out of stock",

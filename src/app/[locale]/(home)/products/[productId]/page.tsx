@@ -2,9 +2,8 @@ import React from "react";
 import ProductDetailes from "./_components/product-detailes";
 import Reviews from "@components/features/reviews-section/reviews-section";
 
-export default async function ProductId({ params }: { params: { "product-id": string } }) {
-    // Get the product ID
-    const { "product-id": productId } = params;
+export default async function ProductId({ params }: { params: { productId: string } }) {
+    const { productId } = params;
 
     return (
         <main className="px-20 py-16">
