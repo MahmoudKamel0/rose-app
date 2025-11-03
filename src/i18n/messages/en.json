@@ -253,5 +253,55 @@
             "input-placeholder": "Enter Your Email",
             "button": "Subscribe"
         }
+    },
+    "orders": {
+        "pageTitle": "Orders",
+        "noOrders": {
+            "title": "No Orders Yet",
+            "description": "You haven’t placed any orders yet. Once you make a purchase, your orders will appear here.",
+            "startShopping": "Start Shopping"
+        },
+        "error": {
+            "title": "Failed to Load Orders",
+            "description": "We couldn’t fetch your orders at this time. Please check your connection or try again later.",
+            "goShopping": "Go Shopping"
+        },
+        "header": {
+            "order": "Order",
+            "createdIn": "Created in"
+        },
+        "priceInfo": {
+            "totalPrice": "Total Price",
+            "paid": "Paid",
+            "notPaid": "Not Paid"
+        },
+        "statusBadge": {
+            "label": "Status:",
+            "inProgress": "In Progress",
+            "cancelled": "Cancelled",
+            "done": "Done"
+        },
+        "paymentMethodInfo": {
+            "label": "Payment Method:",
+            "cash": "Cash",
+            "creditCard": "Credit Card"
+        },
+        "deliveryInfo": {
+            "label": "Delivery Status:",
+            "pending": "Pending",
+            "cancelled": "Cancelled",
+            "delivered": "Delivered"
+        },
+        "orderItems": {
+            "label": "Order Items:",
+            "toggleButton": {
+                "showAll": "show all",
+                "showLess": "show less"
+            },
+            "orderProductItem": {
+                "rating": "rating",
+                "ratings": "ratings"
+            }
+        }
     }
 }

@@ -8,7 +8,7 @@ export async function fetchOrders(): Promise<OrdersResponse> {
             cache: "no-store",
             headers: {
                 "Content-Type": "application/json",
-                Authorization: `Bearer ${token}`, // <-- send your token here
+                Authorization: `Bearer ${token}`, 
             },
         });
 

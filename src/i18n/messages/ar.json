@@ -22,7 +22,7 @@
             "about": "حولنا"
         }
     },
-        "about-section": {
+    "about-section": {
         "subtitle": "حول",
         "heading": {
             "part1": "نقدّم",
@@ -247,6 +247,57 @@
             "description": "عن طريق الاشتراك في النشرة الإخبارية لدينا",
             "input-placeholder": "أدخل بريدك الإلكتروني",
             "button": "اشترك"
+        }
+    },
+    "orders": {
+        "pageTitle": "الطلبات",
+
+        "noOrders": {
+            "title": "لا توجد طلبات بعد",
+            "description": "لم تقم بأي طلبات بعد. بمجرد الشراء، ستظهر طلباتك هنا.",
+            "startShopping": "ابدأ التسوق"
+        },
+        "error": {
+            "title": "فشل تحميل الطلبات",
+            "description": "لم نتمكن من جلب طلباتك في الوقت الحالي. يرجى التحقق من الاتصال أو المحاولة لاحقًا.",
+            "goShopping": "اذهب للتسوق"
+        },
+        "header": {
+            "order": "طلب",
+            "createdIn": "تاريخ الإنشاء"
+        },
+        "priceInfo": {
+            "totalPrice": "السعر الإجمالي",
+            "paid": "مدفوع",
+            "notPaid": "غير مدفوع"
+        },
+        "statusBadge": {
+            "label": "الحالة:",
+            "inProgress": "قيد التنفيذ",
+            "cancelled": "ملغي",
+            "done": "تم"
+        },
+        "paymentMethodInfo": {
+            "label": "طريقة الدفع:",
+            "cash": "نقدًا",
+            "creditCard": "بطاقة ائتمان"
+        },
+        "deliveryInfo": {
+            "label": "حالة التسليم:",
+            "pending": "قيد التوصيل",
+            "cancelled": "ملغي",
+            "delivered": "تم التوصيل"
+        },
+        "orderItems": {
+            "label": "عناصر الطلب:",
+            "toggleButton": {
+                "showAll": "عرض الكل",
+                "showLess": "عرض أقل"
+            },
+            "orderProductItem": {
+                "rating": "تقييم",
+                "ratings": "تقييمات"
+            }
         }
     }
 }

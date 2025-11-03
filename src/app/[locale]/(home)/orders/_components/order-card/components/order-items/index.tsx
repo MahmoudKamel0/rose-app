@@ -4,22 +4,30 @@ import { useState } from "react";
 import OrderProductItem from "./components/order-product-item";
 import ToggleButton from "./components/toggle-button";
 import { OrderItem } from "@lib/types/end-point-api/orders";
+import { useTranslations } from "next-intl";
 
 interface OrderItemsProps {
-    orderItems: OrderItem[];
+    orderItems: OrderItem[]; // Array of order items to display
 }
 
 export default function OrderItems({ orderItems }: OrderItemsProps) {
+    // Initialize translations for the "orders" namespace
+    const t = useTranslations("orders");
+
+    // State to track whether the items list is expanded or collapsed
     const [expanded, setExpanded] = useState(false);
 
-    const hasMoreThanTwo = orderItems.length > 2;
+    // Check if there are more than zero items
+    const hasMoreThanTwo = orderItems.length > 0;
 
     return (
         <>
-            <h6 className="flex items-center gap-2.5 font-semibold">Order Items:</h6>
+            {/* Section label for order items */}
+            <h6 className="flex items-center gap-2.5 font-semibold"> {t("orderItems.label")}</h6>
+            {/* Container for order items */}
             <div
-                className={`relative grid grid-cols-2 gap-2.5 rounded-lg bg-white p-4 transition-all duration-500 ${
-                    expanded ? "mb-2 h-auto" : "h-[250px] overflow-hidden"
+                className={`relative grid min-h-[250px] grid-cols-2 gap-2.5 rounded-lg bg-white p-4 transition-all duration-500 ${
+                    expanded ? "mb-2 h-auto" : "overflow-hidden"
                 }`}
             >
                 {/* Fade / blur overlay */}
@@ -30,7 +38,7 @@ export default function OrderItems({ orderItems }: OrderItemsProps) {
                 {/* Toggle button */}
                 {hasMoreThanTwo && <ToggleButton expanded={expanded} onClick={() => setExpanded(!expanded)} />}
 
-                {/* Items */}
+                {/* Render each order item */}
                 {orderItems.map((orderItem) => (
                     <OrderProductItem
                         key={orderItem._id}
