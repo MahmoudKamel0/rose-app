@@ -1,3 +1,4 @@
+import { OrderItem } from "@lib/types/end-point-api/orders";
 import DeliveryInfo from "./components/delivery-info";
 import OrderHeader from "./components/order-header";
 import OrderItems from "./components/order-items";
@@ -13,6 +14,7 @@ interface OrderCardProps {
   paymentMethod: "Cash" | "Credit Card";
   deliveryStatus: "Pending" | "Cancelled" | "Delivered";
   status: "In Progress" | "Cancelled" | "Done";
+  orderItems : OrderItem[]
 }
 
 const OrderCard = (props: OrderCardProps) => (
@@ -29,7 +31,7 @@ const OrderCard = (props: OrderCardProps) => (
         <div className="flex flex-col gap-2.5">
           <PaymentMethodInfo paymentMethod={props.paymentMethod} />
           <DeliveryInfo deliveryStatus={props.deliveryStatus} />
-          <OrderItems />
+          <OrderItems orderItems={props.orderItems} />
         </div>
       </div>
     </div>

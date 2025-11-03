@@ -7,7 +7,7 @@ interface OrderProductItemProps {
   rating: number;
   ratingCount: number;
   quantity: number;
-  price: string;
+  price: number;
 }
 
 export default function OrderProductItem({

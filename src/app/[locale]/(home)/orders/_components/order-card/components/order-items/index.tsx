@@ -3,85 +3,46 @@ import { useState } from "react";
 
 import OrderProductItem from "./components/order-product-item";
 import ToggleButton from "./components/toggle-button";
+import { OrderItem } from "@lib/types/end-point-api/orders";
 
-const products = [
-  {
-    title: "Moko Chocolate Set | Esperance Rose",
-    imageUrl: "/images/orderimg.png",
-    rating: 5,
-    ratingCount: 4,
-    quantity: 2,
-    price: "1800 EGP",
-  },
-  {
-    title: "Luxury Coffee Set",
-    imageUrl: "/images/orderimg.png ",
-    rating: 4,
-    ratingCount: 10,
-    quantity: 1,
-    price: "950 EGP",
-  },
- {
-    title: "Luxury Coffee Set",
-    imageUrl: "/images/orderimg.png ",
-    rating: 4,
-    ratingCount: 10,
-    quantity: 1,
-    price: "950 EGP",
-  },
-   {
-    title: "Luxury Coffee Set",
-    imageUrl: "/images/orderimg.png ",
-    rating: 4,
-    ratingCount: 10,
-    quantity: 1,
-    price: "950 EGP",
-  },
-   {
-    title: "Luxury Coffee Set",
-    imageUrl: "/images/orderimg.png ",
-    rating: 4,
-    ratingCount: 10,
-    quantity: 1,
-    price: "950 EGP",
-  },
-];
+interface OrderItemsProps {
+    orderItems: OrderItem[];
+}
 
-export default function OrderItems() {
-  const [expanded, setExpanded] = useState(false);
+export default function OrderItems({ orderItems }: OrderItemsProps) {
+    const [expanded, setExpanded] = useState(false);
 
-  return (
-    <>
-      <h6 className="font-semibold flex gap-2.5 items-center">Order Items:</h6>
-      <div
-        className={`relative bg-white p-4 grid grid-cols-2 gap-2.5 rounded-lg transition-all duration-500 ${
-          expanded ? "h-auto mb-2" : "h-[250px] overflow-hidden"
-        }`}
-      >
-        {/* Fade / blur overlay */}
-        {!expanded && (
-          <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-zinc-50 to-transparent z-10 pointer-events-none backdrop-blur-[1px]"></div>
-        )}
+    const hasMoreThanTwo = orderItems.length > 2;
 
-        {/* Toggle button */}
-        <ToggleButton
-          expanded={expanded}
-          onClick={() => setExpanded(!expanded)}
-        />
+    return (
+        <>
+            <h6 className="flex items-center gap-2.5 font-semibold">Order Items:</h6>
+            <div
+                className={`relative grid grid-cols-2 gap-2.5 rounded-lg bg-white p-4 transition-all duration-500 ${
+                    expanded ? "mb-2 h-auto" : "h-[250px] overflow-hidden"
+                }`}
+            >
+                {/* Fade / blur overlay */}
+                {hasMoreThanTwo && !expanded && (
+                    <div className="pointer-events-none absolute bottom-0 left-0 right-0 z-10 h-20 bg-gradient-to-t from-zinc-50 to-transparent backdrop-blur-[1px]"></div>
+                )}
 
-        {/* Items */}
-        {products.map((product, index) => (
-          <OrderProductItem
-            key={index}
-            title={product.title}
-            imageUrl={product.imageUrl}
-            rating={product.rating}
-            ratingCount={product.ratingCount}
-            quantity={product.quantity}
-            price={product.price}
-          />
-        ))}
-      </div>
-    </>
-  );
+                {/* Toggle button */}
+                {hasMoreThanTwo && <ToggleButton expanded={expanded} onClick={() => setExpanded(!expanded)} />}
+
+                {/* Items */}
+                {orderItems.map((orderItem) => (
+                    <OrderProductItem
+                        key={orderItem._id}
+                        title={orderItem.product.title}
+                        imageUrl={orderItem.product.imgCover}
+                        rating={orderItem.product.rateAvg}
+                        ratingCount={orderItem.product.rateCount}
+                        quantity={orderItem.quantity}
+                        price={orderItem.price}
+                    />
+                ))}
+            </div>
+        </>
+    );
 }
