@@ -18,7 +18,7 @@ export default function CategoryItem({ label, active, onClick, image }: Category
       }`}
     >
       <div
-        className={`flex h-full w-9 items-center justify-center rounded-s-md text-white transition-colors ${
+        className={`flex h-full w-9 items-center justify-center  text-white transition-colors ${
           active ? "bg-[#A6252A]" : "bg-zinc-500"
         }`}
       >
