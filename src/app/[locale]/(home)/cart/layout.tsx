@@ -1,30 +1,39 @@
-import React from "react";
-import CartHeader from "./_components/cart-header";
-import { Button } from "@components/ui/button";
-import { BrushCleaning } from "lucide-react";
+import React, { Suspense } from "react";
+import EmblaCarousel from "@components/features/application/home/best-selling-section/components/right-side-best-selling/embla-carousel-best-selling";
+import EmblaCarouselSkeleton from "@components/shared/embla-carousel-skeleton";
+import HighlightedHeading from "@components/shared/highlighted-heading";
+import { fetchRecommendations } from "@lib/apis/cart/products-may-like.api";
 
-export default function layout({ children }: { children: React.ReactNode }) {
+export default function Layout({ children }: { children: React.ReactNode }) {
     return (
-        <section className="container mx-auto flex max-w-[80rem] gap-10">
-            {/* cart */}
-            <div className="w-[49rem]">
-                {/* cart header */}
-                <div className="mb-6 flex items-center justify-between">
-                    {/* cart title */}
-                    <CartHeader />
-
-                    {/* Clear Cart button */}
-                    <Button variant="secondary" className="!flex w-[11rem] items-center justify-center gap-2 text-sm font-semibold">
-                        <BrushCleaning size={20} />
-                        Clear Cart
-                    </Button>
-                </div>
-
+        <section className="container mx-auto mb-12 mt-16 flex max-w-[80rem] flex-col gap-10">
+            {/* cart content */}
+            <div className="flex gap-10">
+                {/* cart items */}
                 {children}
+
+                {/* cart summary placeholder */}
+                <div className="h-[38rem] w-[25rem] rounded-md border border-zinc-200 p-5">
+                    <h3 className="mb-4 text-lg font-semibold">Cart Summary</h3>
+                    <p className="text-gray-500">Subtotal, shipping, and total will appear here.</p>
+                </div>
             </div>
 
-            {/* cart summary */}
-            <div></div>
+            {/* carousel below the cart */}
+            <div className="mt-16 w-full">
+                {/* Related Products */}
+                <HighlightedHeading
+                    className="mt-15 mb-[1.3rem]"
+                    text={"Products You May Like"}
+                    highlightWidth="154px"
+                    borderWidth="60px"
+                />
+
+                {/* Carousel */}
+                <Suspense fallback={<EmblaCarouselSkeleton productNumber={4} />}>
+                    <EmblaCarousel productId="" productNumber={4} fetchFn={fetchRecommendations} />
+                </Suspense>
+            </div>
         </section>
     );
 }

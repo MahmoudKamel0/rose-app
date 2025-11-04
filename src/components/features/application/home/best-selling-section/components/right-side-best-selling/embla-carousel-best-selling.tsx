@@ -1,7 +1,6 @@
 import ProductCard from "@components/shared/product-card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@components/ui/carousel";
 import React from "react";
-import { useTranslations } from "next-intl"; // Next Intl translation
 import { getTranslations } from "next-intl/server";
 import { cn } from "@lib/utils/cn.util";
 
@@ -15,7 +14,8 @@ type EmblaCarouselProps = {
 export default async function EmblaCarousel({ fetchFn, productId, productNumber }: EmblaCarouselProps) {
     // Fetch related products
     const data = await fetchFn(productId);
-    const products = data?.relatedProducts || data?.products || data || [];
+
+    const products = data?.relatedProducts || data?.products || data?.recommendations || data || [];
 
     // Translation hook
     const t = await getTranslations("relatedProducts");
@@ -42,10 +42,10 @@ export default async function EmblaCarousel({ fetchFn, productId, productNumber 
 
                         {/* Carousel navigation buttons */}
                         <CarouselPrevious
-                            className={cn("absolute top-1/2 left-0 z-10 -translate-y-1/2 rounded-full border-red-900 bg-red-900")}
+                            className={cn("absolute left-0 top-1/2 z-10 -translate-y-1/2 rounded-full border-red-900 bg-red-900")}
                         />
                         <CarouselNext
-                            className={cn("absolute top-1/2 -right-0.5 z-10 -translate-y-1/2 rounded-full border-red-900 bg-red-900")}
+                            className={cn("absolute -right-0.5 top-1/2 z-10 -translate-y-1/2 rounded-full border-red-900 bg-red-900")}
                         />
                     </Carousel>
                 </>

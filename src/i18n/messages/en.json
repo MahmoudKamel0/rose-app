@@ -253,5 +253,25 @@
             "input-placeholder": "Enter Your Email",
             "button": "Subscribe"
         }
+    },
+    "cart": {
+        "failed": "Failed to load cart",
+        "something-wrong": "Something went wrong.",
+        "empty": "Your cart is empty, wanna try shopping?",
+        "continue": "Continue Shopping",
+        "title": "Cart",
+        "products": "products",
+        "clear": "Clear Cart",
+        "clearing": "Clearing...",
+        "clear-success": "Cart cleared successfully!",
+        "clear-failed": "Failed to clear cart",
+        "failed-update": "Failed to update quantity",
+        "quantity-updated": "Quantity updated successfully!",
+        "item-removed-success": "Item removed successfully!",
+        "item-removed-failed": "Failed to remove item",
+        "removing": "Removing...",
+        "remove": "Remove",
+        "rating": "Rating",
+        "ratings": "Ratings"
     }
 }

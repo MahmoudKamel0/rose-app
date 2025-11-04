@@ -22,7 +22,7 @@
             "about": "حولنا"
         }
     },
-        "about-section": {
+    "about-section": {
         "subtitle": "حول",
         "heading": {
             "part1": "نقدّم",
@@ -248,5 +248,25 @@
             "input-placeholder": "أدخل بريدك الإلكتروني",
             "button": "اشترك"
         }
+    },
+    "cart": {
+        "failed": "فشل تحميل السلة",
+        "something-wrong": "حدث خطأ ما.",
+        "empty": "سلتك فارغة، هل ترغب في التسوق؟",
+        "continue": "متابعة التسوق",
+        "title": "سلة التسوق",
+        "products": "المنتجات",
+        "clear": "تفريغ السلة",
+        "clearing": "جاري التفريغ...",
+        "clear-success": "تم تفريغ السلة بنجاح!",
+        "clear-failed": "فشل في تفريغ السلة",
+        "failed-update": "فشل في تحديث الكمية",
+        "quantity-updated": "تم تحديث الكمية بنجاح!",
+        "item-removed-success": "تم حذف المنتج بنجاح!",
+        "item-removed-failed": "فشل في حذف المنتج",
+        "removing": "جارٍ الحذف...",
+        "remove": "إزالة",
+        "rating": "التقييم",
+        "ratings": "تقييمات"
     }
 }

@@ -8,6 +8,9 @@ export async function createReviewAction(data: ReviewInput) {
     // Get authentication token
     const token = await getDecodeToken();
 
+    console.log("get token",token);
+    
+
     try {
         // Ensure token exists
         if (!token?.accessToken) {

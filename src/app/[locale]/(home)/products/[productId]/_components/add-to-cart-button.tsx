@@ -1,13 +1,14 @@
 "use client";
 import { Button } from "@components/ui/button";
 import { Check, ShoppingCart } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import { useAddCart, useGetUserCart } from "../_hooks/use-products.hook";
 import { CartRequest } from "../_types/product-id";
 import { toast } from "sonner";
 import { AuthError } from "@app/[locale]/(auth)/_components/auth-error";
 import { useSession } from "next-auth/react";
 import { useTranslations } from "next-intl";
+import { useRouter } from "@i18n/navigation";
 
 type CartType = {
     productId: string;
@@ -18,6 +19,9 @@ type CartType = {
 };
 
 export default function CartBtn({ productId, numberProduct, size = "xl", isText = true }: CartType) {
+    // Router
+    const route = useRouter();
+
     // Translation
     const t = useTranslations("product-details");
 
@@ -44,6 +48,7 @@ export default function CartBtn({ productId, numberProduct, size = "xl", isText 
                 onSuccess: () => {
                     setBtnDisable(true);
                     setBtnDisableLogged(true); // Immediately update the button state
+                    route.refresh();
                     toast.success(t("success"), {
                         description: t("toast-added"),
                         duration: 2000,
