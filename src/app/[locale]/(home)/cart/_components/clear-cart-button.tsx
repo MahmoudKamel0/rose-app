@@ -4,7 +4,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { Button } from "@components/ui/button";
 import { BrushCleaning } from "lucide-react";
-import { clearCartAction } from "@lib/apis/cart/clear-logged-cart.api";
+import { clearCartAction } from "@app/[locale]/(home)/cart/_actions/clear-logged-cart.api";
 import { ApiResponse } from "@lib/types/components/cart";
 import { useTranslations } from "next-intl";
 

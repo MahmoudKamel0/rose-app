@@ -10,8 +10,8 @@ import { Input } from "@components/ui/input";
 import { toast } from "sonner";
 import { useRouter } from "@i18n/navigation";
 import { useTranslations } from "next-intl";
-import { updateCartItemAction } from "@lib/apis/cart/update-cart-item.api";
-import { deleteCartItemAction } from "@lib/apis/cart/delete-cart-item.api";
+import { updateCartItemAction } from "@app/[locale]/(home)/cart/_actions/update-cart-item.api";
+import { deleteCartItemAction } from "@app/[locale]/(home)/cart/_actions/delete-cart-item.api";
 import { CartErrorResponse, CartSuccessResponse } from "@lib/types/components/cart";
 
 interface CartItemProps {
