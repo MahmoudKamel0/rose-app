@@ -5,7 +5,7 @@ import { toast } from "sonner";
 import { Button } from "@components/ui/button";
 import { BrushCleaning } from "lucide-react";
 import { clearCartAction } from "@lib/apis/cart/clear-logged-cart.api";
-import { ApiResponse, CartErrorResponse } from "@lib/types/components/cart";
+import { ApiResponse } from "@lib/types/components/cart";
 import { useTranslations } from "next-intl";
 
 interface ClearCartResponse {
