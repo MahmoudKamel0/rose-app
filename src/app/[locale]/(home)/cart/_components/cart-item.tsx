@@ -29,9 +29,6 @@ export default function CartItemCard({ id, name, price, image, rating, reviews, 
     const [quantity, setQuantity] = useState<number>(initialQuantity);
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
-    // refresh cart
-    const router = useRouter();
-
     // reference for debouncing
     const debounceRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -52,7 +49,6 @@ export default function CartItemCard({ id, name, price, image, rating, reviews, 
             }
 
             toast.success((res.payload as CartSuccessResponse)?.message || t("quantity-updated"));
-            router.refresh();
         }, 600);
     };
 
@@ -86,7 +82,6 @@ export default function CartItemCard({ id, name, price, image, rating, reviews, 
 
             if ("cart" in result) {
                 toast.success(result.message || t("item-removed-success"));
-                router.refresh();
             } else {
                 toast.error(result.message || t("item-removed-failed"));
             }

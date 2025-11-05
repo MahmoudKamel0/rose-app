@@ -23,7 +23,10 @@ export async function fetchCartData(): Promise<FetchCartResponse> {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token?.accessToken}`,
             },
-            cache: "no-store",
+            next: {
+                tags: ["cart-data"],
+                revalidate: 60,
+            },
         });
 
         // Parse response

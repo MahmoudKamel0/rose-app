@@ -2,6 +2,7 @@
 
 import { getDecodeToken } from "@lib/utils/get-decode-token";
 import { CartErrorResponse, CartSuccessResponse } from "@lib/types/components/cart";
+import { revalidateTag } from "next/cache";
 
 export async function updateCartItemAction(
     productId: string,
@@ -20,6 +21,9 @@ export async function updateCartItemAction(
         });
 
         const data = await res.json();
+
+        // Revalidate cart data
+        revalidateTag("cart-data");
 
         return {
             ok: res.ok,

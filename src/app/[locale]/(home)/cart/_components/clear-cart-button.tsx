@@ -5,7 +5,6 @@ import { toast } from "sonner";
 import { Button } from "@components/ui/button";
 import { BrushCleaning } from "lucide-react";
 import { clearCartAction } from "@lib/apis/cart/clear-logged-cart.api";
-import { useRouter } from "@i18n/navigation";
 import { ApiResponse, CartErrorResponse } from "@lib/types/components/cart";
 import { useTranslations } from "next-intl";
 
@@ -16,9 +15,6 @@ interface ClearCartResponse {
 export default function ClearCartButton() {
     // translations
     const t = useTranslations("cart");
-
-    // refresh cart
-    const router = useRouter();
 
     // loading state
     const [isLoading, setIsLoading] = useState(false);
@@ -41,7 +37,6 @@ export default function ClearCartButton() {
         // handle success
         const successMsg = res.payload.message || t("clear-success");
         toast.success(successMsg);
-        router.refresh();
     };
 
     // button component

@@ -2,6 +2,7 @@
 
 import { CartErrorResponse, CartSuccessResponse } from "@lib/types/components/cart";
 import { getDecodeToken } from "@lib/utils/get-decode-token";
+import { revalidateTag } from "next/cache";
 
 // Delete cart item
 export async function deleteCartItemAction(itemId: string): Promise<CartSuccessResponse | CartErrorResponse> {
@@ -34,6 +35,9 @@ export async function deleteCartItemAction(itemId: string): Promise<CartSuccessR
         if (!res.ok) {
             return { message: data.message || "Failed to remove item" };
         }
+
+        // Revalidate cart data
+        revalidateTag("cart-data");
 
         // Return data
         return data as CartSuccessResponse;

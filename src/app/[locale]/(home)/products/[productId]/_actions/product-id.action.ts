@@ -3,6 +3,7 @@
 import { getDecodeToken } from "@lib/utils/get-decode-token";
 import { CartRequest, CartResponse } from "../_types/product-id";
 import { JSON_HEADER } from "@lib/constants/shared.constant";
+import { revalidateTag } from "next/cache";
 
 export async function addToCart(data: CartRequest) {
     const headers: Record<string, string> = { ...JSON_HEADER };
@@ -18,6 +19,9 @@ export async function addToCart(data: CartRequest) {
         headers: headers,
     });
     const response: ApiResponse<CartResponse> = await res.json();
+
+    // Revalidate cart data
+    revalidateTag("cart-data");
 
     return response;
 }

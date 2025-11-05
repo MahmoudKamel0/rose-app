@@ -6,6 +6,7 @@ import {
     RecommendationsSuccessResponse,
 } from "@lib/types/components/recommendations";
 import { getDecodeToken } from "@lib/utils/get-decode-token";
+import { revalidateTag } from "next/cache";
 
 /**
  * Fetch recommended products for the currently authenticated user.
@@ -36,6 +37,9 @@ export async function fetchRecommendations(): Promise<RecommendationsResponse> {
             console.error("Failed to fetch recommendations:", payload);
             throw new Error((payload as RecommendationsErrorResponse).error || `Error ${res.status}`);
         }
+
+        // Revalidate cart data
+        revalidateTag("cart-data");
 
         return payload as RecommendationsSuccessResponse;
     } catch (error) {

@@ -2,6 +2,7 @@
 
 import { ApiResponse, CartErrorResponse } from "@lib/types/components/cart";
 import { getDecodeToken } from "@lib/utils/get-decode-token";
+import { revalidateTag } from "next/cache";
 
 interface ClearCartResponse {
     message?: string;
@@ -22,6 +23,9 @@ export async function clearCartAction(): Promise<ApiResponse<ClearCartResponse>>
         });
 
         const payload = (await res.json()) as ClearCartResponse | CartErrorResponse;
+
+        // Revalidate cart data
+        revalidateTag("cart-data");
 
         return {
             ok: res.ok,
