@@ -1,5 +1,5 @@
 import React from "react";
-import AddressesDetailes from "./_components";
+import AddressesDetailes from "./_components/addresses-detailes";
 
 function Addresses() {
     return (

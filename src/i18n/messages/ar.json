@@ -22,15 +22,45 @@
             "about": "حولنا"
         }
     },
-
-    "abourt": "معلومات عنا",
-    "testimonials-title": "آراء العملاء",
-    "testimonials-name": "{lastName} {firstName}",
-    "testimonials-content": "أطلب من هذا المتجر منذ سنوات ولم يخيب ظني أبدًا. الجودة والخدمة استثنائية حقًا!",
-    "testimonials-date": "تمت المراجعة في {date}",
-    "testimonials-subtitle": "آراء العملاء",
-    "testimonials-heading": "كلمات من العملاء السعيدة",
-    "login": {
+    "about-section": {
+        "subtitle": "حول",
+        "heading": {
+            "part1": "نقدّم",
+            "highlight1": "أجمل",
+            "part2": "صناديق الهدايا من أجل",
+            "highlight2": "لحظاتك",
+            "part3": "الخاصة"
+        },
+        "description": "اجعل كل لحظة لا تُنسى مع صناديق الهدايا الفاخرة لدينا. تم اختيار كل قطعة بعناية <br /> وتغليفها بأناقة، حيث يحتوي كل صندوق على عناصر مختارة يدويًا مصممة لإبهارك.<br /> سواء كانت لعيد ميلاد، زفاف، أو مجرد كلمة شكر بسيطة، صناديقنا مصممة <br /> لتترك انطباعًا يدوم — لأن الهدايا المميزة تبدأ من هنا.",
+        "button": "اكتشف المزيد",
+        "features": {
+            "competitive": "أسعار تنافسية وتسوق سهل",
+            "premium": "جودة ممتازة وتغليف أنيق",
+            "occasion": "مثالية لكل مناسبة",
+            "delivery": "توصيل سريع وموثوق"
+        }
+    },
+    "gallery-section": {
+        "subtitle": "معرض الصور",
+        "heading": "اكتشف معرضنا الرائع"
+    },
+    "trusted-section": {
+        "heading": {
+            "before": "موثوق من أكثر من",
+            "highlight": "4.5k+",
+            "after": "شركة"
+        }
+    },
+    "testimonials": {
+        "abourt": "معلومات عنا",
+        "testimonials-title": "آراء العملاء",
+        "testimonials-name": "{lastName} {firstName}",
+        "testimonials-content": "أطلب من هذا المتجر منذ سنوات ولم يخيب ظني أبدًا. الجودة والخدمة استثنائية حقًا!",
+        "testimonials-date": "تمت المراجعة في {date}",
+        "testimonials-subtitle": "آراء العملاء",
+        "testimonials-heading": "كلمات من العملاء السعيدة"
+    },
+    "login-page": {
         "title": "مرحباً بعودتك!",
         "noAccount": "ليس لديك حساب بعد؟",
         "createNow": "أنشئ واحداً الآن!",
@@ -153,5 +183,96 @@
                 "description": "حدث خطأ ما، يرجى المحاولة لاحقًا"
             }
         }
+    },
+    "reviewForm": {
+        "authenticationRequired": "يرجى تسجيل الدخول لتتمكن من إضافة تقييم",
+        "yourRating": "تقييمك:",
+        "title": "العنوان",
+        "titlePlaceholder": "أدخل عنوان التقييم",
+        "review": "المراجعة",
+        "commentPlaceholder": "ما رأيك في هذا المنتج؟",
+        "submit": "إضافة التقييم",
+        "submitting": "جاري الإرسال...",
+        "toast": {
+            "success": "تم إرسال التقييم بنجاح!",
+            "error": "فشل في إرسال التقييم"
+        }
+    },
+    "reviewsSection": {
+        "title": "تقييمات المنتج",
+        "generalRating": "التقييم العام:",
+        "averageRating": "{rating} ({count} تقييم)"
+    },
+    "reviewsList": {
+        "reviewedOn": "تمت المراجعة في {date}"
+    },
+    "relatedProducts": {
+        "title": "منتجات ذات صلة"
+    },
+    "emblaCarousel": {
+        "title": "منتجات ذات صلة",
+        "noProducts": "لا توجد منتجات متاحة"
+    },
+    "fetchError": "فشل في تحميل التقييمات. يرجى المحاولة لاحقًا.",
+    "noReviews": "لا توجد تقييمات بعد.",
+    "authenticationRequired": "يرجى تسجيل الدخول لتتمكن من إضافة تقييم للمنتج",
+    "footer": {
+        "logo-alt": "شعار روز",
+        "app-title": "تطبيق روز للتجارة الإلكترونية",
+        "copyright": "جميع الحقوق محفوظة | 2025",
+
+        "list-links": {
+            "title": "اكتشف موقعنا",
+            "links": {
+                "home": "الرئيسية",
+                "products": "المنتجات",
+                "categories": "الفئات",
+                "occasions": "المناسبات",
+                "contact": "تواصل معنا",
+                "about": "حولنا",
+                "terms": "الشروط والأحكام",
+                "privacy": "سياسة الخصوصية",
+                "faqs": "الأسئلة الشائعة"
+            }
+        },
+
+        "subscription": {
+            "title": "احصل على قسيمة خصم 20%",
+            "highlight": "20%",
+            "description": "عن طريق الاشتراك في النشرة الإخبارية لدينا",
+            "input-placeholder": "أدخل بريدك الإلكتروني",
+            "button": "اشترك"
+        }
+    },
+    "addresses-header": {
+        "header": "عناويني",
+        "add-address": "إضافة عنوان جديد"
+    },
+    "addresses-content": {
+        "empty": "لا يوجد عناوين حتى الآن",
+        "delete": "هل أنت متأكد أنك تريد حذف هذا العنوان؟",
+        "cancel": "إلغاء",
+        "confirm": "تأكيد",
+        "deleting": "يحذف...",
+        "deleted-succ": "تم حذف العنوان بنجاح",
+        "deleted-failed": "فشل حذف العنوان"
+    },
+    "address-step-1": {
+        "city": "المدينة",
+        "address": "العنوان",
+        "phone": "الهاتف",
+        "enter": "أدخل تفاصيل العنوان",
+        "edit": "تحديث معلومات العنوان",
+        "new": "إضافة عنوان جديد",
+        "next-step": "التالي"
+    },
+    "address-step-2": {
+        "find": "اعثر على موقعك",
+        "find-map": "اعثر على موقعي",
+        "add": "إضافة العنوان",
+        "adding": "جارٍ الإضافة...",
+        "loaction-error": "يرجى اختيار موقع صالح على الخريطة",
+        "updated-succ": "تم تحديث عنوانك بنجاح",
+        "addedd-succ": "تمت إضافة عنوانك الجديد بنجاح"
     }
 }

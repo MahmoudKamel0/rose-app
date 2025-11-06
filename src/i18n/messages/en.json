@@ -65,6 +65,7 @@
         "toast": "Your password has been updated successfully..",
         "toast-desc": "You will be redirected to the login page. Please wait."
     },
+
     "features": {
         "free-delivery": {
             "title": "Free Delivery",
@@ -157,5 +158,39 @@
                 "description": "Something went wrong, please try again later"
             }
         }
+    },
+    "addresses-header": {
+        "header": "my addresses",
+        "add-address": "Add a New Address"
+    },
+    "addresses-content": {
+        "empty": "No Addresses Yet",
+        "delete": "Are you sure you want to delete this address?",
+        "cancel": "cancel",
+        "confirm": "confirm",
+        "deleting": "deleting...",
+        "deleted-succ": "Address deleted successfully",
+        "deleted-failed": "Failed to delete address"
+    },
+    "address-delete": {
+        "deleted": "Address deleted successfully"
+    },
+    "address-step-1": {
+        "city": "City",
+        "address": "Address",
+        "enter": "Enter address detailes",
+        "phone": "phone",
+        "edit": "Update Address Info",
+        "new": "Add a New Address",
+        "next-step": "Next"
+    },
+    "address-step-2": {
+        "find": "Find Your Location",
+        "find-map": "Find My Location",
+        "add": "Add Address",
+        "adding": "adding...",
+        "loactions-error": "Please select a valid location on the map",
+        "updated-succ": "Your Address updates successfully",
+        "addedd-succ": "Your New Address added successfully"
     }
 }

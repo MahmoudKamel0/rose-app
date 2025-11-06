@@ -1,8 +1,8 @@
 "use server";
 
-import { VerifyOtpResponse } from "@lib/types/auth/verfiy";
 import { EmailForgetPasswordValue } from "@lib/schemas/auth/forget-password-schema";
 import { EmailForgetPasswordResponse } from "../_types/forget-password-email-response";
+import { VerifyOtpResponse } from "@lib/types/auth/auth";
 
 export async function verifyOtpAction(resetCode: string): Promise<VerifyOtpResponse> {
     const response = await fetch(`${process.env.BASE_URL}auth/verifyResetCode`, {
