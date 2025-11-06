@@ -3,8 +3,12 @@ import EmblaCarousel from "@components/features/application/home/best-selling-se
 import EmblaCarouselSkeleton from "@components/shared/embla-carousel-skeleton";
 import HighlightedHeading from "@components/shared/highlighted-heading";
 import { fetchRecommendations } from "@lib/apis/cart/products-may-like.api";
+import { useTranslations } from "next-intl";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
+    // translations
+    const t = useTranslations("Cart");
+
     return (
         <section className="container mx-auto mb-12 mt-16 flex max-w-[80rem] flex-col gap-10">
             {/* cart content */}
@@ -24,7 +28,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 {/* Related Products */}
                 <HighlightedHeading
                     className="mt-15 mb-[1.3rem]"
-                    text={"Products You May Like"}
+                    text={t("productsYouMayLike")}
                     highlightWidth="154px"
                     borderWidth="60px"
                 />

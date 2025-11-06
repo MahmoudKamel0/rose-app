@@ -8,7 +8,7 @@ interface FetchCartResponse {
     payload: CartSuccessResponse | CartErrorResponse;
 }
 
-export async function fetchCartData(): Promise<FetchCartResponse> {
+export async function getCartData(): Promise<FetchCartResponse> {
     // Get user's token from cookies
     const token = await getDecodeToken();
 

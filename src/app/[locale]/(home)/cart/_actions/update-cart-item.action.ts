@@ -29,7 +29,7 @@ export async function updateCartItemAction(
             ok: res.ok,
             payload: data,
         };
-    } catch (error: any) {
+    } catch (error: CartErrorResponse | any) {
         return {
             ok: false,
             payload: { message: error || "Unexpected error occurred" },

@@ -10,8 +10,8 @@ import { Input } from "@components/ui/input";
 import { toast } from "sonner";
 import { useRouter } from "@i18n/navigation";
 import { useTranslations } from "next-intl";
-import { updateCartItemAction } from "@app/[locale]/(home)/cart/_actions/update-cart-item.api";
-import { deleteCartItemAction } from "@app/[locale]/(home)/cart/_actions/delete-cart-item.api";
+import { updateCartItemAction } from "@app/[locale]/(home)/cart/_actions/update-cart-item.action";
+import { deleteCartItemAction } from "@app/[locale]/(home)/cart/_actions/delete-cart.action";
 import { CartErrorResponse, CartSuccessResponse } from "@lib/types/components/cart";
 
 interface CartItemProps {
@@ -80,10 +80,12 @@ export default function CartItemCard({ id, name, price, image, rating, reviews, 
             setIsLoading(true);
             const result = await deleteCartItemAction(id);
 
-            if ("cart" in result) {
-                toast.success(result.message || t("item-removed-success"));
+            const msg = (result.payload as CartSuccessResponse)?.message || (result.payload as CartErrorResponse)?.message;
+
+            if (result.ok) {
+                toast.success(msg || t("item-removed-success"));
             } else {
-                toast.error(result.message || t("item-removed-failed"));
+                toast.error(msg || t("item-removed-failed"));
             }
         } catch {
             toast.error(t("something-wrong"));

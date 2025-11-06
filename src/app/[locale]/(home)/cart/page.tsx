@@ -1,6 +1,5 @@
 import React from "react";
 import CartHeader from "./_components/cart-header";
-import { fetchCartData } from "@lib/apis/cart/get-logged-cart.api";
 import CartItemCard from "./_components/cart-item";
 import { CartErrorResponse, CartItem, CartSuccessResponse } from "@lib/types/components/cart";
 import ClearCartButton from "./_components/clear-cart-button";
@@ -9,6 +8,7 @@ import { Button } from "@components/ui/button";
 import { MoveLeft } from "lucide-react";
 import { Link } from "@i18n/navigation";
 import { getLocale, getTranslations } from "next-intl/server";
+import { getCartData } from "@lib/apis/cart/get-logged-cart.api";
 
 export default async function Page() {
     // get locale
@@ -19,7 +19,7 @@ export default async function Page() {
     const t = await getTranslations("cart");
 
     // fetch cart
-    const res = await fetchCartData();
+    const res = await getCartData();
 
     if (!res.ok) {
         const errorData = res.payload as CartErrorResponse;

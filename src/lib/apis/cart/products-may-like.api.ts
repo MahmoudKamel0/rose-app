@@ -19,7 +19,7 @@ export async function fetchRecommendations(): Promise<RecommendationsResponse> {
         }
 
         const userId = token.user._id;
-        const url = `${process.env.NEXT_PUBLIC_API_BASE}/related/recommendations/${userId}`;
+        const url = `${process.env.BASE_URL}/related/recommendations/${userId}`;
 
         const res = await fetch(url, {
             next: { revalidate: 60 },
@@ -35,9 +35,6 @@ export async function fetchRecommendations(): Promise<RecommendationsResponse> {
             console.error("Failed to fetch recommendations:", payload);
             throw new Error((payload as RecommendationsErrorResponse).error || `Error ${res.status}`);
         }
-
-        // Revalidate cart data
-        revalidateTag("cart-data");
 
         return payload as RecommendationsSuccessResponse;
     } catch (error) {
