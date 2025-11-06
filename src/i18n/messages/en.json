@@ -253,5 +253,21 @@
             "input-placeholder": "Enter Your Email",
             "button": "Subscribe"
         }
+    },
+
+    "change-password": {
+        "old-password": "Old Password",
+        "new-password": "New Password",
+        "confirm-new-password": "Confirm New Password",
+        "updating": "Updating...",
+        "change-password": "Change Password",
+        "password-updated-successfully": "Password updated successfully!",
+        "failed-update-password": "Failed to update password"        
+    },
+    "profile": {
+        "logout": "Logout",
+        "my-account": "My Account",
+        "change-password": "Change Password",
+        "update-profile": "update profile"
     }
 }

@@ -5,7 +5,7 @@ import { routing } from "./i18n/routing";
 import { getToken } from "next-auth/jwt";
 
 const intlMiddleware = createMiddleware(routing);
-const PROTECTED_ROUTES = ["/wishlist", "/checkout", "/profile"];
+const PROTECTED_ROUTES = ["/wishlist", "/checkout"];
 
 export default async function middleware(req: NextRequest) {
     const { pathname } = req.nextUrl;
