@@ -1,7 +1,7 @@
 import { OrdersResponse } from "@lib/types/end-point-api/orders";
 import { getDecodeToken } from "@lib/utils/get-decode-token";
 
-export async function fetchOrders(): Promise<OrdersResponse> {
+export async function getOrders(): Promise<OrdersResponse> {
     try {
         const decodedToken = await getDecodeToken();
 
@@ -9,7 +9,7 @@ export async function fetchOrders(): Promise<OrdersResponse> {
         if (!decodedToken) {
             throw new Error("No valid authentication token found");
         }
-        const res = await fetch("https://flower.elevateegy.com/api/v1/orders", {
+        const res = await fetch(`${process.env.BASE_URL}orders`, {
             cache: "no-store",
             headers: {
                 "Content-Type": "application/json",

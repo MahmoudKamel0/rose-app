@@ -1,10 +1,10 @@
 import { OrderItem } from "@lib/types/end-point-api/orders";
-import DeliveryInfo from "./components/delivery-info";
-import OrderHeader from "./components/order-header";
-import OrderItems from "./components/order-items";
-import OrderStatusBadge from "./components/order-status-badge";
-import PaymentMethodInfo from "./components/payment-method-info";
-import PriceInfo from "./components/price-info";
+import DeliveryInfo from "./delivery-info";
+import OrderHeader from "./order-header";
+import OrderItems from "./order-items";
+import OrderStatusBadge from "./order-status-badge";
+import PaymentMethodInfo from "./payment-method-info";
+import PriceInfo from "./price-info";
 
 // order card props
 interface OrderCardProps {

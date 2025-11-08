@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
 
-import OrderProductItem from "./components/order-product-item";
-import ToggleButton from "./components/toggle-button";
+import OrderProductItem from "./order-product-item";
+import ToggleButton from "./toggle-button";
 import { OrderItem } from "@lib/types/end-point-api/orders";
 import { useTranslations } from "next-intl";
 

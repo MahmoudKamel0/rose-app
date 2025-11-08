@@ -1,4 +1,4 @@
-import { fetchOrders } from "@lib/apis/orders/fetch-orders";
+import { getOrders } from "@lib/apis/orders/fetch-orders";
 import NoOrders from "./no-orders";
 import OrderCard from "./order-card";
 import { Order } from "@lib/types/end-point-api/orders";
@@ -7,10 +7,11 @@ import OrdersError from "./orders-error";
 export default async function OrdersWrapper() {
     try {
         // fetch orders
-        const data = await fetchOrders();
+        const data = await getOrders();
         // get orders
         const orders: Order[] = data.orders;
         // return orders wrapper
+
 
         return (
             <>
@@ -40,7 +41,7 @@ export default async function OrdersWrapper() {
             </>
         );
         // catch error
-    } catch (error) {
+    } catch {
         return <OrdersError />; // orders error component
     }
 }

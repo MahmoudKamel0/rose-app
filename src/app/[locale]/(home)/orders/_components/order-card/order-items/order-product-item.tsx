@@ -28,7 +28,7 @@ export default function OrderProductItem({ title, imageUrl, rating, ratingCount,
                 <div className="flex h-full flex-col justify-between px-2.5">
                     {/* Title and rating section */}
                     <div className="flex flex-col">
-                        <h2 className="text-lg font-semibold text-[#741C21]">{title}</h2>
+                        <h2 className="text-lg font-semibold text-maroon-700">{title}</h2>
                         <div className="flex items-center gap-1.5">
                             <Star className="fill-[#FFA508] stroke-[#FFA508]" width={16.67} height={15.89} />
                             <p className="capitalize">
@@ -41,7 +41,7 @@ export default function OrderProductItem({ title, imageUrl, rating, ratingCount,
                     </div>
                     {/* Quantity and price section */}
                     <div className="flex items-center gap-1">
-                        <span className="text-sm font-medium text-[#741C21]">(×{quantity})</span>
+                        <span className="text-sm font-medium text-maroon-700">(×{quantity})</span>
                         <h5 className="text-xl font-semibold">{price}</h5>
                     </div>
                 </div>
