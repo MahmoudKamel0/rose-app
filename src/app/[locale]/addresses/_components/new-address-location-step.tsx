@@ -1,4 +1,5 @@
-// pages/addresses.tsx
+"use client";
+
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import { NewAddressStepProps, AddressSteps, AddressReq } from "@lib/types/end-point-api/addresses";

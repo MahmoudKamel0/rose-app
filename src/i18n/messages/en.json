@@ -191,6 +191,6 @@
         "adding": "adding...",
         "loactions-error": "Please select a valid location on the map",
         "updated-succ": "Your Address updates successfully",
-        "addedd-succ": "Your New Address added successfully"
+        "added-succ": "Your New Address added successfully"
     }
 }

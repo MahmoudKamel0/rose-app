@@ -69,7 +69,7 @@ export default function NewAddressDetailesStep({ setNewAddressStep, newAddressDa
                                             {...field}
                                             placeholder="Enter your address"
                                             aria-invalid={!!form.formState.errors.street}
-                                            className="h-40 resize-none p-4"
+                                            className="!h-40 p-4"
                                         />
                                     </FormControl>
                                 </FormItem>
