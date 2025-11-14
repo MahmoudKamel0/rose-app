@@ -1,5 +1,6 @@
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import ProductCard from "@components/shared/product-card";
 import { getProductsByOccasion } from "@lib/apis/most-popular.api";
 import ProductItem from "../application/products/product-item";
 
@@ -49,13 +50,13 @@ export default async function TabsSection({ topFour }: { topFour: Occasion[] }) 
                 ))}
             </TabsList>
             {/* loop through the top occasions and render a tab for each one with its products */}
-            {productsByOccasion.map(({ _id, products }) => (
+            {productsByOccasion.map(({ _id, name, products }) => (
                 <TabsContent key={_id} value={_id}>
                     <Card className="border-none shadow-none">
                         <CardContent className="p-0">
                             {products?.length ? (
                                 <div className="grid grid-cols-4 gap-6">
-                                    {products?.map((product: Product) => (
+                                    {products.map((product: Product) => (
                                         <ProductItem key={product._id} product={product} />
                                     ))}
                                 </div>

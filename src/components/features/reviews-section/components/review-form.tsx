@@ -49,6 +49,7 @@ export default function ReviewForm({ productId }: ReviewsSectionProps) {
 
                 // Handle non-OK responses
                 if (!res.ok) {
+                    console.warn("Failed to fetch token:", res.status);
                     setIsAuthenticated(false);
                     return;
                 }
@@ -58,8 +59,9 @@ export default function ReviewForm({ productId }: ReviewsSectionProps) {
 
                 // Check if access token exists
                 setIsAuthenticated(!!data?.accessToken);
-                // eslint-disable-next-line @typescript-eslint/no-unused-vars
             } catch (error) {
+                console.error("Error checking auth status:", error);
+
                 // Set authentication status to false
                 setIsAuthenticated(false);
             }
@@ -86,7 +88,6 @@ export default function ReviewForm({ productId }: ReviewsSectionProps) {
                 setRating(0);
             },
             // Error callback
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             onError: (err: any) => {
                 toast.error(err.message || t("toast.error"));
             },

@@ -18,8 +18,8 @@ export default async function ReviewsList({ productId }: ReviewsSectionProps) {
     try {
         // Fetch reviews from API
         data = (await fetchProductReviews(productId)) as ReviewsSuccessResponse;
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (err) {
+        console.error("Failed to fetch product reviews:", err);
         error = true;
     }
 

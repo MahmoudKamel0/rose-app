@@ -1,5 +1,4 @@
 "use client";
-
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
@@ -7,9 +6,8 @@ import { cn } from "@lib/utils/cn.util";
 import { Eye, Heart, Star } from "lucide-react";
 import CartBtn from "@app/[locale]/(home)/products/[productId]/_components/add-to-cart-button";
 
-export default function ProductCard({ product }) {
+export default function ProductCard({ product }: { product: any }) {
     if (!product) return null;
-
     return (
         <Card className={cn("overflow-hidden border-none shadow-none transition-all duration-200")}>
             <div className={cn("group relative")}>
@@ -26,7 +24,6 @@ export default function ProductCard({ product }) {
                     <button className="rounded-full bg-white p-3 text-maroon-600 transition hover:bg-maroon-600 hover:text-white">
                         <Heart className="h-5 w-5" strokeWidth={2} />
                     </button>
-
                     {/* Eye Icon */}
                     <button className="rounded-full bg-white p-3 text-maroon-600 transition hover:bg-maroon-600 hover:text-white">
                         <Eye className="h-5 w-5" strokeWidth={2} />
@@ -38,14 +35,12 @@ export default function ProductCard({ product }) {
                         HOT
                     </Badge>
                 )}
-
                 {/* NEW Badge */}
                 {product.sold < 20 && (
                     <Badge className={cn("absolute right-2 top-2 rounded-full bg-zinc-100 px-2 py-0.5 text-xs uppercase text-zinc-700")}>
                         NEW
                     </Badge>
                 )}
-
                 {/* OUT OF STOCK Badge */}
                 {product.quantity < 1 && (
                     <Badge className={cn("absolute right-2 top-2 rounded-full bg-red-600 px-2 py-0.5 text-xs uppercase text-white")}>
@@ -53,11 +48,9 @@ export default function ProductCard({ product }) {
                     </Badge>
                 )}
             </div>
-
             <CardContent className={cn("space-y-1.5 px-0 py-5")}>
                 {/* Product Title */}
                 <h3 className={cn("line-clamp-1 text-lg font-semibold capitalize text-maroon-700 dark:text-[#FFC2D0]")}>{product.title}</h3>
-
                 {/* Rating */}
                 <div className="flex items-center justify-center">
                     <div className="flex flex-1 flex-col items-start justify-start gap-2">
@@ -72,7 +65,6 @@ export default function ProductCard({ product }) {
                                 </span>
                             ))}
                         </div>
-
                         {/* Prices + Add to cart*/}
                         <div className="flex items-center justify-center gap-4">
                             {/* Prices */}
@@ -86,7 +78,6 @@ export default function ProductCard({ product }) {
                             </div>
                         </div>
                     </div>
-
                     {/* Add to Cart Button */}
                     <CartBtn productId={product._id} numberProduct={product.quantity} size="rounded-icon" isText={false} />
                 </div>

@@ -25,12 +25,12 @@ export const getNavLinks = (t: (key: string) => string) => [
     },
     {
         icon: <Headset size={20} className={cn("stroke-zinc-50", "dark:stroke-zinc-800")} />,
-        path: "/contact",
+        path: "/#footer",
         name: t("contact"),
     },
     {
         icon: <Info size={20} className={cn("stroke-zinc-50", "dark:stroke-zinc-800")} />,
-        path: "/about",
+        path: "/#about",
         name: t("about"),
     },
 ];
@@ -80,40 +80,13 @@ export const IMAGES_SLIDERS_OFFERS = [
 
 // For Footer component: (components/layout/footer)
 export const FOOTER_LINKS = [
-    {
-        path: "/",
-        name: "Home",
-    },
-    {
-        path: "/",
-        name: "Products",
-    },
-    {
-        path: "/",
-        name: "Categories",
-    },
-    {
-        path: "/",
-        name: "Occasions",
-    },
-    {
-        path: "/",
-        name: "Contact",
-    },
-    {
-        path: "/",
-        name: "About",
-    },
-    {
-        path: "/",
-        name: "Terms & Conditions",
-    },
-    {
-        path: "/",
-        name: "Privacy Policy",
-    },
-    {
-        path: "/",
-        name: "FAQs",
-    },
+    { path: "/", name: "home" },
+    { path: "/products", name: "products" },
+    { path: "/categories", name: "categories" },
+    { path: "/occasions", name: "occasions" },
+    { path: "/contact", name: "contact" },
+    { path: "/about", name: "about" },
+    { path: "/terms", name: "terms" }, 
+    { path: "/privacy", name: "privacy" }, 
+    { path: "/faqs", name: "faqs" }, 
 ];

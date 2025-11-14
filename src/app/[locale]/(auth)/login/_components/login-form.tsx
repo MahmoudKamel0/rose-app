@@ -15,7 +15,7 @@ import SubmissionFeedback from "@components/shared/submission-feedback";
 
 export default function LoginForm() {
     // Translation
-    const t = useTranslations("login");
+    const t = useTranslations("login-page");
 
     // Form
     const form = useForm<LoginFields>({
@@ -38,7 +38,7 @@ export default function LoginForm() {
         <Form {...form}>
             <form
                 onSubmit={form.handleSubmit(onSubmit)}
-                className="mb-5 flex w-[25.5rem] flex-col  border-y border-zinc-200 py-6 dark:border-zinc-700"
+                className="mb-5 flex w-[25.5rem] flex-col border-y border-zinc-200 py-6 dark:border-zinc-700"
             >
                 {/* Email */}
                 <FormField
@@ -86,7 +86,7 @@ export default function LoginForm() {
                     disabled={isPending || (form.formState.isSubmitted && !form.formState.isValid)}
                     className="bg-maroon-600 h-12 w-full text-base font-medium text-white"
                 >
-                    {t("login")}
+                    {t("submit")}
                 </Button>
             </form>
         </Form>
