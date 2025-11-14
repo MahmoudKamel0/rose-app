@@ -8,12 +8,12 @@ import { Button } from "@/components/ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { EmailForgetPasswordSchema, EmailForgetPasswordValue } from "@lib/schemas/auth/forget-password-schema";
 import { useAddForgetPasswordEmail } from "../_hooks/use-add-forget-password-email";
-import { Step } from "@lib/types/auth/verfiy";
 import { FORGOT_PASSWORD_STEPS } from "@lib/constants/auth.constants";
 import { AuthError } from "../../_components/auth-error";
 import { useTranslations } from "next-intl";
 import { Link } from "@i18n/navigation";
 import { toast } from "sonner";
+import { Step } from "@lib/types/auth/auth";
 
 // component handles first step of "forgot password" flow
 export default function ForgetPasswordEmail({
@@ -101,7 +101,7 @@ export default function ForgetPasswordEmail({
             <div className="mt-4">
                 <p className="mt-5 text-center text-sm font-medium text-zinc-800 dark:text-zinc-50">
                     {t("footer-msg")}{" "}
-                    <Link href="/contact" className="font-bold text-maroon-700 dark:text-softpink-300">
+                    <Link href="/register" className="font-bold text-maroon-700 dark:text-softpink-300">
                         {t("footer-link")}
                     </Link>
                 </p>

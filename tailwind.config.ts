@@ -6,6 +6,8 @@ const config: Config = {
     theme: {
         extend: {
             colors: {
+                "overlay-gray": "rgba(46, 46, 48, 0.05)",
+                "overlay-gray-2": "rgba(46, 46, 48, 0.05)",
                 background: "hsl(var(--background))",
                 foreground: "hsl(var(--foreground))",
                 card: {

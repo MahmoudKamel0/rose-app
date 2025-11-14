@@ -22,7 +22,7 @@
             "about": "حولنا"
         }
     },
-        "about-section": {
+    "about-section": {
         "subtitle": "حول",
         "heading": {
             "part1": "نقدّم",
@@ -248,5 +248,36 @@
             "input-placeholder": "أدخل بريدك الإلكتروني",
             "button": "اشترك"
         }
+    },
+    "addresses-header": {
+        "header": "عناويني",
+        "add-address": "إضافة عنوان جديد"
+    },
+    "addresses-content": {
+        "empty": "لا يوجد عناوين حتى الآن",
+        "delete": "هل أنت متأكد أنك تريد حذف هذا العنوان؟",
+        "cancel": "إلغاء",
+        "confirm": "تأكيد",
+        "deleting": "يحذف...",
+        "deleted-succ": "تم حذف العنوان بنجاح",
+        "deleted-failed": "فشل حذف العنوان"
+    },
+    "address-step-1": {
+        "city": "المدينة",
+        "address": "العنوان",
+        "phone": "الهاتف",
+        "enter": "أدخل تفاصيل العنوان",
+        "edit": "تحديث معلومات العنوان",
+        "new": "إضافة عنوان جديد",
+        "next-step": "التالي"
+    },
+    "address-step-2": {
+        "find": "اعثر على موقعك",
+        "find-map": "اعثر على موقعي",
+        "add": "إضافة العنوان",
+        "adding": "جارٍ الإضافة...",
+        "loaction-error": "يرجى اختيار موقع صالح على الخريطة",
+        "updated-succ": "تم تحديث عنوانك بنجاح",
+        "added-succ": "تمت إضافة عنوانك الجديد بنجاح"
     }
 }

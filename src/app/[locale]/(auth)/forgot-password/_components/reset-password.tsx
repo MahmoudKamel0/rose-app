@@ -119,7 +119,7 @@ export default function ResetPassword({ email }: { email: string }) {
             <div className="mt-4">
                 <p className="mt-5 text-center text-sm font-medium text-zinc-800 dark:text-zinc-50">
                     {o("need-help")}{" "}
-                    <Link href="/contact" className="text-maroon-700 dark:text-softpink-300 font-bold">
+                    <Link href="/contact" className="font-bold text-maroon-700 dark:text-softpink-300">
                         {o("contact-us")}
                     </Link>
                 </p>

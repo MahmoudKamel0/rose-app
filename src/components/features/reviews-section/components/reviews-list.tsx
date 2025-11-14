@@ -56,7 +56,7 @@ export default async function ReviewsList({ productId }: ReviewsSectionProps) {
                             {/* Header */}
                             <div className="mb-3 flex items-center">
                                 {/* Avatar */}
-                                <div className="bg-maroon-800 relative mr-[0.44rem] flex h-11 w-11 items-center justify-center overflow-hidden rounded-full text-lg font-semibold text-white">
+                                <div className="relative mr-[0.44rem] flex h-11 w-11 items-center justify-center overflow-hidden rounded-full bg-maroon-800 text-lg font-semibold text-white">
                                     {review?.user?.photo ? (
                                         <Image src={review.user.photo} alt={fullName} fill className="rounded-full object-cover" />
                                     ) : (

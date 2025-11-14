@@ -131,6 +131,7 @@
         "passwords-not-match": "Passwords do not match",
         "login": "Login"
     },
+
     "features": {
         "free-delivery": {
             "title": "Free Delivery",
@@ -253,5 +254,39 @@
             "input-placeholder": "Enter Your Email",
             "button": "Subscribe"
         }
+    },
+    "addresses-header": {
+        "header": "my addresses",
+        "add-address": "Add a New Address"
+    },
+    "addresses-content": {
+        "empty": "No Addresses Yet",
+        "delete": "Are you sure you want to delete this address?",
+        "cancel": "cancel",
+        "confirm": "confirm",
+        "deleting": "deleting...",
+        "deleted-succ": "Address deleted successfully",
+        "deleted-failed": "Failed to delete address"
+    },
+    "address-delete": {
+        "deleted": "Address deleted successfully"
+    },
+    "address-step-1": {
+        "city": "City",
+        "address": "Address",
+        "enter": "Enter address detailes",
+        "phone": "phone",
+        "edit": "Update Address Info",
+        "new": "Add a New Address",
+        "next-step": "Next"
+    },
+    "address-step-2": {
+        "find": "Find Your Location",
+        "find-map": "Find My Location",
+        "add": "Add Address",
+        "adding": "adding...",
+        "loactions-error": "Please select a valid location on the map",
+        "updated-succ": "Your Address updates successfully",
+        "added-succ": "Your New Address added successfully"
     }
 }

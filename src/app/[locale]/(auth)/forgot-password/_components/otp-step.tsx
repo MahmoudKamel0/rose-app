@@ -5,7 +5,6 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@components/ui/button";
 import { FORGOT_PASSWORD_STEPS } from "@lib/constants/auth.constants";
-import { Step } from "@lib/types/auth/verfiy";
 import { InputOTP, InputOTPSlot } from "@components/ui/input-otp";
 import { OtpFormData, OtpSchema } from "@lib/schemas/auth/otp.schema";
 import { useTranslations } from "next-intl";
@@ -14,6 +13,7 @@ import { useVerifyOtp } from "../_hooks/use-verify-otp";
 import { toast } from "sonner";
 import ResendOtpButton from "./resend-otp-btn";
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
+import { Step } from "@lib/types/auth/auth";
 
 type OtpStepProps = {
     email: string;
