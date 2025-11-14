@@ -1,4 +1,5 @@
 "use client";
+
 import React from "react";
 import AddressesField from "../addresses-fiels";
 import { AddressesResponse, AddressStepProps } from "@lib/types/end-point-api/addresses";
@@ -7,10 +8,13 @@ import { ADDRESS_STEPS } from "@lib/constants/address-steps.constant";
 import { Frown } from "lucide-react";
 import { useTranslations } from "next-intl";
 
-function AddressesContent({ setStep, setSelectedAddressId }: AddressStepProps & { setSelectedAddressId: (id: string) => void }) {
+export default function AddressesContent({
+    setStep,
+    setSelectedAddressId,
+}: AddressStepProps & { setSelectedAddressId: (id: string) => void }) {
     // Translation
-
     const t = useTranslations("addresses-content");
+
     // Hooks
     const queryClient = useQueryClient();
     const addressesData: AddressesResponse["addresses"] = queryClient.getQueryData(["addresses"]) || [];
@@ -43,5 +47,3 @@ function AddressesContent({ setStep, setSelectedAddressId }: AddressStepProps & 
         </section>
     );
 }
-
-export default AddressesContent;

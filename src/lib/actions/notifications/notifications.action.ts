@@ -5,11 +5,8 @@ import { getDecodeToken } from "@lib/utils/get-decode-token";
 export async function MarkAllNotificationsAsRead() {
     try {
         const token = await getDecodeToken();
-        const headers: Record<string, string> = {
-            "Content-Type": "application/json",
-        };
+        const headers: Record<string, string> = { ...JSON_HEADER };
 
-        // Prefer the standard Authorization header (Bearer token).
         if (token) {
             headers["Authorization"] = `Bearer ${token.accessToken}`;
         }
@@ -31,9 +28,7 @@ import { MarkNotificationAsReadRequest } from "@lib/types/mark-single-notificati
 export async function MarkNotificationAsRead(notificationIds: MarkNotificationAsReadRequest) {
     try {
         const token = await getDecodeToken();
-        const headers: Record<string, string> = {
-            "Content-Type": "application/json",
-        };
+        const headers: Record<string, string> = { ...JSON_HEADER };
 
         // Prefer the standard Authorization header (Bearer token).
         if (token) {
@@ -64,9 +59,7 @@ import { DeleteAllNotificationsRequest } from "@lib/types/end-point-api/delete-a
 export async function DeleteAllNotifications() {
     try {
         const token = await getDecodeToken();
-        const headers: Record<string, string> = {
-            "Content-Type": "application/json",
-        };
+        const headers: Record<string, string> = { ...JSON_HEADER };
 
         // Prefer the standard Authorization header (Bearer token).
         if (token) {
@@ -86,13 +79,12 @@ export async function DeleteAllNotifications() {
 }
 
 import { DeleteSingleNotificationResponse } from "@lib/types/end-point-api/delete-notifications";
+import { JSON_HEADER } from "@lib/constants/shared.constant";
 
 export async function DeleteNotification(notification_id: string) {
     try {
         const token = await getDecodeToken();
-        const headers: Record<string, string> = {
-            "Content-Type": "application/json",
-        };
+        const headers: Record<string, string> = { ...JSON_HEADER };
 
         // Prefer the standard Authorization header (Bearer token).
         if (token) {

@@ -1,16 +1,14 @@
 "use server";
 
+import { JSON_HEADER } from "@lib/constants/shared.constant";
 import { AddressesResponse, AddressReq } from "@lib/types/end-point-api/addresses";
 import { getDecodeToken } from "@lib/utils/get-decode-token";
 
 export async function addUserAddress(address: AddressReq) {
     try {
         const token = await getDecodeToken();
-        const headers: Record<string, string> = {
-            "Content-Type": "application/json",
-        };
+        const headers: Record<string, string> = { ...JSON_HEADER };
 
-        // Prefer the standard Authorization header (Bearer token).
         if (token) {
             headers["Authorization"] = `Bearer ${token.accessToken}`;
         }

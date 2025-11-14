@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Button } from "@components/ui/button";
-import { Trash, Trash2 } from "lucide-react";
+import { Trash, Trash2, X } from "lucide-react";
 import { useDeleteUserAddress } from "../hooks/use-addresses.hook";
 import { toast } from "sonner";
 import { useQueryClient } from "@tanstack/react-query";
@@ -58,14 +58,16 @@ function AddressDelete({ addressId }: AddressDeleteProps) {
 
             {/*  The confirmation dialog */}
             <AlertDialogContent className="h-96 bg-white dark:bg-zinc-800">
-                <AlertDialogCancel className="!hover-none absolute right-2 top-2 flex !h-6 !w-6 items-center justify-center border-none pb-6 pl-2.5 text-xl">
-                    X
+                <AlertDialogCancel className="!hover:bg-none top-2!h-10 absolute right-2 top-2 !h-10 !w-10 border-none pb-6 pl-2.5 text-center">
+                    <div className="">
+                        <X size={20} className="text-3xl" />
+                    </div>
                 </AlertDialogCancel>
                 <div className="flex h-full flex-col items-center gap-16 pt-12">
                     <AlertDialogHeader className="flex flex-col gap-7">
                         <div className="relative flex justify-center">
-                            <div className="absolute left-1/2 top-1/2 z-0 h-24 w-24 -translate-x-1/2 -translate-y-1/2 rounded-full bg-overlay-gray dark:bg-zinc-500"></div>
-                            <div className="z-10 flex h-16 w-16 items-center justify-center rounded-full bg-overlay-gray-2 p-3 text-zinc-900 dark:text-zinc-300">
+                            <div className="bg-overlay-gray absolute left-1/2 top-1/2 z-0 h-24 w-24 -translate-x-1/2 -translate-y-1/2 rounded-full dark:bg-zinc-500"></div>
+                            <div className="bg-overlay-gray-2 z-10 flex h-16 w-16 items-center justify-center rounded-full p-3 text-zinc-900 dark:text-zinc-300">
                                 <Trash className="h-6 w-6" />
                             </div>
                         </div>

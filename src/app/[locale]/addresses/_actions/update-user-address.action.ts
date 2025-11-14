@@ -10,7 +10,6 @@ export async function updateUserAddress({ address, address_id }: { address: Addr
             "Content-Type": "application/json",
         };
 
-        // Prefer the standard Authorization header (Bearer token).
         if (token) {
             headers["Authorization"] = `Bearer ${token.accessToken}`;
         }
@@ -26,6 +25,6 @@ export async function updateUserAddress({ address, address_id }: { address: Addr
         return response;
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (err) {
-        return;
+        return { Error: "Something went wrong" };
     }
 }
