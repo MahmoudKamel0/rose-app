@@ -12,7 +12,7 @@ export async function changePassword(data: ChangePasswordRequest) {
   // Send a PATCH request to the server to change the password
   const res = await fetch(`${process.env.BASE_URL}auth/change-password`, {
     method: "PATCH",
-    headers: {
+    headers: {  
       ...JSON_HEADER,
       Authorization: `Bearer ${token?.accessToken}`,
     },

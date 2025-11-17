@@ -1,8 +1,9 @@
-import React from 'react'
 import ProfileForm from '../_components/profile-form'
+import { getProfileData } from '../_actions/profile.actions';
 
-export default function ProfilePage() {
+export default async function ProfilePage() {
+   const profile = await getProfileData();
   return (
-    <ProfileForm />
+    <ProfileForm profile= {profile} />
   )
 }
