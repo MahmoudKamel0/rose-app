@@ -288,5 +288,19 @@
         "loactions-error": "Please select a valid location on the map",
         "updated-succ": "Your Address updates successfully",
         "added-succ": "Your New Address added successfully"
+    },
+    "dashboard": {
+        "overview": {
+            "first-row": {
+                "total-products": "Total products",
+                "total-orders": "Total orders",
+                "total-categories": "Total categories",
+                "total-revenue": "Total revenue",
+                "all-Categories": "All Categories",
+                "error": "Something went wrong",
+                "products": "Products",
+                "egp": "EGP"
+            }
+        }
     }
 }
