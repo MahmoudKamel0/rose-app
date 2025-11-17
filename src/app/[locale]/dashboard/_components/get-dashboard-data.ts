@@ -30,6 +30,7 @@ export async function getOverallStatistics(): Promise<OverallStatisticsResponseT
         return "Something went wrong";
     }
 }
+
 export async function getAllCategories(): Promise<AllCategoriesResponseType | string> {
     const token = await getDecodeToken();
     const headers: Record<string, string> = { ...JSON_HEADER };
