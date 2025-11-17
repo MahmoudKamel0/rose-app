@@ -10,7 +10,7 @@ export default async function AllCategory() {
     const data: AllCategoriesResponseType | string = await getAllCategories();
 
     if (typeof data == "string") {
-        return <div> {data}</div>;
+        return <div className="flex items-center justify-center text-red-600">{data}</div>;
     }
 
     return (

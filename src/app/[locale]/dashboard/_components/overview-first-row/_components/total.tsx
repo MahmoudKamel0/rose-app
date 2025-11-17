@@ -21,7 +21,7 @@ export default async function Total() {
     // Functions
     const data: OverallStatisticsResponseType | string = await getOverallStatistics();
     if (typeof data == "string") {
-        return <div>{data}</div>;
+        return <div className="flex items-center justify-center text-red-600">{data}</div>;
     }
 
     function formatNumber(num: number) {
