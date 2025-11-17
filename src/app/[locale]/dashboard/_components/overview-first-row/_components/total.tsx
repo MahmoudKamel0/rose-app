@@ -1,8 +1,8 @@
 import React from "react";
-import { getOverallStatistics } from "../../get-dashboard-data";
 import { CircleDollarSign, ClipboardList, LucideIcon, LucidePackage, ReceiptText } from "lucide-react";
 import { cn } from "@lib/utils/cn.util";
 import { getTranslations } from "next-intl/server";
+import { getOverallStatistics } from "@lib/apis/dashboard/statistics/get-overall-statistics.api";
 
 interface OverallCardItem {
     id: number;
