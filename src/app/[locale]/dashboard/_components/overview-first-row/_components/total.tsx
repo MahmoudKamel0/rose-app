@@ -1,7 +1,7 @@
 import React from "react";
 import { CircleDollarSign, ClipboardList, LucideIcon, LucidePackage, ReceiptText } from "lucide-react";
 import { cn } from "@lib/utils/cn.util";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { getOverallStatistics } from "@lib/apis/dashboard/statistics/get-overall-statistics.api";
 
 interface OverallCardItem {
@@ -17,16 +17,18 @@ interface OverallCardItem {
 export default async function Total() {
     // Translation
     const t = await getTranslations("dashboard.overview.first-row");
+    const locale = await getLocale();
 
     // Functions
     const data: OverallStatisticsResponseType | string = await getOverallStatistics();
+
     if (typeof data == "string") {
         return <div className="flex items-center justify-center text-red-600">{data}</div>;
     }
 
     function formatNumber(num: number) {
         const newNum = Math.floor(num);
-        return new Intl.NumberFormat("en-US").format(newNum);
+        return new Intl.NumberFormat(locale).format(newNum);
     }
 
     // Variables
@@ -62,7 +64,7 @@ export default async function Total() {
     ];
 
     return (
-        <div className="w-total flex flex-wrap gap-4 rounded-2xl bg-white p-6 dark:bg-zinc-800">
+        <div className="flex w-total flex-wrap gap-4 rounded-2xl bg-white p-6 dark:bg-zinc-800">
             {overall.map((item) => (
                 <div key={item.id} className={cn(`w-52 rounded-2xl p-4`, item.bg, item.color)}>
                     {/* Icon */}
