@@ -274,5 +274,18 @@
         "rating": "Rating",
         "ratings": "Ratings",
         "productsYouMayLike": "Products You May Like"
+    },
+    "ordersStatus": {
+        "title": "Orders Status",
+        "completed": "Completed",
+        "inProgress": "In Progress",
+        "canceled": "Canceled",
+        "fetchError": "Failed to load statistics"
+    },
+    "revenueChart": {
+        "title": "Revenue",
+        "monthly": "Monthly",
+        "weekly": "Last Week",
+        "fetchError": "Failed to load revenue statistics"
     }
 }

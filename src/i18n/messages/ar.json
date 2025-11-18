@@ -269,5 +269,18 @@
         "rating": "التقييم",
         "ratings": "تقييمات",
         "productsYouMayLike": "منتجات ذات صلة"
+    },
+    "ordersStatus": {
+        "title": "حالة الطلبات",
+        "completed": "مكتملة",
+        "inProgress": "قيد التنفيذ",
+        "canceled": "ملغاة",
+        "fetchError": "فشل في تحميل الإحصائيات"
+    },
+    "revenueChart": {
+        "title": "الإيرادات",
+        "monthly": "شهريًا",
+        "weekly": "الأسبوع الماضي",
+        "fetchError": "فشل في تحميل إحصائيات الإيرادات"
     }
 }
