@@ -279,5 +279,19 @@
         "loaction-error": "يرجى اختيار موقع صالح على الخريطة",
         "updated-succ": "تم تحديث عنوانك بنجاح",
         "added-succ": "تمت إضافة عنوانك الجديد بنجاح"
+    },
+    "dashboard": {
+        "overview": {
+            "first-row": {
+                "total-products": "إجمالي المنتجات",
+                "total-orders": "إجمالي الطلبات",
+                "total-categories": "إجمالي الفئات",
+                "total-revenue": "إجمالي الإيرادات",
+                "all-Categories": "كل الفئات",
+                "error": "حدث خطأ ما",
+                "products": "منتجات",
+                "egp": "ج. م"
+            }
+        }
     }
 }
