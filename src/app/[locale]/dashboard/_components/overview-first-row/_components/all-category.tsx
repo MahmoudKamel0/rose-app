@@ -7,10 +7,10 @@ export default async function AllCategory() {
     const t = await getTranslations("dashboard.overview.first-row");
 
     // Function
-    const data: AllCategoriesResponseType | string = await getAllCategories();
+    const data: ApiResponse<AllCategoriesResponseType> = await getAllCategories();
 
-    if (typeof data == "string") {
-        return <div className="flex items-center justify-center text-red-600">{data}</div>;
+    if ("error" in data) {
+        return <div className="flex items-center justify-center text-red-600">{data.error}</div>;
     }
 
     return (

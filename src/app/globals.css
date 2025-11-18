@@ -26,7 +26,7 @@
 
 /* Firefox */
 .custom-scroll {
-    scrollbar-width: thin;
+    scrollbar-width: none;
     scrollbar-color: #c1c1c1 transparent;
 }
 

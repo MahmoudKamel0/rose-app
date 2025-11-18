@@ -1,7 +1,7 @@
 import { JSON_HEADER } from "@lib/constants/shared.constant";
 import { getDecodeToken } from "@lib/utils/get-decode-token";
 
-export async function getOverallStatistics(): Promise<OverallStatisticsResponseType | string> {
+export async function getOverallStatistics(): Promise<ApiResponse<OverallStatisticsResponseType>> {
     const token = await getDecodeToken();
     const headers: Record<string, string> = { ...JSON_HEADER };
 
@@ -13,20 +13,17 @@ export async function getOverallStatistics(): Promise<OverallStatisticsResponseT
         const res = await fetch(`${process.env.BASE_URL!}statistics/overall`, {
             method: "GET",
             headers,
-            cache: "no-store",
         });
 
-        if (!res.ok) return "Something went wrong";
+        if (!res.ok) return { error: "Something went wrong" };
 
         const response: ApiResponse<OverallStatisticsResponseType> = await res.json();
         if ("error" in response) {
-            return "Something went wrong";
+            return { error: "Something went wrong" };
         }
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        const { message, ...rest } = response;
 
-        return rest;
+        return response;
     } catch {
-        return "Something went wrong";
+        return { error: "Something went wrong" };
     }
 }

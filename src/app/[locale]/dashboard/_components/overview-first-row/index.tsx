@@ -1,15 +1,15 @@
 import React, { Suspense } from "react";
-import Total from "./_components/total";
 import AllCategory from "./_components/all-category";
-import Loading from "@components/shared/loading";
+import OverallStatistics from "./_components/overall-statistics";
+import StatisictsSkeleton from "@components/skeletons/statisicts/statisicts.skeleton";
 
 export default function OverviewFirstRow() {
     return (
         <div className="flex gap-6">
-            <Suspense fallback={<Loading />}>
-                <Total />
+            <Suspense fallback={<StatisictsSkeleton />}>
+                <OverallStatistics />
             </Suspense>
-            <Suspense fallback={<Loading />}>
+            <Suspense fallback={<StatisictsSkeleton />}>
                 <AllCategory />
             </Suspense>
         </div>

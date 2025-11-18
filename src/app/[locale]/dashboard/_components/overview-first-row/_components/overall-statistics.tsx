@@ -14,16 +14,16 @@ interface OverallCardItem {
     extra?: string;
 }
 
-export default async function Total() {
+export default async function OverallStatistics() {
     // Translation
     const t = await getTranslations("dashboard.overview.first-row");
     const locale = await getLocale();
 
     // Functions
-    const data: OverallStatisticsResponseType | string = await getOverallStatistics();
+    const data: ApiResponse<OverallStatisticsResponseType> = await getOverallStatistics();
 
-    if (typeof data == "string") {
-        return <div className="flex items-center justify-center text-red-600">{data}</div>;
+    if ("error" in data) {
+        return <div className="flex items-center justify-center text-red-600">{data.error}</div>;
     }
 
     function formatNumber(num: number) {
