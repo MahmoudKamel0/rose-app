@@ -304,7 +304,10 @@
             }
         }
     },
-
+    "products_statistics": {
+        "loadingTopSelling": "Loading Top Selling Products...",
+        "loadingLowStock": "Loading Low Stock Products..."
+    },
     "low_stock": {
         "title": "Low stock products",
         "empty": "No low stock products",
