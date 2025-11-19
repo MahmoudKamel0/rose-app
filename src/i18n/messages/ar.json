@@ -279,5 +279,21 @@
         "loaction-error": "يرجى اختيار موقع صالح على الخريطة",
         "updated-succ": "تم تحديث عنوانك بنجاح",
         "added-succ": "تمت إضافة عنوانك الجديد بنجاح"
+    },
+        "change-password": {
+        "old-password": "كلمة المرور الحالية",
+        "new-password": "كلمة المرور الجديدة",
+        "confirm-new-password": "تأكيد كلمة المرور الجديدة",
+        "updating": "جاري التحديث...",
+        "change-password": "تغيير كلمة المرور",
+        "password-updated-successfully": "تم تحديث كلمة المرور بنجاح!",
+        "failed-update-password": "فشل في تحديث كلمة المرور"
+    },
+    "profile": {
+        "logout": "تسجيل الخروج",
+        "my-account": "حسابي",
+        "change-password": "تغيير كلمة المرور",
+        "update-profile": "تحديث الملف الشخصي",
+        "account-settings": "تعديل الملف الشخصي"
     }
 }
