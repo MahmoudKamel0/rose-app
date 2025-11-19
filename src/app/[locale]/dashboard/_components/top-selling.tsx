@@ -1,5 +1,6 @@
 import { Product } from "@lib/types/dashboard/product-statistics";
 import { cn } from "@lib/utils/cn.util";
+import { useTranslations } from "next-intl";
 
 interface TopSellingProps {
     products: Product[];
@@ -13,10 +14,11 @@ const gradientClasses = [
 ];
 
 export default function TopSelling({ products }: TopSellingProps) {
+    const t = useTranslations("top_selling");
     return (
         <div className="top-selling flex h-441 w-[536px] flex-col gap-6 rounded-2xl bg-white p-6 text-zinc-800">
             {/* Component title */}
-            <h2 className="title text-2xl font-semibold capitalize">top selling products</h2>
+            <h2 className="title text-2xl font-semibold capitalize"> {t("title")}</h2>
 
             {/* Scrollable list of products */}
             <div className="list flex flex-col gap-2.5 overflow-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-[#7b1e24] hover:scrollbar-thumb-[#5a1218]">
@@ -36,9 +38,10 @@ export default function TopSelling({ products }: TopSellingProps) {
                         </h3>
 
                         {/* Number of sales */}
-                        <h3 className="text-sm font-bold capitalize">
+                        {/* <h3 className="text-sm font-bold capitalize">
                             {item.sold} <span className="font-medium">sales</span>
-                        </h3>
+                        </h3> */}
+                        <h3 className="text-sm font-bold capitalize"> {t("sales", { count: item.sold ?? 0 })}</h3>
                     </div>
                 ))}
             </div>
