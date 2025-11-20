@@ -1,7 +1,7 @@
 import AsidebarContent from "./_components/asidebar-content";
 import AsidebarFooter from "./_components/asidebar-footer";
 import AsidebarHeader from "./_components/asidebar-header";
-import { Sidebar, SidebarSeparator } from "@components/ui/sidebar";
+import { Sidebar } from "@components/ui/sidebar";
 
 /**
  * Asidebar
