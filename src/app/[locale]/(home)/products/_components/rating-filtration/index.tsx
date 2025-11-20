@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
-import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import ResetButton from "../common/reset-button";
 import StarItem from "./components/star-item";
+import { useSearchParams, useRouter, usePathname } from "next/navigation";
+import React, { useState } from "react";
 
 export default function RatingFilter() {
     // Next.js navigation hooks

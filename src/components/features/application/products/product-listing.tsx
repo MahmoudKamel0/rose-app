@@ -1,8 +1,8 @@
-import { getAllProducts } from "@lib/apis/products/get-all-products.api";
-import ProductItem from "./product-item";
 import Pagination from "../pagination";
-import { Suspense } from "react";
+import ProductItem from "./product-item";
 import { ProductItemSkeletonCard } from "@components/skeletons/product-item.skeleton";
+import { getAllProducts } from "@lib/apis/products/get-all-products.api";
+import { Suspense } from "react";
 
 /**
  * ProductListing component

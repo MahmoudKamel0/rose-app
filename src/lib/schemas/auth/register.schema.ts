@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl";
 import { z } from "zod";
+
 export const useRegisterSchema = () => {
     const t = useTranslations();
     return z

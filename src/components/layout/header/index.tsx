@@ -1,5 +1,5 @@
-import TopHeader from "./components/top-header";
 import NavHeader from "./components/nav-header";
+import TopHeader from "./components/top-header";
 
 /**
  * Header Component

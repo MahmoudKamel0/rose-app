@@ -1,5 +1,5 @@
-import AboutImages from "./components/about-images";
 import AboutContent from "./components/about-content";
+import AboutImages from "./components/about-images";
 
 export default function AboutSection() {
     return (

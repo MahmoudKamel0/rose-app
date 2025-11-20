@@ -1,8 +1,7 @@
-import { NextRequest } from "next/server";
+import { JSON_HEADER } from "@lib/constants/shared.constant";
 import { getToken } from "next-auth/jwt";
 import { cookies } from "next/headers";
-import { JSON_HEADER } from "@lib/constants/shared.constant";
-
+import { NextRequest } from "next/server";
 
 /**
  * Retrieves authentication headers to be used with API requests.
@@ -18,10 +17,10 @@ export async function getAuthHeaders(): Promise<Record<string, string>> {
     const token = await getToken({
         req: {
             headers: {
-                cookie: cookies().toString()
-            }
+                cookie: cookies().toString(),
+            },
         } as unknown as NextRequest,
-        secret: process.env.NEXTAUTH_SECRET
+        secret: process.env.NEXTAUTH_SECRET,
     });
 
     return {
@@ -29,4 +28,3 @@ export async function getAuthHeaders(): Promise<Record<string, string>> {
         Authorization: `Bearer ${token?.accessToken}` || "",
     };
 }
-

@@ -1,7 +1,7 @@
-import HighlightedHeading from "@components/shared/highlighted-heading";
 import TabsSection from "./tabs";
-import { getOccasions } from "@lib/apis/most-popular.api";
 import BtnSecondary from "@components/shared/btn-secondary";
+import HighlightedHeading from "@components/shared/highlighted-heading";
+import { getOccasions } from "@lib/apis/most-popular.api";
 import { OccasionProps } from "@lib/types/components";
 
 export default async function MostPopularSection() {

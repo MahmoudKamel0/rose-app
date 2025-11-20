@@ -1,7 +1,7 @@
-import React, { Suspense } from "react";
 import AllCategory from "./_components/all-category";
 import OverallStatistics from "./_components/overall-statistics";
 import StatisictsSkeleton from "@components/skeletons/statisicts/statisicts.skeleton";
+import { Suspense } from "react";
 
 export default function OverviewFirstRow() {
     return (

@@ -1,4 +1,4 @@
-export = App
+export = App;
 namespace App {
     /**
      * Interfaces related to layout components.
@@ -8,11 +8,11 @@ namespace App {
     export interface LocaleLayoutProps {
         children: React.ReactNode;
         params: Promise<{ locale: string }>;
-    };
+    }
 
     export interface ContainerProps {
-        children?: ReactNode,
-        className?: string
+        children?: ReactNode;
+        className?: string;
     }
 
     /**

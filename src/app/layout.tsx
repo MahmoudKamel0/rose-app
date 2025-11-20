@@ -1,5 +1,5 @@
-import { ReactNode } from "react";
 import "./globals.css";
+import { ReactNode } from "react";
 
 /**
  * RootLayout is the top-level layout component for the application.

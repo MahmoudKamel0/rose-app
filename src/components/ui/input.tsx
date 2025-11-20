@@ -1,7 +1,7 @@
 "use client";
-import * as React from "react";
 import { cn } from "@/lib/utils/cn.util";
 import { INPUT_STYLE } from "@lib/constants/style.constant";
+import * as React from "react";
 
 const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(({ className, type, ...props }, ref) => {
     // State

@@ -1,12 +1,12 @@
 "use client";
 
-import { FORGOT_PASSWORD_STEPS } from "@lib/constants/auth.constants";
-import { useState } from "react";
-import React from "react";
 import EmailStep from "../email-step";
 import OtpStep from "../otp-step";
 import ResetPassword from "../reset-password";
+import { FORGOT_PASSWORD_STEPS } from "@lib/constants/auth.constants";
 import { Step } from "@lib/types/auth/auth";
+import { useState } from "react";
+import React from "react";
 
 export default function ForgotPasswordLayout() {
     // Manage  email state

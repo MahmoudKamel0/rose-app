@@ -1,8 +1,8 @@
+import ProductItem from "../application/products/product-item";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import ProductCard from "@components/shared/product-card";
 import { getProductsByOccasion } from "@lib/apis/most-popular.api";
-import ProductItem from "../application/products/product-item";
 
 /*declare occasion*/
 interface Occasion {

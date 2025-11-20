@@ -1,16 +1,16 @@
 "use client";
 
-import * as React from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { AuthError } from "../../_components/auth-error";
+import { useResetPassword } from "../_hooks/use-reset-password";
+import { Button } from "@/components/ui/button";
 import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CreateNewPasswordSchema, CreateNewPasswordValues } from "@lib/schemas/auth/forget-password-schema";
-import { useResetPassword } from "../_hooks/use-reset-password";
-import { AuthError } from "../../_components/auth-error";
-import { useTranslations } from "next-intl";
 import { Link } from "@i18n/navigation";
+import { CreateNewPasswordSchema, CreateNewPasswordValues } from "@lib/schemas/auth/forget-password-schema";
+import { useTranslations } from "next-intl";
+import * as React from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "sonner";
 
 // Forget password step: Create a new password

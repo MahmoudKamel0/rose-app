@@ -1,5 +1,5 @@
-import { INPUT_STYLE } from "@lib/constants/style.constant";
 import { Input } from "../ui/input";
+import { INPUT_STYLE } from "@lib/constants/style.constant";
 import { cn } from "@lib/utils/cn.util";
 import { Search } from "lucide-react";
 import React from "react";

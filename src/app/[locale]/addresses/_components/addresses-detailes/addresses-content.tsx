@@ -1,12 +1,12 @@
 "use client";
 
-import React from "react";
 import AddressesField from "../addresses-fiels";
+import { ADDRESS_STEPS } from "@lib/constants/address-steps.constant";
 import { AddressesResponse, AddressStepProps } from "@lib/types/end-point-api/addresses";
 import { useQueryClient } from "@tanstack/react-query";
-import { ADDRESS_STEPS } from "@lib/constants/address-steps.constant";
 import { Frown } from "lucide-react";
 import { useTranslations } from "next-intl";
+import React from "react";
 
 export default function AddressesContent({
     setStep,

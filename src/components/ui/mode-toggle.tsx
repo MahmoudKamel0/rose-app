@@ -1,7 +1,7 @@
 "use client";
-import * as React from "react";
-import { useTheme } from "next-themes";
 import { cn } from "@lib/utils/cn.util";
+import { useTheme } from "next-themes";
+import * as React from "react";
 
 export function ModeToggle() {
     const { setTheme } = useTheme();

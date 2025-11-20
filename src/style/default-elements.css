@@ -1,16 +1,22 @@
 /* Default Elements Styles
    This file contains base styling for all default HTML elements */
 
-a, span, button { /* For best control when used element */
+a,
+span,
+button {
+    /* For best control when used element */
     display: inline-block;
 }
 
-a, button { /* Set default cursor style for clickable element */
+a,
+button {
+    /* Set default cursor style for clickable element */
     cursor: pointer;
 }
 
 input[type="password"]::-ms-reveal,
-input[type="password"]::-ms-clear { /* remove default eye browser */
+input[type="password"]::-ms-clear {
+    /* remove default eye browser */
     display: none;
 }
 

@@ -1,6 +1,6 @@
-import React from "react";
 import ProductDetailes from "./_components/product-detailes";
 import Reviews from "@components/features/reviews-section/reviews-section";
+import React from "react";
 
 export default async function ProductId({ params }: { params: { productId: string } }) {
     const { productId } = params;

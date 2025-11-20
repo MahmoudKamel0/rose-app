@@ -1,8 +1,8 @@
-import Image from "next/image";
 import { RatingStars } from "@components/shared/rating-stars";
 import { fetchProductReviews } from "@lib/apis/product-reviews.api";
 import { ReviewsSectionProps, ReviewsSuccessResponse } from "@lib/types/review-product";
 import { getTranslations, getFormatter } from "next-intl/server";
+import Image from "next/image";
 
 export default async function ReviewsList({ productId }: ReviewsSectionProps) {
     // Translation & Formatter

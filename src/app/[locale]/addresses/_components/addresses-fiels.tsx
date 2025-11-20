@@ -1,9 +1,9 @@
+import AddressDelete from "./address-delete";
+import { Button } from "@components/ui/button";
+import { AddressStepProps } from "@lib/types/end-point-api/addresses";
 import { cn } from "@lib/utils/cn.util";
 import { MapPin, PenLine, Phone } from "lucide-react";
 import React from "react";
-import AddressDelete from "./address-delete";
-import { AddressStepProps } from "@lib/types/end-point-api/addresses";
-import { Button } from "@components/ui/button";
 
 function AddressesField({
     title,

@@ -1,19 +1,19 @@
 "use client";
 
-import * as React from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { AuthError } from "../../_components/auth-error";
+import { useAddForgetPasswordEmail } from "../_hooks/use-add-forget-password-email";
+import { Button } from "@/components/ui/button";
 import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { EmailForgetPasswordSchema, EmailForgetPasswordValue } from "@lib/schemas/auth/forget-password-schema";
-import { useAddForgetPasswordEmail } from "../_hooks/use-add-forget-password-email";
-import { FORGOT_PASSWORD_STEPS } from "@lib/constants/auth.constants";
-import { AuthError } from "../../_components/auth-error";
-import { useTranslations } from "next-intl";
 import { Link } from "@i18n/navigation";
-import { toast } from "sonner";
+import { FORGOT_PASSWORD_STEPS } from "@lib/constants/auth.constants";
+import { EmailForgetPasswordSchema, EmailForgetPasswordValue } from "@lib/schemas/auth/forget-password-schema";
 import { Step } from "@lib/types/auth/auth";
+import { useTranslations } from "next-intl";
+import * as React from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { toast } from "sonner";
 
 // component handles first step of "forgot password" flow
 export default function ForgetPasswordEmail({

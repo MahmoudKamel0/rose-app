@@ -1,14 +1,14 @@
 "use client";
-import React, { useState } from "react";
-import AddressesHeader from "./addresses-header";
+import { useAddresses } from "../../hooks/use-addresses.hook";
+import EditAddress from "../edit-address";
+import NewAddress from "../new-address";
 import AddressesContent from "./addresses-content";
+import AddressesHeader from "./addresses-header";
+import { AuthError } from "@app/[locale]/(auth)/_components/auth-error";
+import PageLoader from "@components/shared/page-loader";
 import { ADDRESS_STEPS } from "@lib/constants/address-steps.constant";
 import { AddressSteps } from "@lib/types/end-point-api/addresses";
-import NewAddress from "../new-address";
-import EditAddress from "../edit-address";
-import { useAddresses } from "../../hooks/use-addresses.hook";
-import PageLoader from "@components/shared/page-loader";
-import { AuthError } from "@app/[locale]/(auth)/_components/auth-error";
+import React, { useState } from "react";
 
 function AddressesDetailes() {
     // Uses state

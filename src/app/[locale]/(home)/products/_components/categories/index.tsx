@@ -1,12 +1,12 @@
-"use client"; 
+"use client";
 
-import useInfiniteScroll from "react-infinite-scroll-hook"; 
+import { useInfiniteCategories } from "../../_hooks/use-categories";
+import ResetButton from "../common/reset-button";
+import CategoryItem from "./components/category-item";
+import Loading from "@components/shared/loading";
 import { usePathname, useRouter } from "@i18n/navigation";
-import { useSearchParams } from "next/navigation"; 
-import CategoryItem from "./components/category-item"; 
-import Loading from "@components/shared/loading"; 
-import ResetButton from "../common/reset-button"; 
-import { useInfiniteCategories } from "../../_hooks/use-categories"; 
+import { useSearchParams } from "next/navigation";
+import useInfiniteScroll from "react-infinite-scroll-hook";
 
 export default function CategoriesFilters() {
     // Hooks for navigation and reading the current URL.
@@ -15,14 +15,7 @@ export default function CategoriesFilters() {
     const searchParams = useSearchParams();
 
     // Fetch categories with pagination using React Query's infinite query.
-    const {
-        data,
-        fetchNextPage,
-        hasNextPage,
-        isFetchingNextPage,
-        isLoading,
-        isError,
-    } = useInfiniteCategories();
+    const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, isError } = useInfiniteCategories();
 
     // Flatten the paginated data into a single array of categories.
     const categories = data?.pages.flatMap((page) => page.categories) ?? [];
@@ -57,10 +50,10 @@ export default function CategoriesFilters() {
     const [sentryRef] = useInfiniteScroll({
         loading: isFetchingNextPage,
         hasNextPage: !!hasNextPage,
-        onLoadMore: fetchNextPage, 
-        disabled: isLoading || isError, 
-        rootMargin: "0px 0px 400px 0px", 
-        delayInMs: 3000, 
+        onLoadMore: fetchNextPage,
+        disabled: isLoading || isError,
+        rootMargin: "0px 0px 400px 0px",
+        delayInMs: 3000,
     });
 
     return (

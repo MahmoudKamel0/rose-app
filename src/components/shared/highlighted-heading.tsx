@@ -1,5 +1,5 @@
-import React from "react";
 import { cn } from "@lib/utils/cn.util";
+import React from "react";
 
 // ✅ Props type
 type HighlightedHeadingProps = {

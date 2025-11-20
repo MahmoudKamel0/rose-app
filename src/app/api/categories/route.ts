@@ -1,4 +1,3 @@
-
 import { CategoriesResponse } from "@app/[locale]/(home)/products/_types/categories";
 import { NextResponse } from "next/server";
 

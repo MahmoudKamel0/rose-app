@@ -1,10 +1,10 @@
 "use client";
-import { NEW_ADDRESS_STEPS } from "@lib/constants/address-steps.constant";
-import { AddressStepProps, NewAddressStepProps, NewAddressSteps } from "@lib/types/end-point-api/addresses";
-import React, { useState } from "react";
 import NewAddressDetailesStep from "./new-address-detailes-step";
 import NewAddressLocationStep from "./new-address-location-step";
+import { NEW_ADDRESS_STEPS } from "@lib/constants/address-steps.constant";
+import { AddressStepProps, NewAddressStepProps, NewAddressSteps } from "@lib/types/end-point-api/addresses";
 import { useTranslations } from "next-intl";
+import React, { useState } from "react";
 
 export default function NewAddress({ setStep }: AddressStepProps) {
     // Translations

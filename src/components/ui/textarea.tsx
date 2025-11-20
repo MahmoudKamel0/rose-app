@@ -1,6 +1,6 @@
-import * as React from "react";
 import { INPUT_STYLE } from "@lib/constants/style.constant";
 import { cn } from "@lib/utils/cn.util";
+import * as React from "react";
 
 /**
  * Textarea component

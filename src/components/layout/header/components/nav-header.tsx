@@ -1,9 +1,9 @@
 "use client";
+import { Link, usePathname } from "@i18n/navigation";
 import { getNavLinks } from "@lib/constants/component-ui.constant";
 import { cn } from "@lib/utils/cn.util";
-import { Link, usePathname } from "@i18n/navigation";
-import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
+import { useEffect, useState } from "react";
 
 /**
  * NavHeader

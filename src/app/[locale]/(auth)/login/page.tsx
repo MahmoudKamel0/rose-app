@@ -1,8 +1,6 @@
 import LoginForm from "./_components/login-form";
-
-import { getTranslations } from "next-intl/server";
-
 import { Link } from "@/i18n/navigation";
+import { getTranslations } from "next-intl/server";
 
 export default async function Page() {
     const t = await getTranslations("login-page");

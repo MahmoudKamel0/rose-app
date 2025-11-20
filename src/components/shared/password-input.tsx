@@ -1,9 +1,9 @@
 "use client";
-import { EyeIcon, EyeOff } from "lucide-react";
 import { Input } from "@components/ui/input";
-import React, { useState } from "react";
-import { cn } from "@lib/utils/cn.util";
 import { INPUT_STYLE } from "@lib/constants/style.constant";
+import { cn } from "@lib/utils/cn.util";
+import { EyeIcon, EyeOff } from "lucide-react";
+import React, { useState } from "react";
 
 /**
  * PasswordInput

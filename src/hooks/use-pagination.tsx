@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useCallback, useMemo, useEffect } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
+import { useState, useCallback, useMemo, useEffect } from "react";
 
 interface PaginationReturn {
     currentPage: number;
@@ -24,7 +24,8 @@ export function usePagination({ totalPages, pageParamName = "page", siblingCount
     const router = useRouter(); // initialize router from Next.js navigation
     const searchParams = useSearchParams(); // get URL search parameters
 
-    const getPageFromUrl = () => { // fetch the current page number from URL
+    const getPageFromUrl = () => {
+        // fetch the current page number from URL
         const param = searchParams.get(pageParamName);
         if (!param) return 1;
 
@@ -36,14 +37,16 @@ export function usePagination({ totalPages, pageParamName = "page", siblingCount
 
     const [currentPage, setCurrentPage] = useState(getPageFromUrl()); // state management for current page
 
-    useEffect(() => { // synchronize currentPage state with the URL
+    useEffect(() => {
+        // synchronize currentPage state with the URL
         const urlPage = getPageFromUrl();
         if (urlPage !== currentPage) {
             setCurrentPage(urlPage);
         }
     }, [searchParams]);
 
-    const updateUrl = (page: number) => { // update the URL with new page value
+    const updateUrl = (page: number) => {
+        // update the URL with new page value
         const params = new URLSearchParams(searchParams.toString());
 
         if (page === 1) {
@@ -56,7 +59,8 @@ export function usePagination({ totalPages, pageParamName = "page", siblingCount
         router.push(newUrl, { scroll: false });
     };
 
-    const handlePageChange = useCallback( // handle going to a specific page
+    const handlePageChange = useCallback(
+        // handle going to a specific page
         (page: number) => {
             if (page >= 1 && page <= totalPages && page !== currentPage) {
                 setCurrentPage(page);
@@ -66,19 +70,22 @@ export function usePagination({ totalPages, pageParamName = "page", siblingCount
         [currentPage, totalPages]
     );
 
-    const goToPreviousPage = useCallback(() => { // go to previous page
+    const goToPreviousPage = useCallback(() => {
+        // go to previous page
         if (currentPage > 1) {
             handlePageChange(currentPage - 1);
         }
     }, [currentPage, handlePageChange]);
 
-    const goToNextPage = useCallback(() => { // go to next page
+    const goToNextPage = useCallback(() => {
+        // go to next page
         if (currentPage < totalPages) {
             handlePageChange(currentPage + 1);
         }
     }, [currentPage, totalPages, handlePageChange]);
 
-    const jumpBackward = useCallback( // jump backward by a number of pages
+    const jumpBackward = useCallback(
+        // jump backward by a number of pages
         (steps = 10) => {
             const newPage = Math.max(1, currentPage - steps);
             handlePageChange(newPage);
@@ -86,7 +93,8 @@ export function usePagination({ totalPages, pageParamName = "page", siblingCount
         [currentPage, handlePageChange]
     );
 
-    const jumpForward = useCallback( // jump forward by a number of pages
+    const jumpForward = useCallback(
+        // jump forward by a number of pages
         (steps = 10) => {
             const newPage = Math.min(totalPages, currentPage + steps);
             handlePageChange(newPage);
@@ -94,7 +102,8 @@ export function usePagination({ totalPages, pageParamName = "page", siblingCount
         [currentPage, totalPages, handlePageChange]
     );
 
-    const pageRange = useMemo(() => { // calculate visible range of page numbers
+    const pageRange = useMemo(() => {
+        // calculate visible range of page numbers
         if (totalPages === 1) return [1];
 
         if (totalPages <= 4) {
@@ -111,17 +120,20 @@ export function usePagination({ totalPages, pageParamName = "page", siblingCount
 
         pages.push(1);
 
-        if (needLeftDots) { // add left ellipsis if needed
+        if (needLeftDots) {
+            // add left ellipsis if needed
             pages.push("...");
         }
 
-        for (let i = leftSide; i <= rightSide; i++) { // add range of middle pages
+        for (let i = leftSide; i <= rightSide; i++) {
+            // add range of middle pages
             if (i !== 1 && i !== totalPages) {
                 pages.push(i);
             }
         }
 
-        if (needRightDots) { // add right ellipsis if needed
+        if (needRightDots) {
+            // add right ellipsis if needed
             pages.push("...");
         }
 
@@ -130,7 +142,8 @@ export function usePagination({ totalPages, pageParamName = "page", siblingCount
         return pages;
     }, [currentPage, totalPages, siblingCount]);
 
-    return { // expose pagination API
+    return {
+        // expose pagination API
         currentPage,
         totalPages,
         pageRange,

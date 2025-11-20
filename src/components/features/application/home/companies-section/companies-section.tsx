@@ -36,7 +36,7 @@ export default function CompaniesSection() {
         <section className="mt-32 flex min-h-52 flex-col justify-center gap-10 rounded-2xl bg-[#FBEAEA] dark:bg-zinc-700">
             {/*  Section heading */}
             <h2 className="text-center text-4xl font-bold text-[#741C21] dark:text-[#FFC2D0]">
-                {t("heading.before")} <span className="text-[#FF668B] dark:text-[#D75458]">4.5k+</span>  {t("heading.after")}
+                {t("heading.before")} <span className="text-[#FF668B] dark:text-[#D75458]">4.5k+</span> {t("heading.after")}
             </h2>
 
             {/*  Company logos list */}

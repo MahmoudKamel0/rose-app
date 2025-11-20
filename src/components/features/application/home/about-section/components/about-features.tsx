@@ -1,5 +1,5 @@
-import { useTranslations } from "next-intl";
 import FeatureItem from "./feature-item";
+import { useTranslations } from "next-intl";
 
 export default function AboutFeatures() {
     const t = useTranslations("about-section");

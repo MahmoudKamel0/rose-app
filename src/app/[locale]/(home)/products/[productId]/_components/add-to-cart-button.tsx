@@ -1,13 +1,13 @@
 "use client";
-import { Button } from "@components/ui/button";
-import { Check, ShoppingCart } from "lucide-react";
-import React, { useEffect, useState } from "react";
 import { useAddCart, useGetUserCart } from "../_hooks/use-products.hook";
 import { CartRequest } from "../_types/product-id";
-import { toast } from "sonner";
 import { AuthError } from "@app/[locale]/(auth)/_components/auth-error";
+import { Button } from "@components/ui/button";
+import { Check, ShoppingCart } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { useTranslations } from "next-intl";
+import React, { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 type CartType = {
     productId: string;

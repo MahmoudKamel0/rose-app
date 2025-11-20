@@ -1,12 +1,12 @@
-import { getTranslations, setRequestLocale } from "next-intl/server";
-import { hasLocale } from "next-intl";
-import { notFound } from "next/navigation";
-import { routing } from "@i18n/routing";
-import { cn } from "@lib/utils/cn.util";
-import { sarabun, tajawal } from "@fonts";
-import { Metadata } from "next";
 import Providers from "@components/providers";
+import { sarabun, tajawal } from "@fonts";
+import { routing } from "@i18n/routing";
 import { LocaleLayoutProps } from "@lib/types/components";
+import { cn } from "@lib/utils/cn.util";
+import { Metadata } from "next";
+import { hasLocale } from "next-intl";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { notFound } from "next/navigation";
 
 // Generate static parameters for all supported locales, enabling pre-rendering for each language version
 export function generateStaticParams() {

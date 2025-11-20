@@ -1,10 +1,10 @@
 "use client";
 
 import { Testimonial } from "@lib/types/end-point-api/testimonial";
-import { Star } from "lucide-react";
-import Image from "next/image";
-import { useFormatter, useTranslations } from "next-intl";
 import { cn } from "@lib/utils/cn.util";
+import { Star } from "lucide-react";
+import { useFormatter, useTranslations } from "next-intl";
+import Image from "next/image";
 
 export default function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
     //  Translations

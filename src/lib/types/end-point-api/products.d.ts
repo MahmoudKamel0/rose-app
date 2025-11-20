@@ -1,6 +1,6 @@
 import { productSchema, productsResponseSchema } from "@lib/schemas/products";
 
-export = Products
+export = Products;
 
 namespace Products {
     // Define types, interfaces, or documentation for Products API here as needed.
@@ -45,5 +45,3 @@ namespace Products {
     export type ProductSchema = z.infer<typeof productSchema>;
     export type ProductsResponseSchema = z.infer<typeof productsResponseSchema>;
 }
-
-

@@ -1,9 +1,10 @@
 import ProductCard from "@components/shared/product-card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@components/ui/carousel";
-import React from "react";
-import { useTranslations } from "next-intl"; // Next Intl translation
-import { getTranslations } from "next-intl/server";
 import { cn } from "@lib/utils/cn.util";
+import { useTranslations } from "next-intl";
+// Next Intl translation
+import { getTranslations } from "next-intl/server";
+import React from "react";
 
 // Props for EmblaCarousel component
 type EmblaCarouselProps = {

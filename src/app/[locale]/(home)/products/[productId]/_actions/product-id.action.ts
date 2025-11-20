@@ -1,8 +1,8 @@
 "use server";
 
-import { getDecodeToken } from "@lib/utils/get-decode-token";
 import { CartRequest, CartResponse } from "../_types/product-id";
 import { JSON_HEADER } from "@lib/constants/shared.constant";
+import { getDecodeToken } from "@lib/utils/get-decode-token";
 
 export async function addToCart(data: CartRequest) {
     const headers: Record<string, string> = { ...JSON_HEADER };

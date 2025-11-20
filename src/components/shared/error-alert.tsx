@@ -1,5 +1,5 @@
-import { cn } from "@lib/utils/cn.util";
 import { Alert, AlertTitle } from "../ui/alert";
+import { cn } from "@lib/utils/cn.util";
 import { X } from "lucide-react";
 
 export default function ErrorAlert() {

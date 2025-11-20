@@ -1,12 +1,12 @@
 "use client";
-import { NEW_ADDRESS_STEPS } from "@lib/constants/address-steps.constant";
-import { AddressesResponse, AddressStepProps, EditAddressSteps } from "@lib/types/end-point-api/addresses";
-import React, { useState } from "react";
 import NewAddressDetailesStep from "./new-address-detailes-step";
 import NewAddressLocationStep from "./new-address-location-step";
-import { useQueryClient } from "@tanstack/react-query";
 import { StepProgress } from "./step-progress";
+import { NEW_ADDRESS_STEPS } from "@lib/constants/address-steps.constant";
+import { AddressesResponse, AddressStepProps, EditAddressSteps } from "@lib/types/end-point-api/addresses";
+import { useQueryClient } from "@tanstack/react-query";
 import { useTranslations } from "next-intl";
+import React, { useState } from "react";
 
 export default function EditAddress({ setStep, selectedAddressId }: AddressStepProps & { selectedAddressId: string }) {
     // Translations
