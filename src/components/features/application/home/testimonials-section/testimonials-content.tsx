@@ -1,5 +1,5 @@
-import { fetchTestimonials } from "@lib/apis/testimonials.api";
 import TestimonialsCarousel from "./testimonials-carousel";
+import { fetchTestimonials } from "@lib/apis/testimonials.api";
 
 export default async function TestimonialsContent() {
     // Fetch testimonials

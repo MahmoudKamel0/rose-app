@@ -1,6 +1,6 @@
-import Image from "next/image";
-import { cn } from "@lib/utils/cn.util";
 import MainImage from "./main-image";
+import { cn } from "@lib/utils/cn.util";
+import Image from "next/image";
 
 // Reusable rounded styles
 const secondaryRounded = "rounded-tl-[50px] rounded-tr-[100px] rounded-br-[100px] rounded-bl-[50px]";

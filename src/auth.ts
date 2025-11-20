@@ -1,7 +1,7 @@
 import { JSON_HEADER } from "@lib/constants/shared.constant";
+import jwt from "jsonwebtoken";
 import { NextAuthOptions } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
-import jwt from "jsonwebtoken";
 
 export const authOptions: NextAuthOptions = {
     pages: {

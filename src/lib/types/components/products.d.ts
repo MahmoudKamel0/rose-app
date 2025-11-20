@@ -1,9 +1,9 @@
 import { Product } from "../end-point-api/products";
 
-export = Products
+export = Products;
 
 namespace Products {
-    // This section defines type-related comments for Product components, providing context and 
+    // This section defines type-related comments for Product components, providing context and
     // organization for type definitions in product-related files.
 
     /**
@@ -18,24 +18,21 @@ namespace Products {
 
     export interface ProductItemProps {
         // className?: string;
-        product: Product
+        product: Product;
         key?: string | number;
     }
 
     export interface FooterProductItemProps {
         // className?: string;
-        product: Product
+        product: Product;
     }
 
     export interface RateStarsProps {
-        rateCount: number
+        rateCount: number;
     }
 
     export interface PaginationProps {
-        className?: string
-        totalPages: number
+        className?: string;
+        totalPages: number;
     }
 }
-
-
-

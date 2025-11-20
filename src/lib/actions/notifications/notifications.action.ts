@@ -1,5 +1,9 @@
 "use server";
 
+import { JSON_HEADER } from "@lib/constants/shared.constant";
+import { DeleteAllNotificationsRequest } from "@lib/types/end-point-api/delete-all-notifications";
+import { DeleteSingleNotificationResponse } from "@lib/types/end-point-api/delete-notifications";
+import { MarkNotificationAsReadRequest } from "@lib/types/mark-single-notification-as-a-read";
 import { getDecodeToken } from "@lib/utils/get-decode-token";
 
 export async function MarkAllNotificationsAsRead() {
@@ -22,8 +26,6 @@ export async function MarkAllNotificationsAsRead() {
         return { error: `${err || "There's something wrong, please try again"}` };
     }
 }
-
-import { MarkNotificationAsReadRequest } from "@lib/types/mark-single-notification-as-a-read";
 
 export async function MarkNotificationAsRead(notificationIds: MarkNotificationAsReadRequest) {
     try {
@@ -54,8 +56,6 @@ export async function MarkNotificationAsRead(notificationIds: MarkNotificationAs
     }
 }
 
-import { DeleteAllNotificationsRequest } from "@lib/types/end-point-api/delete-all-notifications";
-
 export async function DeleteAllNotifications() {
     try {
         const token = await getDecodeToken();
@@ -77,9 +77,6 @@ export async function DeleteAllNotifications() {
         return { error: `${err || "There's something wrong, please try again"}` };
     }
 }
-
-import { DeleteSingleNotificationResponse } from "@lib/types/end-point-api/delete-notifications";
-import { JSON_HEADER } from "@lib/constants/shared.constant";
 
 export async function DeleteNotification(notification_id: string) {
     try {

@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useCallback, useRef, useState } from "react";
-import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
-import { Button } from "@components/ui/button";
 import PageLoader from "@components/shared/page-loader";
+import { Button } from "@components/ui/button";
+import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
 import { MapPinHouse } from "lucide-react";
 import { useTranslations } from "next-intl";
+import React, { useCallback, useRef, useState } from "react";
 
 // Types
 type Props = {

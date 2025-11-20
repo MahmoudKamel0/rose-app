@@ -1,7 +1,7 @@
-import React from "react";
 import CartHeader from "./_components/cart-header";
 import { Button } from "@components/ui/button";
 import { BrushCleaning } from "lucide-react";
+import React from "react";
 
 export default function layout({ children }: { children: React.ReactNode }) {
     return (

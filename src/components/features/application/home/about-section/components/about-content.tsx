@@ -1,6 +1,6 @@
-import Subtitle from "@components/shared/subtitle";
 import AboutFeatures from "./about-features";
 import BtnPrimary from "@components/shared/btn-primary";
+import Subtitle from "@components/shared/subtitle";
 import { useTranslations } from "next-intl";
 
 export default function AboutContent() {

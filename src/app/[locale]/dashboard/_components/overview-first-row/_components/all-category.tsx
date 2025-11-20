@@ -1,6 +1,6 @@
-import React from "react";
-import { getTranslations } from "next-intl/server";
 import { getAllCategories } from "@lib/apis/dashboard/statistics/get-all-categories.api";
+import { getTranslations } from "next-intl/server";
+import React from "react";
 
 export default async function AllCategory() {
     // Translation

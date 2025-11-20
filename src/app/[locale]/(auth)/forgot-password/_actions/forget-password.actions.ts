@@ -1,8 +1,8 @@
 "use server";
 
-import { EmailForgetPasswordValue } from "@lib/schemas/auth/forget-password-schema";
 import { EmailForgetPasswordResponse } from "../_types/forget-password-email-response";
 import { ResetPasswordRequest, ResetPasswordResponse } from "../_types/reset-password";
+import { EmailForgetPasswordValue } from "@lib/schemas/auth/forget-password-schema";
 
 // Add forget password email
 export async function SendForgetPasswordEmail(data: EmailForgetPasswordValue) {

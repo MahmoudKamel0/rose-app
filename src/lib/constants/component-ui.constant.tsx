@@ -1,5 +1,19 @@
 import { cn } from "@lib/utils/cn.util";
-import { Home, Gift, ClipboardList, PartyPopper, Headset, Info, MapPinHouse, ScrollText, Settings, User } from "lucide-react";
+import {
+    Home,
+    Gift,
+    ClipboardList,
+    PartyPopper,
+    Headset,
+    Info,
+    MapPinHouse,
+    ScrollText,
+    Settings,
+    User,
+    CalendarHeart,
+    LayoutDashboard,
+    Package,
+} from "lucide-react";
 
 // For NavHeader component: (components/layout/header/components/nav-header)
 export const getNavLinks = (t: (key: string) => string) => [
@@ -86,7 +100,35 @@ export const FOOTER_LINKS = [
     { path: "/occasions", name: "occasions" },
     { path: "/contact", name: "contact" },
     { path: "/about", name: "about" },
-    { path: "/terms", name: "terms" }, 
-    { path: "/privacy", name: "privacy" }, 
-    { path: "/faqs", name: "faqs" }, 
+    { path: "/terms", name: "terms" },
+    { path: "/privacy", name: "privacy" },
+    { path: "/faqs", name: "faqs" },
+];
+
+// For links Asidebar dashboard component: (app/dashboard/_components/asidebar)
+export const ASIDEBAR_LINKS = [
+    {
+        id: 1,
+        href: "/dashboard",
+        label: "Overview",
+        icon: <LayoutDashboard size="20" strokeWidth="2.5" />,
+    },
+    {
+        id: 2,
+        href: "/dashboard/categories",
+        label: "Categories",
+        icon: <ClipboardList size="20" strokeWidth="2.5" />,
+    },
+    {
+        id: 3,
+        href: "/dashboard/occasions",
+        label: "Occasions",
+        icon: <CalendarHeart size="20" strokeWidth="2.5" />,
+    },
+    {
+        id: 4,
+        href: "/dashboard/products",
+        label: "Products",
+        icon: <Package size="20" strokeWidth="2.5" />,
+    },
 ];

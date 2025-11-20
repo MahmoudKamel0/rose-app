@@ -1,14 +1,14 @@
-import { SearchInput } from "@components/shared/search-input";
-import { User } from "lucide-react";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/auth";
-import { Link } from "@i18n/navigation";
-import { getTranslations } from "next-intl/server";
-import Image from "next/image";
-import DeliverToClient from "./deliver-to-client";
 import AccountDropdown from "./account-dropdown";
+import DeliverToClient from "./deliver-to-client";
 import ShopHeader from "./shop";
 import ToggleLocale from "./toggle-locale";
+import { authOptions } from "@/auth";
+import { SearchInput } from "@components/shared/search-input";
+import { Link } from "@i18n/navigation";
+import { User } from "lucide-react";
+import { getServerSession } from "next-auth";
+import { getTranslations } from "next-intl/server";
+import Image from "next/image";
 
 /**
  * TopHeader

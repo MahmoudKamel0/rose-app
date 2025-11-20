@@ -1,8 +1,8 @@
+import CategoriesFilters from "./_components/categories";
+import ResetAll from "./_components/common/reset-all";
+import RatingFilter from "./_components/rating-filtration";
 import { Container } from "@components/features/application/container";
 import ProductListing from "@components/features/application/products/product-listing";
-import CategoriesFilters from "./_components/categories";
-import RatingFilter from "./_components/rating-filtration";
-import ResetAll from "./_components/common/reset-all";
 
 type SearchParams = {
     page?: string;

@@ -1,19 +1,19 @@
 "use client";
 
-import { useTranslations } from "next-intl";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useRegister } from "../_hooks/use-register";
-import { PhoneInput } from "@components/ui/phone-input";
+import { Button } from "@/components/ui/button";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { ErrorMessage } from "@components/shared/error-message";
-import { toast } from "sonner";
 import { Link } from "@/i18n/navigation";
+import { ErrorMessage } from "@components/shared/error-message";
+import { PhoneInput } from "@components/ui/phone-input";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { RegisterInput, useRegisterSchema } from "@lib/schemas/auth/register.schema";
+import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 
 export default function RegisterForm() {
     // Hooks

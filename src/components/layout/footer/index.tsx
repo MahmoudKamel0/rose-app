@@ -1,7 +1,7 @@
-import { Container } from "@components/layout/container";
-import LogoCopyright from "./components/logo-copyright";
 import ListLinks from "./components/list-links";
+import LogoCopyright from "./components/logo-copyright";
 import Subscription from "./components/subscription";
+import { Container } from "@components/layout/container";
 
 /**
  * Footer Component

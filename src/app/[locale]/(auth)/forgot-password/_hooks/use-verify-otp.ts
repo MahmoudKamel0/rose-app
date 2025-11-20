@@ -1,7 +1,6 @@
-import { useMutation } from "@tanstack/react-query";
-
 import { verifyOtpAction } from "../_actions/verify-otp-action";
 import { VerifyOtpResponse } from "@lib/types/auth/auth";
+import { useMutation } from "@tanstack/react-query";
 
 export function useVerifyOtp() {
     const { isPending, error, mutateAsync } = useMutation({

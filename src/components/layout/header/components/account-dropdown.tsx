@@ -1,12 +1,12 @@
 "use client";
 
+import { Button } from "@components/ui/button";
+import { Link } from "@i18n/navigation";
 import { ACCOUNT_DROPDOWN_LINKS } from "@lib/constants/component-ui.constant";
 import { cn } from "@lib/utils/cn.util";
 import { ChevronDown, LogOut } from "lucide-react";
-import { Link } from "@i18n/navigation";
-import dynamic from "next/dynamic";
-import { Button } from "@components/ui/button";
 import { signOut } from "next-auth/react";
+import dynamic from "next/dynamic";
 
 // Lazy load dropdown menu components using Next.js dynamic imports.
 // This improves performance by only loading these components when needed (e.g., when the dropdown is used),

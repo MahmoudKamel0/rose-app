@@ -1,8 +1,8 @@
-import { ReactNode } from "react";
-import SideImage from "./_components/layout/side-image";
-import DecorationImage from "./_components/layout/decoration-image";
-import ToggleLocale from "@components/layout/header/toggle-locale";
 import AuthMessage from "./_components/layout/auth-message";
+import DecorationImage from "./_components/layout/decoration-image";
+import SideImage from "./_components/layout/side-image";
+import ToggleLocale from "@components/layout/header/toggle-locale";
+import { ReactNode } from "react";
 
 export default async function AuthLayout({ children }: { children: ReactNode }) {
     return (

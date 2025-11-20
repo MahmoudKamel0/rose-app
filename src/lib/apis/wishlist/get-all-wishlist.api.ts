@@ -9,10 +9,8 @@ export default async function getAllWishlist() {
 
         if (!response.ok) throw new Error("Failed to fetch products");
         return response.json();
-
-    }
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    catch (error) {       
-        throw new Error("Something went wrong while loading products. Please try again later.");    
+    } catch (error) {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        throw new Error("Something went wrong while loading products. Please try again later.");
     }
 }

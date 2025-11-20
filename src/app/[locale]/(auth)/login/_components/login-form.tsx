@@ -1,17 +1,17 @@
 "use client";
 
+import { useLogin } from "../_hooks/use-login";
+import { Link } from "@/i18n/navigation";
+import SubmissionFeedback from "@components/shared/submission-feedback";
+import { Button } from "@components/ui/button";
+import { Form, FormControl, FormField, FormItem, FormMessage } from "@components/ui/form";
+import { Input } from "@components/ui/input";
+import { Label } from "@components/ui/label";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { LoginFields, useLoginSchema } from "@lib/schemas/auth/login.schema";
+import { useTranslations } from "next-intl";
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Form, FormControl, FormField, FormItem, FormMessage } from "@components/ui/form";
-import { Button } from "@components/ui/button";
-import { Link } from "@/i18n/navigation";
-import { Label } from "@components/ui/label";
-import { Input } from "@components/ui/input";
-import { useLogin } from "../_hooks/use-login";
-import { useTranslations } from "next-intl";
-import SubmissionFeedback from "@components/shared/submission-feedback";
 
 export default function LoginForm() {
     // Translation

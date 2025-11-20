@@ -1,9 +1,9 @@
-import { Link } from "@/i18n/navigation";
-import Image from "next/image";
 import FooterProductItem from "./footer-product-item";
-import { ProductItemProps } from "@lib/types/components/products";
-import { Card } from "@components/ui/card";
 import HeaderProductItem from "./header-product-item";
+import { Link } from "@/i18n/navigation";
+import { Card } from "@components/ui/card";
+import { ProductItemProps } from "@lib/types/components/products";
+import Image from "next/image";
 
 /**
  * ProductItem component

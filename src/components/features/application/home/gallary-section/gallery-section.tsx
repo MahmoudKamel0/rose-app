@@ -12,7 +12,7 @@ export default function GallerySection() {
             {/*  Section Header: Subtitle + Heading */}
             <div className="flex flex-col items-center gap-2 p-4 text-center">
                 <Subtitle text={t("subtitle")} />
-                <HighlightedHeading   text={t("heading")} highlightWidth="335px" borderWidth="133px" />
+                <HighlightedHeading text={t("heading")} highlightWidth="335px" borderWidth="133px" />
             </div>
 
             {/*  Image Grid Layout */}

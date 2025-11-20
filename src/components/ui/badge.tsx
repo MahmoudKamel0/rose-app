@@ -1,7 +1,6 @@
-import * as React from "react";
-import { cva, type VariantProps } from "class-variance-authority";
-
 import { cn } from "@lib/utils/cn.util";
+import { cva, type VariantProps } from "class-variance-authority";
+import * as React from "react";
 
 const badgeVariants = cva(
     "flex h-4 min-w-12 max-w-fit items-center text-12 capitalize rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
@@ -12,11 +11,10 @@ const badgeVariants = cva(
                 default:
                     "border-transparent bg-maroon-600 text-white hover:bg-maroon-700 dark:bg-softpink-300 dark:text-zinc-800 dark:hover:bg-softpink-400",
                 // Badge design (two)
-                secondary: 
+                secondary:
                     "border-transparent bg-maroon-50 text-maroon-600 hover:bg-maroon-100 dark:bg-zinc-700 dark:text-softpink-300 dark:hover:bg-zinc-600",
                 // Badge design (three)
-                new: 
-                    "border-transparent bg-zinc-100 text-zinc-700 hover:bg-zinc-200 dark:bg-zinc-700 dark:text-zinc-50 dark:hover:bg-zinc-600",
+                new: "border-transparent bg-zinc-100 text-zinc-700 hover:bg-zinc-200 dark:bg-zinc-700 dark:text-zinc-50 dark:hover:bg-zinc-600",
             },
         },
         defaultVariants: {

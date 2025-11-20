@@ -14,7 +14,6 @@ import Autoplay from "embla-carousel-autoplay";
  * Leverages Card, Carousel, and Button UI components for consistent design and interactivity.
  */
 export default function SliderOffers() {
-
     return (
         // Uses Autoplay plugin to automatically slide every 2 seconds, loop images
         <Carousel className="flex-auto" opts={{ loop: true }} plugins={[Autoplay({ delay: 2000 })]}>

@@ -1,5 +1,5 @@
-import { cookies } from "next/headers";
 import jwt from "jsonwebtoken";
+import { cookies } from "next/headers";
 
 /**
  * GetCookieDiagnostic: retrieves and decodes the accessToken from the NextAuth session cookie

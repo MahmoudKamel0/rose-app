@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import Image from "next/image";
-import { cn } from "@/lib/utils/cn.util";
-import { Heart, Minus, Package, Plus, Star } from "lucide-react";
-import CartBtn from "./add-to-cart-button";
-import { useTranslations } from "next-intl";
 import { useSpecificProduct } from "../_hooks/use-products.hook";
+import CartBtn from "./add-to-cart-button";
+import { cn } from "@/lib/utils/cn.util";
 import PageLoader from "@components/shared/page-loader";
+import { Heart, Minus, Package, Plus, Star } from "lucide-react";
+import { useTranslations } from "next-intl";
+import Image from "next/image";
+import React, { useState, useEffect } from "react";
 
 export default function ProductDetailes({ productId }: { productId: string }) {
     // Translation

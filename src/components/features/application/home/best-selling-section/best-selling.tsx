@@ -1,10 +1,10 @@
-import * as React from "react";
-import { cn } from "@lib/utils/cn.util";
-import { getBestSellingProducts } from "@lib/apis/best-selling.api";
-import Subtitle from "@components/shared/subtitle";
-import ProductCard from "@components/shared/product-card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import BtnPrimary from "@components/shared/btn-primary";
+import ProductCard from "@components/shared/product-card";
+import Subtitle from "@components/shared/subtitle";
+import { getBestSellingProducts } from "@lib/apis/best-selling.api";
+import { cn } from "@lib/utils/cn.util";
+import * as React from "react";
 
 export default async function BestSellingSection() {
     const products = await getBestSellingProducts();

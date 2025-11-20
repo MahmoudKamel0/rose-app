@@ -1,15 +1,15 @@
-import { Suspense } from "react";
-import { fetchRelatedProducts } from "@lib/apis/related-products.api";
-import HighlightedHeading from "@components/shared/highlighted-heading";
-import { getTranslations } from "next-intl/server";
-import EmblaCarouselSkeleton from "@components/shared/embla-carousel-skeleton";
-import { ReviewsSectionProps } from "@lib/types/review-product";
-import ReviewsSectionSkeleton from "@components/skeletons/reviews-section/reviews-section.skeleton";
-import ReviewsSection from "./components/general-rating";
-import ReviewsListSkeleton from "@components/skeletons/reviews-section/reviews-list.skeleton";
-import ReviewsList from "./components/reviews-list";
-import ReviewForm from "./components/review-form";
 import EmblaCarousel from "../application/home/best-selling-section/components/right-side-best-selling/embla-carousel-best-selling";
+import ReviewsSection from "./components/general-rating";
+import ReviewForm from "./components/review-form";
+import ReviewsList from "./components/reviews-list";
+import EmblaCarouselSkeleton from "@components/shared/embla-carousel-skeleton";
+import HighlightedHeading from "@components/shared/highlighted-heading";
+import ReviewsListSkeleton from "@components/skeletons/reviews-section/reviews-list.skeleton";
+import ReviewsSectionSkeleton from "@components/skeletons/reviews-section/reviews-section.skeleton";
+import { fetchRelatedProducts } from "@lib/apis/related-products.api";
+import { ReviewsSectionProps } from "@lib/types/review-product";
+import { getTranslations } from "next-intl/server";
+import { Suspense } from "react";
 
 export default async function Reviews({ productId }: ReviewsSectionProps) {
     // Translation hook

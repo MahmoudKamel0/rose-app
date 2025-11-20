@@ -1,7 +1,7 @@
 "use client";
 
-import { usePathname, useRouter } from "@i18n/navigation";
 import { Button } from "@components/ui/button";
+import { usePathname, useRouter } from "@i18n/navigation";
 import { useLocale } from "next-intl";
 
 export default function ToggleLocale() {

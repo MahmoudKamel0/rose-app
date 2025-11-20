@@ -1,8 +1,9 @@
+import NotificationMenu from "./Notification";
 import { Badge } from "@components/ui/badge";
+import { Link } from "@i18n/navigation";
 import { cn } from "@lib/utils/cn.util";
 import { Heart, ShoppingCart } from "lucide-react";
-import { Link } from "@i18n/navigation";
-import NotificationMenu from "./Notification";
+
 // import NotificationMenu from "./Notification";
 
 /**

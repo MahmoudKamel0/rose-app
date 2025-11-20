@@ -12,7 +12,6 @@ export async function getBestSellingProducts() {
 
         const { products } = await response.json();
         return Array.isArray(products) ? products : [];
-
     } catch (error) {
         throw new Error(`${error}`);
     }

@@ -1,11 +1,11 @@
-import { Toaster } from "@components/ui/sonner";
-import { ReactNode } from "react";
+import { CartSyncProvider } from "./cart-sync-provider";
 import NextAuthProvider from "./components/next-auth.provider";
 import ReactQueryProvider from "./components/react-query.provider";
 import DevtoolModeToggle from "@components/shared/devtool-modeToggle";
-import { ThemeProvider as NextThemesProvider } from "next-themes";
+import { Toaster } from "@components/ui/sonner";
 import { NextIntlClientProvider } from "next-intl";
-import { CartSyncProvider } from "./cart-sync-provider";
+import { ThemeProvider as NextThemesProvider } from "next-themes";
+import { ReactNode } from "react";
 
 export default function Providers({ children }: { children: ReactNode }) {
     return (

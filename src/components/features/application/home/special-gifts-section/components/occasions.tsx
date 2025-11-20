@@ -1,6 +1,6 @@
-import Image from "next/image";
-import { Link } from "@i18n/navigation";
 import { Badge } from "@components/ui/badge";
+import { Link } from "@i18n/navigation";
+import Image from "next/image";
 
 export default function Occasions() {
     // Variable

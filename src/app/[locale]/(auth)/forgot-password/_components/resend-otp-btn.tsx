@@ -1,8 +1,8 @@
+import { useAddForgetPasswordEmail } from "../_hooks/use-add-forget-password-email";
 import { Button } from "@components/ui/button";
 import { useTranslations } from "next-intl";
-import { useAddForgetPasswordEmail } from "../_hooks/use-add-forget-password-email";
-import { toast } from "sonner";
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 export default function ResendOtpButton({ email }: { email: string | null }) {
     // Translation hook scoped to "otp" namespace
@@ -12,11 +12,10 @@ export default function ResendOtpButton({ email }: { email: string | null }) {
     // React Query mutation for resending OTP
     const { mutateAsync, isPending } = useAddForgetPasswordEmail();
 
-    
     //  Handle resend OTP click
     const handleResend = async () => {
         if (!email || cooldown > 0) return;
-        
+
         await mutateAsync(
             { email },
             {
@@ -25,7 +24,7 @@ export default function ResendOtpButton({ email }: { email: string | null }) {
                         description: t("toast.success.description"),
                         duration: 3000,
                     });
-                    
+
                     // ⏳ Restart cooldown (1 minute)
                     setCooldown(60);
                 },
@@ -39,13 +38,12 @@ export default function ResendOtpButton({ email }: { email: string | null }) {
         );
     };
 
-    
     //  Translated countdown label
     const countdownLabel = t("resend-in", { seconds: cooldown });
-    
+
     //  Disable button if pending or in cooldown
     const isDisabled = isPending || cooldown > 0;
-    
+
     //  Countdown effect
     useEffect(() => {
         if (cooldown <= 0) return;

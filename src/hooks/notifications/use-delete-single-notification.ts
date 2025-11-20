@@ -1,6 +1,6 @@
 "use client";
-import { useMutation } from "@tanstack/react-query";
 import { DeleteNotification } from "@lib/actions/notifications/notifications.action";
+import { useMutation } from "@tanstack/react-query";
 
 export function useDeleteSingleNotification() {
     const { mutateAsync, error, isPending, isSuccess, isError } = useMutation({

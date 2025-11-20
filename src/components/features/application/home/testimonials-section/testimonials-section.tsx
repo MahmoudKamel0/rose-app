@@ -1,10 +1,10 @@
+import TestimonialsContent from "./testimonials-content";
 import HighlightedHeading from "@components/shared/highlighted-heading";
 import Subtitle from "@components/shared/subtitle";
+import TestimonialsSkeleton from "@components/skeletons/testimonials-section/testimonials-skeleton";
 import { cn } from "@lib/utils/cn.util";
 import { getTranslations } from "next-intl/server";
 import { Suspense } from "react";
-import TestimonialsContent from "./testimonials-content";
-import TestimonialsSkeleton from "@components/skeletons/testimonials-section/testimonials-skeleton";
 
 export default async function TestimonialsSection() {
     //  Translations

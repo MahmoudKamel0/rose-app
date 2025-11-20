@@ -45,4 +45,3 @@ export const productsResponseSchema = z.object({
     metadata: metadataSchema,
     products: z.array(productSchema),
 });
-

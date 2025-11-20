@@ -1,11 +1,6 @@
 "use client";
 
-import React from "react";
-import { Button } from "@components/ui/button";
-import { Trash, Trash2, X } from "lucide-react";
 import { useDeleteUserAddress } from "../hooks/use-addresses.hook";
-import { toast } from "sonner";
-import { useQueryClient } from "@tanstack/react-query";
 import {
     AlertDialog,
     AlertDialogTrigger,
@@ -16,7 +11,12 @@ import {
     AlertDialogCancel,
     AlertDialogAction,
 } from "@components/ui/alert-dialog";
+import { Button } from "@components/ui/button";
+import { useQueryClient } from "@tanstack/react-query";
+import { Trash, Trash2, X } from "lucide-react";
 import { useTranslations } from "next-intl";
+import React from "react";
+import { toast } from "sonner";
 
 type AddressDeleteProps = {
     addressId: string;

@@ -1,11 +1,7 @@
 "use client";
 
-import React from "react";
-import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
-
 // import InfiniteScroll from "react-infinite-scroll-component";
 import { Button } from "@/components/ui/button";
-import { Bell, BrushCleaning, CheckCheck, EllipsisVertical, Trash2, Check, BellOff, Loader2 } from "lucide-react";
 import {
     DropdownMenu,
     DropdownMenuTrigger,
@@ -13,15 +9,18 @@ import {
     DropdownMenuItem,
     DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
-import { Notification } from "@lib/types/end-point-api/all-notifications";
-import InfiniteScroll from "react-infinite-scroll-component";
-import { useMarkAllNotificationsAsRead } from "@/hooks/notifications/use-mark-all-notifications-as-read.hook";
-import { useQueryClient } from "@tanstack/react-query";
-import { useDeleteAllNotifications } from "@/hooks/notifications/use-delete-all-notifications.hook";
-import { useMarkNotificationsAsRead } from "@/hooks/notifications/use-mark-notification-as-read.hook";
-import { useDeleteSingleNotification } from "@/hooks/notifications/use-delete-single-notification";
-import { Badge } from "@components/ui/badge";
+import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
 import { useAllNotifications } from "@/hooks/notifications/use-all-notifications.hook";
+import { useDeleteAllNotifications } from "@/hooks/notifications/use-delete-all-notifications.hook";
+import { useDeleteSingleNotification } from "@/hooks/notifications/use-delete-single-notification";
+import { useMarkAllNotificationsAsRead } from "@/hooks/notifications/use-mark-all-notifications-as-read.hook";
+import { useMarkNotificationsAsRead } from "@/hooks/notifications/use-mark-notification-as-read.hook";
+import { Badge } from "@components/ui/badge";
+import { Notification } from "@lib/types/end-point-api/all-notifications";
+import { useQueryClient } from "@tanstack/react-query";
+import { Bell, BrushCleaning, CheckCheck, EllipsisVertical, Trash2, Check, BellOff, Loader2 } from "lucide-react";
+import React from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 export default function NotificationMenu() {
     // Fetching paginated notifications

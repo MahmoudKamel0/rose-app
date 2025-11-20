@@ -10,10 +10,10 @@ import { getAuthHeaders } from "@lib/utils/get-auth-headers.util";
  */
 
 interface searchParams {
-    page?: string,
-    limit?: number,
-    rating?: number
-};
+    page?: string;
+    limit?: number;
+    rating?: number;
+}
 
 export async function getAllProducts(searchParams: searchParams): Promise<ProductSchema> {
     "use server";
@@ -21,17 +21,16 @@ export async function getAllProducts(searchParams: searchParams): Promise<Produc
         const headers = await getAuthHeaders();
         const response = await fetch(`${process.env.BASE_URL}/products?page=${searchParams.page}&limit=12`, {
             headers,
-            next: { revalidate: 60 * 10 } // update every 10 minutes
+            next: { revalidate: 60 * 10 }, // update every 10 minutes
         });
 
         if (!response.ok) throw new Error("Failed to fetch products");
         const payload = await response.json();
 
-        // Check validate response 
+        // Check validate response
         return productsResponseSchema.parse(payload);
-    }
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    catch (error) {       
-        throw new Error("Something went wrong while loading products. Please try again later.");    
+    } catch (error) {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        throw new Error("Something went wrong while loading products. Please try again later.");
     }
 }

@@ -1,7 +1,7 @@
 "use server";
 
-import { EmailForgetPasswordValue } from "@lib/schemas/auth/forget-password-schema";
 import { EmailForgetPasswordResponse } from "../_types/forget-password-email-response";
+import { EmailForgetPasswordValue } from "@lib/schemas/auth/forget-password-schema";
 import { VerifyOtpResponse } from "@lib/types/auth/auth";
 
 export async function verifyOtpAction(resetCode: string): Promise<VerifyOtpResponse> {

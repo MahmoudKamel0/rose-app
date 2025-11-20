@@ -1,10 +1,10 @@
 "use client";
-import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import CartBtn from "@app/[locale]/(home)/products/[productId]/_components/add-to-cart-button";
 import { cn } from "@lib/utils/cn.util";
 import { Eye, Heart, Star } from "lucide-react";
-import CartBtn from "@app/[locale]/(home)/products/[productId]/_components/add-to-cart-button";
+import Image from "next/image";
 
 export default function ProductCard({ product }: { product: any }) {
     if (!product) return null;
