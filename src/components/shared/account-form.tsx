@@ -14,6 +14,7 @@ import { useTranslations } from "next-intl";
 
 interface ProfileFormProps {
   profile: ProfileFormValues;
+  showChangePassword?: boolean;
 }
 
 /**
@@ -24,7 +25,7 @@ interface ProfileFormProps {
  * Also provides buttons for deleting the account and changing the password.
  */
 
-export default function ProfileForm({ profile }: ProfileFormProps) {
+export default function ProfileForm({ profile, showChangePassword = true }: ProfileFormProps) {
     // Translation
     const t = useTranslations("profile");
 
@@ -95,7 +96,8 @@ function onSubmit(values: ProfileFormValues) {
             <FormMessage />
           </FormItem>
         )} />
-  {/* phone */}
+
+        {/* phone */}
         <FormField name="phone" control={form.control} render={({ field }) => (
           <FormItem>
             <FormLabel>{t("phone")}</FormLabel>
@@ -120,15 +122,25 @@ function onSubmit(values: ProfileFormValues) {
         {/* Form footer (buttons) */}
         <div className="flex justify-between">
           <div className="flex-1">
+        {/* Delete Button */}
         <DeleteAccountSection />
-        <Button variant="link" className="mt-16 capitalize text-base p-0">
-          <Link href="change-password">{t("change-password")}</Link>
-        </Button>
+
+        {/* Change Password button
+            - Display this button only in the Dashboard Account page
+            - Do NOT display in the App Profile page
+            Controlled via `showChangePassword` prop
+        */}
+        {showChangePassword && (
+          <Button variant="link" className="mt-16 capitalize text-base p-0">
+            <Link href="change-password">{t("change-password")}</Link>
+          </Button>
+        )}
         </div>
 
-          <div className="flex-1 flex justify-end">
-            <Button type="submit" className="mt-16 capitalize text-base">{t("save-changes")}</Button>
-          </div>
+        {/* Save form changes Button */}
+        <div className="flex-1 flex justify-end">
+          <Button type="submit" className="mt-16 capitalize text-base">{t("save-changes")}</Button>
+        </div>
         </div>
       </form>
     </FormProvider>

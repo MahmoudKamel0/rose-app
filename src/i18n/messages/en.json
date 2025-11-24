@@ -314,7 +314,9 @@
         "upload-photo": "Upload Photo",
         "upload-text": "You can upload a .jpg, .png, or .gif photo with max size of 5MB.", 
         "profile-updated-successfully": "Profile Updated Successfully..",
-         "update-failed": "Failed to update profile"
+         "update-failed": "Failed to update profile",
+         "logged-out-successfully": "Logged out Successfully..",
+         "logout-failed": "Logged out Failed!"
     },
     "delete-modal": {
         "delete-account-title": "Are you sure you want to delete your account?",

@@ -304,7 +304,9 @@
         "delete-my-account": "احذف حسابي",
         "upload-photo": "رفع صورة",
         "upload-text": "يمكنك رفع صورة بصيغة .jpg أو .png أو .gif بحد أقصى 5 ميجابايت.",
-        "profile-updated-successfully": "تم تحديث الملف الشخصي بنجاح"
+        "profile-updated-successfully": "تم تحديث الملف الشخصي بنجاح",
+        "logged-out-successfully": "تم تسجيل الخروج بنجاح",
+        "logout-failed": "فشل تسجيل الخروج!"
     },
     "delete-modal": {
         "delete-account-title": "هل أنت متأكد أنك تريد حذف حسابك؟",
@@ -313,5 +315,4 @@
         "deleting": "جارٍ الحذف...",
         "confirm-delete": "نعم، احذف"
     }
-
 }

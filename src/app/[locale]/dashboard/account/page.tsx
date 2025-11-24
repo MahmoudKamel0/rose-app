@@ -1,5 +1,5 @@
 import React from "react";
-import ProfileForm from "../_components/account-form";
+import ProfileForm from "../../../../components/shared/account-form";
 import { getProfileData } from "@lib/actions/profile/profile.action";
 import { getTranslations } from "next-intl/server";
 
@@ -12,14 +12,16 @@ export default async function AccountPage() {
   const profile = await getProfileData();
 
   return (
-    <div className="container mx-auto flex gap-6 py-8 bg-zinc-50 min-h-screen">
+    <div className="bg-zinc-50 min-h-screen">
+      <div className="container mx-auto flex gap-6 py-8 ">
         <div className="w-1/4">
-            <h1>Placeholder...</h1>
+          <h1>Placeholder...</h1>
         </div>
-        <div className="w-3/4 p-4 mt-9 ">
-            <h1 className="text-zinc-800 text-2xl font-semibold capitalize">{t("account-settings")}</h1>
-            <ProfileForm profile= {profile} />
+        <div className="w-3/4 p-4">
+          <h1 className="text-zinc-800 text-2xl font-semibold capitalize mb-9">{t("account-settings")}</h1>
+          <ProfileForm profile= {profile} showChangePassword= {true} />
         </div>
+      </div>
     </div>
   )
 }
