@@ -303,7 +303,24 @@
         "my-account": "My Account",
         "change-password": "Change Password",
         "update-profile": "update profile",
-        "account-settings": "Account Settings"
-
+        "account-settings": "Account Settings",
+        "first-name": "First Name",
+        "last-name": "Last Name",
+        "email": "Email",
+        "phone": "Phone",
+        "gender": "Gender",
+        "save-changes": "Save Changes",
+        "delete-my-account": "Delete my account",
+        "upload-photo": "Upload Photo",
+        "upload-text": "You can upload a .jpg, .png, or .gif photo with max size of 5MB.", 
+        "profile-updated-successfully": "Profile Updated Successfully..",
+         "update-failed": "Failed to update profile"
+    },
+    "delete-modal": {
+        "delete-account-title": "Are you sure you want to delete your account?",
+        "delete-account-warning": "This action is permanent and cannot be undone.",
+        "cancel-delete": "Nope, not doing it",
+        "deleting": "Deleting...",
+        "confirm-delete": "Yes, delete"
     }
 }

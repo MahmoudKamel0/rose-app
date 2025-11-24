@@ -4,6 +4,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Button } from "@/components/ui/button";
 import { Trash } from "lucide-react";
 import { useDeleteAccount } from "@/hooks/profile/use-delete-account.hook";
+import { useTranslations } from "next-intl";
 
 /**
  * DeleteAccountModal component
@@ -14,6 +15,9 @@ import { useDeleteAccount } from "@/hooks/profile/use-delete-account.hook";
  */
 
 export default function DeleteAccountModal({ open, onOpenChange }: any) {
+    // Translation
+    const t = useTranslations("delete-modal");
+
     // Hook for deleting the user account
   const { mutate: deleteAccount, isPending } = useDeleteAccount();
 
@@ -27,10 +31,10 @@ export default function DeleteAccountModal({ open, onOpenChange }: any) {
         </DialogHeader>
 
         <p className="mt-2 text-xl font-semibold">
-          Are you sure you want to delete your account?
+          {t("delete-account-title")}
         </p>
         <p className="text-base text-maroon-500 font-normal">
-          This action is permanent and cannot be undone.
+          {t("delete-account-warning")}
         </p>
 
         <div className="mt-4 flex justify-center gap-2">
@@ -39,7 +43,7 @@ export default function DeleteAccountModal({ open, onOpenChange }: any) {
             className="text-base font-medium"
             onClick={() => onOpenChange(false)}
           >
-            Nope, not doing it
+            {t("cancel-delete")}
           </Button>
 
           <Button
@@ -48,7 +52,7 @@ export default function DeleteAccountModal({ open, onOpenChange }: any) {
             className="bg-red-600 text-base font-medium"
             onClick={() => deleteAccount(undefined, { onSuccess: () => onOpenChange(false) })}
           >
-            {isPending ? "Deleting..." : "Yes, delete"}
+            {isPending ? t("deleting") : t("confirm-delete")}
           </Button>
         </div>
       </DialogContent>

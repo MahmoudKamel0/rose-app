@@ -2,10 +2,10 @@ import ChangePasswordForm from "@components/shared/change-password-form";
 import { useTranslations } from "next-intl";
 import React from "react";
 
-
-export default function page() {
+export default function ChangePasswordPage() {
     // Translation
     const t = useTranslations("change-password");
+
     return (
         <div className="container mx-auto flex gap-6 py-8 bg-zinc-50 min-h-screen">
             <div className="w-1/4">

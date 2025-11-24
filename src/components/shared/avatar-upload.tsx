@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { Camera, CloudUpload, Loader2 } from "lucide-react";
+import { CloudUpload, Loader2 } from "lucide-react";
 import { toast } from "sonner";
+import { useTranslations } from "next-intl";
 
 type AvatarUploadProps = {
   value: string;
@@ -10,6 +11,9 @@ type AvatarUploadProps = {
 };
 
 export default function AvatarUpload({ value, onChange }: AvatarUploadProps) {
+  // Translation
+  const t = useTranslations("profile");
+
   const [isUploading, setIsUploading] = useState(false);
   
 
@@ -85,9 +89,9 @@ export default function AvatarUpload({ value, onChange }: AvatarUploadProps) {
         />
       </div>
        <div>
-              <h2 className="text-lg font-semibold">Upload Photo</h2>
+              <h2 className="text-lg font-semibold">{t("upload-photo")}</h2>
               <p className="text-sm text-gray-500">
-                You can upload a .jpg, .png, or .gif photo with max size of 5MB.
+                {t("upload-text")}
               </p>
             </div>
     </div>

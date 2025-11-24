@@ -1,12 +1,8 @@
 // src/components/dashboard/forms/ChangePasswordForm.tsx
 "use client";
 
-import { Form, FormProvider, useForm } from "react-hook-form";
+import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Label } from "@components/ui/label";
-import { cn } from "@lib/utils/cn.util";
-import { PasswordInput } from "@components/shared/password-input";
-import { Button } from "@components/ui/button";
 import { useTranslations } from "next-intl";
 import { FormControl, FormField, FormItem, FormLabel, FormMessage } from "@components/ui/form";
 import { Input } from "@components/ui/input";
@@ -15,6 +11,9 @@ import { useChangePassword } from "@/hooks/profile/use-change-password.hook";
 import { FormInput } from "@lib/types/profile/change-password";
 import { changePassword } from "@lib/actions/profile/change-password.action";
 import { ChangePasswordFormSchema, ChangePasswordValues } from "@lib/schemas/profile/change-password.schema";
+import { Button } from "@components/ui/button";
+import { signOut } from "next-auth/react";
+import { useRouter } from "@i18n/navigation";
 
 export default function ChangePasswordForm() {
   // Translation
@@ -22,6 +21,9 @@ export default function ChangePasswordForm() {
 
   // Hooks
   const { mutate, isPending } = useChangePassword();
+
+  // Routing
+  const router = useRouter();
 
    // Form hook
     const form = useForm<ChangePasswordValues>({
@@ -45,6 +47,12 @@ export default function ChangePasswordForm() {
       // Show success toast
       toast.success(t("password-updated-successfully"));
       form.reset();
+
+      // 1- Logout
+      await signOut({ redirect: false }); 
+
+      // 2- Redirect to homepage
+      router.push("/login");
 
     } catch (err) {
       // Show error toast

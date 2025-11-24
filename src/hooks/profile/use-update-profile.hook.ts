@@ -2,9 +2,13 @@
 
 import { ProfileFormValues } from "@lib/types/profile/profile";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 
 export function useUpdateProfile() {
+  // Translation
+  const t = useTranslations("profile");
+
   const queryClient = useQueryClient();
 
   return useMutation({
@@ -19,15 +23,13 @@ export function useUpdateProfile() {
 
       if (!res.ok) {
         const err = await res.json();
-        throw new Error(err.message || "Failed to update profile");
+        throw new Error(err.message || t("update-failed"));
       }
 
       return res.json();
     },
 
     onSuccess: (data) => {
-      toast.success("Profile updated successfully");
-
       queryClient.invalidateQueries({ queryKey: ["profile"] });
     },
 

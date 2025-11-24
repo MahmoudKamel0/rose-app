@@ -1,16 +1,16 @@
 "use client";
 
 import { useForm, FormProvider } from "react-hook-form";
-import { useEffect } from "react";
 import { FormField, FormItem, FormLabel, FormControl, FormMessage } from "@components/ui/form";
 import { Input } from "@components/ui/input";
 import { Button } from "@components/ui/button";
 import { ProfileFormValues } from "@lib/types/profile/profile";
 import { useUpdateProfile } from "@/hooks/profile/use-update-profile.hook";
-import { getProfileData } from "@lib/actions/profile/profile.action";
 import AvatarUpload from "@components/shared/avatar-upload";
 import DeleteAccountSection from "@components/shared/delete-account-btn";
 import Link from "next/link";
+import { toast } from "sonner";
+import { useTranslations } from "next-intl";
 
 interface ProfileFormProps {
   profile: ProfileFormValues;
@@ -25,6 +25,9 @@ interface ProfileFormProps {
  */
 
 export default function ProfileForm({ profile }: ProfileFormProps) {
+    // Translation
+    const t = useTranslations("profile");
+
     // Initialize react-hook-form with default values from the profile
   const form = useForm<ProfileFormValues>({
     defaultValues: profile,
@@ -38,6 +41,7 @@ function onSubmit(values: ProfileFormValues) {
   updateProfile.mutate(values, {
     onSuccess: (data) => {
       // Reset form with updated user data after successful update
+      toast.success(t("profile-updated-successfully"));
       form.reset(data.user);
     },
   });
@@ -58,7 +62,7 @@ function onSubmit(values: ProfileFormValues) {
           <div className="flex-1">
           <FormField name="firstName" control={form.control} render={({ field }) => (
             <FormItem>
-              <FormLabel>First Name</FormLabel>
+              <FormLabel>{t("first-name")}</FormLabel>
               <FormControl>
                 <Input {...field} />
               </FormControl>
@@ -71,7 +75,7 @@ function onSubmit(values: ProfileFormValues) {
          <div className="flex-1">
           <FormField name="lastName" control={form.control} render={({ field }) => (
             <FormItem>
-              <FormLabel>Last Name</FormLabel>
+              <FormLabel>{t("last-name")}</FormLabel>
               <FormControl>
                 <Input {...field} />
               </FormControl>
@@ -84,7 +88,7 @@ function onSubmit(values: ProfileFormValues) {
         {/* email */}
         <FormField name="email" control={form.control} render={({ field }) => (
           <FormItem>
-            <FormLabel>Email</FormLabel>
+            <FormLabel>{t("email")}</FormLabel>
             <FormControl>
               <Input {...field} />
             </FormControl>
@@ -94,7 +98,7 @@ function onSubmit(values: ProfileFormValues) {
   {/* phone */}
         <FormField name="phone" control={form.control} render={({ field }) => (
           <FormItem>
-            <FormLabel>Phone</FormLabel>
+            <FormLabel>{t("phone")}</FormLabel>
             <FormControl>
               <Input {...field} />
             </FormControl>
@@ -105,7 +109,7 @@ function onSubmit(values: ProfileFormValues) {
         {/* gender */}
         <FormField name="gender" control={form.control} render={({ field }) => (
           <FormItem>
-            <FormLabel className="text-zinc-400">Gender</FormLabel>
+            <FormLabel className="text-zinc-400">{t("gender")}</FormLabel>
             <FormControl>
               <Input className="text-zinc-400" {...field} disabled readOnly />
             </FormControl>
@@ -118,12 +122,12 @@ function onSubmit(values: ProfileFormValues) {
           <div className="flex-1">
         <DeleteAccountSection />
         <Button variant="link" className="mt-16 capitalize text-base p-0">
-          <Link href="change-password">Change Password</Link>
+          <Link href="change-password">{t("change-password")}</Link>
         </Button>
         </div>
 
           <div className="flex-1 flex justify-end">
-            <Button type="submit" className="mt-16 capitalize text-base">Save Changes</Button>
+            <Button type="submit" className="mt-16 capitalize text-base">{t("save-changes")}</Button>
           </div>
         </div>
       </form>

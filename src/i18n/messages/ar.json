@@ -294,6 +294,24 @@
         "my-account": "حسابي",
         "change-password": "تغيير كلمة المرور",
         "update-profile": "تحديث الملف الشخصي",
-        "account-settings": "تعديل الملف الشخصي"
+        "account-settings": "تعديل الملف الشخصي",
+        "first-name": "الاسم الأول",
+        "last-name": "اسم العائلة",
+        "email": "البريد الإلكتروني",
+        "phone": "رقم الهاتف",
+        "gender": "النوع",
+        "save-changes": "حفظ التغييرات",
+        "delete-my-account": "احذف حسابي",
+        "upload-photo": "رفع صورة",
+        "upload-text": "يمكنك رفع صورة بصيغة .jpg أو .png أو .gif بحد أقصى 5 ميجابايت.",
+        "profile-updated-successfully": "تم تحديث الملف الشخصي بنجاح"
+    },
+    "delete-modal": {
+        "delete-account-title": "هل أنت متأكد أنك تريد حذف حسابك؟",
+        "delete-account-warning": "هذا الإجراء نهائي ولا يمكن التراجع عنه.",
+        "cancel-delete": "لا، لن أفعل",
+        "deleting": "جارٍ الحذف...",
+        "confirm-delete": "نعم، احذف"
     }
+
 }
