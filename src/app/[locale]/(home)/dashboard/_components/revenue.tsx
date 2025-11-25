@@ -8,6 +8,7 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { fetchStatistics } from "@lib/apis/dashboard/orders-status.api";
 import { DailyRevenue, MonthlyRevenue } from "@lib/types/dashboard/orders-status";
 import { useTranslations } from "next-intl";
+import { toast } from "sonner";
 
 export default function RevenueChart() {
     // Translation hook, scoped to "revenueChart" namespace
@@ -36,6 +37,9 @@ export default function RevenueChart() {
                 setDailyRevenue(stats.statistics.orders.dailyRevenue);
                 setMonthlyRevenue(stats.statistics.orders.monthlyRevenue);
             } catch (err) {
+                const message = err instanceof Error ? err.message : t("fetchError");
+
+                toast.error(message);
                 console.error(t("fetchError"), err);
             }
         }

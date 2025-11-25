@@ -5,6 +5,7 @@ import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import { useEffect, useState } from "react";
 import { fetchStatistics } from "@lib/apis/dashboard/orders-status.api";
 import { useTranslations } from "next-intl";
+import { toast } from "sonner";
 
 export default function OrdersStatusCard() {
     // Translation hook, scoped to "ordersStatus" namespace
@@ -26,7 +27,10 @@ export default function OrdersStatusCard() {
                 setInProgress(statuses.find((s) => s._id === "in_progress")?.count || 0);
                 setCanceled(statuses.find((s) => s._id === "canceled")?.count || 0);
             } catch (err) {
-                console.error(t("fetchError"), err);
+                const message = err instanceof Error ? err.message : t("fetchError");
+
+                toast.error(message);
+                console.error(message, err);
             }
         }
         load();
