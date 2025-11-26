@@ -11,7 +11,7 @@ const buttonVariants = cva(
             variant: {
                 // Button Design (one)
                 default:
-                    "bg-maroon-600 text-primary-foreground hover:bg-maroon-700 disabled:bg-zinc-300 disabled:text-zinc-500 dark:bg-softpink-300 dark:text-zinc-800 dark:hover:bg-softpink-400 dark:disabled:text-zinc-600 [&_svg]:stroke-white dark:[&_svg]:stroke-zinc-600",
+                    "bg-maroon-600 text-zinc-50 hover:bg-maroon-700 disabled:bg-zinc-300 disabled:text-zinc-500 dark:bg-softpink-300 dark:text-zinc-800 dark:hover:bg-softpink-400 dark:disabled:text-zinc-600 [&_svg]:stroke-white dark:[&_svg]:stroke-zinc-600",
                 // Button Design (two)
                 secondary:
                     "bg-maroon-50 text-maroon-600 hover:bg-maroon-100 disabled:bg-zinc-300 disabled:text-zinc-500 dark:bg-zinc-700 dark:text-softpink-300 dark:hover:bg-zinc-600 dark:disabled:text-zinc-600 [&_svg]:stroke-maroon-600 disabled:[&_svg]:stroke-zinc-500 dark:[&_svg]:stroke-softpink-300 dark:disabled:[&_svg]:stroke-zinc-600",
@@ -32,6 +32,10 @@ const buttonVariants = cva(
 
                 // (eight) NEW → Ghost style
                 ghost: "bg-transparent text-primary hover:bg-maroon-50 hover:text-maroon-700 disabled:text-zinc-400 dark:text-zinc-50 dark:hover:bg-zinc-700 dark:hover:text-softpink-400 dark:disabled:text-zinc-600 [&_svg]:stroke-current",
+
+                // (nine) New ->  Find Location Style
+                location:
+                    "bg-white border-1 border-maroon-600 hover:bg-zinc-100 hover:border-maroon-700 text-maroon-600 transition-colors disabled:bg-zinc-100 disabled:border-zinc-300 disabled:text-zinc-400  dark:bg-zinc-800 dark:border-softpink-200 dark:text-softpink-200 dark:hover:bg-zinc-900 dark:disabled:border-zinc-600 dark:disabled:text-zinc-600",
             },
             size: {
                 default: "h-button w-button px-4 py-2",

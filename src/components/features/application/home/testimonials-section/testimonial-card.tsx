@@ -23,7 +23,7 @@ export default function TestimonialCard({ testimonial }: { testimonial: Testimon
                     width={120}
                     height={120}
                     src={testimonial.user.photo}
-                    alt={t("name", {
+                    alt={t("testimonials-name", {
                         firstName: testimonial.user.firstName,
                         lastName: testimonial.user.lastName,
                     })}

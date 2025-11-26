@@ -12,8 +12,17 @@ import React from "react";
  * (Required): must is user authenticated
  */
 
-export default function DeliverToClient({ address }: { address: string }) {
-    // no use [FIRST_ADDRESS] = address, why? because missing typescript
+interface Address {
+    street: string;
+    phone: string;
+    city: string;
+    lat: number;
+    long: number;
+    username: string;
+    _id: string;
+}
+
+export default function DeliverToClient({ address }: { address: Address[] }) {
     const FIRST_ADDRESS = address[0];
 
     return (
@@ -26,7 +35,7 @@ export default function DeliverToClient({ address }: { address: string }) {
                 id="location"
                 className="flex gap-1.5 text-nowrap font-medium capitalize text-maroon-700 dark:text-softpink-200 [&_svg]:stroke-maroon-700 dark:[&_svg]:stroke-softpink-200"
             >
-                <MapPinPen size="20" /> {FIRST_ADDRESS ?? "not location"}
+                <MapPinPen size="20" /> {FIRST_ADDRESS?.city ?? "not location"}
             </p>
         </div>
     );
