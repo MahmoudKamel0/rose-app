@@ -13,7 +13,7 @@ export async function GET(req: NextRequest) {
             headers["Authorization"] = `Bearer ${token.accessToken}`;
         }
 
-        const res = await fetch(`${process.env.BASE_URL}${process.env.PRODUCT_CART}`, {
+        const res = await fetch(`${process.env.BASE_URL}cart`, {
             method: "GET",
             headers,
             cache: "no-store",

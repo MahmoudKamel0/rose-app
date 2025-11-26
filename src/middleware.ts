@@ -9,7 +9,7 @@ const PROTECTED_ROUTES = ["/wishlist", "/checkout", "/profile"];
 
 export default async function middleware(req: NextRequest) {
     const { pathname } = req.nextUrl;
-    
+
     // Extract locale
     const locale = pathname.split("/")[1] || routing.defaultLocale;
     const pathWithoutLocale = pathname.replace(`/${locale}`, "") || "/";
