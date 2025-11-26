@@ -23,7 +23,7 @@ export function useInfiniteCategories() {
     // "pageParam" is provided automatically by React Query to handle pagination.
     queryFn: async ({ pageParam = 1 }) => {
       // Call our API route and pass the page and limit parameters.
-      const res = await fetch(`/api/categories?page=${pageParam}&limit=5`);
+      const res = await fetch(`/api/categories?page=${pageParam}&limit=7`);
 
       // If the request failed, throw an error so React Query can handle it.
       if (!res.ok) throw new Error("Failed to fetch categories");
