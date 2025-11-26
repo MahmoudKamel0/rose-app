@@ -89,6 +89,9 @@ const config: Config = {
                     900: "#99102c",
                     950: "#590414",
                 },
+                customGold: "#DFAC16", // 1st place
+                customSilver: "#757F95", // 2nd place
+                customBronze: "#914400", // 3rd place
             },
             borderRadius: {
                 lg: "var(--radius)",

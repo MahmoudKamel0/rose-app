@@ -303,5 +303,20 @@
                 "ratings": "ratings"
             }
         }
+    },
+    "products_statistics": {
+        "loadingTopSelling": "Loading Top Selling Products...",
+        "loadingLowStock": "Loading Low Stock Products..."
+    },
+    "low_stock": {
+        "title": "Low stock products",
+        "empty": "No low stock products",
+        "count": "{count, plural, =0 {0 Products} one {# Product} other {# Products}}",
+        "loading": "Loading Low Stock..."
+    },
+    "top_selling": {
+        "title": "Top selling products",
+        "sales": "{count, plural, one {# sale} other {# sales}}",
+        "loading": "Loading Top Selling..."
     }
 }
