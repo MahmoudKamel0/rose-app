@@ -16,7 +16,7 @@ const gradientClasses = [
 export default function TopSelling({ products }: TopSellingProps) {
     const t = useTranslations("top_selling");
     return (
-        <div className="top-selling flex h-441 w-[536px] flex-col gap-6 rounded-2xl bg-white p-6 text-zinc-800">
+        <div className="top-selling flex h-441 w-full flex-col gap-6 rounded-2xl bg-white p-6 text-zinc-800">
             {/* Component title */}
             <h2 className="title text-2xl font-semibold capitalize"> {t("title")}</h2>
 

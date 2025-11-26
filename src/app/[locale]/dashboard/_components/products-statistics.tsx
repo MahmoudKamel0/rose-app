@@ -16,7 +16,7 @@ export default async function ProductsStatistics() {
     const { topSellingProducts, lowStockProducts } = data.statistics;
 
     return (
-        <div className="ms-4 mt-6 flex gap-6 p-10">
+        <div className=" mt-6 flex gap-6 ">
             {/* Display top selling products */}
             <TopSelling products={topSellingProducts} />
 
