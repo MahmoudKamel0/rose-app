@@ -12,14 +12,17 @@ import { getAuthHeaders } from "@lib/utils/get-auth-headers.util";
 export interface searchParams {
     page?: string,
     limit?: number,
-    rating?: number
+    rating?: number,
+    keyword?: string;
 };
 
 export async function getAllProducts(searchParams: searchParams): Promise<ProductSchema> {
     "use server";
     try {
         const headers = await getAuthHeaders();
-        const response = await fetch(`${process.env.BASE_URL}/products?page=${searchParams.page}&limit=12`, {
+        const response = await fetch(`${process.env.BASE_URL}/products?page=${searchParams.page}&limit=12&keyword=${searchParams.keyword || ""}`,
+      {
+
             headers,
             next: { revalidate: 60 * 10 } // update every 10 minutes
         });
@@ -31,7 +34,8 @@ export async function getAllProducts(searchParams: searchParams): Promise<Produc
         return productsResponseSchema.parse(payload);
     }
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    catch (error) {       
-        throw new Error("Something went wrong while loading products. Please try again later.");    
-    }
+catch (error: any) {       
+    console.error("REAL ERROR ⇒", error);
+    throw new Error("Something went wrong while loading products. Please try again later.");
+}
 }

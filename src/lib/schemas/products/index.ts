@@ -20,7 +20,7 @@ export const productSchema = z.object({
     updatedAt: z.string(),
     __v: z.number(),
     isSuperAdmin: z.boolean().optional(),
-    sold: z.number(),
+    sold: z.number().optional().nullable().default(0),
     rateAvg: z.number(),
     rateCount: z.number(),
     favoriteId: z.string().nullable(),
