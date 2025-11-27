@@ -22,3 +22,15 @@ export type ProductResponse = {
         isInWishlist: boolean;
     };
 };
+
+export type ProductsApiResponse = {
+  message: string;
+  metadata: {
+    currentPage: number;
+    totalPages: number;
+    limit: number;
+    totalItems: number;
+  };
+  products: Product[];
+};
+

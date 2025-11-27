@@ -9,7 +9,7 @@ import { getAuthHeaders } from "@lib/utils/get-auth-headers.util";
  * @throws Will throw an error if the API request fails.
  */
 
-interface searchParams {
+export interface searchParams {
     page?: string,
     limit?: number,
     rating?: number
