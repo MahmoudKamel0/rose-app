@@ -7,6 +7,8 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Image } from "lucide-react";
+import { useUpdateCategory } from "../../_hooks/hooks";
+import { ViewImage } from "./view-image";
 
 // 1️⃣ Define Zod schema
 const updateCategorySchema = z.object({
@@ -16,7 +18,9 @@ const updateCategorySchema = z.object({
 // 2️⃣ Infer form type
 type UpdateCategoryFormValues = z.infer<typeof updateCategorySchema>;
 
-export default function UpdateCategoryForm({ id, name }: { id: string; name: string }) {
+export default function UpdateCategoryForm({ id, name, image }: { id: string; name: string; image: string }) {
+    const { mutate, isPending } = useUpdateCategory();
+
     const form = useForm<UpdateCategoryFormValues>({
         resolver: zodResolver(updateCategorySchema),
         defaultValues: {
@@ -25,7 +29,9 @@ export default function UpdateCategoryForm({ id, name }: { id: string; name: str
     });
 
     function onSubmit(values: UpdateCategoryFormValues) {
-        console.log(values);
+        const formData = new FormData();
+        formData.append("name", values.name);
+        mutate({ categoryId: id, data: formData });
     }
 
     return (
@@ -50,19 +56,13 @@ export default function UpdateCategoryForm({ id, name }: { id: string; name: str
                     />
 
                     <div className="flex justify-end">
-                        <Button
-                            type="button"
-                            className="flex h-10 w-48 items-center justify-center gap-1 border border-blue-500 bg-white text-blue-500 hover:bg-blue-50"
-                        >
-                            <Image className="stroke-blue-500 text-blue-500" width={18} height={18} />
-                            View category image
-                        </Button>
+                        <ViewImage imageUrl={image} />
                     </div>
                 </div>
 
                 {/* Submit Button */}
-                <Button type="submit" className="mt-auto w-full">
-                    Update Category
+                <Button type="submit" className="mt-auto w-full" disabled={isPending}>
+                    {isPending ? "Updating..." : "Update Category"}
                 </Button>
             </form>
         </Form>

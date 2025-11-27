@@ -6,13 +6,14 @@ import ErrorState from "./error-state";
 import { getCategories } from "@lib/apis/dashboard/categories/categories";
 
 interface CategoriesContentProps {
-    searchParams?: { search?: string };
+    searchParams?: { search?: string; page?: string };
 }
 
 export default async function CategoriesContent({ searchParams }: CategoriesContentProps) {
     const keyword = searchParams?.search || "";
+    const page = searchParams?.page ? parseInt(searchParams.page, 10) : 1;
 
-     const { data, error } = await getCategories(1, keyword);
+    const { data, error } = await getCategories(page, keyword);
 
     if (error) return <ErrorState message={error} />;
 

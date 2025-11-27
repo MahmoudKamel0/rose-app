@@ -93,7 +93,7 @@ export function CategoryTable({ categories }: CategoryTableProps) {
                                     <Pencil className="mr-1 stroke-[3]" size={14} />
                                     Edit
                                 </Link>
-                                <DeleteCategory />
+                                <DeleteCategory categoryId={category._id} />
                             </div>
                         </TableCell>
                     </TableRow>
