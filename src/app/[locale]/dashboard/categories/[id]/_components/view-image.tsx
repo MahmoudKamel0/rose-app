@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTrigger } from "@/components/ui/dialog";
 
 import { Image as ImageIcone } from "lucide-react";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 
 interface ViewImageProps {
@@ -9,15 +10,17 @@ interface ViewImageProps {
 }
 
 export function ViewImage({ imageUrl }: ViewImageProps) {
+    // translation
+    const t = useTranslations("dashboard.categories.update");
     return (
         <Dialog>
             <DialogTrigger asChild>
                 <Button
                     variant="outline"
-                    className="flex h-10 w-48 items-center justify-center gap-1 border border-blue-500 bg-white text-blue-500 hover:bg-blue-50 stroke-blue-500"
+                    className="flex h-10 w-48 items-center justify-center gap-1 border border-blue-500 bg-white stroke-blue-500 text-blue-500 hover:bg-blue-50"
                 >
-                    <ImageIcone className="stroke-blue-500 " width={18} height={18} />
-                    View category image
+                    <ImageIcone className="stroke-blue-500" width={18} height={18} />
+                    {t("viewImageButton")}
                 </Button>
             </DialogTrigger>
             <DialogContent className="bg-white sm:max-w-4xl">

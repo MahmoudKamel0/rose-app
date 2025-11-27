@@ -5,8 +5,12 @@ import { Button } from "@components/ui/button";
 import { Trash, Trash2 } from "lucide-react";
 import { useDeleteCategory } from "../_hooks/hooks";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 
 export default function DeleteCategory({ categoryId }: { categoryId: string }) {
+    // translation
+    const t = useTranslations("dashboard.categories.delete");
+
     const [open, setOpen] = useState(false);
     const { mutate, isPending } = useDeleteCategory();
 
@@ -26,7 +30,7 @@ export default function DeleteCategory({ categoryId }: { categoryId: string }) {
                     className="flex min-h-7 min-w-20 items-center justify-center rounded-md bg-[#FF3B301A] text-red-600 hover:bg-[#FF3B3033]"
                 >
                     <Trash2 className="mr-1 stroke-[3]" size={14} />
-                    Delete
+                    {t("table.deleteButton")}
                 </button>
             </DialogTrigger>
 
@@ -40,24 +44,18 @@ export default function DeleteCategory({ categoryId }: { categoryId: string }) {
                 </div>
 
                 <div className="mb-10 mt-4 text-center">
-                    <p className="text-lg font-semibold text-zinc-800">
-                        Are you sure you want to delete this category?
-                    </p>
+                    <p className="text-lg font-semibold text-zinc-800"> {t("messages.deleteConfirmation")}</p>
                 </div>
 
                 <DialogFooter className="mt-10 flex items-center justify-center gap-2">
                     <DialogClose asChild>
                         <Button className="w-full border border-zinc-400 bg-zinc-50 text-zinc-800 hover:bg-zinc-100">
-                            Cancel
+                            {t("cancelButton")}
                         </Button>
                     </DialogClose>
 
-                    <Button
-                        className="w-full bg-red-600 text-white hover:bg-red-700"
-                        disabled={isPending}
-                        onClick={handleDelete}
-                    >
-                        {isPending ? "Deleting..." : "Confirm"}
+                    <Button className="w-full bg-red-600 text-white hover:bg-red-700" disabled={isPending} onClick={handleDelete}>
+                        {isPending ? t("deleting") : t("confirmButton")}
                     </Button>
                 </DialogFooter>
             </DialogContent>

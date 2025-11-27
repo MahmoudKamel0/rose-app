@@ -5,6 +5,7 @@ import { Pencil, Trash2 } from "lucide-react";
 import Link from "next/link";
 import { id } from "zod/v4/locales";
 import DeleteCategory from "./delete-category";
+import { useTranslations } from "next-intl";
 
 const invoices = [
     {
@@ -63,12 +64,16 @@ interface CategoryTableProps {
 }
 
 export function CategoryTable({ categories }: CategoryTableProps) {
+
+    // translation
+    const t = useTranslations("dashboard.categories");
+
     return (
         <Table className="mb-0.5">
             <TableHeader className="h-10 rounded-lg border-black bg-zinc-50 text-sm font-medium">
                 <TableRow>
-                    <TableHead className="">Name</TableHead>
-                    <TableHead className="">Products</TableHead>
+                    <TableHead className="">{t("table.name")}</TableHead>
+                    <TableHead className="">{t("table.products")}</TableHead>
                     <TableHead className="text-end"></TableHead>
                 </TableRow>
             </TableHeader>
@@ -76,7 +81,7 @@ export function CategoryTable({ categories }: CategoryTableProps) {
                 {categories.length === 0 && (
                     <TableRow>
                         <TableCell colSpan={3} className="h-24 text-center text-sm font-medium">
-                            No categories found.
+                               {t("table.noData")}
                         </TableCell>
                     </TableRow>
                 )}
@@ -91,7 +96,7 @@ export function CategoryTable({ categories }: CategoryTableProps) {
                                     className="flex min-h-7 min-w-14 items-center justify-center rounded-md bg-[#0063D01A] text-blue-600 hover:bg-[#0063D033]"
                                 >
                                     <Pencil className="mr-1 stroke-[3]" size={14} />
-                                    Edit
+                                    {t("table.editButton")}
                                 </Link>
                                 <DeleteCategory categoryId={category._id} />
                             </div>

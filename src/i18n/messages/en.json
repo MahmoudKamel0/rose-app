@@ -366,6 +366,71 @@
                 "products": "Products",
                 "egp": "EGP"
             }
+        },
+        "categories": {
+            "headerTitle": "All Categories",
+            "addButton": "Add a new category",
+            "table": {
+                "name": "Name",
+                "products": "Products",
+                "actions": "Actions",
+                "noData": "No categories found.",
+                "editButton": "Edit",
+                "deleteButton": "Delete"
+            },
+            "messages": {
+                "deleteConfirmation": "Are you sure you want to delete this category?"
+            },
+            "pagination": {
+                "previous": "Previous",
+                "next": "Next"
+            },
+            "searchPlaceholder": "Search categories...",
+
+            "addNew": {
+                "pageTitle": "Add a New Category",
+                "form": {
+                    "nameLabel": "Category Name",
+                    "imageLabel": "Category Image",
+                    "uploadButton": "Upload file",
+                    "submitButton": "Save",
+                    "cancelButton": "Cancel",
+                    "saving": "Saving...",
+                    "nameRequired": "Name is required",
+                    "imageRequired": "Image is required"
+                },
+                "messages": {
+                    "success": "Category created successfully",
+                    "error": "Error creating category"
+                }
+            },
+            "delete": {
+                "cancelButton": "Cancel",
+                "confirmButton": "Confirm",
+                "deleting": "Deleting...",
+                "messages": {
+                    "deleteConfirmation": "Are you sure you want to delete this category?",
+                    "deleteSuccess": "Category deleted successfully",
+                    "deleteError": "Failed to delete category"
+                },
+                "table": {
+                    "deleteButton": "Delete"
+                }
+            },
+            "update": {
+                "pageTitle": "Update Category:",
+                "form": {
+                    "nameLabel": "Category Name",
+                    "submitButton": "Update Category",
+                    "updating": "Updating...",
+                    "nameRequired": "Name is required"
+                },
+                "viewImageButton": "View category image",
+                "messages": {
+                    "updateSuccess": "Category updated successfully",
+                    "updateError": "Failed to update category"
+                }
+            }
         }
     }
 }
