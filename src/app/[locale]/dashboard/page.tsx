@@ -14,9 +14,9 @@ export default async function Dashboard() {
     const SESSION: Session | null = await getServerSession(authOptions);
     
     // Redirect the user to the homepage if they are not an admin.
-    // if (SESSION?.user?.role !== "admin") {
-    //     redirect({ href: "/", locale: "en" }); // replace "en" with appropriate locale if dynamic
-    // }
+    if (SESSION?.user?.role !== "admin") {
+        redirect({ href: "/", locale: "en" }); // replace "en" with appropriate locale if dynamic
+    }
 
     return (
         <>

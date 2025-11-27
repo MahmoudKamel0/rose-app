@@ -106,29 +106,29 @@ export const FOOTER_LINKS = [
 ];
 
 // For links Asidebar dashboard component: (app/dashboard/_components/asidebar)
-export const ASIDEBAR_LINKS = [
+export const getDashboardAdminLinks = (t: (key: string) => string) => [
     {
         id: 1,
         href: "/dashboard",
-        label: "Overview",
+        label: t("overview"),
         icon: <LayoutDashboard size="20" strokeWidth="2.5" />,
     },
     {
         id: 2,
         href: "/dashboard/categories",
-        label: "Categories",
+        label: t("categories"),
         icon: <ClipboardList size="20" strokeWidth="2.5" />,
     },
     {
         id: 3,
         href: "/dashboard/occasions",
-        label: "Occasions",
+        label: t("occasions"),
         icon: <CalendarHeart size="20" strokeWidth="2.5" />,
     },
     {
         id: 4,
         href: "/dashboard/products",
-        label: "Products",
+        label: t("products"),
         icon: <Package size="20" strokeWidth="2.5" />,
     },
 ];
