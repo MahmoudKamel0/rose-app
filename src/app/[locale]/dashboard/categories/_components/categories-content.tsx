@@ -6,29 +6,22 @@ import ErrorState from "./error-state";
 import { getCategories } from "@lib/apis/dashboard/categories/categories";
 
 interface CategoriesContentProps {
-    searchParams?: { q?: string };
+    searchParams?: { search?: string };
 }
 
 export default async function CategoriesContent({ searchParams }: CategoriesContentProps) {
-    const keyword = searchParams?.q || "";
+    const keyword = searchParams?.search || "";
 
-    const { data, error } = await getCategories(1);
+     const { data, error } = await getCategories(1, keyword);
 
     if (error) return <ErrorState message={error} />;
 
-    // filter categories server-side using search param
-    const filteredCategories = keyword
-        ? data?.categories.filter((cat: { name: string }) => cat.name.toLowerCase().includes(keyword.toLowerCase())) || []
-        : data?.categories || [];
-
-
-        console.log(filteredCategories) ; 
-        console.log("the keyored is " , keyword)
+    console.log("the keyored is ", keyword);
     return (
         <div className="flex h-[938px] flex-col gap-4 rounded-lg bg-white p-6">
             <CategoryHeader />
             <SearchInput />
-            <CategoryTable categories={filteredCategories} />
+            <CategoryTable categories={data?.categories || []} />
             <Pagination className="mt-10" totalPages={data?.metadata.totalPages || 0} />
         </div>
     );

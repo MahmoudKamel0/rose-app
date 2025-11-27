@@ -73,6 +73,13 @@ export function CategoryTable({ categories }: CategoryTableProps) {
                 </TableRow>
             </TableHeader>
             <TableBody>
+                {categories.length === 0 && (
+                    <TableRow>
+                        <TableCell colSpan={3} className="h-24 text-center text-sm font-medium">
+                            No categories found.
+                        </TableCell>
+                    </TableRow>
+                )}
                 {categories.map((category) => (
                     <TableRow key={category._id} className="h-[60px] hover:bg-maroon-50">
                         <TableCell className="font-medium">{category.name}</TableCell>

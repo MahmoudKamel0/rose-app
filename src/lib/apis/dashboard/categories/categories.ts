@@ -26,11 +26,11 @@ export interface ErrorResponse {
     message: string;
 }
 
-export async function getCategories(page: number = 1) {
+export async function getCategories(page: number = 1 , keyword: string = ""): Promise<{ data: CategoriesResponse | null; error: string | null }> {
     const limit = 9;
 
     try {
-        const res = await fetch(`https://flower.elevateegy.com/api/v1/categories?page=${page}&limit=${limit}`, {
+        const res = await fetch(`https://flower.elevateegy.com/api/v1/categories?page=${page}&limit=${limit}&search=${keyword}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
