@@ -1,7 +1,7 @@
 import CartBtn from "@app/[locale]/(home)/products/[productId]/_components/add-to-cart-button";
 import RateStars from "@components/shared/rate-stars";
 import { CardFooter } from "@components/ui/card";
-import { FooterProductItemProps } from "@lib/types/components/products";
+import { FooterProductItemProps } from "@lib/types/components/pages/products";
 
 /**
  * FooterProductItem component

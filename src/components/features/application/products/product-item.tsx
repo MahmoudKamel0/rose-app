@@ -2,7 +2,7 @@ import FooterProductItem from "./footer-product-item";
 import HeaderProductItem from "./header-product-item";
 import { Link } from "@/i18n/navigation";
 import { Card } from "@components/ui/card";
-import { ProductItemProps } from "@lib/types/components/products";
+import { ProductItemProps } from "@lib/types/components/pages/products";
 import Image from "next/image";
 
 /**

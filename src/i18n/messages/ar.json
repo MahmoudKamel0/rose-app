@@ -281,6 +281,15 @@
         "added-succ": "تمت إضافة عنوانك الجديد بنجاح"
     },
     "dashboard": {
+        "asidebar": {
+            "preview-website": "معاينة الموقع",
+            "overview": "نظره عامه",
+            "categories": "الفئات",
+            "occasions": "المناسبات",
+            "products": "المنتجات",
+            "account": "الحساب",
+            "logout": "تسجيل الدخول"
+        },
         "overview": {
             "first-row": {
                 "total-products": "إجمالي المنتجات",

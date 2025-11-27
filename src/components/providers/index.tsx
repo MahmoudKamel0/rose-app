@@ -1,6 +1,6 @@
 import { CartSyncProvider } from "./cart-sync-provider";
-import NextAuthProvider from "./components/next-auth.provider";
-import ReactQueryProvider from "./components/react-query.provider";
+import NextAuthProvider from "./modules/next-auth.provider";
+import ReactQueryProvider from "./modules/react-query.provider";
 import DevtoolModeToggle from "@components/shared/devtool-modeToggle";
 import { Toaster } from "@components/ui/sonner";
 import { NextIntlClientProvider } from "next-intl";
@@ -12,7 +12,7 @@ export default function Providers({ children }: { children: ReactNode }) {
         <NextIntlClientProvider>
             <NextAuthProvider>
                 <ReactQueryProvider>
-                    <NextThemesProvider defaultTheme="system" enableSystem disableTransitionOnChange attribute="class">
+                    <NextThemesProvider defaultTheme="light" enableSystem disableTransitionOnChange attribute="class">
                         <CartSyncProvider>
                             <Toaster position="bottom-right" richColors />
                             {children}

@@ -1,8 +1,9 @@
-import { Product } from "../end-point-api/products";
+import { Product } from "../../end-point-api/products";
 
-export = Products;
+export = ProductsPage;
+export as namespace ProductsPage
 
-namespace Products {
+namespace ProductsPage {
     // This section defines type-related comments for Product components, providing context and
     // organization for type definitions in product-related files.
 

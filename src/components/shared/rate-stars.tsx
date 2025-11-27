@@ -1,4 +1,4 @@
-import { RateStarsProps } from "@lib/types/components/products";
+import { RateStarsProps } from "@lib/types/components/pages/products";
 import { cn } from "@lib/utils/cn.util";
 import { Star, StarHalf } from "lucide-react";
 

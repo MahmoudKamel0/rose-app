@@ -10,6 +10,7 @@ import {
 import { Link } from "@i18n/navigation";
 import { EllipsisVertical, LogOut, User } from "lucide-react";
 import { signOut } from "next-auth/react";
+import { useTranslations } from "next-intl";
 
 /**
  * AdminDropdown
@@ -22,6 +23,8 @@ import { signOut } from "next-auth/react";
  * @returns {JSX.Element} The rendered admin dropdown menu.
  */
 export default function AdminDropdown({ fullname }: { fullname: string }) {
+    const t = useTranslations("dashboard.asidebar");
+
     return (
         <DropdownMenu>
             <DropdownMenuTrigger>
@@ -31,11 +34,11 @@ export default function AdminDropdown({ fullname }: { fullname: string }) {
                 <DropdownMenuLabel className="py-1 font-semibold">{fullname}</DropdownMenuLabel>
                 <DropdownMenuSeparator className="bg-black/10" />
                 <DropdownMenuItem className="py-1">
-                    <Link className="font-medium flex items-center gap-2" href="/dashboard/account"><User size="16" /> Account</Link>
+                    <Link className="font-medium flex items-center gap-2" href="/dashboard/account"><User size="16" /> {t("account")}</Link>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator className="bg-black/10" />
                 <DropdownMenuItem className="py-1 font-medium cursor-pointer" onClick={() => signOut()}>
-                    <LogOut size="16" /> Log out
+                    <LogOut size="16" /> {t("logout")}
                 </DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>

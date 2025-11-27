@@ -1,7 +1,7 @@
 "use client";
 
 import { usePagination } from "@/hooks/use-pagination";
-import { PaginationProps } from "@lib/types/components/products";
+import { PaginationProps } from "@lib/types/components/pages/products";
 import { cn } from "@lib/utils/cn.util";
 import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from "lucide-react";
 import { ReactNode, useId } from "react";

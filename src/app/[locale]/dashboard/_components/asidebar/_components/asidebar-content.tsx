@@ -1,8 +1,10 @@
 "use client";
+
 import { SidebarContent, SidebarGroup, SidebarMenuItem } from "@components/ui/sidebar";
 import { Link, usePathname } from "@i18n/navigation";
-import { ASIDEBAR_LINKS } from "@lib/constants/component-ui.constant";
+import { getDashboardAdminLinks } from "@lib/constants/component-ui.constant";
 import { cn } from "@lib/utils/cn.util";
+import { useTranslations } from "next-intl";
 
 /**
  * AsidebarContent
@@ -15,6 +17,8 @@ import { cn } from "@lib/utils/cn.util";
  */
 export default function AsidebarContent() {
     const pathname = usePathname();
+    const t = useTranslations("dashboard.asidebar");
+    const ASIDEBAR_LINKS = getDashboardAdminLinks(t);
 
     return (
         <SidebarContent>

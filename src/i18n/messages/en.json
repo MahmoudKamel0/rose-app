@@ -290,6 +290,15 @@
         "added-succ": "Your New Address added successfully"
     },
     "dashboard": {
+        "asidebar": {
+            "preview-website": "Preview Website",
+            "overview": "Overview",
+            "categories": "Categories",
+            "occasions": "Occasions",
+            "products": "Products",
+            "account": "Account",
+            "logout": "Log Out"
+        },
         "overview": {
             "first-row": {
                 "total-products": "Total products",
