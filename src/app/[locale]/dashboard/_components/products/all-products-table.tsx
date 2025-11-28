@@ -30,24 +30,29 @@ async function handleDelete(id: string) {
 }
 
   return (
-    <div className="p-6 w-full space-y-6">
+    <div className="w-full space-y-6 mt-5">
 
       <table className="w-full text-left border-collapse">
-        <thead className="bg-gray-100 text-gray-700">
-          <tr>
-            <th className="p-4">Name</th>
-            <th className="p-4">Price</th>
-            <th className="p-4">Stock</th>
-            <th className="p-4">Sales</th>
-            <th className="p-4">Ratings</th>
-            <th className="p-4 text-center">Actions</th>
-          </tr>
+        <thead className="bg-zinc-50">
+            <tr>
+              {["Name", "Price", "Stock", "Sales", "Ratings"].map((title) => (
+                <th 
+                  key={title} 
+                  className="p-4 text-zinc-900 font-medium text-sm"
+                >
+                  {title}
+                </th>
+              ))}
+
+              {/* Empty column for actions */}
+              <th className="p-4 text-center"></th>
+            </tr>
         </thead>
 
         <tbody>
           {products.map((item, i) => (
-            <tr key={item._id} className="border-b">
-              <td className="p-4 font-medium">{item.title}</td>
+            <tr key={item._id} className="border-b hover:bg-maroon-50 cursor-pointer">
+              <td className="p-4 font-semibold text-zinc-800 text-base">{item.title}</td>
               <td className="p-4">{item.price} EGP</td>
               <td className={`p-4 ${item.quantity <= 0 ? "text-red-600 font-bold" : ""}`}>
                 {item.quantity}
@@ -59,17 +64,17 @@ async function handleDelete(id: string) {
               </td>
 
               <td className="p-4 flex gap-2 justify-center">
-                <Button variant="outline" className="text-blue-600 border-blue-200">
-                  <Pencil className="h-4 w-4" /> Edit
+                <Button variant="outline" className="text-blue-600 !h-fit py-1 px-2 rounded-sm font-medium border-none w-auto text-xs bg-[#0063D01A]">
+                  <Pencil className="h-4 w-4 !stroke-blue-600" /> Edit
                 </Button>
 
                 <Button
                   variant="outline"
-                  className="text-red-600 border-red-200"
+                  className="text-red-600 !h-fit py-1 px-2 rounded-sm font-medium border-none w-auto text-xs bg-[#FF00001A]"
                   disabled={isPending}
                   onClick={() => handleDelete(item._id)}
                 >
-                  <Trash2 className="h-4 w-4" />
+                  <Trash2 className="h-4 w-4 !stroke-red-600" />
                   {isPending ? "Deleting..." : "Delete"}
                 </Button>
               </td>
@@ -77,7 +82,6 @@ async function handleDelete(id: string) {
           ))}
         </tbody>
       </table>
-
     </div>
   );
 }
