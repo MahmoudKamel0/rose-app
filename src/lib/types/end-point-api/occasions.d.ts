@@ -1,6 +1,6 @@
 import { MetadataResponse } from "./fixed-metadata-response";
 
-export = Occasions
+export = Occasions;
 
 namespace Occasions {
     /**
@@ -15,14 +15,14 @@ namespace Occasions {
      * @property {number} productsCount - Number of products associated with this occasion.
      */
     export interface OccasionsItem {
-        _id: string,
-        name: string,
-        slug: string,
-        image: string,
-        createdAt: string,
-        updatedAt: string,
-        isSuperAdmin: boolean,
-        productsCount: number
+        _id: string;
+        name: string;
+        slug: string;
+        image: string;
+        createdAt: string;
+        updatedAt: string;
+        isSuperAdmin: boolean;
+        productsCount: number;
     }
 
     /**
@@ -31,7 +31,7 @@ namespace Occasions {
      * @property {OccasionsItem[]} occasions - Array of occasion items.
      */
     export interface OccasionsResponse extends MetadataResponse {
-        occasions: OccasionsItem[]
+        occasions: OccasionsItem[];
     }
 
     /**
@@ -40,7 +40,27 @@ namespace Occasions {
      * @property {OccasionsItem} occasion - The occasion item requested.
      */
     export interface OccasionsSpecific {
-        message: string,
-        occasion: OccasionsItem
+        message: string;
+        occasion: OccasionsItem;
     }
+}
+export interface OccasionsResponse {
+    metadata: {
+        currentPage: number;
+        limit: number;
+        totalPages: number;
+        totalItems: number;
+    };
+    occasions: Occasion[];
+}
+
+export interface Occasion {
+    _id: string;
+    name: string;
+    slug: string;
+    image: string;
+    createdAt: string;
+    updatedAt: string;
+    isSuperAdmin: boolean;
+    productsCount: number;
 }

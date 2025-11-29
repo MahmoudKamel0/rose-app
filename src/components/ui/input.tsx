@@ -3,21 +3,50 @@ import * as React from "react";
 import { cn } from "@/lib/utils/cn.util";
 import { INPUT_STYLE } from "@lib/constants/style.constant";
 
-const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(({ className, type, ...props }, ref) => {
+const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(({ className, type, onChange, ...props }, ref) => {
     // State
     const [showPassword, setShowPassword] = React.useState(false);
+    const [hasFiles, setHasFiles] = React.useState(false);
 
     // Variables
     const isPassword = type === "password";
+    const isFile = type === "file";
+    const id = React.useId();
 
     return (
         <div className="relative">
-            <input
-                type={isPassword ? (showPassword ? "text" : "password") : type}
-                className={cn("file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-zinc-400", INPUT_STYLE, className)}
-                ref={ref}
-                {...props}
-            />
+            <>
+                <input
+                    type={isPassword ? (showPassword ? "text" : "password") : type}
+                    onChange={(e) => {
+                        if (isFile) {
+                            const files = (e.target as HTMLInputElement).files;
+                            setHasFiles(!!files && files.length > 0);
+                        }
+                        if (onChange) onChange(e as React.ChangeEvent<HTMLInputElement>);
+                    }}
+                    id={id}
+                    className={cn(
+                        "file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-zinc-400",
+                        isFile && "file:pointer-events-none file:cursor-pointer",
+                        // hide native file text when no files are selected
+                        isFile && !hasFiles && "text-transparent",
+                        INPUT_STYLE,
+                        className
+                    )}
+                    ref={ref}
+                    {...props}
+                />
+
+                {/* scoped CSS to hide native file text when no files selected (targets chromium and some browsers) */}
+                {!hasFiles && isFile && (
+                    <style>{`
+                    #${id}::-webkit-file-upload-text { color: transparent !important; }
+                    #${id}::file-selector-button { color: inherit; }
+                    #${id}::-ms-value { color: transparent !important; }
+                `}</style>
+                )}
+            </>
 
             {/* Check here if the type i password add the eye icon */}
             {isPassword && (

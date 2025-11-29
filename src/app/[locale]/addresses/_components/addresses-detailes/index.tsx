@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState } from "react";
 import AddressesHeader from "./addresses-header";
 import AddressesContent from "./addresses-content";

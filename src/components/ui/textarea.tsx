@@ -15,7 +15,7 @@ import { cn } from "@lib/utils/cn.util";
  * @returns {JSX.Element} A textarea element with applied styles and props.
  */
 const Textarea = React.forwardRef<HTMLTextAreaElement, React.ComponentProps<"textarea">>(({ className, ...props }, ref) => {
-    return <textarea className={cn(INPUT_STYLE, className)} ref={ref} {...props} />;
+    return <textarea className={cn(INPUT_STYLE, className, "resize-none")} ref={ref} {...props} />;
 });
 Textarea.displayName = "Textarea";
 

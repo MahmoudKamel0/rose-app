@@ -27,8 +27,7 @@ export async function GET(req: NextRequest) {
             return NextResponse.json({ error: `${"There's something wrong, please try again"}` }, { status: 500 });
         }
         return NextResponse.json(response.addresses, { status: 200 });
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    } catch (err) {
+    } catch {
         return NextResponse.json({ error: `${"There's something wrong, please try again"}` }, { status: 500 });
     }
 }

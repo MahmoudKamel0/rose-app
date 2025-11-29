@@ -8,6 +8,11 @@ const config: Config = {
             colors: {
                 "overlay-gray": "rgba(46, 46, 48, 0.05)",
                 "overlay-gray-2": "rgba(46, 46, 48, 0.05)",
+                "light-blue": "rgba(0, 99, 208, 0.05)",
+                "light-purple": "rgba(117, 60, 191, 0.05)",
+                "light-green": "rgba(0, 137, 97, 0.05)",
+                "custom-purple": "#753CBF",
+                "dark-maroon": "rgba(116, 28, 33, 0.2)",
                 background: "hsl(var(--background))",
                 foreground: "hsl(var(--foreground))",
                 card: {
@@ -107,6 +112,7 @@ const config: Config = {
             },
             width: {
                 button: "181px",
+                total: "490px",
             },
             borderWidth: {
                 "1": "1px",
