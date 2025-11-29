@@ -1,12 +1,12 @@
-"use client"; 
+"use client";
 
-import useInfiniteScroll from "react-infinite-scroll-hook"; 
+import useInfiniteScroll from "react-infinite-scroll-hook";
 import { usePathname, useRouter } from "@i18n/navigation";
-import { useSearchParams } from "next/navigation"; 
-import CategoryItem from "./components/category-item"; 
-import Loading from "@components/shared/loading"; 
-import ResetButton from "../common/reset-button"; 
-import { useInfiniteCategories } from "../../_hooks/use-categories"; 
+import { useSearchParams } from "next/navigation";
+import CategoryItem from "./components/category-item";
+import Loading from "@components/shared/loading";
+import ResetButton from "../common/reset-button";
+import { useInfiniteCategories } from "../../_hooks/use-categories";
 
 export default function CategoriesFilters() {
     // Hooks for navigation and reading the current URL.
@@ -15,14 +15,7 @@ export default function CategoriesFilters() {
     const searchParams = useSearchParams();
 
     // Fetch categories with pagination using React Query's infinite query.
-    const {
-        data,
-        fetchNextPage,
-        hasNextPage,
-        isFetchingNextPage,
-        isLoading,
-        isError,
-    } = useInfiniteCategories();
+    const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, isError } = useInfiniteCategories();
 
     // Flatten the paginated data into a single array of categories.
     const categories = data?.pages.flatMap((page) => page.categories) ?? [];
@@ -57,10 +50,10 @@ export default function CategoriesFilters() {
     const [sentryRef] = useInfiniteScroll({
         loading: isFetchingNextPage,
         hasNextPage: !!hasNextPage,
-        onLoadMore: fetchNextPage, 
-        disabled: isLoading || isError, 
-        rootMargin: "0px 0px 400px 0px", 
-        delayInMs: 3000, 
+        onLoadMore: fetchNextPage,
+        disabled: isLoading || isError,
+        rootMargin: "0px 0px 400px 0px",
+        delayInMs: 1000,
     });
 
     return (
@@ -74,13 +67,13 @@ export default function CategoriesFilters() {
             </div>
 
             {/* ===== Categories List Section ===== */}
-            <div className="flex flex-col gap-1">
+            <div className="scrollbar-thin scrollbar-thumb-[#7b1e24] scrollbar-track-transparent hover:scrollbar-thumb-[#5a1218] flex h-52 flex-col gap-1 overflow-auto  transition-all duration-300">
                 {isLoading ? (
                     // Show loading spinner while categories are being fetched.
                     <div className="flex h-48 items-center justify-center">
                         <Loading label="Loading categories..." />
                     </div>
-                ) : isError ? (
+            ) : isError ? (
                     // Show error message if fetching fails.
                     <p className="text-sm text-red-500">Failed to load categories.</p>
                 ) : (

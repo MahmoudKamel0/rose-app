@@ -1,19 +1,19 @@
 "use client";
 
-import { ProductDashboardSteps } from "@lib/types/product-dashboard";
+import { ProductDashboardSteps, searchParams } from "@lib/types/product-dashboard";
 import React, { useState } from "react";
-import ProductDashboard from "./product-dashboard";
 import CreateProduct from "./create-product";
 import EditProduct from "./edit-product";
+import DashboardProducts from "./dashboard-products";
 
-export default function ProductDashboardDetailes() {
-    const [step, setStep] = useState<ProductDashboardSteps>("new_product");
-    const [productId, setProductId] = useState("673e1cd711599201718280fb");
+export default function ProductDashboardDetailes({ searchParams }: { searchParams: searchParams }) {
+    const [step, setStep] = useState<ProductDashboardSteps>("products_dashboard");
+    const [productId, setProductId] = useState("");
 
     const steps = {
-        products_dashboard: <ProductDashboard setStep={setStep} />,
+        products_dashboard: <DashboardProducts setStep={setStep} searchParams={searchParams} setProductId={setProductId} />,
         new_product: <CreateProduct setStep={setStep} />,
-        edit_product: <EditProduct setStep={setStep} />,
+        edit_product: <EditProduct setStep={setStep} productId={productId} />,
     };
 
     return <main className="p-6">{steps[step]}</main>;

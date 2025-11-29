@@ -54,7 +54,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
 
     return (
         <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
-            <body className={cn("antialiased", sarabun.variable, tajawal.variable)}>
+            <body className={cn("antialiased ", sarabun.variable, tajawal.variable)}>
                 <Providers>{children}</Providers>
             </body>
         </html>

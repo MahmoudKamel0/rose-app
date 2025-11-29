@@ -32,8 +32,9 @@ namespace Products {
     }
 
     export interface PaginationProps {
-        className?: string
-        totalPages: number
+        className?: string;
+        totalPages: number;
+        onPageChange?: (page: number) => void;
     }
 }
 

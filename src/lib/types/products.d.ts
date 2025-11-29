@@ -20,5 +20,16 @@ export type ProductResponse = {
         rateCount: number;
         favoriteId: string | null;
         isInWishlist: boolean;
+    }[];
+};
+
+export type ProductsApiResponse = {
+    message: string;
+    metadata: {
+        currentPage: number;
+        totalPages: number;
+        limit: number;
+        totalItems: number;
     };
+    products: Product[];
 };

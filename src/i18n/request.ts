@@ -69,7 +69,9 @@ export default getRequestConfig(async ({ requestLocale }) => {
             number: {
                 currency: {
                     style: "currency",
-                    currency: isArabic ? "EGP" : "USD",
+                    currency: "EGP",
+                    minimumFractionDigits: 0,
+                    maximumFractionDigits: 2,
                 },
                 percent: {
                     style: "percent",
