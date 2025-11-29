@@ -15,9 +15,13 @@ import { CreateOccasionFormValues, createOccasionSchema } from "@lib/schemas/das
 import { useCreateOccasion } from "../../_hooks/use-create-occasions";
 
 export default function CreateOccasionForm() {
+    // Hooks
     const router = useRouter();
+
+    // States
     const [imagePreview, setImagePreview] = useState<string | null>(null);
 
+    // Form setup
     const form = useForm<CreateOccasionFormValues>({
         resolver: zodResolver(createOccasionSchema),
         defaultValues: {
@@ -26,8 +30,10 @@ export default function CreateOccasionForm() {
         },
     });
 
+    // Mutation hook
     const createMutation = useCreateOccasion();
 
+    // Handlers
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (file) {
@@ -41,11 +47,14 @@ export default function CreateOccasionForm() {
         }
     };
 
+    // Form submission
     const onSubmit = (values: CreateOccasionFormValues) => {
+        // Create form data
         const formData = new FormData();
         formData.append("name", values.name);
         formData.append("image", values.image);
 
+        // Trigger mutation
         createMutation.mutate(formData, {
             onSuccess: (response) => {
                 if (response.ok) {

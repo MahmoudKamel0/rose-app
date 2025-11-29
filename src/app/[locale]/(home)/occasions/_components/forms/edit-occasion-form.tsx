@@ -21,20 +21,26 @@ interface EditOccasionFormProps {
 }
 
 export default function EditOccasionForm({ occasionId, occasionName, occasionImage }: EditOccasionFormProps) {
+    // Hooks
     const router = useRouter();
 
+    // Form setup
     const form = useForm<UpdateOccasionFormValues>({
         resolver: zodResolver(updateOccasionSchema),
         defaultValues: { name: occasionName },
     });
 
+    // Mutation hook
     const updateMutation = useUpdateOccasion();
 
+    // Populate form when occasionName changes
     useEffect(() => {
         if (occasionName) form.reset({ name: occasionName });
     }, [occasionName, form]);
 
+    // Form submission
     const onSubmit = (values: UpdateOccasionFormValues) => {
+        // Trigger update mutation
         updateMutation.mutate(
             { occasionId, data: { name: values.name } },
             {

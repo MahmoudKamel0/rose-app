@@ -7,6 +7,7 @@ interface UpdateOccasionParams {
 }
 
 export function useUpdateOccasion() {
+    // Mutation
     return useMutation({
         mutationFn: async ({ occasionId, data }: UpdateOccasionParams) => {
             return updateOccasion(occasionId, data);

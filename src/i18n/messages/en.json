@@ -287,5 +287,20 @@
         "monthly": "Monthly",
         "weekly": "Last Week",
         "fetchError": "Failed to load revenue statistics"
+    },
+    "Occasions": {
+        "title": "All Occasions",
+        "add": "Add a new occasion",
+        "viewImage": "View occasion image",
+        "products": "products",
+        "edit": "Edit",
+        "delete": "Delete",
+        "deleting": "Deleting...",
+        "deleteFailed": "Failed to delete occasion.",
+        "table": {
+            "name": "Name",
+            "products": "Products"
+        },
+        "search": "Search occasions..."
     }
 }

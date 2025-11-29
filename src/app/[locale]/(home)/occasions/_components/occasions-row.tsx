@@ -6,11 +6,16 @@ import { Edit, Trash } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { useDeleteOccasion } from "../_hooks/use-delete-occasions";
+import { useTranslations } from "next-intl";
 
 export default function OccasionsRow({ item }: { item: Occasion }) {
     const router = useRouter();
     const { mutate: deleteOccasion, isPending } = useDeleteOccasion();
 
+    // Translation hook for the Occasions namespace
+    const t = useTranslations("Occasions");
+
+    // Delete handler with success/error logic
     const handleDelete = () => {
         deleteOccasion(item._id, {
             onSuccess: (res) => {
@@ -23,27 +28,37 @@ export default function OccasionsRow({ item }: { item: Occasion }) {
                 }
             },
             onError: () => {
-                toast.error("Failed to delete occasion.");
+                toast.error(t("deleteFailed")); // translated error
             },
         });
     };
 
     return (
         <tr className="border-b py-5 hover:bg-maroon-50">
+            {/* Occasion Name */}
             <td className="w-40 ps-5 text-sm font-semibold">{item.name}</td>
-            <td className="flex-1 text-sm">{item.productsCount} products</td>
 
+            {/* Product count */}
+            <td className="flex-1 text-sm">
+                {item.productsCount} {t("products")}
+            </td>
+
+            {/* Action buttons: Edit + Delete */}
             <td className="flex w-fit gap-2 p-2 pe-5">
+                {/* Edit Button */}
                 <Button size="sm" variant="secondaryBlue" onClick={() => router.push(`/occasions/${item.name}/${item._id}/edit`)}>
-                    <Edit className="mr-1 h-4 w-4" /> Edit
+                    <Edit className="mr-1 h-4 w-4" />
+                    {t("edit")}
                 </Button>
 
+                {/* Delete Button */}
                 <Button size="sm" variant="secondary" onClick={handleDelete} disabled={isPending}>
                     {isPending ? (
-                        "Deleting..."
+                        t("deleting")
                     ) : (
                         <>
-                            <Trash className="mr-1 h-4 w-4" /> Delete
+                            <Trash className="mr-1 h-4 w-4" />
+                            {t("delete")}
                         </>
                     )}
                 </Button>
