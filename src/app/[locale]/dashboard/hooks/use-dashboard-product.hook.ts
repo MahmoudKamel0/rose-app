@@ -37,7 +37,6 @@ export function useEditProduct() {
             if (!res) {
                 throw new Error("No response from server");
             }
-            console.log(res);
 
             if ("error" in res) {
                 throw new Error(res.error);
