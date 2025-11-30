@@ -1,24 +1,51 @@
 "use client";
 
 import { useMutation } from "@tanstack/react-query";
-import { addProductAction } from "../products/actions/add-product.action";
+import { addProductAction, editProductAction } from "../products/actions/product.action";
 import { ProductResponse } from "@lib/types/products";
 
 export function useAddProduct() {
-    const { mutateAsync, error, isPending } = useMutation({
+    const {
+        mutateAsync: addProduct,
+        error,
+        isPending,
+    } = useMutation({
         mutationFn: async (data: FormData) => {
             const res: ApiResponse<ProductResponse> = await addProductAction(data);
             if (!res) {
-                return { error: "No response from server" };
+                throw new Error("No response from server");
             }
 
             if ("error" in res) {
-                return { error: res.error };
+                throw new Error(res.error);
             }
 
             return res;
         },
     });
 
-    return { mutateAsync, error: error?.message || null, isPending };
+    return { addProduct, error, isPending };
+}
+export function useEditProduct() {
+    const {
+        mutateAsync: editProduct,
+        error,
+        isPending,
+    } = useMutation({
+        mutationFn: async ({ data, id }: { data: FormData; id: string }) => {
+            const res: ApiResponse<ProductResponse> = await editProductAction(data, id);
+            if (!res) {
+                throw new Error("No response from server");
+            }
+            console.log(res);
+
+            if ("error" in res) {
+                throw new Error(res.error);
+            }
+
+            return res;
+        },
+    });
+
+    return { editProduct, error, isPending };
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useAddCart } from "@/app/[locale]/(home)/products/[productId]/_hooks/use-products.hook";
+import { useAddCart } from "@/hooks/products/use-products.hook";
 import { CartRequest } from "@/app/[locale]/(home)/products/[productId]/_types/product-id";
 import { useSession } from "next-auth/react";
 import { useEffect } from "react";

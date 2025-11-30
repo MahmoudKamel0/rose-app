@@ -2,6 +2,8 @@
 import * as React from "react";
 import { cn } from "@/lib/utils/cn.util";
 import { INPUT_STYLE } from "@lib/constants/style.constant";
+import { useFormField } from "./form";
+import type { FieldError } from "react-hook-form";
 
 const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(({ className, type, onChange, ...props }, ref) => {
     // State
@@ -12,6 +14,15 @@ const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(
     const isPassword = type === "password";
     const isFile = type === "file";
     const id = React.useId();
+
+    // Safely get error from form field if available
+    let error: FieldError | undefined;
+    try {
+        const fieldContext = useFormField();
+        error = fieldContext.error;
+    } catch {
+        // Input is not within a FormField, that's okay
+    }
 
     return (
         <div className="relative">
@@ -30,8 +41,10 @@ const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(
                         "file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-zinc-400",
                         isFile && "file:pointer-events-none file:cursor-pointer",
                         // hide native file text when no files are selected
-                        isFile && !hasFiles && "text-transparent",
                         INPUT_STYLE,
+                        isFile && "!hidden !text-transparent",
+                        // red border on error
+                        error && "border-red-600",
                         className
                     )}
                     ref={ref}

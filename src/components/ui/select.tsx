@@ -4,6 +4,7 @@ import * as SelectPrimitive from "@radix-ui/react-select";
 import { Check, ChevronDown, ChevronUp } from "lucide-react";
 import { cn } from "@/lib/utils/cn.util";
 import { INPUT_STYLE } from "@lib/constants/style.constant";
+import { useFormField } from "./form";
 
 const Select = SelectPrimitive.Root;
 const SelectGroup = SelectPrimitive.Group;
@@ -14,24 +15,35 @@ const SelectTrigger = React.forwardRef<
     React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger> & {
         invalid?: boolean;
     }
->(({ className, children, invalid = false, ...props }, ref) => (
-    <SelectPrimitive.Trigger
-        ref={ref}
-        className={cn(
-            INPUT_STYLE,
-            "justify-between data-[placeholder]:text-zinc-400 [&>span]:line-clamp-1",
-            "dark:focus:border-softpink-400 dark:disabled:bg-background dark:data-[placeholder]:text-zinc-400",
-            invalid && "!border-red-500",
-            className
-        )}
-        {...props}
-    >
-        {children}
-        <SelectPrimitive.Icon asChild>
-            <ChevronDown className="h-4 w-4 opacity-50" />
-        </SelectPrimitive.Icon>
-    </SelectPrimitive.Trigger>
-));
+>(({ className, children, invalid = false, ...props }, ref) => {
+    let error: string | undefined;
+    try {
+        const fieldContext = useFormField();
+        error = fieldContext.error;
+    } catch {
+        // Input is not within a FormField, that's okay
+    }
+
+    return (
+        <SelectPrimitive.Trigger
+            ref={ref}
+            className={cn(
+                INPUT_STYLE,
+                "justify-between data-[placeholder]:text-zinc-400 [&>span]:line-clamp-1",
+                "dark:focus:border-softpink-400 dark:disabled:bg-background dark:data-[placeholder]:text-zinc-400",
+                invalid && "!border-red-500",
+                error && "!border-red-600",
+                className
+            )}
+            {...props}
+        >
+            {children}
+            <SelectPrimitive.Icon asChild>
+                <ChevronDown className="h-4 w-4 opacity-50" />
+            </SelectPrimitive.Icon>
+        </SelectPrimitive.Trigger>
+    );
+});
 SelectTrigger.displayName = SelectPrimitive.Trigger.displayName;
 
 const SelectScrollUpButton = React.forwardRef<

@@ -2,7 +2,7 @@
 import { Button } from "@components/ui/button";
 import { Check, ShoppingCart } from "lucide-react";
 import React, { useEffect, useState } from "react";
-import { useAddCart, useGetUserCart } from "../_hooks/use-products.hook";
+import { useAddCart, useGetUserCart } from "../../../../../../hooks/products/use-products.hook";
 import { CartRequest } from "../_types/product-id";
 import { toast } from "sonner";
 import { AuthError } from "@app/[locale]/(auth)/_components/auth-error";

@@ -28,3 +28,29 @@ export async function addProductAction(data: FormData) {
         return { error: error instanceof Error ? error.message : "Unknown error" };
     }
 }
+export async function editProductAction(data: FormData, id: string) {
+    const token = await getDecodeToken();
+
+    try {
+        const headers: Record<string, string> = {};
+
+        if (token?.accessToken) {
+            headers["Authorization"] = `Bearer ${token.accessToken}`;
+        }
+
+        const res = await fetch(`${process.env.BASE_URL!}products/${id}`, {
+            method: "PUT",
+            headers,
+            body: data,
+        });
+
+        if (!res.ok) {
+            return { error: `Server error: ${res.statusText}` };
+        }
+        const response = await res.json();
+
+        return response;
+    } catch (error) {
+        return { error: error instanceof Error ? error.message : "Unknown error" };
+    }
+}

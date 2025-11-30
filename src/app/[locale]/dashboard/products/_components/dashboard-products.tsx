@@ -5,7 +5,9 @@ import SearchProductsInput from "./search-products-input";
 import ProductsTable from "./all-products-table";
 import { ProductDashboardSteps, searchParams } from "@lib/types/product-dashboard";
 import { useGetAllProducts } from "../../hooks/use-get-all-products.hook";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import PageLoader from "@components/shared/page-loader";
+import { ProductsApiResponse } from "@lib/types/products";
 
 export default function DashboardProducts({
     searchParams,
@@ -23,14 +25,16 @@ export default function DashboardProducts({
     const keyword = searchParams.keyword || "";
 
     // Fetch products from server using pagination + keyword search
-    const { mutateAsync, error, data } = useGetAllProducts();
+    const { mutateAsync, error, isPending } = useGetAllProducts();
+    const [productData, setProductData] = useState<ProductsApiResponse | { error: string } | null>(null);
 
     useEffect(() => {
         const fetchData = async () => {
-            await mutateAsync({
+            const res = await mutateAsync({
                 page: currentPage,
                 keyword: keyword,
             });
+            setProductData(res);
         };
         fetchData();
     }, [currentPage, keyword, mutateAsync]);
@@ -53,10 +57,17 @@ export default function DashboardProducts({
                 {error && <p className="mt-6 text-red-500">Error: {error}</p>}
 
                 {/* Products Table */}
-                {data && !("error" in data) && <ProductsTable products={data.products} setProductId={setProductId} setStep={setStep} />}
+                {!productData && isPending ? (
+                    <PageLoader />
+                ) : (
+                    productData &&
+                    !("error" in productData) && (
+                        <ProductsTable products={productData.products} setProductId={setProductId} setStep={setStep} />
+                    )
+                )}
             </div>
             {/* Pagination Component */}
-            <Pagination className="mt-6" totalPages={data && !("error" in data) ? data?.metadata.totalPages : 1} />
+            <Pagination className="mt-6" totalPages={productData && !("error" in productData) ? productData?.metadata.totalPages : 1} />
         </div>
     );
 }

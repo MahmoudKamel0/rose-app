@@ -29,20 +29,21 @@ export default function AddressesContent({
                 </div>
             )}
             <div className="flex flex-1 flex-col items-center justify-center gap-y-9">
-                {addressesData?.map((address) => (
-                    <AddressesField
-                        key={address._id}
-                        title={address.city}
-                        phone={address.phone}
-                        street={address.street}
-                        id={address._id}
-                        setStep={setStep}
-                        onEdit={() => {
-                            setSelectedAddressId(address._id);
-                            setStep(ADDRESS_STEPS["EDIT_ADDRESS"]);
-                        }}
-                    />
-                ))}
+                {!addressesData?.error &&
+                    addressesData?.map((address) => (
+                        <AddressesField
+                            key={address._id}
+                            title={address.city}
+                            phone={address.phone}
+                            street={address.street}
+                            id={address._id}
+                            setStep={setStep}
+                            onEdit={() => {
+                                setSelectedAddressId(address._id);
+                                setStep(ADDRESS_STEPS["EDIT_ADDRESS"]);
+                            }}
+                        />
+                    ))}
             </div>
         </section>
     );
