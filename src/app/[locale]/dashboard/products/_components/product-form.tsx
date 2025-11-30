@@ -40,6 +40,7 @@ export default function ProductForm({
     productPriceAfterDiscount?: string;
     mode: "edit" | "create";
 }) {
+    // Translations
     const t = useTranslations("product-form");
 
     // Hooks
