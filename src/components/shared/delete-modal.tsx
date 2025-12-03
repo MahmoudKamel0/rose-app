@@ -23,10 +23,10 @@ export default function DeleteAccountModal({ open, onOpenChange }: any) {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="bg-white rounded-2xl p-8 max-w-md w-full text-center ">
+      <DialogContent className="bg-white dark:bg-zinc-800 dark:border-zinc-800 rounded-2xl p-8 max-w-md w-full text-center ">
         <DialogHeader>
           <DialogTitle className="mx-auto mb-6 w-24 h-24 rounded-full bg-[#2E2E3026] flex items-center justify-center border-8 border-gray-100">
-            <Trash size={40} className="text-gray-700" />
+            <Trash size={40} className="text-gray-700 dark:text-gray-500" />
           </DialogTitle>
         </DialogHeader>
 

@@ -1,4 +1,5 @@
 "use client";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { LogOut, Lock, UserPen } from "lucide-react";
@@ -10,12 +11,12 @@ import { signOut } from "next-auth/react";
 import { toast } from "sonner";
 
 export default function ProfileSidebar() {
+  // Translation
+  const t = useTranslations("profile");
+
   // Routing
   const pathname = usePathname();
   const router = useRouter();
-
-  // Translation
-  const t = useTranslations("profile");
 
   // Get pathname without locale
   const cleanedPathname = pathname.replace(/^\/(en|ar)/, "");
@@ -38,8 +39,8 @@ export default function ProfileSidebar() {
 
   return (
     <section>
-      <h1 className="capitalize text-5xl font-bold text-zinc-800 mb-9">{t("update-profile")}</h1>
-      <nav className="flex flex-col gap-4 min-h-[66vh] bg-zinc-50 border border-zinc-100 rounded-lg p-4">
+      <h1 className="capitalize text-5xl font-bold text-zinc-800 dark:text-zinc-50 mb-9">{t("update-profile")}</h1>
+      <nav className="flex flex-col gap-4 min-h-[66vh] bg-zinc-50 border border-zinc-100 dark:bg-zinc-800 dark:border-zinc-800 rounded-lg p-4">
         {links.map(({ href, label, icon: Icon }) => (
           <Link
             key={href}
@@ -47,8 +48,8 @@ export default function ProfileSidebar() {
             className={cn(
               "flex items-center gap-2 px-3 py-2 rounded-md text-base font-medium transition-colors",
               cleanedPathname === href
-                ? "bg-zinc-800 text-white"
-                : "text-zinc-800 hover:bg-zinc-800 hover:text-white"
+                ? "bg-zinc-800 text-white dark:bg-zinc-600"
+                : "text-zinc-800 hover:bg-zinc-800 hover:text-white dark:text-zinc-50 dark:hover:bg-zinc-600"
             )}
           >
             <Icon className="w-4 h-4" />
@@ -60,7 +61,7 @@ export default function ProfileSidebar() {
           <Button
           variant="ghost"
           className="flex items-center justify-start gap-2 w-full rounded-md px-3 py-2 text-base font-medium 
-            text-maroon-500 bg-zinc-100 hover:bg-red-50 hover:text-maroon-600 transition-colors mt-auto "
+            text-maroon-500 bg-zinc-100 hover:bg-red-50 hover:text-maroon-600 transition-colors mt-auto dark:bg-zinc-600 "
           onClick={handleLogout}
           >
           <LogOut className="w-4 h-4" />

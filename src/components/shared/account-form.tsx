@@ -50,7 +50,7 @@ function onSubmit(values: ProfileFormValues) {
 
   return (
     <FormProvider {...form}>
-      <form className="space-y-6 bg-white rounded-2xl p-6" onSubmit={form.handleSubmit(onSubmit)}>
+      <form className="space-y-6 bg-white dark:bg-zinc-800 rounded-2xl p-6" onSubmit={form.handleSubmit(onSubmit)}>
         <FormField
           name="photo"
           control={form.control}
