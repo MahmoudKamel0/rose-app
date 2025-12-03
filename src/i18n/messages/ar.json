@@ -424,5 +424,40 @@
                 }
             }
         }
+    },
+        "change-password": {
+        "old-password": "كلمة المرور الحالية",
+        "new-password": "كلمة المرور الجديدة",
+        "confirm-new-password": "تأكيد كلمة المرور الجديدة",
+        "updating": "جاري التحديث...",
+        "change-password": "تغيير كلمة المرور",
+        "password-updated-successfully": "تم تحديث كلمة المرور بنجاح!",
+        "failed-update-password": "فشل في تحديث كلمة المرور"
+    },
+    "profile": {
+        "logout": "تسجيل الخروج",
+        "my-account": "حسابي",
+        "change-password": "تغيير كلمة المرور",
+        "update-profile": "تحديث الملف الشخصي",
+        "account-settings": "تعديل الملف الشخصي",
+        "first-name": "الاسم الأول",
+        "last-name": "اسم العائلة",
+        "email": "البريد الإلكتروني",
+        "phone": "رقم الهاتف",
+        "gender": "النوع",
+        "save-changes": "حفظ التغييرات",
+        "delete-my-account": "احذف حسابي",
+        "upload-photo": "رفع صورة",
+        "upload-text": "يمكنك رفع صورة بصيغة .jpg أو .png أو .gif بحد أقصى 5 ميجابايت.",
+        "profile-updated-successfully": "تم تحديث الملف الشخصي بنجاح",
+        "logged-out-successfully": "تم تسجيل الخروج بنجاح",
+        "logout-failed": "فشل تسجيل الخروج!"
+    },
+    "delete-modal": {
+        "delete-account-title": "هل أنت متأكد أنك تريد حذف حسابك؟",
+        "delete-account-warning": "هذا الإجراء نهائي ولا يمكن التراجع عنه.",
+        "cancel-delete": "لا، لن أفعل",
+        "deleting": "جارٍ الحذف...",
+        "confirm-delete": "نعم، احذف"
     }
 }
