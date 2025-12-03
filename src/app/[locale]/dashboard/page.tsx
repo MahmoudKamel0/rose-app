@@ -5,7 +5,7 @@ import ProductStatisticsLoader from "./_components/product-statistics-loader";
 
 export default function page() {
     return (
-        <div className="min-h-screen bg-zinc-50">
+        <div className="min-h-screen">
             <OverviewFirstRow />
             <Suspense fallback={<ProductStatisticsLoader />}>
                 <ProductsStatistics />

@@ -356,6 +356,73 @@
                 "products": "منتجات",
                 "egp": "ج. م"
             }
+        },
+        "categories": {
+            "headerTitle": "جميع التصنيفات",
+            "addButton": "إضافة تصنيف جديد",
+            "table": {
+                "name": "الاسم",
+                "products": "المنتجات",
+                "actions": "الإجراءات",
+                "noData": "لا توجد تصنيفات.",
+                "editButton": "تعديل",
+                "deleteButton": "حذف"
+            },
+            "messages": {
+                "deleteConfirmation": "هل أنت متأكد أنك تريد حذف هذا التصنيف؟"
+            },
+            "pagination": {
+                "previous": "السابق",
+                "next": "التالي"
+            },
+            "searchPlaceholder": "ابحث في التصنيفات...",
+            "addNew": {
+                "pageTitle": "إضافة تصنيف جديد",
+                "form": {
+                    "nameLabel": "اسم التصنيف",
+                    "imageLabel": "صورة التصنيف",
+                    "uploadButton": "تحميل ملف",
+                    "submitButton": "حفظ",
+                    "cancelButton": "إلغاء",
+                    "saving": "جاري الحفظ...",
+                    "nameRequired": "الاسم مطلوب",
+                    "imageRequired": "الصورة مطلوبة"
+                },
+
+                "messages": {
+                    "success": "تم إنشاء التصنيف بنجاح",
+                    "error": "حدث خطأ أثناء إنشاء التصنيف"
+                }
+            },
+            "delete": {
+                "cancelButton": "إلغاء",
+                "confirmButton": "تأكيد",
+                "deleting": "جارٍ الحذف...",
+                "messages": {
+                    "deleteSuccess": "تم حذف التصنيف بنجاح",
+                    "deleteError": "فشل في حذف التصنيف",
+
+                    "deleteConfirmation": "هل أنت متأكد أنك تريد حذف هذا التصنيف؟"
+                },
+                "table": {
+                    "deleteButton": "حذف"
+                }
+            },
+
+            "update": {
+                "pageTitle": "تحديث التصنيف:",
+                "form": {
+                    "nameLabel": "اسم التصنيف",
+                    "submitButton": "تحديث التصنيف",
+                    "updating": "جارٍ التحديث...",
+                    "nameRequired": "الاسم مطلوب"
+                },
+                "viewImageButton": "عرض صورة التصنيف",
+                "messages": {
+                    "updateSuccess": "تم تحديث التصنيف بنجاح",
+                    "updateError": "فشل في تحديث التصنيف"
+                }
+            }
         }
     }
 }
