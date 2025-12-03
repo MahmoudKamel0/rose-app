@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils/cn.util";
 import { Heart, Minus, Package, Plus, Star } from "lucide-react";
 import CartBtn from "./add-to-cart-button";
 import { useTranslations } from "next-intl";
-import { useSpecificProduct } from "../_hooks/use-products.hook";
+import { useSpecificProduct } from "../../../../../../hooks/products/use-products.hook";
 import PageLoader from "@components/shared/page-loader";
 
 export default function ProductDetailes({ productId }: { productId: string }) {
@@ -126,7 +126,7 @@ export default function ProductDetailes({ productId }: { productId: string }) {
                         <div className="mt-9 flex items-center justify-center gap-1.5">
                             <button
                                 onClick={() => setLiked(!liked)}
-                                className={`h-button flex w-12 items-center justify-center rounded-xl transition-colors ${
+                                className={`flex h-button w-12 items-center justify-center rounded-xl transition-colors ${
                                     liked ? "bg-zinc-800 text-zinc-50" : "bg-gray-100 text-gray-600 dark:bg-zinc-800 dark:text-zinc-50"
                                 }`}
                             >

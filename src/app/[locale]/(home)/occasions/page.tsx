@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react";
 
 export default function page() {
-  return (
-    <div className='flex justify-center items-center mt-6'>
-      <h1>Occations Page</h1>
-    </div>
-  )
+    return (
+        <div className="mt-6 flex items-center justify-center">
+            <h1>Occations Page</h1>
+        </div>
+    );
 }

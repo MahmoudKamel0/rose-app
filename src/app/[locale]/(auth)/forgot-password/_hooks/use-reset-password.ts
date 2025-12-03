@@ -11,7 +11,6 @@ export function useResetPassword() {
             }
 
             if ("error" in res) {
-                // throw to make React Query register an error
                 throw new Error(res.error);
             }
 

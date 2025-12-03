@@ -370,6 +370,51 @@
         "sales": "المبيعات",
         "edit": "تعديل",
         "delete": "حذف",
-        "deleting": "جارٍ الحذف..."
+        "deleting": "جارٍ الحذف...",
+        "currency": "{value, number, ::currency/EGP}"
+    },
+    "product-form": {
+        "title": "العنوان",
+        "title-placeholder": "أدخل عنوان المنتج",
+
+        "description": "الوصف",
+        "description-placeholder": "أدخل وصف المنتج",
+
+        "price": "السعر",
+        "price-placeholder": "مثال: 5000",
+
+        "discount": "الخصم",
+        "discount-placeholder": "مثال: 5",
+
+        "price-after-discount": "السعر بعد الخصم",
+        "price-after-discount-placeholder": "يتم حسابه تلقائيًا",
+
+        "quantity": "الكمية",
+        "quantity-placeholder": "مثال: 200",
+
+        "cover-image": "صورة الغلاف",
+        "upload-file": "رفع ملف",
+
+        "gallery": "معرض الصور",
+        "upload-files": "رفع ملفات",
+
+        "files-selected": "ملف/ملفات محددة",
+
+        "category": "الفئة",
+        "occasion": "المناسبة",
+        "select-option": "اختر خيارًا",
+
+        "add-product": "إضافة المنتج",
+        "adding": "جاري الإضافة...",
+
+        "save-changes": "حفظ التعديلات",
+        "saving": "جاري الحفظ...",
+
+        "toast-added": "تمت إضافة المنتج بنجاح",
+        "toast-saved": "تم حفظ المنتج بنجاح"
+    },
+    "product-page": {
+        "edit-title": "تحديث المنتج: {theTitle}",
+        "create-title": "إضافة منتج جديد"
     }
 }

@@ -1,9 +1,9 @@
 "use client";
 
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { ProductResponse } from "@lib/types/products";
-import { CartRequest, CartResponse } from "../_types/product-id";
-import { addToCart } from "../_actions/product-id.action";
+import { singleProductResponse } from "@lib/types/products";
+import { CartRequest, CartResponse } from "../../app/[locale]/(home)/products/[productId]/_types/product-id";
+import { addToCart } from "../../app/[locale]/(home)/products/[productId]/_actions/product-id.action";
 import { useSession } from "next-auth/react";
 
 export function useSpecificProduct(productId: string) {
@@ -11,7 +11,7 @@ export function useSpecificProduct(productId: string) {
         error,
         isPending,
         data: specificProductData,
-    } = useQuery<ProductResponse>({
+    } = useQuery<singleProductResponse>({
         queryKey: ["specific-product", productId], // include productId in the cache key
         queryFn: async () => {
             const res = await fetch(`/api/get-specific-product?productId=${productId}`);

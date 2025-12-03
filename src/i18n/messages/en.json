@@ -380,6 +380,40 @@
         "sales": "sales",
         "edit": "edit",
         "delete": "delete",
-        "deleting": "deleting..."
+        "deleting": "deleting...",
+        "currency": "{value, number, ::currency/EUR}"
+    },
+    "product-form": {
+        "title": "Title",
+        "title-placeholder": "Enter product title",
+        "description": "Description",
+        "description-placeholder": "Enter product description",
+        "price": "Price",
+        "price-placeholder": "Example: 5000",
+        "discount": "Discount",
+        "discount-placeholder": "Example: 5",
+        "price-after-discount": "Price After Discount",
+        "price-after-discount-placeholder": "Calculated automatically",
+        "quantity": "Quantity",
+        "quantity-placeholder": "Example: 200",
+        "cover-image": "Product cover image",
+        "upload-file": "Upload file",
+        "gallery": "Product gallery",
+        "upload-files": "Upload files",
+        "files-selected": "file(s) selected",
+        "category": "Category",
+        "occasion": "Occasion",
+        "select-option": "Select an option",
+        "add-product": "Add Product",
+        "adding": "Adding...",
+        "save-changes": "Save Changes",
+        "saving": "Saving...",
+        "toast-added": "Product added successfully",
+        "toast-saved": "Product saved successfully"
+    },
+
+    "product-page": {
+        "edit-title": "Update Product: {theTitle}",
+        "create-title": "Add a New Product"
     }
 }
