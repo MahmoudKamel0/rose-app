@@ -357,5 +357,19 @@
                 "egp": "ج. م"
             }
         }
+    },
+    "products-table": {
+        "add-product": "إضافة منتج جديد",
+        "all-products": "جميع المنتجات",
+        "failed-delete": "فشل حذف المنتج",
+        "success-delete": "تم حذف المنتج بنجاح",
+        "name": "الاسم",
+        "price": "السعر",
+        "stock": "المخزون",
+        "ratings": "التقييمات",
+        "sales": "المبيعات",
+        "edit": "تعديل",
+        "delete": "حذف",
+        "deleting": "جارٍ الحذف..."
     }
 }

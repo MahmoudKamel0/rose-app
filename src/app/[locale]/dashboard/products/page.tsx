@@ -4,8 +4,12 @@ import { Plus } from "lucide-react";
 import Pagination from "@components/features/application/pagination";
 import { getAllProducts, searchParams } from "@lib/apis/products/get-all-products.api";
 import SearchProductsInput from "../_components/products/search-products-input";
+import { getTranslations } from "next-intl/server";
 
 export default async function DashboardProductsPage({ searchParams }: { searchParams: searchParams }) {
+
+  // Translation
+  const t = await getTranslations("products-table");
 
   // Extract current page number from URL query params (default = 1)
   const currentPage = searchParams.page || "1";
@@ -25,9 +29,9 @@ export default async function DashboardProductsPage({ searchParams }: { searchPa
 
       {/* Page Header + CTA Button */}
       <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-semibold">All Products</h1>
+        <h1 className="text-2xl font-semibold">{t("all-products")}</h1>
         <Button className="flex items-center gap-2 text-base font-medium">
-          <Plus className="w-6 h-6"  size={32} /> Add a new product
+          <Plus className="w-6 h-6"  size={32} /> {t("add-product")}
         </Button>
       </div>
 

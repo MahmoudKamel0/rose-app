@@ -367,5 +367,19 @@
                 "egp": "EGP"
             }
         }
+    },
+    "products-table": {
+        "add-product": "Add a new product",
+        "all-products": "All Products",
+        "failed-delete": "Failed to delete product",
+        "success-delete": "Product deleted successfully",
+        "name": "Name",
+        "price": "price",
+        "stock": "stock",
+        "ratings": "ratings",
+        "sales": "sales",
+        "edit": "edit",
+        "delete": "delete",
+        "deleting": "deleting..."
     }
 }
