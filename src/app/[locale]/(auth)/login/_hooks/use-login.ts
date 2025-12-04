@@ -3,11 +3,10 @@
 import { LoginFields } from "@lib/schemas/auth/login.schema";
 import { useMutation } from "@tanstack/react-query";
 import { signIn } from "next-auth/react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 
 const useLogin = () => {
     // Initialize Next.js navigation hooks
-    const router = useRouter();
     const searchParams = useSearchParams();
 
     // Define a mutation using React Query for handling the login process
@@ -20,20 +19,13 @@ const useLogin = () => {
             // Attempt to sign in using NextAuth credentials provider
             const response = await signIn("credentials", {
                 ...values,
-                redirect: false,
+                // On successful login, navigate to the callback URL or home page
+                callbackUrl: callbackUrl || "/",
+                redirect: true,
             });
 
             if (response?.error) {
                 throw new Error(response.error);
-            }
-
-            // On successful login, navigate to the callback URL or home page
-            if (response?.url) {
-                router.push(response.url);
-            } else if (callbackUrl) {
-                router.replace(callbackUrl);
-            } else {
-                router.push("/");
             }
         },
     });

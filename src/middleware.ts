@@ -22,8 +22,15 @@ export default async function middleware(req: NextRequest) {
     // Check authentication
     const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
     
-  const isProtected = PROTECTED_ROUTES.includes(pathWithoutLocale);
-  const isAuthPage = AUTH_PAGES.includes(pathWithoutLocale);
+    // Check protected route (including nested)
+    const isProtected = PROTECTED_ROUTES.some(
+      (route) =>
+        pathWithoutLocale === route ||
+        pathWithoutLocale.startsWith(`${route}/`)
+    );
+
+    // Auth pages
+    const isAuthPage = AUTH_PAGES.includes(pathWithoutLocale);
 
   // =============================
   // 🚧 1) Auth user visiting login/register → redirect to home

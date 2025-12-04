@@ -4,6 +4,7 @@ import * as SelectPrimitive from "@radix-ui/react-select";
 import { Check, ChevronDown, ChevronUp } from "lucide-react";
 import { cn } from "@/lib/utils/cn.util";
 import { INPUT_STYLE } from "@lib/constants/style.constant";
+import { useFormField } from "./form";
 
 const Select = SelectPrimitive.Root;
 const SelectGroup = SelectPrimitive.Group;
@@ -14,24 +15,35 @@ const SelectTrigger = React.forwardRef<
     React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger> & {
         invalid?: boolean;
     }
->(({ className, children, invalid = false, ...props }, ref) => (
-    <SelectPrimitive.Trigger
-        ref={ref}
-        className={cn(
-            INPUT_STYLE,
-            "justify-between data-[placeholder]:text-zinc-400 [&>span]:line-clamp-1",
-            "dark:focus:border-softpink-400 dark:disabled:bg-background dark:data-[placeholder]:text-zinc-400",
-            invalid && "!border-red-500",
-            className
-        )}
-        {...props}
-    >
-        {children}
-        <SelectPrimitive.Icon asChild>
-            <ChevronDown className="h-4 w-4 opacity-50" />
-        </SelectPrimitive.Icon>
-    </SelectPrimitive.Trigger>
-));
+>(({ className, children, invalid = false, ...props }, ref) => {
+    let error: string | undefined;
+    try {
+        const fieldContext = useFormField();
+        error = fieldContext.error;
+    } catch {
+        // Input is not within a FormField, that's okay
+    }
+
+    return (
+        <SelectPrimitive.Trigger
+            ref={ref}
+            className={cn(
+                INPUT_STYLE,
+                "justify-between data-[placeholder]:text-zinc-400 [&>span]:line-clamp-1",
+                "dark:focus:border-softpink-400 dark:disabled:bg-background dark:data-[placeholder]:text-zinc-400",
+                invalid && "!border-red-500",
+                error && "!border-red-600",
+                className
+            )}
+            {...props}
+        >
+            {children}
+            <SelectPrimitive.Icon asChild>
+                <ChevronDown className="h-4 w-4 opacity-50" />
+            </SelectPrimitive.Icon>
+        </SelectPrimitive.Trigger>
+    );
+});
 SelectTrigger.displayName = SelectPrimitive.Trigger.displayName;
 
 const SelectScrollUpButton = React.forwardRef<
@@ -62,7 +74,7 @@ const SelectContent = React.forwardRef<
         <SelectPrimitive.Content
             ref={ref}
             className={cn(
-                "border-input bg-popover text-popover-foreground z-50 overflow-hidden rounded-md border shadow-md",
+                "z-50 overflow-hidden rounded-md bg-zinc-100 text-popover-foreground shadow-md",
                 "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
                 "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
                 "focus:!border-softpink-400 dark:border-zinc-600 dark:bg-zinc-700 dark:text-zinc-400 dark:placeholder:text-zinc-400 dark:hover:border-zinc-500",
@@ -103,7 +115,7 @@ const SelectItem = React.forwardRef<
     <SelectPrimitive.Item
         ref={ref}
         className={cn(
-            "relative flex w-full cursor-pointer items-center rounded-sm py-1.5 pr-8 pl-2 text-sm outline-none select-none",
+            "relative flex w-full cursor-pointer select-none items-center rounded-sm py-1.5 pl-2 pr-8 text-sm outline-none",
             "focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
             "dark:hover:bg-softpink-400",
             className
@@ -124,7 +136,7 @@ const SelectSeparator = React.forwardRef<
     React.ElementRef<typeof SelectPrimitive.Separator>,
     React.ComponentPropsWithoutRef<typeof SelectPrimitive.Separator>
 >(({ className, ...props }, ref) => (
-    <SelectPrimitive.Separator ref={ref} className={cn("bg-muted -mx-1 my-1 h-px", className)} {...props} />
+    <SelectPrimitive.Separator ref={ref} className={cn("-mx-1 my-1 h-px bg-muted", className)} {...props} />
 ));
 SelectSeparator.displayName = SelectPrimitive.Separator.displayName;
 
