@@ -20,7 +20,7 @@ export function useFilters() {
       params.set(key, Array.isArray(value) ? value.join(",") : String(value));
     }
     // Update the current URL without refresh
-    router.replace(`${pathname}?${params.toString()}`);
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
   };
 
   return { updateParam, searchParams };

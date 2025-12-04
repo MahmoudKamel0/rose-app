@@ -43,7 +43,7 @@ export default function OccasionFilter() {
   return (
     <section className="space-y-3">
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-lg font-semibold text-zinc-800">{t("title")}</h2>
+        <h2 className="text-lg font-semibold text-zinc-800 dark:text-zinc-50">{t("title")}</h2>
         {selected.length > 0 && <BtnReset onClick={handleReset} />}
       </div>
 

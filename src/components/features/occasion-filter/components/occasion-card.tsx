@@ -21,7 +21,7 @@ export default function OccasionCard({ id, name, image, selected, onToggle }: Oc
         }
       }}
   className={cn(
-    "relative w-34 h-18 rounded-xl overflow-hidden text-white font-medium focus:outline-none transition-all duration-150 group",
+    "relative w-34 h-18 rounded-xl overflow-hidden text-white dark:text-zinc-50 font-medium focus:outline-none transition-all duration-150 group",
     selected
       ? "ring-4 ring-primary ring-offset-2 ring-offset-background"
       : "ring-0"

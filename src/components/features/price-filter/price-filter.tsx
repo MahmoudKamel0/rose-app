@@ -42,7 +42,7 @@ const priceTo = priceToParam ? Number(priceToParam) : undefined;
   return (
     <section className="space-y-3 mt-6 border-t pt-4">
       <div className="flex items-center justify-between mb-2.5">
-        <h2 className="text-lg font-semibold text-zinc-800">
+        <h2 className="text-lg font-semibold text-zinc-800 dark:text-zinc-50">
           {t("title")}
         </h2>
         {(priceFrom || priceTo) && <BtnReset onClick={handleReset} />}
