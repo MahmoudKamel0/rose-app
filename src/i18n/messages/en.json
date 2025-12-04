@@ -468,5 +468,20 @@
         "cancel-delete": "Nope, not doing it",
         "deleting": "Deleting...",
         "confirm-delete": "Yes, delete"
+    },
+     "Price": {
+        "title": "Price",
+        "from": "from",
+        "to": "to"
+    },
+
+    "Occasions": {
+        "title": "Occasion",
+        "loading": "loading..",
+        "noOccasions": "No Occasions Found"
+    },
+
+    "reset": {
+        "label": "Reset"
     }
 }

@@ -28,7 +28,13 @@ const useLogin = () => {
             }
 
             // On successful login, navigate to the callback URL or home page
-            router.replace(callbackUrl);
+            if (response?.url) {
+                router.push(response.url);
+            } else if (callbackUrl) {
+                router.replace(callbackUrl);
+            } else {
+                router.push("/");
+            }
         },
     });
 

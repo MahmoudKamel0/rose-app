@@ -459,5 +459,21 @@
         "cancel-delete": "لا، لن أفعل",
         "deleting": "جارٍ الحذف...",
         "confirm-delete": "نعم، احذف"
+    },
+
+    "Price": {
+        "title": "السعر",
+        "from": "من",
+        "to": "الي"
+    },
+
+    "Occasions": {
+        "title": "المناسبة",
+        "loading": "تحميل...",
+        "noOccasions": "لم يتم العثور على مناسبات"
+    },
+
+    "reset": {
+        "label": "إعادة ضبط"
     }
 }
