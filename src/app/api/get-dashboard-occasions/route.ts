@@ -18,7 +18,7 @@ export async function GET(req: NextRequest) {
             headers,
         });
 
-        if (!res.ok) return { error: "Something went wrong" };
+        if (!res.ok) return NextResponse.json({ error: "Something went wrong" });
 
         const response: ApiResponse<OccasionsResponse> = await res.json();
         if ("error" in response) {
@@ -27,6 +27,6 @@ export async function GET(req: NextRequest) {
 
         return NextResponse.json(response);
     } catch {
-        return { error: "Something went wrong" };
+        return NextResponse.json({ error: "Something went wrong" });
     }
 }

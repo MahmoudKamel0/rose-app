@@ -1,5 +1,3 @@
-"use client";
-
 import { useMutation } from "@tanstack/react-query";
 import { addProductAction, editProductAction } from "../products/actions/product.action";
 import { ProductResponse } from "@lib/types/products";

@@ -1,5 +1,3 @@
-"use client";
-
 import { OccasionsResponse } from "@lib/types/end-point-api/occasions";
 import { useQuery } from "@tanstack/react-query";
 
