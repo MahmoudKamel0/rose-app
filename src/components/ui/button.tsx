@@ -33,9 +33,9 @@ const buttonVariants = cva(
                 // (eight) NEW → Ghost style
                 ghost: "bg-transparent text-primary hover:bg-maroon-50 hover:text-maroon-700 disabled:text-zinc-400 dark:text-zinc-50 dark:hover:bg-zinc-700 dark:hover:text-softpink-400 dark:disabled:text-zinc-600 [&_svg]:stroke-current",
 
-                // (nine) New ->  Find Location Style
-                location:
-                    "bg-white border-1 border-maroon-600 hover:bg-zinc-100 hover:border-maroon-700 text-maroon-600 transition-colors disabled:bg-zinc-100 disabled:border-zinc-300 disabled:text-zinc-400  dark:bg-zinc-800 dark:border-softpink-200 dark:text-softpink-200 dark:hover:bg-zinc-900 dark:disabled:border-zinc-600 dark:disabled:text-zinc-600",
+                // (nine) NEW → Ghost Red style
+                secondaryBlue:
+                    "bg-blue-50 text-blue-600 hover:bg-blue-100 disabled:bg-zinc-300 disabled:text-zinc-500 dark:bg-zinc-700 dark:text-blue-300 dark:hover:bg-zinc-600 dark:disabled:text-zinc-600 [&_svg]:stroke-blue-600 disabled:[&_svg]:stroke-zinc-500 dark:[&_svg]:stroke-blue-300 dark:disabled:[&_svg]:stroke-zinc-600",
             },
             size: {
                 default: "h-button w-button px-4 py-2",

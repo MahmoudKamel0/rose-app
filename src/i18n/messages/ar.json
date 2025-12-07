@@ -425,7 +425,7 @@
             }
         }
     },
-        "change-password": {
+    "change-password": {
         "old-password": "كلمة المرور الحالية",
         "new-password": "كلمة المرور الجديدة",
         "confirm-new-password": "تأكيد كلمة المرور الجديدة",
@@ -465,12 +465,6 @@
         "title": "السعر",
         "from": "من",
         "to": "الي"
-    },
-
-    "Occasions": {
-        "title": "المناسبة",
-        "loading": "تحميل...",
-        "noOccasions": "لم يتم العثور على مناسبات"
     },
 
     "reset": {
@@ -534,5 +528,35 @@
     "product-page": {
         "edit-title": "تحديث المنتج: {theTitle}",
         "create-title": "إضافة منتج جديد"
+    },
+    "ordersStatus": {
+        "title": "حالة الطلبات",
+        "completed": "مكتملة",
+        "inProgress": "قيد التنفيذ",
+        "canceled": "ملغاة",
+        "fetchError": "فشل في تحميل الإحصائيات"
+    },
+    "revenueChart": {
+        "title": "الإيرادات",
+        "monthly": "شهريًا",
+        "weekly": "الأسبوع الماضي",
+        "fetchError": "فشل في تحميل إحصائيات الإيرادات"
+    },
+    "Occasions": {
+        "loading": "تحميل...",
+        "noOccasions": "لم يتم العثور على مناسبات",
+        "title": "كل المناسبات",
+        "add": "إضافة مناسبة جديدة",
+        "viewImage": "عرض صورة المناسبة",
+        "products": "منتجات",
+        "edit": "تعديل",
+        "delete": "حذف",
+        "deleting": "جاري الحذف...",
+        "deleteFailed": "فشل في حذف المناسبة.",
+        "table": {
+            "name": "الاسم",
+            "products": "المنتجات"
+        },
+        "search": "ابحث عن مناسبة..."
     }
 }

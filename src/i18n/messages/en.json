@@ -440,7 +440,7 @@
         "updating": "Updating...",
         "change-password": "Change Password",
         "password-updated-successfully": "Password updated successfully!",
-        "failed-update-password": "Failed to update password"        
+        "failed-update-password": "Failed to update password"
     },
     "profile": {
         "logout": "Logout",
@@ -456,11 +456,11 @@
         "save-changes": "Save Changes",
         "delete-my-account": "Delete my account",
         "upload-photo": "Upload Photo",
-        "upload-text": "You can upload a .jpg, .png, or .gif photo with max size of 5MB.", 
+        "upload-text": "You can upload a .jpg, .png, or .gif photo with max size of 5MB.",
         "profile-updated-successfully": "Profile Updated Successfully..",
-         "update-failed": "Failed to update profile",
-         "logged-out-successfully": "Logged out Successfully..",
-         "logout-failed": "Logged out Failed!"
+        "update-failed": "Failed to update profile",
+        "logged-out-successfully": "Logged out Successfully..",
+        "logout-failed": "Logged out Failed!"
     },
     "delete-modal": {
         "delete-account-title": "Are you sure you want to delete your account?",
@@ -469,16 +469,10 @@
         "deleting": "Deleting...",
         "confirm-delete": "Yes, delete"
     },
-     "Price": {
+    "Price": {
         "title": "Price",
         "from": "from",
         "to": "to"
-    },
-
-    "Occasions": {
-        "title": "Occasion",
-        "loading": "loading..",
-        "noOccasions": "No Occasions Found"
     },
 
     "reset": {
@@ -531,5 +525,35 @@
     "product-page": {
         "edit-title": "Update Product: {theTitle}",
         "create-title": "Add a New Product"
+    },
+    "ordersStatus": {
+        "title": "Orders Status",
+        "completed": "Completed",
+        "inProgress": "In Progress",
+        "canceled": "Canceled",
+        "fetchError": "Failed to load statistics"
+    },
+    "revenueChart": {
+        "title": "Revenue",
+        "monthly": "Monthly",
+        "weekly": "Last Week",
+        "fetchError": "Failed to load revenue statistics"
+    },
+    "Occasions": {
+        "title": "All Occasions",
+        "loading": "loading..",
+        "noOccasions": "No Occasions Found",
+        "add": "Add a new occasion",
+        "viewImage": "View occasion image",
+        "products": "products",
+        "edit": "Edit",
+        "delete": "Delete",
+        "deleting": "Deleting...",
+        "deleteFailed": "Failed to delete occasion.",
+        "table": {
+            "name": "Name",
+            "products": "Products"
+        },
+        "search": "Search occasions..."
     }
 }

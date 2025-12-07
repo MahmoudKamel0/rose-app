@@ -52,7 +52,7 @@ export const authOptions: NextAuthOptions = {
         jwt: ({ token, user }) => {
             if (user) {
                 token.accessToken = user.accessToken;
-                token.user = user.user;
+                // token.user = user.user;
             }
             return token;
         },

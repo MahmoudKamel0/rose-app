@@ -6,7 +6,6 @@ export async function fetchStatistics(): Promise<StatisticsResponse> {
         method: "GET",
     });
 
-    // Parse JSON payload from response
     const payload = await res.json();
 
     // Check if response is not OK, then log error and throw
